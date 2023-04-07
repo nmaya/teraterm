@@ -183,6 +183,29 @@ function(download_libressl)
   )
 endfunction()
 
+# libressl 3.7.1
+function(download_libressl_371)
+  message("libressl-3.7.1")
+  set(DIR_IN_ARC "libressl-3.7.1")
+  set(RENAME_DIR "libressl_3.7.1")
+  set(CHECK_FILE "libressl_3.7.1/ChangeLog")
+  set(CHECK_HASH "87ab9eca539f0c71bd5eeb139b9e62d02fe046d44839e82f22e16dc1a46bbcfd")
+  set(SRC_URL "https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.7.1.tar.gz")
+  set(ARC_HASH "98086961a2b8b657ed0fea3056fb2db14294b6bfa193c15a5236a0a35c843ded")
+  #   ARC_HASH was picked from https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/SHA256
+  set(DOWN_DIR "${CMAKE_CURRENT_LIST_DIR}/download/libressl")
+  download_extract(
+    ${SRC_URL}
+    ${ARC_HASH}
+    ${DOWN_DIR}
+    ${EXT_DIR}
+    ${DIR_IN_ARC}
+    ${RENAME_DIR}
+    ${CHECK_FILE}
+    ${CHECK_HASH}
+  )
+endfunction()
+
 # oniguruma
 function(download_oniguruma)
   message("oniguruma")
@@ -309,6 +332,9 @@ if ((${TARGET} STREQUAL "all") OR (${TARGET} STREQUAL "argon2"))
 endif()
 if ((${TARGET} STREQUAL "all") OR (${TARGET} STREQUAL "libressl"))
   download_libressl()
+endif()
+if ((${TARGET} STREQUAL "libressl371"))
+  download_libressl_371()
 endif()
 if ((${TARGET} STREQUAL "all") OR (${TARGET} STREQUAL "oniguruma"))
   download_oniguruma()
