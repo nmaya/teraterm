@@ -48,8 +48,8 @@ void *putty_hash_ssh1_challenge(unsigned char *pubkey,
                                 int *outlen);
 int putty_get_ssh1_keylen(unsigned char *key, int maxlen);
 const char *putty_get_version();
-void putty_agent_query_synchronous(void *in, int inlen, void **out, int *outlen);
-BOOL putty_agent_exists();
+void putty_agent_query_synchronous(const void *req_ptr, int req_len, void **rep_ptr, int *rep_len);
+BOOL putty_agent_exists(void);
 
 // ƒGƒ‰[‰“š—p
 #define SSH_AGENT_FAILURE_MSG "\x00\x00\x00\x01\x05"
