@@ -27,6 +27,12 @@
  */
 // PuTTY is copyright 1997-2021 Simon Tatham.
 
+#include <windows.h> // for BOOL
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int putty_get_ssh2_keylist(unsigned char **keylist);
 void *putty_sign_ssh2_key(unsigned char *pubkey,
                           unsigned char *data,
@@ -55,3 +61,6 @@ BOOL putty_agent_exists();
 //   memory.c
 extern void safefree(void *);
 
+#ifdef __cplusplus
+}
+#endif
