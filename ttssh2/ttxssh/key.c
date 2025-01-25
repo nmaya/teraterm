@@ -493,21 +493,26 @@ static int ssh_ed25519_verify(Key *key, unsigned char *signature, unsigned int s
 
 	ret = -1;
 	b = buffer_init();
-	if (b == NULL)
+	if (b == NULL) {
+		MessageBox(NULL, "b == NULL", "debug", MB_OK);
 		goto error;
+	}
 
 	buffer_append(b, signature, signaturelen);
 	bptr = buffer_ptr(b);
 	ktype = buffer_get_string(&bptr, NULL);
 	if (strcmp("ssh-ed25519", ktype) != 0) {
+		MessageBox(NULL, "strcmp(\"ssh-ed25519\", ktype) != 0", "debug", MB_OK);
 		goto error;
 	}
 	sigblob = buffer_get_string(&bptr, &len);
 	rlen = buffer_remain_len(b);
 	if (rlen != 0) {
+		MessageBox(NULL, "rlen != 0", "debug", MB_OK);
 		goto error;
 	}
 	if (len > crypto_sign_ed25519_BYTES) {
+		MessageBox(NULL, "len > crypto_sign_ed25519_BYTES", "debug", MB_OK);
 		goto error;
 	}
 
@@ -520,12 +525,14 @@ static int ssh_ed25519_verify(Key *key, unsigned char *signature, unsigned int s
 
 	if ((ret = crypto_sign_ed25519_open(m, &mlen, sm, smlen,
 	    key->ed25519_pk)) != 0) {
-		//debug2("%s: crypto_sign_ed25519_open failed: %d",
+		MessageBox(NULL, "crypto_sign_ed25519_open(): failed", "debug", MB_OK);
+		// debug2("%s: crypto_sign_ed25519_open failed: %d",
 		//    __func__, ret);
 	}
 	if (ret == 0 && mlen != datalen) {
 		//debug2("%s: crypto_sign_ed25519_open "
 		//    "mlen != datalen (%llu != %u)", __func__, mlen, datalen);
+		MessageBox(NULL, "crypto_sign_ed25519_open(): mlen != datalen", "debug", MB_OK);
 		ret = -1;
 	}
 	/* XXX compare 'm' and 'data' ? */
