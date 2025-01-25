@@ -523,10 +523,22 @@ static int ssh_ed25519_verify(Key *key, unsigned char *signature, unsigned int s
 	mlen = smlen;
 	m = malloc((size_t)mlen);
 
+	{
+		char msg[256];
+		_snprintf_s(msg, sizeof(msg), _TRUNCATE,
+		            "signaturelen: %d, datalen: %d, len: %d, rlen: %d, smlen: %lld, mlen: %lld",
+		            signaturelen, datalen, len, rlen, smlen, mlen);
+		MessageBox(NULL, msg, "debug", MB_OK);
+	}
+
 	if ((ret = crypto_sign_ed25519_open(m, &mlen, sm, smlen,
 	    key->ed25519_pk)) != 0) {
-		MessageBox(NULL, "crypto_sign_ed25519_open(): failed", "debug", MB_OK);
-		// debug2("%s: crypto_sign_ed25519_open failed: %d",
+		char msg[256];
+		_snprintf_s(msg, sizeof(msg), _TRUNCATE,
+		            "crypto_sign_ed25519_open failed: %d",
+		            ret);
+		MessageBox(NULL, msg, "debug", MB_OK);
+		//debug2("%s: crypto_sign_ed25519_open failed: %d",
 		//    __func__, ret);
 	}
 	if (ret == 0 && mlen != datalen) {
