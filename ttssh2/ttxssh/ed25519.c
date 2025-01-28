@@ -113,6 +113,7 @@ int crypto_sign_ed25519_open(
 
   *mlen = (unsigned long long) -1;
   if (smlen < 64) return -1;
+  debug_print(43, sm, smlen);
 
   if (ge25519_unpackneg_vartime(&get1, pk)) return -1;
 
@@ -125,6 +126,7 @@ int crypto_sign_ed25519_open(
   ge25519_double_scalarmult_vartime(&get2, &get1, &schram, &ge25519_base, &scs);
   ge25519_pack(t2, &get2);
 
+  debug_print(44, t2, sizeof(t2));
   ret = crypto_verify_32(sm, t2);
 
   if (!ret)
