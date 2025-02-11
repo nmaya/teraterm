@@ -2187,7 +2187,9 @@ void CVTWindow::OnMove(int x, int y)
 	if (vtwin_work.monitor_DPI == 0) {
 		// ウィンドウが初めて表示された
 		//	モニタのDPIを保存しておく
+		OutputDebugPrintf("%s():line %d, call GetMonitorDpiFromWindow()\n", __func__, __LINE__);
 		vtwin_work.monitor_DPI = GetMonitorDpiFromWindow(m_hWnd);
+		OutputDebugPrintf("%s():line %d, GetMonitorDpiFromWindow() returned vtwin_work.monitor_DPI:%d\n", __func__, __LINE__, vtwin_work.monitor_DPI);
 	}
 }
 
@@ -2374,8 +2376,10 @@ void CVTWindow::OnSize(WPARAM nType, int cx, int cy)
 	// ウィンドウ生成時の最初のWM_SIZE時(monitor_DPI==0のとき)は
 	// DPIのチェックを行わない
 	// ウィンドウ生成時、WM_SIZE, WM_MOVE とメッセージが発生する
+	OutputDebugPrintf("%s():line %d, call GetMonitorDpiFromWindow()\n", __func__, __LINE__);
 	if (vtwin_work.monitor_DPI != 0 &&
 		GetMonitorDpiFromWindow(m_hWnd) != vtwin_work.monitor_DPI) {
+		OutputDebugPrintf("%s():line %d, GetMonitorDpiFromWindow() returned vtwin_work.monitor_DPI:%d\n", __func__, __LINE__, vtwin_work.monitor_DPI);
 		// DPIの異なるディスプレイをまたぐと WM_DPICHANGE が発生する
 		//
 		// 「ドラッグ中にウィンドウの内容を表示する=OFF」設定時
@@ -2390,6 +2394,7 @@ void CVTWindow::OnSize(WPARAM nType, int cx, int cy)
 		// ここでは 1 が妥当となるよう実装した
 		return;
 	}
+	OutputDebugPrintf("%s():line %d, GetMonitorDpiFromWindow() returned vtwin_work.monitor_DPI:%d\n", __func__, __LINE__, vtwin_work.monitor_DPI);
 	RECT R;
 	int w, h;
 
@@ -4721,6 +4726,11 @@ LRESULT CVTWindow::OnDpiChanged(WPARAM wp, LPARAM lp)
 	const UINT NewDPI = LOWORD(wp);
 	const RECT SuggestedWindowRect = *(RECT *)lp;
 
+	OutputDebugPrintf("WM_DPICHANGED\n");
+	OutputDebugPrintf("  wParam:%d\n", wp);
+	OutputDebugPrintf("  HIWORD(wParam):%d, LOWORD(wParam):%d\n",
+	                  HIWORD(wp), LOWORD(wp));
+
 	// 新しいDPIに合わせてフォントを生成、
 	// クライアント領域のサイズを決定する
 	ChangeFont();
@@ -4809,7 +4819,12 @@ LRESULT CVTWindow::OnDpiChanged(WPARAM wp, LPARAM lp)
 		HMONITOR hMonitor = pMonitorFromRect(r, MONITOR_DEFAULTTONULL);
 		UINT dpiX;
 		UINT dpiY;
+
+		OutputDebugPrintf("%s():line %d, loop i:%d, NewDPI:%d\n", __func__, __LINE__, i, NewDPI);
+		OutputDebugPrintf("%s():line %d, call pGetDpiForMonitor()\n", __func__, __LINE__);
 		pGetDpiForMonitor(hMonitor, MDT_EFFECTIVE_DPI, &dpiX, &dpiY);
+		OutputDebugPrintf("%s():line %d, pGetDpiForMonitor() returned dpiX:%d, dpiY:%d\n", __func__, __LINE__, dpiX, dpiY);
+
 		if (NewDPI == dpiX) {
 			NewRect = r;
 			break;

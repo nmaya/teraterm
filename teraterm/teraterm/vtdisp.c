@@ -1803,7 +1803,9 @@ void DispSetLogFont(LOGFONTA *VTlf, BOOL mul)
   VTlf->lfPitchAndFamily = FIXED_PITCH | FF_DONTCARE;
   strncpy_s(VTlf->lfFaceName, sizeof(VTlf->lfFaceName),ts.VTFont, _TRUNCATE);
   if (mul) {
+	  OutputDebugPrintf("%s():line %d, call GetMonitorDpiFromWindow()\n", __func__, __LINE__);
 	  const UINT uDpi = GetMonitorDpiFromWindow(HVTWin);
+	  OutputDebugPrintf("%s():line %d, GetMonitorDpiFromWindow() returned uDpi:%d\n", __func__, __LINE__, uDpi);
 	  VTlf->lfWidth = MulDiv(VTlf->lfWidth, uDpi, 96);
 	  VTlf->lfHeight = MulDiv(VTlf->lfHeight, uDpi, 96);
   }

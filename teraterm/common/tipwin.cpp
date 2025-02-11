@@ -235,7 +235,9 @@ ATOM CTipWinImpl::RegisterClass()
 VOID CTipWinImpl::Create(HWND pHwnd)
 {
 	LOGFONTA logfont;
+	OutputDebugPrintf("%s():line %d, call GetMonitorDpiFromWindow()\n", __func__, __LINE__);
 	const UINT uDpi = GetMonitorDpiFromWindow(pHwnd);
+	OutputDebugPrintf("%s():line %d, GetMonitorDpiFromWindow() returned uDpi:%d\n", __func__, __LINE__, uDpi);
 
 	if(hInstance == NULL) {
 		hInstance = (HINSTANCE)GetWindowLongPtr(pHwnd, GWLP_HINSTANCE);

@@ -341,9 +341,12 @@ int GetMonitorDpiFromWindow(HWND hWnd)
 			hMonitor = pMonitorFromPoint(ptZero, MONITOR_DEFAULTTOPRIMARY);
 		}
 		else {
-			hMonitor = pMonitorFromWindow(hWnd, MONITOR_DEFAULTTONEAREST);
+			hMonitor = pMonitorFromWindow(hWnd, MONITOR_DEFAULTTONEAREST);OutputDebugPrintf("%s():line %d, hMonitor:0x%x\n", __func__, __LINE__, (int)hMonitor);
 		}
+		OutputDebugPrintf("%s():line %d, call pGetDpiForMonitor()\n", __func__, __LINE__);
 		pGetDpiForMonitor(hMonitor, 0 /*0=MDT_EFFECTIVE_DPI*/, &dpiX, &dpiY);
+		OutputDebugPrintf("%s():line %d, pGetDpiForMonitor() returned dpiX:%d, dpiY:%d\n", __func__, __LINE__, dpiX, dpiY);
+
 		return (int)dpiY;
 	}
 }

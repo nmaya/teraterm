@@ -504,7 +504,9 @@ void TTSetIcon(HINSTANCE hInst, HWND hWnd, const wchar_t *icon_name, UINT dpi)
 	if (icon_name != NULL) {
 		if (dpi == 0) {
 			// hWnd が表示されているモニタのDPI
+			OutputDebugPrintf("%s():line %d, call GetMonitorDpiFromWindow()\n", __func__, __LINE__);
 			dpi = GetMonitorDpiFromWindow(hWnd);
+			OutputDebugPrintf("%s():line %d, GetMonitorDpiFromWindow() returned dpi:%d\n", __func__, __LINE__, dpi);
 		}
 
 		// 大きいアイコン(32x32,ディスプレイの拡大率が100%(dpi=96)のとき)
