@@ -16,7 +16,6 @@ init:
       Set-WinSystemLocale ja-JP
       Start-Sleep -s 10
       Restart-Computer
-      Start-Sleep -s 10
 
 cache:
   - libs
