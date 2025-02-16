@@ -23,6 +23,8 @@ set updated=
 CALL convtext.bat
 
 REM Check Japanese version Windows
+%CHCP%
+
 if "%APPVEYOR%" == "True" goto JA
 %CHCP% | %FIND% "932" > NUL
 if NOT ERRORLEVEL 1 goto JA
