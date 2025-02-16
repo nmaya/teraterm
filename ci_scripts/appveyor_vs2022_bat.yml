@@ -12,7 +12,7 @@ init:
   - tzutil /s "Tokyo Standard Time"
   # システムロケールを日本語に切り替えて再起動
   #   日本語 chm の文字化け対策
-  - ps: |-
+  - ps: |
       Set-WinSystemLocale ja-JP
       Start-Sleep -s 10
       Restart-Computer
