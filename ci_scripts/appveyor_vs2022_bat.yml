@@ -11,11 +11,10 @@ init:
   # タイムゾーンを JST に変更
   - tzutil /s "Tokyo Standard Time"
   # システムロケールを日本語に切り替えて再起動
-  - ps: >-
-      Set-WinSystemLocale ja-JP
-      Start-Sleep -s 10
-      Restart-Computer
-      Start-Sleep -s 10
+  - ps: Set-WinSystemLocale ja-JP
+  - ps: Start-Sleep -s 10
+  - ps: Restart-Computer
+  - ps: Start-Sleep -s 10
 
 cache:
   - libs
