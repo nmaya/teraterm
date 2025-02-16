@@ -8,20 +8,19 @@ environment:
 build: off
 
 init:
-  # いったんコードページを UTF-8 に変更
-  - chcp 65001
+  # システムロケールを日本語に切り替えて再起動
+  #   日本語 chm の文字化け対策
+  - ps: Set-WinSystemLocale ja-JP
+  - ps: Start-Sleep -s 10
+  - ps: Restart-Computer
+  - ps: Start-Sleep -s 10
+  # タイムゾーンを JST に変更
+  - tzutil /s "Tokyo Standard Time"
 
 cache:
   - libs
 
 before_build:
-  # タイムゾーンを JST に変更
-  - tzutil /s "Tokyo Standard Time"
-  # システムロケールを日本語に切り替えて再起動
-  - ps: Set-WinSystemLocale ja-JP
-  - ps: Start-Sleep -s 10
-  - ps: Restart-Computer
-  - ps: Start-Sleep -s 10
   # インストール済みの Cygwin を更新
   # - ci_scripts/upgrade_syscygwin.bat
   # インストール済みの Cygwin にパッケージを追加
