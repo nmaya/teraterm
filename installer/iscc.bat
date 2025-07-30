@@ -38,8 +38,8 @@ rem (署名なし)ポータブル版のzipを作成
 pushd Output
 %CMAKE% -E rm -rf %OUTPUT%
 %CMAKE% -E rm -rf %OUTPUT%_pdb
-%CMAKE% -E copy_directory teraterm %OUTPUT%
-%CMAKE% -E copy_directory teraterm_pdb %OUTPUT%_pdb
+%CMAKE% -E copy_directory build\teraterm %OUTPUT%
+%CMAKE% -E copy_directory build\teraterm_pdb %OUTPUT%_pdb
 %CMAKE% -E tar cf %OUTPUT%.zip --format=zip %OUTPUT%/
 %CMAKE% -E tar cf %OUTPUT%_pdb.zip --format=zip %OUTPUT%_pdb/
 popd
