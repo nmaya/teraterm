@@ -240,7 +240,9 @@ jobs:
       shell: bash
       run: |
         mkdir installer/Output/portable_signed
+        dir installer/Output/portable
         cp -R installer/Output/portable installer/Output/portable_signed
+        dir installer/Output/portable_signed
 
     - name: Rename portable signed zip
       if: env.SIGNPATH_API_TOKEN != '' && (steps.vars.outputs.RELEASE == '1' || env.SIGNPATH_FORCE == '1')
@@ -248,6 +250,7 @@ jobs:
       run: |
         OUTPUT="${{ steps.vars.outputs.OUTPUT }}"
         mkdir installer/Output/setup_src
+        dir installer/Output/portable_signed
         cp -R installer/Output/portable_signed/teraterm installer/Output/setup_src/
         mv installer/Output/portable_signed/teraterm "installer/Output/portable_signed/${OUTPUT}"
 
