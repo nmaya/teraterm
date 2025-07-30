@@ -85,7 +85,7 @@ jobs:
       shell: bash
       run: |
         VERSION=${{ fromJson(steps.read_buildinfo.outputs.json).VERSION }}
-        DATE_TIME=${{ fromJson(steps.read_buildinfo.outputs.json).DATE }}-${{ fromJson(steps.read_buildinfo.outputs.json).TIME }}
+        DATE_TIME=${{ fromJson(steps.read_buildinfo.outputs.json).DATE }}_${{ fromJson(steps.read_buildinfo.outputs.json).TIME }}
         VCSVERSION=${{ fromJson(steps.read_buildinfo.outputs.json).GITVERSION }}
         SNAPSHOT_OUTPUT=teraterm-${VERSION}-${DATE_TIME}-${VCSVERSION}-snapshot
         RELEASE_OUTPUT=teraterm-${VERSION}
