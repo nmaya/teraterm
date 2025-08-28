@@ -2,14 +2,14 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>CygTerm+ �R�}���h���C��</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CygTerm+ コマンドライン</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>CygTerm+ �R�}���h���C��</h1>
+<h1>CygTerm+ コマンドライン</h1>
 
 <pre class="syntax">
 cygterm.exe [-t 'terminal-emulator'] [-p port-number] [-dumb]
@@ -20,89 +20,89 @@ cygterm.exe [-t 'terminal-emulator'] [-p port-number] [-dumb]
 <dl>
   <dt id="t">-t 'terminal-emulator'</dt>
   <dd>
-    �^�[�~�i���E�G�~�����[�^���w�肵�܂��B
-    �w��`���͐ݒ�t�@�C���� TERM �Ɠ����ł��B
-    �󔒕������܂ޏꍇ�͕K���N�H�[�g�ň݂͂܂��B
+    ターミナル・エミュレータを指定します。
+    指定形式は設定ファイルの TERM と同じです。
+    空白文字を含む場合は必ずクォートで囲みます。
   </dd>
 
   <dt id="p">-p port-number</dt>
   <dd>
-    �^�[�~�i���E�G�~�����[�^���N������̂ł͂Ȃ��A
-    ���[�J���z�X�g�̂��̃|�[�g�ԍ��ւ̐ڑ������݂܂��B
-    ���̃A�v���P�[�V�����E�v���O������ -p �I�v�V�������g���āA
-    cygterm.exe �o�R�� Cygwin�𗘗p����A�����l�����܂��B
+    ターミナル・エミュレータを起動するのではなく、
+    ローカルホストのこのポート番号への接続を試みます。
+    他のアプリケーション・プログラムが -p オプションを使って、
+    cygterm.exe 経由で Cygwinを利用する、等が考えられます。
   </dd>
 
   <dt id="dumb">-dumb</dt>
   <dd>
-    TELNET�I�v�V�����E�l�S�V�G�[�V�������s���܂���B
-    ����� TELNET�R�}���h�����M����Ă��Ă��������܂��B
-    �V�F�����̊��ϐ� TERM �� 'dumb' �ƂȂ�܂��B
+    TELNETオプション・ネゴシエーションを行いません。
+    さらに TELNETコマンドが送信されてきても無視します。
+    シェル側の環境変数 TERM は 'dumb' となります。
   </dd>
 
   <dt id="s">-s 'shell'</dt>
   <dd>
-    Cygwin��̃V�F�����w�肵�܂��B
-    �w��`���͐ݒ�t�@�C���� SHELL �Ɠ����ł��B
-    �󔒕������܂ޏꍇ�͕K���N�H�[�g�ň݂͂܂��B
-    �K�������V�F���R�}���h�ł���K�v�͂���܂���B
+    Cygwin上のシェルを指定します。
+    指定形式は設定ファイルの SHELL と同じです。
+    空白文字を含む場合は必ずクォートで囲みます。
+    必ずしもシェルコマンドである必要はありません。
   </dd>
 
   <dt id="ls">-ls</dt>
-  <dd>�V�F�������O�C���V�F���Ƃ��ċN�����܂��B</dd>
+  <dd>シェルをログインシェルとして起動します。</dd>
 
   <dt id="nols">-nols</dt>
-  <dd>�V�F����(���O�C���V�F���ł͂Ȃ�)�ʏ�̃V�F���Ƃ��ċN�����܂��B</dd>
+  <dd>シェルを(ログインシェルではなく)通常のシェルとして起動します。</dd>
 
   <dt id="cd">-cd</dt>
   <dd>
-    �J�����g�f�B���N�g�����z�[���f�B���N�g���Ɉړ����Ă���V�F�����N�����܂��B
+    カレントディレクトリをホームディレクトリに移動してからシェルを起動します。
   </dd>
 
   <dt id="nocd">-nocd</dt>
-  <dd>�J�����g�f�B���N�g�����ړ������ɃV�F�����N�����܂��B</dd>
+  <dd>カレントディレクトリを移動せずにシェルを起動します。</dd>
 
   <dt id="noagent">-A</dt>
   <dd>
-    ssh�F�؃G�[�W�F���g�]���@�\��L���ɂ��܂��B
-    OpenSSH��ssh�F�؃G�[�W�F���g�ɑΉ������v���O�������A
-    CygTerm+��ʂ���Pageant�ɃA�N�Z�X�o����悤�ɂȂ�܂��B
+    ssh認証エージェント転送機能を有効にします。
+    OpenSSHのssh認証エージェントに対応したプログラムが、
+    CygTerm+を通してPageantにアクセス出来るようになります。
   </dd>
 
   <dt id="a">-a</dt>
-  <dd>ssh�F�؃G�[�W�F���g�]���@�\�𖳌��ɂ��܂��B</dd>
+  <dd>ssh認証エージェント転送機能を無効にします。</dd>
 
   <dt id="v">-v 'env-var'</dt>
   <dd>
-    �V�F���N�����ɐݒ肵�Ă����������ϐ����w�肵�܂��B
-    �w��`���͐ݒ�t�@�C���� ENV_X �Ɠ����ł��B
-    �󔒕������܂ޏꍇ�͕K���N�H�[�g�ň݂͂܂��B
-    -v �I�v�V�����͂����ł��w��ł��܂��B
+    シェル起動時に設定しておきたい環境変数を指定します。
+    指定形式は設定ファイルの ENV_X と同じです。
+    空白文字を含む場合は必ずクォートで囲みます。
+    -v オプションはいくつでも指定できます。
   </dd>
 
   <dt id="d">-d 'directory'</dt>
   <dd>
-    �J�����g�f�B���N�g�����w�肳�ꂽ�f�B���N�g���Ɉړ����Ă���
-    �V�F�����N�����܂��B
+    カレントディレクトリを指定されたディレクトリに移動してから
+    シェルを起動します。
   </dd>
 
   <dt id="o">-o 'option'</dt>
   <dd>
-    �^�[�~�i���E�G�~�����[�^�ւ̒ǉ��̃p�����[�^���w�肵�܂��B
-    TERM��ς����ɒǉ��̃p�����[�^���w�肵�������Ɏg���܂��B
+    ターミナル・エミュレータへの追加のパラメータを指定します。
+    TERMを変えずに追加のパラメータを指定したい時に使います。
   </dd>
 </dl>
 
 <p>
-�^�[�~�i���E�G�~�����[�^�������͐ڑ���|�[�g�ԍ��A�� Cygwin���V�F���̎w�肪�Œ�K�v�ƂȂ�܂��B ����炪�R�}���h���C���E�I�v�V�����ɂ���ė^������Ȃ�΁A�ݒ�t�@�C�� cygterm.cfg �������Ă����s�ł��܂��B
+ターミナル・エミュレータもしくは接続先ポート番号、と Cygwin側シェルの指定が最低必要となります。 これらがコマンドライン・オプションによって与えられるならば、設定ファイル cygterm.cfg が無くても実行できます。
 </p>
 
 <p>
-cygterm.exe �� cygwin1.dll �𗘗p���� Win32�A�v���P�[�V�����ł��BCygwin�ォ����s���邱�Ƃ��AWindows��̃V���[�g�J�b�g������s���邱�Ƃ��ł��܂��B
+cygterm.exe は cygwin1.dll を利用する Win32アプリケーションです。Cygwin上から実行することも、Windows上のショートカットから実行することもできます。
 </p>
 
 <p>
-�� Windows�ォ����s����ɂ� cygwin1.dll �̃f�B���N�g���p�X��Windows���ϐ� PATH �ɒǉ�����Ă���K�v������܂��B(�ʏ� Cygwin���[�g�f�B���N�g��\bin)
+※ Windows上から実行するには cygwin1.dll のディレクトリパスがWindows環境変数 PATH に追加されている必要があります。(通常 Cygwinルートディレクトリ\bin)
 </p>
 
 </body>

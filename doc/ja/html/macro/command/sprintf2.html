@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>sprintf2</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,76 +14,76 @@
 <h1>sprintf2</h1>
 
 <p>
-�t�H�[�}�b�g���ꂽ�o�͂�Ԃ��B<em>(�o�[�W����4.62�ȍ~)</em>
+フォーマットされた出力を返す。<em>(バージョン4.62以降)</em>
 </p>
 
 <pre class="macro-syntax">
 sprintf2 strvar FORMAT [ARGUMENT ...]
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-C����̏����w��ɂ��������āA�����̐��l�╶������t�H�[�}�b�g���āA������^�ϐ� &lt;strvar&gt; �ɑ������B<br>
-<a href="sprintf.html">sprintf</a> �Ƃ͈Ⴂ�A�C�ӂ̕ϐ��Ɍ��ʂ��i�[�ł���B
+C言語の書式指定にしたがって、引数の数値や文字列をフォーマットして、文字列型変数 &lt;strvar&gt; に代入する。<br>
+<a href="sprintf.html">sprintf</a> とは違い、任意の変数に結果を格納できる。
 </p>
 
 <table>
-<caption>�T�|�[�g����Ă��鏑���w��</caption>
+<caption>サポートされている書式指定</caption>
 <tr>
-  <th>�^</th>
-  <td>c, d, i, o, u, x, X, e, E, f, g, G, a, A ����� s</td>
+  <th>型</th>
+  <td>c, d, i, o, u, x, X, e, E, f, g, G, a, A および s</td>
 </tr>
 <tr>
-  <th>�t���O(�I�v�V����)</th>
-  <td>-, +, 0, # ����� ��(' ')</td>
+  <th>フラグ(オプション)</th>
+  <td>-, +, 0, # および 空白(' ')</td>
 </tr>
 <tr>
-  <th>��(�I�v�V����)</th>
-  <td>10�i���� �܂��� *</td>
+  <th>幅(オプション)</th>
+  <td>10進整数 または *</td>
 </tr>
 <tr>
-  <th>���x(�I�v�V����)</th>
-  <td>�s���I�h (.) �ɑ����āA���łȂ�10�i���� �܂��� *(�I�v�V����)</td>
+  <th>精度(オプション)</th>
+  <td>ピリオド (.) に続けて、負でない10進整数 または *(オプション)</td>
 </tr>
 </table>
 
 <p>
-TTL �͕��������_�^�������Ȃ��̂ŁA���������_���̏����ɂ́A�Ή����鏬���𕶎���ϐ����邢�͕�����ň����Ɏw�肷��B
+TTL は浮動小数点型を持たないので、浮動小数点数の書式には、対応する小数を文字列変数あるいは文字列で引数に指定する。
 </p>
 
 <p>
-���̃R�}���h�̌��ʁA�ȉ��̂����̈�̒l���V�X�e���ϐ� result �Ɋi�[�����B
+このコマンドの結果、以下のうちの一つの値がシステム変数 result に格納される。
 </p>
 
 <table>
 <tr>
-  <th>�l</th>
-  <th>���</th>
+  <th>値</th>
+  <th>状態</th>
 </tr>
 <tr>
   <td>0</td>
-  <td>��������</td>
+  <td>成功した</td>
 </tr>
 <tr>
   <td>1</td>
-  <td>�����w�肪�Ȃ�</td>
+  <td>書式指定がない</td>
 </tr>
 <tr>
   <td>2</td>
-  <td>�����w�肪�s��</td>
+  <td>書式指定が不正</td>
 </tr>
 <tr>
   <td>3</td>
-  <td>�������s��</td>
+  <td>引数が不正</td>
 </tr>
 <tr>
   <td>4</td>
-  <td>�i�[��ϐ����s��</td>
+  <td>格納先変数が不正</td>
 </tr>
 </table>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 sprintf2 ver 'Tera Term 4.%d' 51
@@ -105,7 +105,7 @@ sprintf 'pi=%.4g' "3.14159"
 messagebox inputstr 'sprintf test macro(6)'
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="sprintf.html">sprintf</a></li>
 </ul>

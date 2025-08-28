@@ -2,99 +2,99 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>�G���[���b�Z�[�W</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>エラーメッセージ</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>�G���[���b�Z�[�W</h1>
+<h1>エラーメッセージ</h1>
 
 <table>
   <tr>
-    <th>�G���[���b�Z�[�W</th>
-    <th>�Ӗ�</th>
+    <th>エラーメッセージ</th>
+    <th>意味</th>
   </tr>
   <tr>
     <td>Can't call sub.</td>
-    <td>�T�u���[�`�����ĂׂȂ��B�T�u���[�`���͕ʂ̃t�@�C���ɂ���B</td>
+    <td>サブルーチンを呼べない。サブルーチンは別のファイルにある。</td>
   </tr>
   <tr>
     <td>Can't link macro.</td>
-    <td>MACRO �� Tera Term �̊Ԃ̃����N�Ɏ��s�B</td>
+    <td>MACRO と Tera Term の間のリンクに失敗。</td>
   </tr>
   <tr>
     <td>Can't open file.</td>
-    <td>�C���N���[�h�t�@�C�������݂��Ȃ����A�C���N���[�h�̊K�w���[������B</td>
+    <td>インクルードファイルが存在しないか、インクルードの階層が深すぎる。</td>
   </tr>
   <tr>
     <td>")" expected.</td>
-    <td>�J�b�R�����Ă��Ȃ��B</td>
+    <td>カッコが閉じていない。</td>
   </tr>
   <tr>
     <td>"*/" expected.</td>
-    <td>�R�����g�����Ă��Ȃ��B</td>
+    <td>コメントが閉じていない。</td>
   </tr>
   <tr>
     <td>Link macro first. Use 'connect' macro.</td>
-    <td>MACRO �� Tera Term �̊Ԃ̃����N���m�����ĂȂ����߁A�R�}���h�����s�ł��Ȃ��B</td>
+    <td>MACRO と Tera Term の間のリンクが確立してないため、コマンドが実行できない。</td>
   </tr>
   <tr>
     <td>Divide by zero.</td>
-    <td>0�Ŋ��낤�Ƃ����B</td>
+    <td>0で割ろうとした。</td>
   </tr>
   <tr>
     <td>Invalid control.</td>
-    <td>"else", "elseif", "endif" �̌�����g�p�B</td>
+    <td>"else", "elseif", "endif" の誤った使用。</td>
   </tr>
   <tr>
     <td>Label already defined.</td>
-    <td>���x�����̑��d�g�p�B</td>
+    <td>ラベル名の多重使用。</td>
   </tr>
   <tr>
     <td>Label required.</td>
-    <td>���x����������Ȃ��B</td>
+    <td>ラベルが見つからない。</td>
   </tr>
   <tr>
     <td>Stack overflow.</td>
-    <td>�T�u���[�`���A"for-next" ���[�v�A"while-endwhile" �̊K�w���[������B</td>
+    <td>サブルーチン、"for-next" ループ、"while-endwhile" の階層が深すぎる。</td>
   </tr>
   <tr>
     <td>Syntax error.</td>
-    <td>�R�}���h�̌`�����Ԉ���Ă���B</td>
+    <td>コマンドの形式が間違っている。</td>
   </tr>
   <tr>
     <td>Too many labels.</td>
-    <td>���x���̐�����������B(�ő�512��)</td>
+    <td>ラベルの数が多すぎる。(最大512個)</td>
   </tr>
   <tr>
     <td>Too many variables.</td>
-    <td>�ϐ��̐�����������B(�����^�A������^�A�����z��^�A������z��^���ꂼ��ő�256����)</td>
+    <td>変数の数が多すぎる。(整数型、文字列型、整数配列型、文字列配列型それぞれ最大256個ずつ)</td>
   </tr>
   <tr>
     <td>Type mismatch.</td>
-    <td>�萔�܂��͕ϐ��̌^���Ԉ���Ă���B</td>
+    <td>定数または変数の型が間違っている。</td>
   </tr>
   <tr>
     <td>Variable not initialized.</td>
-    <td>����������ĂȂ��ϐ����Q�Ƃ����B</td>
+    <td>初期化されてない変数を参照した。</td>
   </tr>
   <tr>
     <td>Index out of range.</td>
-    <td>��`���ꂽ�z��ϐ��̗v�f���𒴂���C���f�b�N�X���Q�Ƃ����B</td>
+    <td>定義された配列変数の要素数を超えるインデックスを参照した。</td>
   </tr>
   <tr>
     <td>"]" expected.</td>
-    <td>�z��̃J�b�R "]" �����Ă��Ȃ��B</td>
+    <td>配列のカッコ "]" が閉じていない。</td>
   </tr>
   <tr>
     <td>Can't allocate memory.</td>
-    <td>�������̊m�ۂɎ��s�B</td>
+    <td>メモリの確保に失敗。</td>
   </tr>
   <tr>
     <td>Unknown command.</td>
-    <td>�}�N���R�}���h�͌��݂�Tera Term�o�[�W�����ł̓T�|�[�g����Ă��Ȃ��B</td>
+    <td>マクロコマンドは現在のTera Termバージョンではサポートされていない。</td>
   </tr>
 
 </table>

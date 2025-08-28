@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>filelock</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,46 +14,46 @@
 <h1>filelock</h1>
 
 <p>
-�J���Ă���t�@�C�������b�N����B<em>(�o�[�W����4.74�ȍ~)</em>
+開いているファイルをロックする。<em>(バージョン4.74以降)</em>
 </p>
 
 <pre class="macro-syntax">
 filelock &lt;file handle&gt; [&lt;timeout&gt;]
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-���łɊJ���Ă���t�@�C���n���h�� &lt;file handle&gt; ���w�肷��ƁA�t�@�C���S�̂����b�N����B
-���b�N���A���̃v���Z�X����̓��Y�t�@�C���ւ̃A�N�Z�X�̓G���[�ƂȂ�B<br>
-���� &lt;timeout&gt; �̈Ӗ��ɂ��Ă͉��L�̂Ƃ���B
+すでに開いているファイルハンドル &lt;file handle&gt; を指定すると、ファイル全体をロックする。
+ロック中、他のプロセスからの当該ファイルへのアクセスはエラーとなる。<br>
+引数 &lt;timeout&gt; の意味については下記のとおり。
 </p>
 
 <table>
  <tr>
   <th><b>&lt;timeout&gt;</b></th>
-  <td><b>����</b></td>
+  <td><b>説明</b></td>
  </tr>
  <tr>
   <th>0</th>
-  <td>�t�@�C�������łɃ��b�N����Ă�����A�����ɃG���[��Ԃ��B</td>
+  <td>ファイルがすでにロックされていたら、即座にエラーを返す。</td>
  </tr>
  <tr>
-  <th>�ȗ�</th>
-  <td>�t�@�C�������łɃ��b�N����Ă�����A���������܂Ŗ����ɑ҂B</td>
+  <th>省略</th>
+  <td>ファイルがすでにロックされていたら、解除されるまで無限に待つ。</td>
  </tr>
  <tr>
   <th>Value</th>
-  <td>�t�@�C�������łɃ��b�N����Ă�����A���������܂ōő� Value �b�҂B�^�C���A�E�g������G���[��Ԃ��B</td>
+  <td>ファイルがすでにロックされていたら、解除されるまで最大 Value 秒待つ。タイムアウトしたらエラーを返す。</td>
  </tr>
 </table>
 
 <p>
-���b�N�ɐ�������ƃV�X�e���ϐ� result �� 0 �ɁA���s����� 1 �ƂȂ�B
+ロックに成功するとシステム変数 result が 0 に、失敗すると 1 となる。
 </p>
 
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 fileopen fhandle 'test.txt' 0
@@ -70,7 +70,7 @@ endif
 fileclose fhandle
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="fileunlock.html">fileunlock</a></li>
 </ul>

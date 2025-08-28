@@ -2,62 +2,62 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>XMODEM �̃q���g</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>XMODEM のヒント</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>XMODEM �̃q���g</h1>
+<h1>XMODEM のヒント</h1>
 
-<h2>8bit�N���[��</h2>
+<h2>8bitクリーン</h2>
 
 <p>
-XMODEM �́A8 bit �R�[�h ($00-$FF �̕������ׂ�)�����S�ɒʂ������p���Ȃ��Ǝg�p�ł��܂���B
+XMODEM は、8 bit コード ($00-$FF の文字すべて)を完全に通す回線を用いないと使用できません。
 </p>
 
-<h3>�V���A���|�[�g�̏ꍇ</h3>
+<h3>シリアルポートの場合</h3>
 
 <div class="indent1">
 <p>
-Data�� 7 bit ��������A�t���[���䂪 Xon/Xoff �������肷��ƁAXMODEM ���g���܂���B<A HREF="../../menu/setup-serialport.html">[Setup] Serial port</A> �� Data �� 8 bit �ɂ��AFlow control �� hard (CTS/RTS) �� none �ɂ��Ă��������B���f��(�z�X�g)���̐ݒ�������ɂ��Ă��������B
+Dataが 7 bit だったり、フロー制御が Xon/Xoff だったりすると、XMODEM が使えません。<A HREF="../../menu/setup-serialport.html">[Setup] Serial port</A> で Data を 8 bit にし、Flow control を hard (CTS/RTS) か none にしてください。モデム(ホスト)側の設定も同じにしてください。
 </p>
 </div>
 
-<h3>Telnet �̏ꍇ</h3>
+<h3>Telnet の場合</h3>
 
 <div class="indent1">
 <p>
-�����������]���ł��Ȃ��ꍇ�̓o�C�i���I�v�V������ telnet �ڑ����Ă݂Ă��������B<br>
-�o�C�i���I�v�V�����Őڑ�����ɂ́A
+もし正しく転送できない場合はバイナリオプションで telnet 接続してみてください。<br>
+バイナリオプションで接続するには、
 </p>
 
 <ul class="no-marker">
-  <li class="description"><A HREF="../../commandline/teraterm.html">�R�}���h���C��</A>�� /B �I�v�V���������邩�A</li>
-  <li class="description">Tera Term �ݒ�t�@�C�������������Ă��������B<br>
-�� <a href="../../setup/teraterm-com.html#telbin">Telnet �̃o�C�i���I�v�V����</a></li>
+  <li class="description"><A HREF="../../commandline/teraterm.html">コマンドライン</A>に /B オプションをつけるか、</li>
+  <li class="description">Tera Term 設定ファイルを書き換えてください。<br>
+→ <a href="../../setup/teraterm-com.html#telbin">Telnet のバイナリオプション</a></li>
 </ul>
 </div>
 
 <p>
-�ǂ����Ă�����ɓ]���ł��Ȃ��ꍇ�́A�z�X�g���� XMODEM �R�}���h�𐳂����ݒ肨��юg�p���Ă��邱�Ƃ��m�F������ŁA<a href="../../setup/teraterm-trans.html#xmlog">XMODEM �̃��O</a>�����A��҂ɑ����Ă��������B
+どうしても正常に転送できない場合は、ホスト側の XMODEM コマンドを正しく設定および使用していることを確認した上で、<a href="../../setup/teraterm-trans.html#xmlog">XMODEM のログ</a>を取り、作者に送ってください。
 </p>
 
 <p>
-�Q�l: <A HREF="forwarding-files.html">���ԃz�X�g���o�R���ăz�X�g�ɐڑ������ꍇ�̃t�@�C���]��</A>
+参考: <A HREF="forwarding-files.html">中間ホストを経由してホストに接続した場合のファイル転送</A>
 </p>
 
-<h2 id="padding">�t�@�C���I�[�̋l�ߕ�</h2>
+<h2 id="padding">ファイル終端の詰め物</h2>
 
 <p>
-XMODEM �̓t�@�C���� 128�܂���1024 byte�̃u���b�N�ɕ����Ĉ����A�t�@�C����������肷�邱�Ƃ��ł��܂���B
-��M�����f�[�^����128�܂���1024byte�̔{���ɂȂ�܂��B
+XMODEM はファイルを 128または1024 byteのブロックに分けて扱い、ファイル長をやり取りすることができません。
+受信したデータ長は128または1024byteの倍数になります。
 </p>
 
 <p>
-�Ō�̃u���b�N�̑��M�t�@�C�����������������ɂ͋l�ߕ���������܂��B
-�l�ߕ��͎d�l���$1A�Ƃ���Ă��܂��BXMODEM�̑��M�v���O�����ɂ���Ă͑��̒l�ɂȂ��Ă��邩������܂���B
+最後のブロックの送信ファイル長よりも長い部分には詰め物が入れられます。
+詰め物は仕様上は$1Aとされています。XMODEMの送信プログラムによっては他の値になっているかもしれません。
 </p>
 
 </BODY>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>enablekeyb</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,24 +14,24 @@
 <h1>enablekeyb</h1>
 
 <p>
-Tera Term ‚ÌƒL[ƒ{[ƒh“ü—Í‚ğ‹–‰Â/‹Ö~‚·‚éB
+Tera Term ã®ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰å…¥åŠ›ã‚’è¨±å¯/ç¦æ­¢ã™ã‚‹ã€‚
 </p>
 
 <pre class="macro-syntax">
 enablekeyb &lt;flag&gt;
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-&lt;flag&gt; ‚Ì’l‚ª1‚Ìê‡‚Í‹–‰ÂA0‚Ìê‡‚Í‹Ö~B<br>
-‹Ö~‚É‚·‚é‚ÆAƒ}ƒNƒ‚©‚ç‚Ìƒf[ƒ^‘—M’†‚ÉAƒ†[ƒU‚ÌŒë“ü—Í‚ğ–h‚®‚±‚Æ‚ª‚Å‚«‚éB
+&lt;flag&gt; ã®å€¤ãŒ1ã®å ´åˆã¯è¨±å¯ã€0ã®å ´åˆã¯ç¦æ­¢ã€‚<br>
+ç¦æ­¢ã«ã™ã‚‹ã¨ã€ãƒã‚¯ãƒ­ã‹ã‚‰ã®ãƒ‡ãƒ¼ã‚¿é€ä¿¡ä¸­ã«ã€ãƒ¦ãƒ¼ã‚¶ã®èª¤å…¥åŠ›ã‚’é˜²ãã“ã¨ãŒã§ãã‚‹ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
-; ƒ†[ƒU‚ÌƒL[“ü—Í‚ğ–³‹‚·‚é
+; ãƒ¦ãƒ¼ã‚¶ã®ã‚­ãƒ¼å…¥åŠ›ã‚’ç„¡è¦–ã™ã‚‹
 enablekeyb 0
 
 for i 1 5
@@ -40,7 +40,7 @@ for i 1 5
 	pause 5
 next
 
-; ƒ†[ƒU‚ÌƒL[“ü—Í‚ğ‹–‰Â‚·‚é
+; ãƒ¦ãƒ¼ã‚¶ã®ã‚­ãƒ¼å…¥åŠ›ã‚’è¨±å¯ã™ã‚‹
 enablekeyb 1
 
 sendln 'cat &gt; /tmp/foo.txt'

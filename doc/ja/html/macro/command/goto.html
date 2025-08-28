@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>goto</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,30 +14,30 @@
 <h1>goto</h1>
 
 <p>
-���x���փW�����v����B
+ラベルへジャンプする。
 </p>
 
 <pre class="macro-syntax">
 goto &lt;label&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-&lt;label&gt;�s�̎��̍s�փW�����v����B<br>
-�Ȃ��Afor��while�Ȃǂ̃��[�v�𔲂��邽�߂ɁAgoto�͎g���Ȃ����߁A�����break���g�����ƁB
+&lt;label&gt;行の次の行へジャンプする。<br>
+なお、forやwhileなどのループを抜けるために、gotoは使えないため、代わりにbreakを使うこと。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
-; ':label' �̎��̍s�փW�����v�B
+; ':label' の次の行へジャンプ。
 goto label
 ...
 ...
 ...
 
-; ���x���s
+; ラベル行
 :label
 send 'abc'
 </pre>

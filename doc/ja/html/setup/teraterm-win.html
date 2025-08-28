@@ -2,17 +2,17 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>�E�B���h�E (Tera Term �ݒ�t�@�C��)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ウィンドウ (Tera Term 設定ファイル)</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1 id="autocopy">�}�E�X�ŕ����I�����A�N���b�v�{�[�h�փR�s�[</h1>
+<h1 id="autocopy">マウスで文字選択時、クリップボードへコピー</h1>
 
 <p>
-�}�E�X�ŕ�����I�������Ƃ��AWindows�̃N���b�v�{�[�h�փR�s�[���邱�Ƃ��ł��܂��B�ݒ�t�@�C���� [Tera Term] �Z�N�V������ AutoTextCopy �ł��̋@�\��on/off�ł��܂��B
+マウスで文字を選択したとき、Windowsのクリップボードへコピーすることができます。設定ファイルの [Tera Term] セクションの AutoTextCopy でこの機能をon/offできます。
 </p>
 
 <pre>
@@ -20,15 +20,15 @@ AutoTextCopy=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 AutoTextCopy=on
 </pre>
 
 
-<h1 id="delimiter">�_�u���N���b�N�ɂ��P��I���̋�؂蕶��</h1>
+<h1 id="delimiter">ダブルクリックによる単語選択の区切り文字</h1>
 
 <p>
-���}�E�X�{�^���ŒP����_�u���N���b�N����ƁA���̒P���I�����邱�Ƃ��ł��܂��B�ݒ�t�@�C���� [Tera Term] �Z�N�V������ DelimList �s���ȉ��̂悤�ɕύX���邱�Ƃɂ���ĒP��̋�؂蕶�����w�肷�邱�Ƃ��ł��܂��B
+左マウスボタンで単語をダブルクリックすると、その単語を選択することができます。設定ファイルの [Tera Term] セクションの DelimList 行を以下のように変更することによって単語の区切り文字を指定することができます。
 </p>
 
 <pre>
@@ -36,7 +36,7 @@ DelimList=&lt;delimiter characters&gt;
 </pre>
 
 <p>
-�Ⴆ�΁A
+例えば、
 </p>
 
 <pre>
@@ -44,22 +44,22 @@ DelimList=&lt;&gt;()[]
 </pre>
 
 <p>
-��6�̋�؂蕶�� "&lt;", "&gt;", "(", ")", "[", "]" ���w�肵�܂��B
-�������A�X�y�[�X������ "$" �͂��ꂼ��A"$20", "$24" �Ƃ����`���Ŏw�肵�Ȃ���΂Ȃ�܂���B
+は6つの区切り文字 "&lt;", "&gt;", "(", ")", "[", "]" を指定します。
+ただし、スペース文字と "$" はそれぞれ、"$20", "$24" という形式で指定しなければなりません。
 </p>
 
 <pre>
-DelimList=$20    ; �X�y�[�X����
+DelimList=$20    ; スペース文字
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 DelimList=$20!"#$24%&amp;'()*+,-./:;&lt;=&gt;?@[\]^`{|}~
 </pre>
 
 <p>
-�f�t�H���g�ł� 1cell �ŕ\������Ă��镶���� 2cell�ȏ�(������G�����Ȃ�)�ŕ\������Ă��镶���̊Ԃ���؂�Ƃ��܂��B
-DelimDBCS �s���ȉ��̂悤�ɕύX����Ƌ�؂�ƂȂ�܂���B
+デフォルトでは 1cell で表示されている文字と 2cell以上(漢字や絵文字など)で表示されている文字の間を区切りとします。
+DelimDBCS 行を以下のように変更すると区切りとなりません。
 </p>
 
 <pre>
@@ -67,12 +67,12 @@ DelimDBCS=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 DelimDBCS=on
 </pre>
 
 <p>
-�P��I���̓���� Tera Term 2.3 �����ɂ���ɂ́A
+単語選択の動作を Tera Term 2.3 同等にするには、
 </p>
 
 <pre>
@@ -81,14 +81,14 @@ DelimDBCS=off
 </pre>
 
 <p>
-�Ƃ��Ă��������B
+としてください。
 </p>
 
 
-<h1 id="popup">�|�b�v�A�b�v���j���[���g�p�s�ɂ���</h1>
+<h1 id="popup">ポップアップメニューを使用不可にする</h1>
 
 <p>
-���j���[�o�[���\������Ă��Ȃ��Ƃ��ACtrl �L�[�������Ȃ���}�E�X���{�^���������ƁA�|�b�v�A�b�v���j���[������܂��B�|�b�v�A�b�v���j���[������Ȃ��悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ EnablePopupMenu �s���ȉ��̂悤�ɕύX���Ă��������B
+メニューバーが表示されていないとき、Ctrl キーを押しながらマウス左ボタンを押すと、ポップアップメニューが現れます。ポップアップメニューが現れないようにするには、設定ファイルの [Tera Term] セクションの EnablePopupMenu 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -96,15 +96,15 @@ EnablePopupMenu=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 EnablePopupMenu=on
 </pre>
 
 
-<h1 id="menubar">"Show menu bar" �R�}���h���B��</h1>
+<h1 id="menubar">"Show menu bar" コマンドを隠す</h1>
 
 <p>
-���j���[�o�[���\������Ă��Ȃ��Ƃ��A�V�X�e�����j���[�� "Show menu bar" �R�}���h������܂��B���� "Show menu bar" �R�}���h������Ȃ��悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ EnableShowMenu �s���ȉ��̂悤�ɕύX���Ă��������B
+メニューバーが表示されていないとき、システムメニューに "Show menu bar" コマンドが現れます。この "Show menu bar" コマンドが現れないようにするには、設定ファイルの [Tera Term] セクションの EnableShowMenu 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -112,40 +112,40 @@ EnableShowMenu=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 EnableShowMenu=on
 </pre>
 
 
-<h1 id="scrollbuf">�X�N���[���o�b�t�@�[�̍ő�s��</h1>
+<h1 id="scrollbuf">スクロールバッファーの最大行数</h1>
 
 <p>
-[Setup] Window �_�C�A���O�{�b�N�X�Ŏw��\�ȃX�N���[���o�b�t�@�[�̍ő�s����ύX����ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ MaxBuffSize �s���A
+[Setup] Window ダイアログボックスで指定可能なスクロールバッファーの最大行数を変更するには、設定ファイルの [Tera Term] セクションの MaxBuffSize 行を、
 </p>
 
 <pre>
 MaxBuffSize=&lt;number of lines&gt;
-    (500000 �ȉ�)
+    (500000 以下)
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������B
+のように変更してください。
 </p>
 
 <p>
-��: Tera Term �� &lt;�X�N���[���o�b�t�@�̍s��&gt; * &lt;terminal width&gt; * 5 �o�C�g���̃��������X�N���[���o�b�t�@�[�̂��߂Ɏg�p���܂��B
+注: Tera Term は &lt;スクロールバッファの行数&gt; * &lt;terminal width&gt; * 5 バイト分のメモリをスクロールバッファーのために使用します。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 MaxBuffSize=10000
 </pre>
 
 
-<h1 id="blink">�_�ł��Ȃ��J�[�\��</h1>
+<h1 id="blink">点滅しないカーソル</h1>
 
 <p>
-�J�[�\����_�ł����Ȃ��悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V�����ɂ� NonblinkingCursor �s���A
+カーソルを点滅させないようにするには、設定ファイルの [Tera Term] セクションにの NonblinkingCursor 行を、
 </p>
 
 <pre>
@@ -153,19 +153,19 @@ NonblinkingCursor=on
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������B
+のように変更してください。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 NonblinkingCursor=off
 </pre>
 
 
-<h1 id="scrollline">��x�ɃX�N���[������ő�̍s����ݒ肷��</h1>
+<h1 id="scrollline">一度にスクロールする最大の行数を設定する</h1>
 
 <p>
-VT window �ł͉�ʂ̃X�N���[���𑬂����邽�߂ɁA��x�ɕ����s�X�N���[�����邱�Ƃ�����܂��B��x�ɃX�N���[������ő�̍s����ݒ肷��ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ ScrollThreshold �s���A
+VT window では画面のスクロールを速くするために、一度に複数行スクロールすることがあります。一度にスクロールする最大の行数を設定するには、設定ファイルの [Tera Term] セクションの ScrollThreshold 行を、
 </p>
 
 <pre>
@@ -173,19 +173,19 @@ ScrollThreshold=&lt;number of lines&gt;
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������B
+のように変更してください。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 ScrollThreshold=12
 </pre>
 
 
-<h1 id="textselect">�}�E�X�ŃE�B���h�E��I�������Ƃ��̕����̑I�����֎~����</h1>
+<h1 id="textselect">マウスでウィンドウを選択したときの文字の選択を禁止する</h1>
 
 <p>
-��I����Ԃ̃E�B���h�E�̕����̈���}�E�X�ŃN���b�N���邱�Ƃɂ���ăE�B���h�E�I�����邱�Ƃ��ł��܂��B�����ݒ�ł́A���̃}�E�X�N���b�N�����N���b�N�ł���Γ����ɕ����̑I�����J�n����܂��B�}�E�X�ŃE�B���h�E�����N���b�N���đI���������̕����̑I�����֎~����ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ SelectOnActivate �s���A
+非選択状態のウィンドウの文字領域をマウスでクリックすることによってウィンドウ選択することができます。初期設定では、このマウスクリックが左クリックであれば同時に文字の選択も開始されます。マウスでウィンドウを左クリックして選択した時の文字の選択を禁止するには、設定ファイルの [Tera Term] セクションの SelectOnActivate 行を、
 </p>
 
 <pre>
@@ -193,19 +193,19 @@ SelectOnActivate=off
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������B
+のように変更してください。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 SelectOnActivate=on
 </pre>
 
 
-<h1 id="title">�^�C�g���̌`��</h1>
+<h1 id="title">タイトルの形式</h1>
 
 <p>
-�^�C�g���̌`����ς���ɂ͐ݒ�t�@�C���� [Tera Term] �Z�N�V������ TitleFormat �s���ȉ��̂悤�ɕύX���Ă��������B
+タイトルの形式を変えるには設定ファイルの [Tera Term] セクションの TitleFormat 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -213,42 +213,42 @@ TitleFormat=&lt;format ID&gt;
 </pre>
 
 <p>
-&lt;format ID&gt; �ɂ͐����l���w�肷��B�v���O�����ɂ��A�r�b�g��Ƃ��Ĉ�����B
+&lt;format ID&gt; には整数値を指定する。プログラムにより、ビット列として扱われる。
 </p>
 
 <table>
  <tr>
-  <td>1�r�b�g�� (1)</td>
-  <td>TCP �z�X�g���������̓V���A���|�[�g�ԍ���\������</td>
+  <td>1ビット目 (1)</td>
+  <td>TCP ホスト名もしくはシリアルポート番号を表示する</td>
  </tr>
  <tr>
-  <td>2�r�b�g�� (2)</td>
-  <td>�Z�b�V�����ԍ���\������</td>
+  <td>2ビット目 (2)</td>
+  <td>セッション番号を表示する</td>
  </tr>
  <tr>
-   <td>3�r�b�g�� (4)</td>
-   <td>VT/TEK ��\������</td>
+   <td>3ビット目 (4)</td>
+   <td>VT/TEK を表示する</td>
   </tr>
  <tr>
-   <td>4�r�b�g�� (8)</td>
-   <td>&lt;host/port&gt; ���ɕ\������</td>
+   <td>4ビット目 (8)</td>
+   <td>&lt;host/port&gt; を先に表示する</td>
   </tr>
  <tr>
-  <td>5�r�b�g�� (16)</td>
-  <td>TCP �|�[�g�ԍ���\������</td>
+  <td>5ビット目 (16)</td>
+  <td>TCP ポート番号を表示する</td>
  </tr>
  <tr>
-  <td>6�r�b�g�� (32)</td>
-  <td>�V���A���|�[�g�̃X�s�[�h��\������</td>
+  <td>6ビット目 (32)</td>
+  <td>シリアルポートのスピードを表示する</td>
  </tr>
 </table>
 
 <p>
-�ȉ��� &lt;format ID&gt; �̗�������܂��B
+以下に &lt;format ID&gt; の例を示します。
 </p>
 
 <pre>
-Format ID   �^�C�g���̌`��
+Format ID   タイトルの形式
 0           &lt;title&gt;
 1           &lt;title&gt; - &lt;host/port&gt;
 2           &lt;title&gt; (session no.)
@@ -264,19 +264,19 @@ Format ID   �^�C�g���̌`��
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 TitleFormat=5
 </pre>
 
 
-<h1 id="color">���F����э��F�����̕����̎��ۂ̐F</h1>
+<h1 id="color">白色および黒色属性の文字の実際の色</h1>
 
 <p>
-�G�X�P�[�v�V�[�P���X "&lt;ESC&gt;[37m" ��"&lt;ESC&gt;[30m" �͕����F�����ꂼ�ꔒ�ƍ��ɂ��܂��B���l�ɃG�X�P�[�v�V�[�P���X "&lt;ESC&gt;[47m" ��"&lt;ESC&gt;[40m" �͔w�i�F�����ꂼ�ꔒ�ƍ��ɂ��܂��B
+エスケープシーケンス "&lt;ESC&gt;[37m" と"&lt;ESC&gt;[30m" は文字色をそれぞれ白と黒にします。同様にエスケープシーケンス "&lt;ESC&gt;[47m" と"&lt;ESC&gt;[40m" は背景色をそれぞれ白と黒にします。
 </p>
 
 <p>
-�������̃A�v���P�[�V�����ł͔w�i�F��(�{���� VT100 �[���̂悤��)���ł���Ɖ��肵�āA���F�̕�������������̂Ɗ��҂��Ă��邱�Ƃ�����܂��B�������ATera Term �̔w�i�F�����̏ꍇ�A���F�̕����͌����܂���B�ݒ�t�@�C���� [Tera Term] �Z�N�V������ UseTextColor �s���A
+いくつかのアプリケーションでは背景色が(本物の VT100 端末のように)黒であると仮定して、白色の文字が見えるものと期待していることがあります。しかし、Tera Term の背景色が白の場合、白色の文字は見えません。設定ファイルの [Tera Term] セクションの UseTextColor 行を、
 </p>
 
 <pre>
@@ -284,19 +284,19 @@ UseTextColor=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA"���F"�̕���(�w�i)�̎��ۂ̐F�� [Setup] Window �_�C�A���O�{�b�N�X�Ŏw�肳��� "Text" �̐F�ɂ��܂��B���l�ɁA"���F"�̕���(�w�i)�̎��ۂ̐F�� "Background" �̐F�ɂ��܂��B
+のように変更すると、"白色"の文字(背景)の実際の色を [Setup] Window ダイアログボックスで指定される "Text" の色にします。同様に、"黒色"の文字(背景)の実際の色を "Background" の色にします。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 UseTextColor=off
 </pre>
 
 
-<h1 id="space">����(�s)�Ԃ̂����܂𒲐�����</h1>
+<h1 id="space">文字(行)間のすきまを調整する</h1>
 
 <p>
-����(�s)�Ԃ̂����܂𒲐�����ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ VTFontSpace �s���ȉ��̂悤�ɕύX���Ă��������B
+文字(行)間のすきまを調整するには、設定ファイルの [Tera Term] セクションの VTFontSpace 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -304,31 +304,31 @@ VTFontSpace=&lt;dx1&gt;,&lt;dx2&gt;,&lt;dy1&gt;,&lt;dy2&gt;
 </pre>
 
 <pre>
-�������A
-  &lt;dx1&gt;  �͊e�����̍����ɂ����邷���܁B
-  &lt;dx2&gt;  �͊e�����̉E���ɂ����邷���܁B
-  &lt;dy1&gt;  �͊e�s�̏㑤�ɂ����邷���܁B
-  &lt;dy2&gt;  �͊e�s�̉����ɂ����邷���܁B
-  �P�ʂ͂�������A��f�B
+ただし、
+  &lt;dx1&gt;  は各文字の左側にあけるすきま。
+  &lt;dx2&gt;  は各文字の右側にあけるすきま。
+  &lt;dy1&gt;  は各行の上側にあけるすきま。
+  &lt;dy2&gt;  は各行の下側にあけるすきま。
+  単位はいずれも、画素。
 </pre>
 
 <pre>
-��:
-VTFontSpace=0,1,0,0    �e�����̉E����1��f���̂����܂�������B
-VTFontSpace=0,0,1,0    �e�s�̏㑤��1��f���̂����܂�������B
-VTFontSpace=0,0,-1,-1  �e�s�̏㉺��1��f�����߂�B
+例:
+VTFontSpace=0,1,0,0    各文字の右側に1画素分のすきまをあける。
+VTFontSpace=0,0,1,0    各行の上側に1画素分のすきまをあける。
+VTFontSpace=0,0,-1,-1  各行の上下を1画素分狭める。
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 VTFontSpace=0,0,0,0
 </pre>
 
 
-<h1 id="window">[Window] ���j���[���B��</h1>
+<h1 id="window">[Window] メニューを隠す</h1>
 
 <p>
-[Window] ���j���[���B���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ WindowMenu �s���ȉ��̂悤�ɕύX���Ă��������B
+[Window] メニューを隠すには、設定ファイルの [Tera Term] セクションの WindowMenu 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -336,28 +336,28 @@ WindowMenu=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 WindowMenu=on
 </pre>
 
-<h1 id="maximize">�E�B���h�E�ő剻���̉�ʃX�N���[�����@</h1>
+<h1 id="maximize">ウィンドウ最大化時の画面スクロール方法</h1>
 <p>
-�E�B���h�E�ő剻���̉�ʃX�N���[�����@���w�肵�܂��B<br>
+ウィンドウ最大化時の画面スクロール方法を指定します。<br>
 </p>
 <p>
-�E�B���h�E�ő剻���ɒʏ�̃E�B���h�E�\�����Ɠ������@�ŃX�N���[�����s���Ɗ��ɂ���Ă͕\��������鎖�����邽�߁A�X�N���[��������ύX���鎖���\�ł��B<br>
-���݂͈ȉ��̃X�N���[���������p�ӂ���Ă��܂��B
+ウィンドウ最大化時に通常のウィンドウ表示時と同じ方法でスクロールを行うと環境によっては表示が乱れる事があるため、スクロール方式を変更する事が可能です。<br>
+現在は以下のスクロール方式が用意されています。
 </p>
 
 <ul>
-  <li> ���� 0. �ʏ�̃X�N���[���Ɠ������@���g�p����B�X�N���[�����ɕ����̈ꕔ�������鎖������B</li>
-  <li> ���� 1. Tera Term 4.94 �܂ł̕\�������B�\��������鎖�͖������A�X�N���[�����ɕ\�������������A�X�N���[�����x���Ȃ�ꍇ������B</li>
-  <li> ���� 2. Tera Term 4.95 ����̗p���ꂽ�V���������B�ʏ�̃X�N���[�������Ɣ�ׂĂ�������肷�鎖�͂Ȃ����A�X�N���[���o�b�N�������ɉ�ʉ����ɃS�~���c��ꍇ������B</li>
+  <li> 方式 0. 通常のスクロールと同じ方法を使用する。スクロール時に文字の一部が欠ける事がある。</li>
+  <li> 方式 1. Tera Term 4.94 までの表示方式。表示が乱れる事は無いが、スクロール時に表示がちらついたり、スクロールが遅くなる場合がある。</li>
+  <li> 方式 2. Tera Term 4.95 から採用された新しい方式。通常のスクロール方式と比べてちらついたりする事はないが、スクロールバックした時に画面下部にゴミが残る場合がある。</li>
 </ul>
 
 <p>
-�����l�ł́A�E�B���h�E�ő剻���ɂ͕��� 2 ���g�p����悤�ɂȂ��Ă��܂��B�ő剻���̃X�N���[���Ŗ�肪��������ꍇ�́A�\��������ύX���鎖���\�ł��B<br>
-�Ⴆ�΁A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ MaximizedBugTweak �s���ȉ��̂悤�ɕύX����ƁA���� 1 ���g�p���ăX�N���[������悤�ɂȂ�܂��B
+初期値では、ウィンドウ最大化時には方式 2 を使用するようになっています。最大化時のスクロールで問題が発生する場合は、表示方式を変更する事が可能です。<br>
+例えば、設定ファイルの [Tera Term] セクションの MaximizedBugTweak 行を以下のように変更すると、方式 1 を使用してスクロールするようになります。
 </p>
 
 <pre>
@@ -365,15 +365,15 @@ MaximizedBugTweak=1
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 MaximizedBugTweak=2
 </pre>
 
 
-<h1 id="killfocus">�t�H�[�J�X���O�ꂽ���ɂ��J�[�\����\������</h1>
+<h1 id="killfocus">フォーカスが外れた時にもカーソルを表示する</h1>
 <p>
-Tera Term �́A�E�B���h�E�̃t�H�[�J�X���O�ꂽ���ɂ��J�[�\����\�����܂��B<br>
-���̋@�\�𖳌��ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ KillFocusCursor �s���ȉ��̂悤�ɕύX���Ă��������B
+Tera Term は、ウィンドウのフォーカスが外れた時にもカーソルを表示します。<br>
+この機能を無効にするには、設定ファイルの [Tera Term] セクションの KillFocusCursor 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -381,15 +381,15 @@ KillFocusCursor=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 KillFocusCursor=on
 </pre>
 
 
-<h1 id="vttekpos">�E�B���h�E�̏����ʒu���Œ肷��</h1>
+<h1 id="vttekpos">ウィンドウの初期位置を固定する</h1>
 <p>
-�E�B���h�E�̏����ʒu��ύX����ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ VTPos �s(VT�E�B���h�E) ����� TEKPos �s(TEK�E�B���h�E) ��ύX���ĉ������B<br>
-�Ⴆ�΁AVT�E�B���h�E�̏����ʒu����ʂ̍��[���� 200 �s�N�Z���A��[���� 100 �s�N�Z���̈ʒu�ɂ���ꍇ�́A�ȉ��̂悤�ɂ��ĉ������B
+ウィンドウの初期位置を変更するには、設定ファイルの [Tera Term] セクションの VTPos 行(VTウィンドウ) および TEKPos 行(TEKウィンドウ) を変更して下さい。<br>
+例えば、VTウィンドウの初期位置を画面の左端から 200 ピクセル、上端から 100 ピクセルの位置にする場合は、以下のようにして下さい。
 </p>
 
 <pre>
@@ -397,7 +397,7 @@ VTPos=200,100
 </pre>
 
 <p>
-�܂��A�ȉ��̂悤�ɂ���Ə����ʒu���Œ肳�ꂸ�AWindows ���z�u�����߂�悤�ɂȂ�܂��B
+また、以下のようにすると初期位置が固定されず、Windows が配置を決めるようになります。
 </p>
 
 <pre>
@@ -406,24 +406,24 @@ TEKPos=-2147483648,-2147483648
 </pre>
 
 <p>
-��: <a href="#savevtwinpos">��q</a>�̂悤�ɁASaveVTPosWinPos �� on �ɂȂ��Ă���ƁA"Save setup" �����s�������� VT �E�B���h�E��������� VTPos �̐ݒ肪���݂̃E�B���h�E�ʒu�ŏ㏑������܂��B
+注: <a href="#savevtwinpos">後述</a>のように、SaveVTPosWinPos が on になっていると、"Save setup" を実行した時や VT ウィンドウを閉じた時に VTPos の設定が現在のウィンドウ位置で上書きされます。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 VTPos=-2147483648,-2147483648
 TEKPos=-2147483648,-2147483648
 </pre>
 
 
-<h1 id="savevtwinpos">�E�B���h�E�ʒu��ۑ�����</h1>
+<h1 id="savevtwinpos">ウィンドウ位置を保存する</h1>
 <p>
-Tera Term �́A"Save setup" �����s�����Ƃ��ɂ̓E�B���h�E�̈ʒu��ۑ����܂���B<br>
-���̐ݒ肪 on �ɂȂ��Ă���ƁA�ݒ�t�@�C���̕ۑ����ɃE�B���h�E�̈ʒu��ۑ����܂��B
+Tera Term は、"Save setup" を実行したときにはウィンドウの位置を保存しません。<br>
+この設定が on になっていると、設定ファイルの保存時にウィンドウの位置を保存します。
 </p>
 
 <p>
-�܂��A���̐ݒ肪 on �ɂȂ��Ă���ƁAVT�E�B���h�E������Ƃ��ɂ��E�B���h�E�̈ʒu�ƒ[���̃T�C�Y��ۑ����܂��B
+また、この設定が on になっていると、VTウィンドウを閉じたときにもウィンドウの位置と端末のサイズを保存します。
 </p>
 
 <pre>
@@ -431,19 +431,19 @@ SaveVTWinPos=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 SaveVTWinPos=off
 </pre>
 
 
-<h1 id="WindowIcon">�E�B���h�E�A�C�R����ύX����</h1>
+<h1 id="WindowIcon">ウィンドウアイコンを変更する</h1>
 <p>
-Tera Term�̎��s�t�@�C���ɂ́AVT�E�B���h�E��TEK�E�B���h�E�̃E�B���h�E�A�C�R�����Ŏg���Ă��鑼�ɂ��A�������A�C�R�����܂܂�Ă��܂��B
-�ݒ�t�@�C����[Tera Term]�Z�N�V������VTIcon, TEKIcon�s��ύX���鎖�ɂ���āAVT�E�B���h�E�����TEK�E�B���h�E�̃E�B���h�E�A�C�R���ɂ����̃A�C�R�����g�p���鎖���o���܂��B
+Tera Termの実行ファイルには、VTウィンドウやTEKウィンドウのウィンドウアイコン等で使われている他にも、いくつかアイコンが含まれています。
+設定ファイルの[Tera Term]セクションのVTIcon, TEKIcon行を変更する事によって、VTウィンドウおよびTEKウィンドウのウィンドウアイコンにこれらのアイコンを使用する事が出来ます。
 </p>
 
 <p>
-�Ⴆ�΁AVT�E�B���h�E�̃A�C�R���ɈȑO�̃A�C�R�����g�������ꍇ�́A�ȉ��̂悤�Ɏw�肵�Ă��������B
+例えば、VTウィンドウのアイコンに以前のアイコンを使いたい場合は、以下のように指定してください。
 </p>
 
 <pre>
@@ -451,31 +451,31 @@ VTIcon=VT_CLASSIC
 </pre>
 
 <p>
-�A�C�R�����ɂ́A�ȉ����g�p�ł��܂��B
+アイコン名には、以下が使用できます。
 </p>
 
 <table>
 <thead>
-  <tr><th>�A�C�R����</th>    <th>�A�C�R��</th></tr>
+  <tr><th>アイコン名</th>    <th>アイコン</th></tr>
 </thead>
 
 <tbody>
-  <tr><td>TTERM</td>         <td><img src="../image/icon-teraterm.png" ALT="�A�C�R��(Tera Term)"></td></tr>
-  <tr><td>VT</td>            <td><img src="../image/icon-vt.png" ALT="�A�C�R��(VT)"></td></tr>
-  <tr><td>TEK</td>           <td><img src="../image/icon-tek.png" ALT="�A�C�R��(TEK)"></td></tr>
-  <tr><td>TTERM_CLASSIC</td> <td><img src="../image/icon-teraterm_classic.png" ALT="�A�C�R��(��Tera Term)"></td></tr>
-  <tr><td>VT_CLASSIC</td>    <td><img src="../image/icon-vt_classic.png" ALT="�A�C�R��(��VT)"></td></tr>
-  <tr><td>TTERM_3D</td>      <td><img src="../image/icon-teraterm_3d.png" ALT="�A�C�R��(Tera Term-3D)"></td></tr>
-  <tr><td>VT_3D</td>         <td><img src="../image/icon-vt_3d.png" ALT="�A�C�R��(VT-3D)"></td></tr>
-  <tr><td>TTERM_FLAT</td>    <td><img src="../image/icon-teraterm_flat.png" ALT="�A�C�R��(Tera Term-FLAT)"></td></tr>
-  <tr><td>VT_FLAT</td>       <td><img src="../image/icon-vt_flat.png" ALT="�A�C�R��(VT-FLAT)"></td></tr>
-  <tr><td>CYGTERM</td>       <td><img src="../image/icon-cygterm.png" ALT="�A�C�R��(CygTerm)"></td></tr>
-  <tr><td>Default</td>       <td>�W���ݒ�(VT�E�B���h�E��VT, TEK�E�B���h�E��TEK)</td></tr>
+  <tr><td>TTERM</td>         <td><img src="../image/icon-teraterm.png" ALT="アイコン(Tera Term)"></td></tr>
+  <tr><td>VT</td>            <td><img src="../image/icon-vt.png" ALT="アイコン(VT)"></td></tr>
+  <tr><td>TEK</td>           <td><img src="../image/icon-tek.png" ALT="アイコン(TEK)"></td></tr>
+  <tr><td>TTERM_CLASSIC</td> <td><img src="../image/icon-teraterm_classic.png" ALT="アイコン(旧Tera Term)"></td></tr>
+  <tr><td>VT_CLASSIC</td>    <td><img src="../image/icon-vt_classic.png" ALT="アイコン(旧VT)"></td></tr>
+  <tr><td>TTERM_3D</td>      <td><img src="../image/icon-teraterm_3d.png" ALT="アイコン(Tera Term-3D)"></td></tr>
+  <tr><td>VT_3D</td>         <td><img src="../image/icon-vt_3d.png" ALT="アイコン(VT-3D)"></td></tr>
+  <tr><td>TTERM_FLAT</td>    <td><img src="../image/icon-teraterm_flat.png" ALT="アイコン(Tera Term-FLAT)"></td></tr>
+  <tr><td>VT_FLAT</td>       <td><img src="../image/icon-vt_flat.png" ALT="アイコン(VT-FLAT)"></td></tr>
+  <tr><td>CYGTERM</td>       <td><img src="../image/icon-cygterm.png" ALT="アイコン(CygTerm)"></td></tr>
+  <tr><td>Default</td>       <td>標準設定(VTウィンドウはVT, TEKウィンドウはTEK)</td></tr>
 </tbody>
 </table>
 
 <p>
-�܂��Assh�ڑ����̃A�C�R�����ύX���鎖���o���܂��B�Ⴆ��TTSSH2.62�܂ł̉��F�̃A�C�R���ɂ���ꍇ�A�ݒ�t�@�C����[TTSSH]�Z�N�V������SSHIcon�s���ȉ��̂悤�ɕύX���܂��B
+また、ssh接続時のアイコンも変更する事が出来ます。例えばTTSSH2.62までの黄色のアイコンにする場合、設定ファイルの[TTSSH]セクションのSSHIcon行を以下のように変更します。
 </p>
 
 <pre>
@@ -483,36 +483,36 @@ SSHIcon=yellow
 </pre>
 
 <p>
-SSHIcon �ɂ́A�ȉ��̃A�C�R�������g�p�ł��܂��B
+SSHIcon には、以下のアイコン名が使用できます。
 </p>
 
 <table>
 <thead>
-  <tr><th>�A�C�R����</th>    <th>�A�C�R��</th></tr>
+  <tr><th>アイコン名</th>    <th>アイコン</th></tr>
 </thead>
 
 <tbody>
-  <tr><td>flat2</td>         <td><img src="../image/icon-ttsecure.png" ALT="ttssh�A�C�R��(�t���b�g2)"></tr>
-  <tr><td>classic</td>       <td><img src="../image/icon-ttsecure_classic.png" ALT="ttssh�A�C�R��(�I���W�i��)"></tr>
-  <tr><td>yellow</td>        <td><img src="../image/icon-ttsecure_yellow.png" ALT="ttssh�A�C�R��(���F)"></tr>
-  <tr><td>green</td>         <td><img src="../image/icon-ttsecure_green.png" ALT="ttssh�A�C�R��(��)"></tr>
-  <tr><td>flat</td>          <td><img src="../image/icon-ttsecure_flat.png" ALT="ttssh�A�C�R��(�t���b�g)"></tr>
-  <tr><td>Default</td>       <td>�W���̃A�C�R��(flat2�Ɠ���)</td></tr>
+  <tr><td>flat2</td>         <td><img src="../image/icon-ttsecure.png" ALT="ttsshアイコン(フラット2)"></tr>
+  <tr><td>classic</td>       <td><img src="../image/icon-ttsecure_classic.png" ALT="ttsshアイコン(オリジナル)"></tr>
+  <tr><td>yellow</td>        <td><img src="../image/icon-ttsecure_yellow.png" ALT="ttsshアイコン(黄色)"></tr>
+  <tr><td>green</td>         <td><img src="../image/icon-ttsecure_green.png" ALT="ttsshアイコン(緑)"></tr>
+  <tr><td>flat</td>          <td><img src="../image/icon-ttsecure_flat.png" ALT="ttsshアイコン(フラット)"></tr>
+  <tr><td>Default</td>       <td>標準のアイコン(flat2と同じ)</td></tr>
 </tbody>
 </table>
 
 <pre>
-�ȗ���:
+省略時:
 VTIcon=Default
 TEKIcon=Default
 SSHIcon=Default
 </pre>
 
 
-<h1 id="delayselect">�}�E�X�ł̕����̑I���̊J�n��x�点��</h1>
+<h1 id="delayselect">マウスでの文字の選択の開始を遅らせる</h1>
 <p>
-�}�E�X�ł̃e�L�X�g�̑I���̊J�n��x�点�āA�}�E�X�Ńh���b�O�������Ԃ��Z���ꍇ�̓N���b�N�Ƃ��Ĉ��킹�鎖���o���܂��B<br>
-�Ⴆ�΁A�}�E�X�ł̃h���b�O���Ԃ� 200 �~���b���Z���ꍇ�ɃN���b�N�Ƃ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ MouseSelectStartDelay �s���ȉ��̂悤�ɕύX���Ă��������B
+マウスでのテキストの選択の開始を遅らせて、マウスでドラッグした時間が短い場合はクリックとして扱わせる事が出来ます。<br>
+例えば、マウスでのドラッグ時間が 200 ミリ秒より短い場合にクリックとするには、設定ファイルの [Tera Term] セクションの MouseSelectStartDelay 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -520,15 +520,15 @@ MouseSelectStartDelay=200
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 MouseSelectStartDelay=0
 </pre>
 
 
-<h1 id="WindowCornerDontround">�E�B���h�E�̊p���ۂ����Ȃ�</h1>
+<h1 id="WindowCornerDontround">ウィンドウの角を丸くしない</h1>
 
 <p>
-Windows 11 �ł̓E�B���h�E�̊p���ۂ��Ȃ邽�߁A�\����������̈悪����܂��BVT �E�B���h�E�� TEK �E�B���h�E�̊p���ۂ����Ȃ����߂ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ WindowCornerDontround �s���ȉ��̂悤�ɕύX���Ă��������B
+Windows 11 ではウィンドウの角が丸くなるため、表示が欠ける領域があります。VT ウィンドウと TEK ウィンドウの角を丸くしないためには、設定ファイルの [Tera Term] セクションの WindowCornerDontround 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -536,7 +536,7 @@ WindowCornerDontround=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 WindowCornerDontround=off
 </pre>
 

@@ -2,18 +2,18 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>TTProxy ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>TTProxy ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>TTProxy ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“</h1>
+<h1>TTProxy ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³</h1>
 
-<h2>Œ`®</h2>
+<h2>å½¢å¼</h2>
 <p>
-TTProxy ‚Å‚ÍAˆÈ‰º‚ÌƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ƒpƒ‰ƒ[ƒ^‚ªg—p‚Å‚«‚Ü‚·B
+TTProxy ã§ã¯ã€ä»¥ä¸‹ã®ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒä½¿ç”¨ã§ãã¾ã™ã€‚
 </p>
 
 <pre class="syntax">
@@ -24,7 +24,7 @@ protocol://&lt;user&lt;:password&gt;@&gt;proxyserver:proxyport/realhost
 
 <dl>
   <dt id="protocol">protocol</dt>
-  <dd>ƒvƒƒLƒV‚ÌƒvƒƒgƒRƒ‹<br>ˆÈ‰º‚Ìí—Ş‚ªg—p‰Â”\‚Å‚·B
+  <dd>ãƒ—ãƒ­ã‚­ã‚·ã®ãƒ—ãƒ­ãƒˆã‚³ãƒ«<br>ä»¥ä¸‹ã®ç¨®é¡ãŒä½¿ç”¨å¯èƒ½ã§ã™ã€‚
     <ul>
       <li>http</li>
       <li>telnet</li>
@@ -39,25 +39,25 @@ protocol://&lt;user&lt;:password&gt;@&gt;proxyserver:proxyport/realhost
     </ul></dd>
 
   <dt id="proxyserver">proxyserver</dt>
-  <dd>ƒvƒƒLƒVƒT[ƒo</dd>
+  <dd>ãƒ—ãƒ­ã‚­ã‚·ã‚µãƒ¼ãƒ</dd>
 
   <dt id="proxyport">proxyport</dt>
-  <dd>ƒvƒƒLƒVƒT[ƒo‚Ìƒ|[ƒg”Ô†</dd>
+  <dd>ãƒ—ãƒ­ã‚­ã‚·ã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·</dd>
 
   <dt id="realhost">realhost</dt>
-  <dd>ÀÛ‚ÉÚ‘±‚µ‚½‚¢ƒT[ƒo</dd>
+  <dd>å®Ÿéš›ã«æ¥ç¶šã—ãŸã„ã‚µãƒ¼ãƒ</dd>
 
   <dt id="user">user</dt>
-  <dd>ƒvƒƒLƒV‚Å”FØ‚ª•K—v‚Èê‡‚Ìƒ†[ƒU–¼</dd>
+  <dd>ãƒ—ãƒ­ã‚­ã‚·ã§èªè¨¼ãŒå¿…è¦ãªå ´åˆã®ãƒ¦ãƒ¼ã‚¶å</dd>
 
   <dt id="password">password</dt>
-  <dd>ƒvƒƒLƒV‚Å”FØ‚ª•K—v‚Èê‡‚ÌƒpƒXƒ[ƒh</dd>
+  <dd>ãƒ—ãƒ­ã‚­ã‚·ã§èªè¨¼ãŒå¿…è¦ãªå ´åˆã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰</dd>
 
   <dt id="noproxy">-noproxy</dt>
-  <dd>ƒvƒƒLƒVİ’è‚ğ–³Œø‰»‚·‚éB-proxy=none:// ‚Æ“¯‚¶B</dd>
+  <dd>ãƒ—ãƒ­ã‚­ã‚·è¨­å®šã‚’ç„¡åŠ¹åŒ–ã™ã‚‹ã€‚-proxy=none:// ã¨åŒã˜ã€‚</dd>
 </dl>
 
-<h2 id="example">g—p—á</h2>
+<h2 id="example">ä½¿ç”¨ä¾‹</h2>
 <pre>
 ttermpro.exe -proxy=socks5://user:pass@proxy:1080 sshserver /ssh
 ttermpro.exe -proxy=telnet://proxy:8023 telnetserver:23 /nossh
@@ -65,16 +65,16 @@ ttermpro.exe -proxy=none:// sshserver /ssh
 ttermpro.exe -noproxy sshserver /ssh
 </pre>
 
-<h2 id="notes">’ˆÓ</h2>
+<h2 id="notes">æ³¨æ„</h2>
 <p>
-ˆÈ‰º‚ÌŒ`®‚Íg—p‚Å‚«‚Ü‚¹‚ñB
+ä»¥ä¸‹ã®å½¢å¼ã¯ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚
 </p>
 <pre>
-protocol://&lt;user&lt;:password&gt;@&gt;proxyserver:proxyport/realhost:ƒ|[ƒg”Ô†
+protocol://&lt;user&lt;:password&gt;@&gt;proxyserver:proxyport/realhost:ãƒãƒ¼ãƒˆç•ªå·
 </pre>
 
 <p>
-Tera Term ‚ªˆ—‚·‚é telnet://server&lt;:port&gt; Œ`®‚Ìƒpƒ‰ƒ[ƒ^‚Æ‹£‡‚·‚é‚½‚ßAƒvƒƒLƒVƒT[ƒo‚ğw’è‚·‚é‚½‚ß‚ÉˆÈ‰º‚ÌŒ`®‚ğg—p‚·‚é‚±‚Æ‚Í‚Å‚«‚È‚­‚È‚è‚Ü‚µ‚½B
+Tera Term ãŒå‡¦ç†ã™ã‚‹ telnet://server&lt;:port&gt; å½¢å¼ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ç«¶åˆã™ã‚‹ãŸã‚ã€ãƒ—ãƒ­ã‚­ã‚·ã‚µãƒ¼ãƒã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã«ä»¥ä¸‹ã®å½¢å¼ã‚’ä½¿ç”¨ã™ã‚‹ã“ã¨ã¯ã§ããªããªã‚Šã¾ã—ãŸã€‚
 </p>
 <pre>
 protocol://&lt;user&lt;:password&gt;@&gt;proxyserver:proxyport

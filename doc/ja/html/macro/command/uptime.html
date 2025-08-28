@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>uptime</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,25 +14,25 @@
 <h1>uptime</h1>
 
 <p>
-OS�̉ғ����Ԃ��擾����B<em>(�o�[�W����4.81�ȍ~)</em>
+OSの稼働時間を取得する。<em>(バージョン4.81以降)</em>
 </p>
 
 <pre class="macro-syntax">
 uptime &lt;intvar&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-Windows OS�̉ғ����ԁi�~���b�j�� &lt;intvar&gt; �Ɋi�[����B
+Windows OSの稼働時間（ミリ秒）を &lt;intvar&gt; に格納する。
 </p>
 
 <p>
-���ғ����Ԃ�49�����o�߂���ƁA0�ɖ߂�B
+※稼働時間が49日を経過すると、0に戻る。
 </p>
 
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 ; How to get the uptime in Windows

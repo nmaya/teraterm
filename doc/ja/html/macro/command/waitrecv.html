@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>waitrecv</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,58 +14,58 @@
 <h1>waitrecv</h1>
 
 <p>
-�������҂B
+文字列を待つ。
 </p>
 
 <pre class="macro-syntax">
 waitrecv &lt;sub-string&gt; &lt;len&gt; &lt;pos&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-��������𖞂��� 1 �̕����񂪃z�X�g���瑗���Ă��邩�A�^�C���A�E�g����������܂ŁA MACRO ���~������B
+ある条件を満たす 1 つの文字列がホストから送られてくるか、タイムアウトが発生するまで、 MACRO を停止させる。
 </p>
 
 <p>
-���̏����Ƃ́A������̒����� &lt;len&gt; �����ŁA�����񂪂��� &lt;pos&gt; �����ځi1�I���W���j����n�܂镛������ &lt;sub-string&gt; ���܂�ł���Ƃ������ƁB<br>
-�R�}���h�� &lt;len&gt; �o�C�g�̕��������M���邽�тɁA�����𖞂������ǂ������m�F����B<br>
-�Ⴆ�΁A&lt;sub-string&gt; �� "def"�A&lt;len&gt; �� 9 �A&lt;pos&gt; �� 4 �̂Ƃ��A������ "abcdefghi" �͏����𖞂����B
+その条件とは、文字列の長さが &lt;len&gt; 文字で、文字列がその &lt;pos&gt; 文字目（1オリジン）から始まる副文字列 &lt;sub-string&gt; を含んでいるということ。<br>
+コマンドは &lt;len&gt; バイトの文字列を受信するたびに、条件を満たすかどうかを確認する。<br>
+例えば、&lt;sub-string&gt; が "def"、&lt;len&gt; が 9 、&lt;pos&gt; が 4 のとき、文字列 "abcdefghi" は条件を満たす。
 </p>
 
 <p>
-���������𖞂��������񂪑����Ă�����A�V�X�e���ϐ� inputstr �ɕۑ������B
+もし条件を満たす文字列が送られてきたら、システム変数 inputstr に保存される。
 </p>
 
 <p>
-�V�X�e���ϐ� timeout �� mtimeout �� 0 ���傫���ꍇ�A&lt;timeout&gt;.&lt;mtimeout&gt; �b�̎��Ԃ�������ƃ^�C���A�E�g����������B�^�C���A�E�g�̒l�� 0 �ȉ��̏ꍇ�́A�^�C���A�E�g�͔������Ȃ��B
+システム変数 timeout か mtimeout が 0 より大きい場合、&lt;timeout&gt;.&lt;mtimeout&gt; 秒の時間がすぎるとタイムアウトが発生する。タイムアウトの値が 0 以下の場合は、タイムアウトは発生しない。
 </p>
 
 <p>
-�����̃R�}���h�̎��s���ʂ̓V�X�e���ϐ� result �Ɋi�[�����B�ϐ� result �̒l�̈Ӗ��͈ȉ��̒ʂ�B
+これらのコマンドの実行結果はシステム変数 result に格納される。変数 result の値の意味は以下の通り。
 </p>
 
 <table>
  <tr>
-  <th>�l</th>
-  <th>�Ӗ�</th>
+  <th>値</th>
+  <th>意味</th>
  </tr>
  <tr>
   <td>-1</td>
-  <td>&lt;pos&gt; �����ڂ���n�܂� &lt;sub-string&gt; ���܂ޕ����񂪗��āAinputstr �ɕۑ����ꂽ�B������������̒����́A�^�C���A�E�g�̂��߂� &lt;len&gt; �������Z���B</td>
+  <td>&lt;pos&gt; 文字目から始まる &lt;sub-string&gt; を含む文字列が来て、inputstr に保存された。しかし文字列の長さは、タイムアウトのために &lt;len&gt; 文字より短い。</td>
  </tr>
  <tr>
   <td>0</td>
-  <td>�^�C���A�E�g�B�����𖞂���������͑����Ă��Ȃ������B</td>
+  <td>タイムアウト。条件を満たす文字列は送られてこなかった。</td>
  </tr>
  <tr>
   <td>1</td>
-  <td>�������݂��������񂪗��āA inputstr �ɕۑ����ꂽ�B</td>
+  <td>条件をみたす文字列が来て、 inputstr に保存された。</td>
  </tr>
 </table>
 
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 ; Every byte is shown in hexadecimal
@@ -83,7 +83,7 @@ setdebug 0
 waitrecv 'C'#13 2 1
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="setdebug.html">setdebug</a></li>
   <li><a href="wait.html">wait</a></li>

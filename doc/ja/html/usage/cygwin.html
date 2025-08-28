@@ -2,23 +2,23 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>Cygwin�ڑ�</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Cygwin接続</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>Cygwin�ڑ�</h1>
+<h1>Cygwin接続</h1>
 
 <p>
-���[�J���� Cygwin ���� Tera Term ����ڑ��ł��܂��B<br>
-<a href="http://www.cygwin.com/" target="_blank">Cygwin</A> �́AWindows ��� Linux �̂悤�Ȋ���񋟂���\�t�g�E�F�A�ł��B<br>
-Cygwin �́A�I�[�v���\�[�X�\�t�g�E�F�A�ł��B
+ローカルの Cygwin 環境に Tera Term から接続できます。<br>
+<a href="http://www.cygwin.com/" target="_blank">Cygwin</A> は、Windows 上で Linux のような環境を提供するソフトウェアです。<br>
+Cygwin は、オープンソースソフトウェアです。
 </p>
 
 <p>
-�����ӁFCygwin 1.5.x �� Windows 7 ���T�|�[�g���Ă��Ȃ��悤�ł��BWindows 7 �ȍ~�ł� Cygwin 1.7.x �ȍ~�𗘗p���Ă��������B
+※注意：Cygwin 1.5.x は Windows 7 をサポートしていないようです。Windows 7 以降では Cygwin 1.7.x 以降を利用してください。
 </p>
 
 
@@ -26,48 +26,48 @@ Cygwin �́A�I�[�v���\�[�X�\�t�g�E�F�A�ł��B
 <h2>Cygterm+</h2>
 
 <p>
-Tera Term �� Cygwin �ɐڑ����邽�߂ɁA������ Cygterm+ �𗘗p���Ă��܂��B<br>
-File���j���[����uCygwin connection�v��I������A�������� Alt+G ����������ƁACygwin �֐ڑ����܂��B
+Tera Term は Cygwin に接続するために、内部で Cygterm+ を利用しています。<br>
+Fileメニューから「Cygwin connection」を選択する、もしくは Alt+G を押下すると、Cygwin へ接続します。
 </p>
 
-<h3>�ݒ�̕ۑ�</h3>
+<h3>設定の保存</h3>
 
 <p>
-cygterm.exe ����N�����ꂽ��ԂŐݒ�ۑ� [Setup] [Save setup] ���s��Ȃ��悤���ӂ��Ă��������BTCP/IP�ݒ�� Telnet�|�[�g�ԍ��� 23 �ȊO�ŕۑ�����A�ʏ�� Telnet�ړI�̎��s���ɐڑ��ł����A�Q�Ă邱�ƂɂȂ��Ă��܂��܂��B<br>
-TCP/IP Port# �� 23 ���w�肵�Đݒ�ۑ��������Ό��ɖ߂�܂��B
+cygterm.exe から起動された状態で設定保存 [Setup] [Save setup] を行わないよう注意してください。TCP/IP設定の Telnetポート番号が 23 以外で保存され、通常の Telnet目的の実行時に接続できず、慌てることになってしまいます。<br>
+TCP/IP Port# に 23 を指定して設定保存し直せば元に戻ります。
 </p>
 
-<h3>Cygwin �̒T����</h3>
+<h3>Cygwin の探し方</h3>
 
 <p>
-Cygterm+ ���N������ɂ� Cygwin �̃C���X�g�[���p�X��������K�v������܂��BTera Term �� cyglaunch �͎��̏����� Cygwin �̃C���X�g�[���p�X��T���܂��B
+Cygterm+ を起動するには Cygwin のインストールパスを見つける必要があります。Tera Term と cyglaunch は次の順序で Cygwin のインストールパスを探します。
 
 </p>
 
 <ol>
   <li>TERATERM.INI
     <ol>
-      <li>teraterm.exe ���ǂݍ���ł��� TERATERM.INI�A���邢�� cyglaunch.exe �̃t�H���_�ɂ��� TERATERM.INI �� CygwinDirectory �G���g����ǂ�</li>
-      <li>CygwinDirectory �̉��� bin\cygwin1.dll �����邩���ׂ�</li>
-      <li>bin\cygwin1.dll ������� PATH ���ϐ��Ƀp�X��ǉ�����</li>
-      <li>cygterm.exe ���N������</li>
+      <li>teraterm.exe が読み込んでいる TERATERM.INI、あるいは cyglaunch.exe のフォルダにある TERATERM.INI の CygwinDirectory エントリを読む</li>
+      <li>CygwinDirectory の下に bin\cygwin1.dll があるか調べる</li>
+      <li>bin\cygwin1.dll があれば PATH 環境変数にパスを追加する</li>
+      <li>cygterm.exe を起動する</li>
     </ol></li>
-  <li>PATH ���ϐ�
+  <li>PATH 環境変数
     <ol>
-      <li>PATH ���ϐ����ʂ��Ă���t�H���_�� bin\cygwin1.dll �����邩���ׂ�</li>
-      <li>cygterm.exe ���N������</li>
+      <li>PATH 環境変数が通っているフォルダに bin\cygwin1.dll があるか調べる</li>
+      <li>cygterm.exe を起動する</li>
     </ol></li>
-  <li>�h���C�u���[�g��������
+  <li>ドライブルート総当たり
     <ol>
-      <li>C ���� Z �܂ŁA�h���C�u���[�g������ cygwin ���邢�� cygwin64 �t�H���_�� bin\cygwin1.dll �����邩���ׂ�</li>
-      <li>bin\cygwin1.dll ������� PATH ���ϐ��Ƀp�X��ǉ�����</li>
-      <li>cygterm.exe ���N������</li>
+      <li>C から Z まで、ドライブルート直下の cygwin あるいは cygwin64 フォルダに bin\cygwin1.dll があるか調べる</li>
+      <li>bin\cygwin1.dll があれば PATH 環境変数にパスを追加する</li>
+      <li>cygterm.exe を起動する</li>
     </ol></li>
 </ol>
 
 <p>
-1. �́uTERATERM.INI �� CygwinDirectory�v�̐ݒ�́A�C���X�g�[�����ɂ͋󕶎���ɂȂ��Ă���̂Ŗ�������܂��B�������������܂������Ȃ��ꍇ�͎蓮�� Cygwin �̃C���X�g�[���p�X��ݒ肵�Ă��������B<br>
-�t�H�[�}�b�g�́u�h���C�u���F���f�B���N�g���v�ł��B
+1. の「TERATERM.INI の CygwinDirectory」の設定は、インストール時には空文字列になっているので無視されます。自動検索がうまくいかない場合は手動で Cygwin のインストールパスを設定してください。<br>
+フォーマットは「ドライブ名：¥ディレクトリ」です。
 </p>
 
 <pre>
@@ -79,23 +79,23 @@ CygwinDirectory = c:\cygwin
 ----------------------------
 </pre>
 
-<h3>32bit Cygwin �� 64bit Cygwin</h3>
+<h3>32bit Cygwin と 64bit Cygwin</h3>
 
 <p>
-32bit Cygwin �ɐڑ�����ɂ� 32 bit Cygwin�� �Ńr���h���ꂽ CygTerm+ �v���O�������K�v�ŁA64bit Cygwin �ɐڑ�����ɂ� 64 bit Cygwin�� �Ńr���h���ꂽ CygTerm+ �v���O�������K�v�ł��B<br />
-�ʏ��Tera Term�̃C���X�g�[�����A�C���X�g�[������Ă���Cygwin�̃o�[�W�����𔻒肵�ēK�؂Ȏ��s�t�@�C�����R�s�[���܂��B<br>
-�C���X�g�[���̔��肪���������삵�Ă��Ȃ��ꍇ�́A�蓮�� cygterm+-i686 �� cygterm+-x86_64 �t�H���_���̎��s�t�@�C���� Tera Term �̃C���X�g�[���t�H���_�ɏ㏑�����邩�A������Cygterm+���r���h�������Ă��������B
+32bit Cygwin に接続するには 32 bit Cygwin環境 でビルドされた CygTerm+ プログラムが必要で、64bit Cygwin に接続するには 64 bit Cygwin環境 でビルドされた CygTerm+ プログラムが必要です。<br />
+通常はTera Termのインストーラが、インストールされているCygwinのバージョンを判定して適切な実行ファイルをコピーします。<br>
+インストーラの判定が正しく動作していない場合は、手動で cygterm+-i686 か cygterm+-x86_64 フォルダ内の実行ファイルを Tera Term のインストールフォルダに上書きするか、自分でCygterm+をビルドし直してください。
 </p>
 
-<h3 id="build">CygTerm+���r���h����</h3>
+<h3 id="build">CygTerm+をビルドする</h3>
 
 <p>
-Tera Term �ɓ�������Ă�����s�t�@�C���ɖ�肪�����Ă��܂��N�����Ȃ��ꍇ�́ACygTerm+ ���r���h�������Ă��������B<br>
-�ŐV�̃\�[�X�R�[�h�� cygterm+.tar.gz �Ƃ��ē�������Ă��܂��B
+Tera Term に同梱されている実行ファイルに問題があってうまく起動しない場合は、CygTerm+ をビルドし直してください。<br>
+最新のソースコードは cygterm+.tar.gz として同梱されています。
 </p>
 
 <table border="1">
-  <caption>�r���h�ɕK�v�ȃp�b�P�[�W</caption>
+  <caption>ビルドに必要なパッケージ</caption>
   <tr>
     <th>32bit Cygwin</th>
     <th>Build 64bit Cygwin binary<br />on 32bit Cygwin</th>
@@ -118,16 +118,16 @@ Tera Term �ɓ�������Ă�����s�t�@�C���ɖ�肪�����Ă��܂��N�����Ȃ��ꍇ�́ACygT
 <h2>Cygterm Here</h2>
 
 <p>
-�C���X�g�[���őI������ƁA�t�H���_�̉E�N���b�N��J���Ă���t�H���_�� Cygterm Here �Ƃ����R���e�L�X�g���j���[���ǉ�����܂��B�I������Ă���t�H���_�� Cygwin �ڑ����J�����Ƃ��ł��܂��B
+インストーラで選択すると、フォルダの右クリックや開いているフォルダに Cygterm Here というコンテキストメニューが追加されます。選択されているフォルダで Cygwin 接続を開くことができます。
 </p>
 
 <p>
-��ʓI�Ȋ��œ��삷��悤�Ƀp�����[�^��ݒ肵�Ă��܂����Acsh/tcsh �ł� CHERE_INVOKING ���`�F�b�N���Ȃ����Ƃ�����܂��B�K�v�ł���� /etc/csh.login ���C�����邩 Cygterm Here �̃��W�X�g���ݒ�����L�̂悤�ɕύX���Ă��������B
+一般的な環境で動作するようにパラメータを設定していますが、csh/tcsh では CHERE_INVOKING をチェックしないことがあります。必要であれば /etc/csh.login を修正するか Cygterm Here のレジストリ設定を下記のように変更してください。
 </p>
 
 <pre>
 "C:\Program Files\teraterm\cyglaunch.exe" -nocd -v CHERE_INVOKING=y -d "\"%L\""
-��
+↓
 "C:\Program Files\teraterm\cyglaunch.exe" -nocd -nols -d "\"%L\""
 </pre>
 

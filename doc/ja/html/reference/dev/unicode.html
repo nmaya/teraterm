@@ -2,26 +2,26 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>�����\��</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>内部構造</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>�����\��</h1>
+<h1>内部構造</h1>
 
 <p>
-  Tera Term 5 �ȑO�̓����o�b�t�@�̕����R�[�h��DBCS(Double byte Character Set)�ł����B
-  �Ⴆ�΁uLanguage[����]�v��"Japanese"�Ƃ����Ƃ������o�b�t�@�̕����R�[�h��Shift_JIS�ł����B
+  Tera Term 5 以前の内部バッファの文字コードはDBCS(Double byte Character Set)でした。
+  例えば「Language[言語]」を"Japanese"としたとき内部バッファの文字コードはShift_JISでした。
 </p>
 
 <p>
-  Tera Term 5 �̓����o�b�t�@�̕����R�[�h�� Unicode�ł��B
+  Tera Term 5 の内部バッファの文字コードは Unicodeです。
 </p>
 
 <p>
-  ��܂��ȃf�[�^�̗���͎��̂悤�ɂȂ��Ă��܂��B
+  大まかなデータの流れは次のようになっています。
 </p>
 
 <font size="1">
@@ -65,8 +65,8 @@
 <font size="3">
 
 <p>
-  Windows 95/98/Me�̂Ƃ��A�L�[���͂� Unicode �ɕϊ����Ă��珈�����s���܂��B
-  �`��� Unicode��MBCS�ɕϊ����ĕ`�悵�܂��B
+  Windows 95/98/Meのとき、キー入力は Unicode に変換してから処理を行います。
+  描画は UnicodeをMBCSに変換して描画します。
 </p>
 
 </BODY>

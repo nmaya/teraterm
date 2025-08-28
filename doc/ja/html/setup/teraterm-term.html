@@ -2,17 +2,17 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>�^�[�~�i���G�~�����[�V���� (Tera Term �ݒ�t�@�C��)</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>ターミナルエミュレーション (Tera Term 設定ファイル)</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1 id="backwrap">�o�b�N�E���b�v (back wrap)</h1>
+<h1 id="backwrap">バック・ラップ (back wrap)</h1>
 
 <p>
-�o�b�N�E���b�v (back wrap) �@�\��L���ɂ���ƁABS ��������M�������ɍs�̎n�߂ɂ���J�[�\�����O�̍s�̍Ō�Ɉړ����܂��B�o�b�N�E���b�v��L���ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ BackWrap �s���ȉ��̂悤�ɕύX���Ă��������B
+バック・ラップ (back wrap) 機能を有効にすると、BS 文字を受信した時に行の始めにあるカーソルが前の行の最後に移動します。バック・ラップを有効にするには、設定ファイルの [Tera Term] セクションの BackWrap 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -20,19 +20,19 @@ BackWrap=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 BackWrap=off
 </pre>
 
 
-<h1 id="beep">BEL ������M���̓���</h1>
+<h1 id="beep">BEL 文字受信時の動作</h1>
 
 <p>
-BEL ���� (ASCII $07) ����M���ꂽ���� Tera Term �̓r�[�v����炵�܂��B
+BEL 文字 (ASCII $07) が受信された時に Tera Term はビープ音を鳴らします。
 </p>
 
 <p>
-�r�[�v����炵�����Ȃ��ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ Beep �s���ȉ��̂悤�ɕύX���Ă��������B
+ビープ音を鳴らしたくない場合は、設定ファイルの [Tera Term] セクションの Beep 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -40,7 +40,7 @@ Beep=off
 </pre>
 
 <p>
-�܂��A�ȉ��̂悤�ɂ���ƃr�[�v����炷����ɒ[����ʂ��t���b�V��������悤�ɂȂ�܂��B
+また、以下のようにするとビープ音を鳴らす代わりに端末画面をフラッシュさせるようになります。
 </p>
 
 <pre>
@@ -48,54 +48,54 @@ Beep=visual
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 Beep=on
 </pre>
 
 
-<h1 id="C1">C1 ���䕶�� ($80-$9F) ���g�p���Ȃ�</h1>
+<h1 id="C1">C1 制御文字 ($80-$9F) を使用しない</h1>
 
 <p>
-Tera Term �̊������[�h(��M)�� EUC �� JIS �ɂ��āA Teraminal ID �� VT2XX �܂��́A VT3XX �ɂ��Ă���ꍇ�AShift-JIS �̊�������M����ƁA�n���O�A�b�v���邱�Ƃ�����܂��B
+Tera Term の漢字モード(受信)を EUC か JIS にして、 Teraminal ID を VT2XX または、 VT3XX にしている場合、Shift-JIS の漢字を受信すると、ハングアップすることがあります。
 </p>
 
 <p>
-����́AShift-JIS �R�[�h�̒��� C1 ���䕶�� ($80-$9F) ���܂܂�Ă��邽�߂ɁA�����𐧌䕶���Ƃ��ĉ��߂��Ă��܂��A�[���̏�Ԃ����������Ȃ邩��ł��B
+これは、Shift-JIS コードの中に C1 制御文字 ($80-$9F) が含まれているために、それらを制御文字として解釈してしまい、端末の状態がおかしくなるからです。
 </p>
 
 <p>
-�Ⴆ�΁A�z�X�g�ɂ���Ă̓��O�C�����Ȃǂ� SJIS(Shift-JIS), EUC, JIS �Ȃǂ̐���ނ̊����R�[�h��[���ɑ���A�ǂ̃R�[�h���������\������Ă邩���[�U�[�ɓ��͂�����A�Ƃ������Ƃ�����A���̂悤�ȏꍇ�ɖ�肪�������܂��B
+例えば、ホストによってはログイン時などに SJIS(Shift-JIS), EUC, JIS などの数種類の漢字コードを端末に送り、どのコードが正しく表示されてるかユーザーに入力させる、ということがあり、このような場合に問題が発生します。
 </p>
 
 <p>
-�����A���̂悤�ȏ�ԂɂȂ����ꍇ�A[Control] Reset terminal �Œ[���̏�Ԃ����Z�b�g���Ă��������B
+もし、このような状態になった場合、[Control] Reset terminal で端末の状態をリセットしてください。
 </p>
 
 <p>
-���̂悤�Ȗ���������ɂ́A3�̕��@������܂��B
+このような問題をさけるには、3つの方法があります。
 </p>
 
 <ol>
- <li>�������[�h(��M)�� SJIS �ɐݒ肷��B</li>
- <li>[Setup] Terminal �� Terminal ID �� VT1XX (�Ⴆ�� VT100) �ɂ���B</li>
- <li>�ݒ�t�@�C���� [Tera Term] �Z�N�V������ Accept8BitCtrl �s��
+ <li>漢字モード(受信)を SJIS に設定する。</li>
+ <li>[Setup] Terminal で Terminal ID を VT1XX (例えば VT100) にする。</li>
+ <li>設定ファイルの [Tera Term] セクションの Accept8BitCtrl 行を
 <pre>
 Accept8BitCtrl=off
 </pre>
-�̂悤�ɕҏW���A C1 ���䕶���Ƃ��đ����Ă��������𖳎�����悤�ɐݒ肷��B
+のように編集し、 C1 制御文字として送られてきた文字を無視するように設定する。
 <pre>
-�ȗ���:
+省略時:
 Accept8BitCtrl=on
 </pre>
 </li></ol>
 
-<h1 id="C1send">C1 ���䕶�� ($80-$9F) �𑗐M�Ɏg�p����</h1>
+<h1 id="C1send">C1 制御文字 ($80-$9F) を送信に使用する</h1>
 <p>
-Tera Term�ł�C1���䕶���𑗐M���鎞�A�����̈Ӗ�������7�r�b�g�����̑g�ݍ��킹���g���܂��B
+Tera TermではC1制御文字を送信する時、同等の意味を持つ7ビット文字の組み合わせを使います。
 </p>
 
 <p>
-���� C1 ���䕶����P�Ƃ�8�r�b�g�����ő��M�������ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ Send8BitCtrl �s���A
+もし C1 制御文字を単独の8ビット文字で送信したい場合は、設定ファイルの [Tera Term] セクションの Send8BitCtrl 行を、
 </p>
 
 <pre>
@@ -103,26 +103,26 @@ Send8BitCtrl=on
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������B
+のように変更してください。
 </p>
 
 <p>
-��: ���̐ݒ�͏����l�Ƃ��Ă̂ݎg���܂��B�z�X�g�� S7C1T / S8C1T / DECSCL ����V�[�P���X�ɂ���Ă��̐ݒ��ύX���鎖���ł��܂��B
+注: この設定は初期値としてのみ使われます。ホストは S7C1T / S8C1T / DECSCL 制御シーケンスによってこの設定を変更する事ができます。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 Send8BitCtrl=off
 </pre>
 
-<h1 id="kout">�������Ȃ� "kanji-out" ���g�p�\�ɂ���</h1>
+<h1 id="kout">正しくない "kanji-out" を使用可能にする</h1>
 
 <p>
-�ꕔ�̃V�X�e���ŗp�����Ă��� "kanji-out" �V�[�P���X ^[(H �́AJIS/ISO �̋K�i�ɏ]���Ă��܂���B�{���ɕK�v�̂���ꍇ�ȊO�͎g�p���Ȃ��ł��������B�����ݒ�ł͊ԈႢ��h������ [Setup] terminal �_�C�A���O�{�b�N�X�� ^[(H ���I���ł��Ȃ��悤�ɂȂ��Ă��܂��B
+一部のシステムで用いられている "kanji-out" シーケンス ^[(H は、JIS/ISO の規格に従っていません。本当に必要のある場合以外は使用しないでください。初期設定では間違いを防ぐため [Setup] terminal ダイアログボックスで ^[(H が選択できないようになっています。
 </p>
 
 <p>
-^[(H ��I���ł���悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ AllowWrongSequence �s���A
+^[(H を選択できるようにするには、設定ファイルの [Tera Term] セクションの AllowWrongSequence 行を、
 </p>
 
 <pre>
@@ -130,23 +130,23 @@ AllowWrongSequence=on
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������B�_�C�A���O�{�b�N�X�őI���ł���悤�ɂȂ�܂��B
+のように変更してください。ダイアログボックスで選択できるようになります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 AllowWrongSequence=off
 </pre>
 
 
-<h1 id="kctrl">2�o�C�g����(����)��1�o�C�g�ڂ�2�o�C�g�ڂ̊Ԃɐ��䕶�������������ꍇ�A1�o�C�g�ڂ𖳌��ɂ���</h1>
+<h1 id="kctrl">2バイト文字(漢字)の1バイト目と2バイト目の間に制御文字等が入った場合、1バイト目を無効にする</h1>
 
 <p>
-�z�X�g���瑗���Ă���2�o�C�g����(������)��1�o�C�g�ڂ�2�o�C�g�ڂ̊Ԃɐ��䕶��(�Ⴆ�Ή��s����)���������Ă��ATera Term �̏����ݒ�ł�2�o�C�g���������䕶������������舵���܂��B
+ホストから送られてくる2バイト文字(漢字等)の1バイト目と2バイト目の間に制御文字(例えば改行文字)等が入っても、Tera Term の初期設定では2バイト文字も制御文字も正しく取り扱われます。
 </p>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ CtrlInKanji �s���A
+設定ファイルの [Tera Term] セクションの CtrlInKanji 行を、
 </p>
 
 <pre>
@@ -154,20 +154,20 @@ CtrlInKanji=off
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA2�o�C�g������1�o�C�g�ڂ̌�ɐ��䕶�����������ꍇ�A1�o�C�g�ڂ𖳌��ɂ��܂��B���̌��2�o�C�g�ڂ����Ă��A�S�~�Ƃ��ĕ\������܂��B2�o�C�g�����𐳂�������Ȃ��A�v���P�[�V�����ł́A���̂悤�ɂ����ق����A��ʂ̕������������Ȃ��Ȃ�\��������܂��B�Ⴆ�΁A������1�o�C�g�ڂ̌�ɉ��s�������o���āA���̌��2�o�C�g�ڂ͏o���Ȃ��A�Ƃ����A�v���P�[�V�������������Ƃ���ƁA���̊����͎̂Ă��܂����A���s�����ȍ~�ɗ��镶�����������ɍς݂܂��B
+のように変更すると、2バイト文字の1バイト目の後に制御文字等が来た場合、1バイト目を無効にします。この後に2バイト目が来ても、ゴミとして表示されます。2バイト文字を正しく扱わないアプリケーションでは、このようにしたほうが、画面の文字化けが少なくなる可能性があります。例えば、漢字の1バイト目の後に改行文字を出して、その後に2バイト目は出さない、というアプリケーションがあったとすると、その漢字は捨てられますが、改行文字以降に来る文字が化けずに済みます。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 CtrlInKanji=on
 </pre>
 
 
-<h1 id="displayall">��M�������������ׂĕ\��</h1>
+<h1 id="displayall">受信した文字をすべて表示</h1>
 
 <p>
-<!-- TODO: ���e�C�� -->
-��M�������������ׂĕ\������悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ Debug �s���A
+<!-- TODO: 内容修正 -->
+受信した文字をすべて表示するようにするには、設定ファイルの [Tera Term] セクションの Debug 行を、
 </p>
 
 <pre>
@@ -175,51 +175,51 @@ Debug=on
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������BShift+Esc �������ƃf�o�b�O���[�h�ɂȂ�܂��B
-�f�o�b�O���[�h�͑S����4��ނ���A�g�O���ňȉ��̂悤�ɐ؂�ւ��܂��B
+のように変更してください。Shift+Esc を押すとデバッグモードになります。
+デバッグモードは全部で4種類あり、トグルで以下のように切り替わります。
 </p>
 <ul>
-  <li>�ʏ�\�� -&gt; �f�o�b�O���[�h -&gt; 16�i�f�o�b�O���[�h -&gt; ��\��</li>
+  <li>通常表示 -&gt; デバッグモード -&gt; 16進デバッグモード -&gt; 非表示</li>
 </ul>
 <p>
-�f�o�b�O���[�h����������ɂ́A�u�ʏ�\���v�ɖ߂��Ă��������B
+デバッグモードを解除するには、「通常表示」に戻してください。
 </p>
 
 <p>
-�f�o�b�O���[�h�ł́A��M�����f�[�^���ȉ��̋K���ŕ����ɕϊ����ĕ\�����܂��B
+デバッグモードでは、受信したデータを以下の規則で文字に変換して表示します。
 </p>
 
 <pre>
-$00 - $1F    ^@ - ^_��\��
+$00 - $1F    ^@ - ^_を表示
              ($00=^@ $01=^A $02=^B $03=^C $04=^D $05=^E $06=^F $07=^G 
               $08=^H $09=^I $0A=^J $0B=^K $0C=^L $0D=^M $0E=^N $0F=^O 
               $10=^P $11=^Q $12=^R $13=^S $14=^T $15=^U $16=^V $17=^W 
               $18=^X $19=^Y $1A=^Z $1B=^[ $1C=^\ $1D=^] $1E=^^ $1F=^_)
-$20 - $7E    ���̂܂ܕ����Ƃ��ĕ\��
-$7F          &lt;DEL&gt;��\��
-$80 - $FF    �ŏ�� bit ��0�ɂ��āA$00-$7F�Ɠ����K����
-             �����ɕϊ����A���]�����Ƃ��ĕ\���B
+$20 - $7E    そのまま文字として表示
+$7F          &lt;DEL&gt;を表示
+$80 - $FF    最上位 bit を0にして、$00-$7Fと同じ規則で
+             文字に変換し、反転文字として表示。
 </pre>
 
 <p>
-16�i�f�o�b�O���[�h�ł́A��M�����f�[�^���ȉ��̋K���ŕ����ɕϊ����ĕ\�����܂��B
+16進デバッグモードでは、受信したデータを以下の規則で文字に変換して表示します。
 </p>
 
 <pre>
-$00 - $FF    2����16�i���l�i�A���t�@�x�b�g�͑啶���j�Ƌ󔒂�\������B
+$00 - $FF    2桁の16進数値（アルファベットは大文字）と空白を表示する。
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 Debug=off
 </pre>
 
 
-<h1 id="statusline">�X�e�[�^�X���C�����g�p�s�ɂ���</h1>
+<h1 id="statusline">ステータスラインを使用不可にする</h1>
 
 <p>
-VT �[���̃X�e�[�^�X���C���̋@�\���g�p�s�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ EnableStatusLine
-�s���ȉ��̂悤�ɕύX���Ă��������B
+VT 端末のステータスラインの機能を使用不可にするには、設定ファイルの [Tera Term] セクションの EnableStatusLine
+行を以下のように変更してください。
 </p>
 
 <pre>
@@ -227,23 +227,23 @@ EnableStatusLine=off
 </pre>
 
 <p>
-���̏ꍇ�A�X�e�[�^�X���C���Ɋւ���G�X�P�[�v�V�[�P���X�͂��ׂĖ�������܂��B
+この場合、ステータスラインに関するエスケープシーケンスはすべて無視されます。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 EnableStatusLine=on
 </pre>
 
 
-<h1 id="tekgin">TEK GIN report �̃}�E�X�R�[�h</h1>
+<h1 id="tekgin">TEK GIN report のマウスコード</h1>
 
 <p>
-�z�X�g���̃A�v���P�[�V�����ɂ���āATEK window �� GIN ���[�h(�N���X�w�A�[�J�[�\��������A���W���͂��\�ȏ��)�ɂȂ����Ƃ��A����L�[�������� TEK window �̓N���X�w�A�[�J�[�\���̍��W�ƃL�[�� ASCII �R�[�h���z�X�g�֕񍐂��܂��B
+ホスト側のアプリケーションによって、TEK window が GIN モード(クロスヘアーカーソルが現れ、座標入力が可能な状態)になったとき、あるキーを押すと TEK window はクロスヘアーカーソルの座標とキーの ASCII コードをホストへ報告します。
 </p>
 
 <p>
-GIN ���[�h�Ń}�E�X�̍��{�^�����������Ƃ��ɍ��W�ƂƂ��ɑ��o���� �L�[�R�[�h ��ݒ肷��ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ TEKGINMouseCode �s���A
+GIN モードでマウスの左ボタンを押したときに座標とともに送出する キーコード を設定するには、設定ファイルの [Tera Term] セクションの TEKGINMouseCode 行を、
 </p>
 
 <pre>
@@ -251,21 +251,21 @@ TEKGINMouseCode=&lt;key code&gt;
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������B
+のように変更してください。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 TEKGINMouseCode=32
-(32��Space ��ASCII �R�[�h)
+(32はSpace のASCII コード)
 </pre>
 
 
-<h1 id="vttab">�s���̃^�u�\���� VT �[���݊��ɂ���</h1>
+<h1 id="vttab">行末のタブ表示を VT 端末互換にする</h1>
 
 <p>
-on �̏ꍇ�ɂ́A�s���̃^�u�̓���� VT/PuTTY/xterm ���Ɠ����ɂȂ�܂��B�^�u�ɂ�鎩�����s�͔������܂���B<br>
-off �̏ꍇ�ɂ́A�s���̃^�u�̓���� FreeBSD �̃R���\�[�� (syscons) ���Ɠ����ɂȂ�܂��B�^�u�ɂ�鎩�����s���������܂�(VT��݊�)�B
+on の場合には、行末のタブの動作は VT/PuTTY/xterm 等と同じになります。タブによる自動改行は発生しません。<br>
+off の場合には、行末のタブの動作は FreeBSD のコンソール (syscons) 等と同じになります。タブによる自動改行が発生します(VT非互換)。
 </p>
 
 <pre>
@@ -273,58 +273,58 @@ VTCompatTab=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 VTCompatTab=off
 </pre>
 
 
-<h1 id="ScrollWindowClearScreen">��ʃN���A���ɃJ�����g�o�b�t�@���X�N���[���A�E�g�����邩�ǂ����ݒ肷��</h1>
+<h1 id="ScrollWindowClearScreen">画面クリア時にカレントバッファをスクロールアウトさせるかどうか設定する</h1>
 
 <p>
-�J�[�\��������(0, 0)�ɂ���ꍇ�� &lt;ESC&gt;[J (Erase Below) �́A&lt;ESC&gt;[2J (Erase All) �Ɠ������ƂɂȂ�B<br>
-���̂Ƃ��A��ʃN���A���ɃJ�����g�o�b�t�@���X�N���[���A�E�g���邩�ǂ�����ݒ�ł���B
+カーソルが左上(0, 0)にある場合の &lt;ESC&gt;[J (Erase Below) は、&lt;ESC&gt;[2J (Erase All) と同じことになる。<br>
+このとき、画面クリア時にカレントバッファをスクロールアウトするかどうかを設定できる。
 </p>
 
 <p>
-on �̏ꍇ�ɂ́A&lt;ESC&gt;[2J �Ɠ��l�ɃJ�����g�o�b�t�@���X�N���[���A�E�g����B<br>
-off �̏ꍇ�ɂ̓J�����g�o�b�t�@���X�N���[���A�E�g�����A�J�[�\���ʒu����X�N���[���̍Ō�܂ł���������B
+on の場合には、&lt;ESC&gt;[2J と同様にカレントバッファをスクロールアウトする。<br>
+off の場合にはカレントバッファをスクロールアウトせず、カーソル位置からスクリーンの最後までを消去する。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 ScrollWindowClearScreen=on
 </pre>
 
 
-<h1 id="UnicodeDecSpMapping">Unicode����DEC Special Graphics�ւ̃}�b�s���O��ݒ肷��</h1>
+<h1 id="UnicodeDecSpMapping">UnicodeからDEC Special Graphicsへのマッピングを設定する</h1>
 
 <p>
-  �����ł͐ݒ�̓��e�ɂ��Đ������܂��B
+  ここでは設定の内容について説明します。
 </p>
 
 <p>
-  ���̃y�[�W���Q�Ƃ��������B
+  次のページも参照ください。
   <ul>
-    <li><a href="../about/emulations_dec_special.html">DEC Special Graphics(DEC����O���t�B�b�N)�ɂ���</a></li>
-    <li><a href="../menu/setup-additional-coding.html#DecSpecial">Additional settings / "Encoding" �^�u, DEC Special Graphics</a></li>
-    <li><a href="../about/qanda.html#dec_special_graphic">Q &amp; A�W</a></li>
+    <li><a href="../about/emulations_dec_special.html">DEC Special Graphics(DEC特殊グラフィック)について</a></li>
+    <li><a href="../menu/setup-additional-coding.html#DecSpecial">Additional settings / "Encoding" タブ, DEC Special Graphics</a></li>
+    <li><a href="../about/qanda.html#dec_special_graphic">Q &amp; A集</a></li>
   </ul>
 </p>
 
 <p>
-�}�b�v����镶���͊���̎�ނɕ��ނ���Ă���A��ޖ��ɕϊ����邩�ݒ肷�鎖���o���܂��B<br>
-�ϊ������ނ��Ƃ̒l�𑫂������l��UnicodeToDecSpMapping�Ɏw�肵�Ă��������B
+マップされる文字は幾つかの種類に分類されており、種類毎に変換するか設定する事が出来ます。<br>
+変換する種類ごとの値を足した数値をUnicodeToDecSpMappingに指定してください。
 </p>
 
 <pre>
-���A: �r��
-�l: 1
+種類A: 罫線
+値: 1
   Box drawings (U+2500-U+257F)
 </pre>
 
 <pre>
-���B: 4.58�܂ł�??�ƕ\�����ꂽ����(�p����ł͉����\������Ȃ������܂�)
-�l: 2
+種類B: 4.58までは??と表示された文字(英語環境では何も表示されない物も含む)
+値: 2
   Bullet (U+2022)
   Hyphenation point (U+2027)
   Light shade (25%) (U+2591)
@@ -336,30 +336,30 @@ ScrollWindowClearScreen=on
 </pre>
 
 <pre>
-���C: ���{����ł͒��_�A�p����ł�Middle dot�Ƃ��ĕ\������镶��
-       ���{����ȊO�ł͎w�肵�Ȃ��������߂܂�
-�l: 4
+種類C: 日本語環境では中点、英語環境ではMiddle dotとして表示される文字
+       日本語環境以外では指定しない事を勧めます
+値: 4
   Middle dot (U+00B7)
   One dot leader (U+2024)
   Bullet operator (U+2219)
 </pre>
 
 <pre>
-�ȗ���:
-# ���A��B
+省略時:
+# 種類AとB
 UnicodeToDecSpMapping=3
 </pre>
 
 
-<h1 id="StrictKeyMapping">�t�@���N�V�����L�[���̃f�t�H���g�̓���</h1>
+<h1 id="StrictKeyMapping">ファンクションキー等のデフォルトの動作</h1>
 
 <p>
-Tera Term 4.62 ���A�t�@���N�V�����L�[��G�f�B�^�L�[�p�b�h�̃L�[�̃f�t�H���g�̓��삪�ύX�ɂȂ�܂����B
-����ɂ��A�L�[�{�[�h�ݒ�t�@�C���ł����̃L�[�ݒ��off�ɂ�����A�L�[�{�[�h�ݒ�t�@�C���������ꍇ���AVT�[���̓����悤�ȃL�[�̃V�[�P���X�����o�����悤�ɂȂ�܂����B
+Tera Term 4.62 より、ファンクションキーやエディタキーパッドのキーのデフォルトの動作が変更になりました。
+これにより、キーボード設定ファイルでこれらのキー設定をoffにしたり、キーボード設定ファイルが無い場合も、VT端末の同じようなキーのシーケンスが送出されるようになりました。
 </p>
 
 <p>
-�L�[�{�[�h�ݒ�t�@�C���Ńt�@���N�V�����L�[����off�ɂ������ɁA�ȑO�̃o�[�W������ Tera Term �Ɠ����悤�ɉ������o���Ȃ��悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ StrictKeyMapping �s���ȉ��̂悤�ɕύX���Ă��������B
+キーボード設定ファイルでファンクションキー等をoffにした時に、以前のバージョンの Tera Term と同じように何も送出しないようにするには、設定ファイルの [Tera Term] セクションの StrictKeyMapping 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -367,15 +367,15 @@ StrictKeyMapping=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 StrictKeyMapping=off
 </pre>
 
 
-<h1 id="Meta8Bit">Alt�L�[��MSB���Z�b�g���������𑗐M����</h1>
+<h1 id="Meta8Bit">AltキーでMSBをセットした文字を送信する</h1>
 
 <p>
-Alt�L�[��MSB(Most Significant Bit �ŏ�ʃr�b�g)���Z�b�g���������𑗐M����ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ Meta8Bit �s���ȉ��̂悤�ɂ��Ă��������B
+AltキーでMSB(Most Significant Bit 最上位ビット)をセットした文字を送信するには、設定ファイルの [Tera Term] セクションの Meta8Bit 行を以下のようにしてください。
 </p>
 
 <pre>
@@ -383,7 +383,7 @@ Meta8Bit=raw
 </pre>
 
 <p>
-�܂��AAlt�L�[��MSB(Most Significant Bit �ŏ�ʃr�b�g)���Z�b�g�����������A���M�����R�[�h�̐ݒ�ɏ]����(UTF-8����)�ϊ����Ă��瑗�M����ɂ́A�ȉ��̂悤�ɂ��Ă��������B
+また、AltキーでMSB(Most Significant Bit 最上位ビット)をセットした文字を、送信文字コードの設定に従って(UTF-8等に)変換してから送信するには、以下のようにしてください。
 </p>
 
 <pre>
@@ -391,23 +391,23 @@ Meta8Bit=text
 </pre>
 
 <p>
-��: �ǂ���̏ꍇ���A���̋@�\��L���ɂ���ɂ� <a href="../menu/setup-keyboard.html">Meta Key</a> �̐ݒ���L���ɂ��Ă����K�v������܂��B
+注: どちらの場合も、この機能を有効にするには <a href="../menu/setup-keyboard.html">Meta Key</a> の設定も有効にしておく必要があります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 Meta8Bit=off
 </pre>
 
 
-<h1 id="AltScr">��։�ʃo�b�t�@�𖳌��ɂ���</h1>
+<h1 id="AltScr">代替画面バッファを無効にする</h1>
 
 <p>
-Tera Term 4.65����։�ʃo�b�t�@�ɑΉ����܂����B���ׁ̈A��։�ʃo�b�t�@�ɑΉ������A�v���P�[�V����(Vim��less�Ȃ�)�ł͏I�����ɋN���O�̉�ʂ���������܂��B
+Tera Term 4.65より代替画面バッファに対応しました。この為、代替画面バッファに対応したアプリケーション(Vimやlessなど)では終了時に起動前の画面が復元されます。
 </p>
 
 <p>
-��։�ʃo�b�t�@�𖳌��ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ AlternateScreenBuffer �s���ȉ��̂悤�ɂ��Ă��������B
+代替画面バッファを無効にするには、設定ファイルの [Tera Term] セクションの AlternateScreenBuffer 行を以下のようにしてください。
 </p>
 
 <pre>
@@ -415,19 +415,19 @@ AlternateScreenBuffer=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 AlternateScreenBuffer=on
 </pre>
 
 
-<h1 id="TerminalUID">�[���ŗLID��ݒ肷��</h1>
+<h1 id="TerminalUID">端末固有IDを設定する</h1>
 
 <p>
-Tera Term �� DA3 ����V�[�P���X����M����ƁA�[���ŗL�� ID �������܂��B�[���ŗL ID �� 8 ���� 16 �i���l�ŁA�ŏ��� 2 ���������ꏊ���A�c��� 6 ���������ꏊ���Œ[�����Ɋ���U��ꂽ�ŗL�̔ԍ��ł��B
+Tera Term は DA3 制御シーケンスを受信すると、端末固有の ID 応答します。端末固有 ID は 8 桁の 16 進数値で、最初の 2 桁が製造場所を、残りの 6 桁が製造場所内で端末毎に割り振られた固有の番号です。
 </p>
 
 <p>
-DA3 ����V�[�P���X�ɑ΂��ĉ�������[���ŗL ID ��ʂ̒l�A�Ⴆ�� 01234567 �ɕύX�������ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ TerminalUID �s���ȉ��̂悤�ɂ��Ă��������B
+DA3 制御シーケンスに対して応答する端末固有 ID を別の値、例えば 01234567 に変更したい場合は、設定ファイルの [Tera Term] セクションの TerminalUID 行を以下のようにしてください。
 </p>
 
 <pre>
@@ -435,19 +435,19 @@ TerminalUID=01234567
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 TerminalUID=FFFFFFFF
 </pre>
 
 
-<h1 id="LockTUID">�[���ŗLID��ύX�\�ɂ���</h1>
+<h1 id="LockTUID">端末固有IDを変更可能にする</h1>
 
 <p>
-�[���ŗL ID �̓z�X�g������ DECSTUI ����V�[�P���X�𑗂鎖�ɂ���ĕύX���鎖���o���܂����A�W���ł͂��̋@�\�͖����ɂ���Ă��܂��B
+端末固有 ID はホスト側から DECSTUI 制御シーケンスを送る事によって変更する事が出来ますが、標準ではこの機能は無効にされています。
 </p>
 
 <p>
-DECSTUI����V�[�P���X�ɂ���Ē[���ŗL ID ��ύX�ł���悤�ɂ������ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ LockTUID �s���ȉ��̂悤�ɂ��Ă��������B
+DECSTUI制御シーケンスによって端末固有 ID を変更できるようにしたい場合は、設定ファイルの [Tera Term] セクションの LockTUID 行を以下のようにしてください。
 </p>
 
 <pre>
@@ -455,15 +455,15 @@ LockTUID=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 LockTUID=on
 </pre>
 
 
-<h1 id="TabStopModify">�^�u�X�g�b�v�ʒu�̕ύX���֎~����</h1>
+<h1 id="TabStopModify">タブストップ位置の変更を禁止する</h1>
 
 <p>
-����V�[�P���X�ɂ��^�u�X�g�b�v�̈ʒu�̕ύX���֎~�������ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ TabStopModifySequence �s���ȉ��̂悤�ɂ��Ă��������B
+制御シーケンスによるタブストップの位置の変更を禁止したい場合は、設定ファイルの [Tera Term] セクションの TabStopModifySequence 行を以下のようにしてください。
 </p>
 
 <pre>
@@ -471,21 +471,21 @@ TabStopModifySequence=off
 </pre>
 
 <p>
-�܂��A�^�u�X�g�b�v�̈ʒu��ύX���鐧��V�[�P���X�̓��A����̂��݂̂̂��֎~���鎖���o���܂��B�ȉ��̃^�u�X�g�b�v�ύX�V�[�P���X�̓��A<strong>������</strong>�V�[�P���X�̗����̑g�ݍ��킹���w�肵�܂��B
+また、タブストップの位置を変更する制御シーケンスの内、特定のもののみを禁止する事も出来ます。以下のタブストップ変更シーケンスの内、<strong>許可する</strong>シーケンスの略号の組み合わせを指定します。
 </p>
 
 <table>
-<tr><th>����</th> <th>�V�[�P���X</th><th>����</th></tr>
-<tr><td>HTS7</td> <td>ESC H</td>     <td>�J�[�\���ʒu�Ƀ^�u�X�g�b�v��ݒ肷�� (7�r�b�g�`��)</td></tr>
-<tr><td>HTS8</td> <td>0x88</td>      <td>�J�[�\���ʒu�Ƀ^�u�X�g�b�v��ݒ肷�� (8�r�b�g�`��)</td></tr>
-<tr><td>HTS</td>  <td> - </td>       <td>HTS7��HTS8�̗���</td></tr>
-<tr><td>TBC0</td> <td>ESC [ 0 g</td> <td>�J�[�\���ʒu�̃^�u�X�g�b�v���폜����</td></tr>
-<tr><td>TBC3</td> <td>ESC [ 3 g</td> <td>���ׂẴ^�u�X�g�b�v���폜����</td></tr>
-<tr><td>TBC</td>  <td> - </td>       <td>TBC0��TBC3�̗���</td></tr>
+<tr><th>略号</th> <th>シーケンス</th><th>説明</th></tr>
+<tr><td>HTS7</td> <td>ESC H</td>     <td>カーソル位置にタブストップを設定する (7ビット形式)</td></tr>
+<tr><td>HTS8</td> <td>0x88</td>      <td>カーソル位置にタブストップを設定する (8ビット形式)</td></tr>
+<tr><td>HTS</td>  <td> - </td>       <td>HTS7とHTS8の両方</td></tr>
+<tr><td>TBC0</td> <td>ESC [ 0 g</td> <td>カーソル位置のタブストップを削除する</td></tr>
+<tr><td>TBC3</td> <td>ESC [ 3 g</td> <td>すべてのタブストップを削除する</td></tr>
+<tr><td>TBC</td>  <td> - </td>       <td>TBC0とTBC3の両方</td></tr>
 </table>
 
 <p>
-�Ⴆ�΁A8�r�b�g�`���̃^�u�ݒ�V�[�P���X(HTS8)�݂̂��֎~�������ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ TabStopModifySequence �s���ȉ��̂悤�ɂ��Ă��������B
+例えば、8ビット形式のタブ設定シーケンス(HTS8)のみを禁止したい場合は、設定ファイルの [Tera Term] セクションの TabStopModifySequence 行を以下のようにしてください。
 </p>
 
 <pre>
@@ -493,20 +493,20 @@ TabStopModifySequence=HTS7,TBC
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 TabStopModifySequence=on
 </pre>
 
 
-<h1 id="BellLimitting">�x���ߎg�p���̈ꎞ������</h1>
+<h1 id="BellLimitting">ベル過使用時の一時無効化</h1>
 <p>
-�z�X�g������ BEL ���� (ASCII $07) �������ė������ATera Term �ł̓r�[�v����炵����A��ʂ�_�ł������肵�܂��B
+ホスト側から BEL 文字 (ASCII $07) が送られて来た時、Tera Term ではビープ音を鳴らしたり、画面を点滅させたりします。
 </p>
 
 <p>
-����ăo�C�i���t�@�C����\�����Ă��܂������Ȃǂő��ʂ� BEL �����������ė������ɁA�����I�Ƀr�[�v����炷�̂�}�����鎖���o���܂��B<br>
-�Ⴆ�΁A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ BeepOverUsedTime, BeepOverUsedCount, BeepSuppressTime �s���ȉ��̂悤�ɂ���ƁA
-2 �b�Ԃ� 5 �� BEL �����������Ă���ƁABEL ������ 10 �b�ԑ����ė��Ȃ��Ȃ�܂Ńr�[�v�����Ȃ炳�Ȃ��悤�ɂȂ�܂��B
+誤ってバイナリファイルを表示してしまった時などで多量に BEL 文字が送られて来た時に、自動的にビープ音を鳴らすのを抑制する事が出来ます。<br>
+例えば、設定ファイルの [Tera Term] セクションの BeepOverUsedTime, BeepOverUsedCount, BeepSuppressTime 行を以下のようにすると、
+2 秒間に 5 回 BEL 文字が送られてくると、BEL 文字が 10 秒間送られて来なくなるまでビープ音をならさないようになります。
 </p>
 
 <pre>
@@ -517,7 +517,7 @@ BeepSuppressTime=10
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 ; Beep over-used
 BeepOverUsedTime=2
 BeepOverUsedCount=5
@@ -525,14 +525,14 @@ BeepSuppressTime=5
 </pre>
 
 
-<h1 id="BeepVBellWait">Beep �� Visual Bell �̂Ƃ��̃t���b�V������</h1>
+<h1 id="BeepVBellWait">Beep が Visual Bell のときのフラッシュ時間</h1>
 <p>
-�z�X�g������ BEL ���� (ASCII $07) �������ė������ATera Term �ł͉�ʂ�_�ł����邱�Ƃ��ł��܂��B
+ホスト側から BEL 文字 (ASCII $07) が送られて来た時、Tera Term では画面を点滅させることができます。
 </p>
 
 <p>
-��ʂ̓_�ł́A�[���𔽓]�\�������̂���莞�ԑ҂��A�Ăђ[���𔽓]�\�����Č��ɖ߂��Ă��܂��B<br>
-���[�U�͂��̑҂����Ԃ𒲐߂��邱�Ƃ��ł��܂��B
+画面の点滅は、端末を反転表示したのち一定時間待ち、再び端末を反転表示して元に戻しています。<br>
+ユーザはこの待ち時間を調節することができます。
 </p>
 
 <pre>
@@ -541,22 +541,22 @@ BeepVBellWait=100
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 BeepVBellWait=10
 </pre>
 
 
-<h1 id="MaxOSCBufferSize">OSC������p�o�b�t�@�T�C�Y</h1>
+<h1 id="MaxOSCBufferSize">OSC文字列用バッファサイズ</h1>
 <p>
-Tera Term �ł� OSC ������̏������ɏ����p�̃o�b�t�@������Ȃ��Ȃ�Ǝ����I�Ƀo�b�t�@���g������悤�ɂȂ��Ă��܂��B
-�������A�o�O���Ńz�X�g������ꂽ OSC �����񑗂��Ă������Ȃǂɍی��Ȃ��������������̂�h�����߁A
-OSC �����񏈗��p�̃o�b�t�@�̍ő�T�C�Y�𐧌����Ă��܂��B
+Tera Term では OSC 文字列の処理時に処理用のバッファが足りなくなると自動的にバッファを拡張するようになっています。
+しかし、バグ等でホスト側が壊れた OSC 文字列送ってきた時などに際限なくメモリを消費するのを防ぐため、
+OSC 文字列処理用のバッファの最大サイズを制限しています。
 </p>
 
 <p>
-�ʏ�̎g�p�ł͂܂���肪�������܂��񂪁AOSC 52 (PASTE64) �ő��ʂ̃f�[�^������肷��ꍇ�ɐ����ɂ�����A
-�f�[�^���r���Ő؂�Ă��܂��ꍇ������܂��B<br>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ MaxOSCBufferSize �s�̒l���ȉ��̂悤�ɑ��₷���ɂ���āAOSC ������ł�葽�ʂ̃f�[�^��������悤�ɂȂ�܂��B
+通常の使用ではまず問題が発生しませんが、OSC 52 (PASTE64) で多量のデータをやり取りする場合に制限にかかり、
+データが途中で切れてしまう場合があります。<br>
+設定ファイルの [Tera Term] セクションの MaxOSCBufferSize 行の値を以下のように増やす事によって、OSC 文字列でより多量のデータを扱えるようになります。
 </p>
 
 <pre>
@@ -564,15 +564,15 @@ MaxOSCBufferSize=16000
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 MaxOSCBufferSize=4096
 </pre>
 
 
-<h1 id="ISO2022ShiftFunction">ISO/IEC 2022�̃V�t�g�@�\�ɂ�镶���Z�b�g�̐؂�ւ����֎~����</h1>
+<h1 id="ISO2022ShiftFunction">ISO/IEC 2022のシフト機能による文字セットの切り替えを禁止する</h1>
 
 <p>
-ISO/IEC 2022�̃V�t�g�@�\�ɂ�镶���Z�b�g�̐؂�ւ����֎~�������ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ ISO2022ShiftFunction �s���ȉ��̂悤�ɂ��Ă��������B
+ISO/IEC 2022のシフト機能による文字セットの切り替えを禁止したい場合は、設定ファイルの [Tera Term] セクションの ISO2022ShiftFunction 行を以下のようにしてください。
 </p>
 
 <pre>
@@ -580,26 +580,26 @@ ISO2022ShiftFunction=off
 </pre>
 
 <p>
-�܂��AISO/IEC 2022�̃V�t�g�@�\�̓��A����̂��݂̂̂��֎~���鎖���o���܂��B�ȉ��̃V�t�g�@�\�̓��A<strong>������</strong>�@�\�̗����̑g�ݍ��킹���w�肵�܂��B
+また、ISO/IEC 2022のシフト機能の内、特定のもののみを禁止する事も出来ます。以下のシフト機能の内、<strong>許可する</strong>機能の略号の組み合わせを指定します。
 </p>
 
 <table>
-<tr><th>����</th> <th>�R�[�h</th><th>����</th></tr>
-<tr><td>SI</td>   <td>0x0F</td>  <td>GL �� G0 ���Ăяo��</td></tr>
-<tr><td>SO</td>   <td>0x0E</td>  <td>GL �� G1 ���Ăяo��</td></tr>
-<tr><td>LS2</td>  <td>ESC n</td> <td>GL �� G2 ���Ăяo��</td></tr>
-<tr><td>LS3</td>  <td>ESC o</td> <td>GL �� G3 ���Ăяo��</td></tr>
-<tr><td>LS1R</td> <td>ESC ~</td> <td>GR �� G1 ���Ăяo��</td></tr>
-<tr><td>LS2R</td> <td>ESC }</td> <td>GR �� G2 ���Ăяo��</td></tr>
-<tr><td>LS3R</td> <td>ESC |</td> <td>GR �� G3 ���Ăяo��</td></tr>
-<tr><td>SS2</td>  <td>0x8E / ESC N</td> <td>GL �܂��� GR �� G2 �����̈ꕶ���Ɍ���Ăяo��</td></tr>
-<tr><td>SS3</td>  <td>0x8F / ESC O</td> <td>GL �܂��� GR �� G3 �����̈ꕶ���Ɍ���Ăяo��</td></tr>
-<tr><td>ALL</td>  <td> - </td> <td>��L���ׂ�</td>
-<tr><td>NONE</td>  <td> - </td> <td>�Ȃ�</td>
+<tr><th>略号</th> <th>コード</th><th>説明</th></tr>
+<tr><td>SI</td>   <td>0x0F</td>  <td>GL へ G0 を呼び出す</td></tr>
+<tr><td>SO</td>   <td>0x0E</td>  <td>GL へ G1 を呼び出す</td></tr>
+<tr><td>LS2</td>  <td>ESC n</td> <td>GL へ G2 を呼び出す</td></tr>
+<tr><td>LS3</td>  <td>ESC o</td> <td>GL へ G3 を呼び出す</td></tr>
+<tr><td>LS1R</td> <td>ESC ~</td> <td>GR へ G1 を呼び出す</td></tr>
+<tr><td>LS2R</td> <td>ESC }</td> <td>GR へ G2 を呼び出す</td></tr>
+<tr><td>LS3R</td> <td>ESC |</td> <td>GR へ G3 を呼び出す</td></tr>
+<tr><td>SS2</td>  <td>0x8E / ESC N</td> <td>GL または GR へ G2 を次の一文字に限り呼び出す</td></tr>
+<tr><td>SS3</td>  <td>0x8F / ESC O</td> <td>GL または GR へ G3 を次の一文字に限り呼び出す</td></tr>
+<tr><td>ALL</td>  <td> - </td> <td>上記すべて</td>
+<tr><td>NONE</td>  <td> - </td> <td>なし</td>
 </table>
 
 <p>
-�Ⴆ�΁AShift-In(SI), Shift-Out(SO) �݂̂��֎~�������ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ ISO2022ShiftFunction �s���ȉ��̂悤�ɂ��Ă��������B
+例えば、Shift-In(SI), Shift-Out(SO) のみを禁止したい場合は、設定ファイルの [Tera Term] セクションの ISO2022ShiftFunction 行を以下のようにしてください。
 </p>
 
 <pre>
@@ -607,7 +607,7 @@ ISO2022ShiftFunction=LS2,LS3,LS1R,LS2R,LS3R,SS2,SS3
 </pre>
 
 <p>
-�܂��A�����̑O�� - ��t���鎖�ɂ���Ďw�肵���V�t�g�@�\�𖳌��ɂ��鎖���ł��܂��B�O�q�� Shift-In(SI), Shift-Out(SO) �݂̂��֎~����ݒ�́A�ȉ��̂悤�ɂ��w��ł��܂��B
+また、略号の前に - を付ける事によって指定したシフト機能を無効にする事ができます。前述の Shift-In(SI), Shift-Out(SO) のみを禁止する設定は、以下のようにも指定できます。
 </p>
 
 <pre>
@@ -615,78 +615,78 @@ ISO2022ShiftFunction=ALL,-SI,-SO
 </pre>
 
 <p>
-��: ���̌`���Ŏw�肵���ꍇ�A�ݒ�̕ۑ����s���Ǝg�p����@�\�݂̂̃��X�g�ɒu���������܂��B
+注: この形式で指定した場合、設定の保存を行うと使用する機能のみのリストに置き換えられます。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 ISO2022ShiftFunction=on
 </pre>
 
 
-<h1 id="FIXEDJIS">7bit JIS�J�^�J�i(��p)�[���Ƃ��Ďg�p����</h1>
+<h1 id="FIXEDJIS">7bit JISカタカナ(専用)端末として使用する</h1>
 
-<p>���̐ݒ�̎�
+<p>次の設定の時
   <ul>
-    <li>�S�ʐݒ�/����: Japanese</li>
-    <li>�[��/ ����-��M: JIS</li>
-    <li>�[��/����-��M/���p�J�i: On</li>
+    <li>全般設定/言語: Japanese</li>
+    <li>端末/ 漢字-受信: JIS</li>
+    <li>端末/漢字-受信/半角カナ: On</li>
   </ul>
-���{�ꃂ�[�h�ł́A�f�t�H���g�� G1�́AJIS X 0201 �J�^�J�i(���p�J�^�J�i)
-���w�����ꂽ��ԂƂȂ�܂��B7bit�R�[�h��JIS X 0201 �J�^�J�i���g���ꍇ�A
-SO��GL��G1���Ăяo���Ďg�p���܂��B
+日本語モードでは、デフォルトで G1は、JIS X 0201 カタカナ(半角カタカナ)
+が指示された状態となります。7bitコードでJIS X 0201 カタカナを使う場合、
+SOでGLにG1を呼び出して使用します。
 </p>
 
 <p>
-�Ⴆ�΁A�ȉ������s����� ����� �ƕ\������܂��B
+例えば、以下を実行すると テラターム と表示されます。
 </p>
 <pre>
 echo -e '\016CW@0Q\017'
-# => �����
+# => テラターム
 </pre>
 
 <p>
-�������AG1�ɑ��̕����Z�b�g���w�����ꂽ��ԂɂȂ��SO��JIS X 0201 �J�^
-�J�i���\������Ȃ��Ȃ��Ă��܂��܂��B
+しかし、G1に他の文字セットが指示された状態になるとSOでJIS X 0201 カタ
+カナが表示されなくなってしまいます。
 </p>
 
 <pre>
-# G1��US-ASCII���w������
+# G1にUS-ASCIIを指示する
 echo -e '\033)B'
 
-# SO��GL��G1���Ăяo���Ă�JIS X 0201 �J�^�J�i���\���ł��Ȃ�
+# SOでGLにG1を呼び出してもJIS X 0201 カタカナが表示できない
 echo -e '\016CW@0Q\017'
 # => CW@0Q
 </pre>
 
 <p>
-FixedJIS=on �ɐݒ肷���SO��GL��G1���Ăяo�����ɁA���炩����G1��JIS X
-0201 �J�^�J�i���w������悤�ɂȂ�A����JIS X 0201�J�^�J�i���\������
-��悤�ɂȂ�܂��B
+FixedJIS=on に設定するとSOでGLにG1を呼び出す時に、あらかじめG1にJIS X
+0201 カタカナを指示するようになり、いつもJIS X 0201カタカナが表示され
+るようになります。
 </p>
 
 <p>
-FixedJIS=on ��G1��JIS X 0201 �J�^�J�i�ɌŒ肷��ׂ̐ݒ�ł��B����ɂ�
-��A���7bit JIS�J�^�J�i�[���Ƃ��Ďg����悤�ɂȂ�܂��B
+FixedJIS=on はG1をJIS X 0201 カタカナに固定する為の設定です。これによ
+り、常に7bit JISカタカナ端末として使えるようになります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 FixedJIS=off
 </pre>
 
-<h1 id="FallbackToCP932">�s����UTF-8������CP932�Ƃ��ăf�R�[�h����</h1>
+<h1 id="FallbackToCP932">不正なUTF-8文字をCP932としてデコードする</h1>
 
 <p>
-��M������UTF-8�̂Ƃ��ɁAUTF-8�Ƃ��ĕs���ȕ������ACP932�Ƃ��ăf�R�[�h���܂��B�����I�����ł��B
+受信文字がUTF-8のときに、UTF-8として不正な文字を、CP932としてデコードします。実験的実装です。
 </p>
 
 <p>
-Cygwin�ڑ�����Windows�t���R�}���h�̏o�͂�CP932�ōs���鎖�ɑΉ����邽�߂̂��̂ŁA����ȊO�̃P�[�X�͑z�肵�Ă��܂���B
+Cygwin接続時にWindows付属コマンドの出力がCP932で行われる事に対応するためのもので、それ以外のケースは想定していません。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 FallbackToCP932=off
 </pre>
 

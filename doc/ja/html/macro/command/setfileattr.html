@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>setfileattr</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,72 +14,72 @@
 <h1>setfileattr</h1>
 
 <p>
-�t�@�C���܂��̓f�B���N�g���̑�����ύX����B<em>(�o�[�W����4.69�ȍ~)</em>
+ファイルまたはディレクトリの属性を変更する。<em>(バージョン4.69以降)</em>
 </p>
 
 <pre class="macro-syntax">
 setfileattr &lt;filename&gt; &lt;attributes&gt;
 </pre>
 
-<h2>�p�����[�^</h2>
+<h2>パラメータ</h2>
 
 <dl>
-	<dt class="macro">������ &lt;filename&gt;</dt>
-	<dd>�t�@�C�����܂��̓f�B���N�g����</dd>
+	<dt class="macro">文字列 &lt;filename&gt;</dt>
+	<dd>ファイル名またはディレクトリ名</dd>
 
-	<dt class="macro">���� &lt;attributes&gt;</dt>
-	<dd>�ݒ肷�鑮���l���w�肷��B�����l�͈ȉ��̐��l�̑g�ݍ��킹�ƂȂ�B<br>
+	<dt class="macro">整数 &lt;attributes&gt;</dt>
+	<dd>設定する属性値を指定する。属性値は以下の数値の組み合わせとなる。<br>
 	    <table border="2">
 	      <tr>
-	        <th>�l</th>
-	        <th>�Ӗ�</th>
+	        <th>値</th>
+	        <th>意味</th>
 	      </tr>
 	      <tr>
 	        <td>$1</td>
-	        <td>�ǂݎ���p</td>
+	        <td>読み取り専用</td>
 	      </tr>
 	      <tr>
 	        <td>$2</td>
-	        <td>�B���t�@�C���܂��͉B���f�B���N�g��</td>
+	        <td>隠しファイルまたは隠しディレクトリ</td>
 	      </tr>
 	      <tr>
 	        <td>$4</td>
-	        <td>�I�y���[�e�B���O�V�X�e���̈ꕔ�A�܂��̓I�y���[�e�B���O�V�X�e����p</td>
+	        <td>オペレーティングシステムの一部、またはオペレーティングシステム専用</td>
 	      </tr>
 	      <tr>
 	        <td>$20</td>
-	        <td>�A�[�J�C�u</td>
+	        <td>アーカイブ</td>
 	      </tr>
 	      <tr>
 	        <td>$80</td>
-	        <td>���ɑ����͂Ȃ�<br>
-	            �P�ƂŎw�肵���Ƃ��̂ݗL��</td>
+	        <td>特に属性はない<br>
+	            単独で指定したときのみ有効</td>
 	      </tr>
 	      <tr>
 	        <td>$100</td>
-	        <td>�ꎞ�t�@�C��</td>
+	        <td>一時ファイル</td>
 	      </tr>
 	      <tr>
 	        <td>$1000</td>
-	        <td>�I�t���C���̋L�����u�֕����I�Ɉړ����ꂽ(Windows 2000 �ȍ~)</td>
+	        <td>オフラインの記憶装置へ物理的に移動された(Windows 2000 以降)</td>
 	      </tr>
 	      <tr>
 	        <td>$2000</td>
-	        <td>�u�C���f�b�N�X�T�[�r�X�v�̑ΏۂɂȂ��Ă��Ȃ�(Windows 2000 �ȍ~)</td>
+	        <td>「インデックスサービス」の対象になっていない(Windows 2000 以降)</td>
 	      </tr>
 	    </table>
 	</dd>
 </dl>
 
-<h2>�Ԃ�l</h2>
+<h2>返り値</h2>
 
 <dl>
-	<dt class="macro">�V�X�e���ϐ� &lt;result&gt;</dt>
-	<dd>�����̕ύX�Ɏ��s�����0���i�[�����B<br>
-	    ���������1���i�[�����B</dd>
+	<dt class="macro">システム変数 &lt;result&gt;</dt>
+	<dd>属性の変更に失敗すると0が格納される。<br>
+	    成功すると1が格納される。</dd>
 </dl>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 ; add readonly attribute
@@ -89,11 +89,11 @@ attr = result | $1 ; keep current attributes
 setfileattr file attr
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="getfileattr.html">getfileattr</a></li>
-  <li>MSDN ���C�u���� <a href="http://msdn.microsoft.com/en-us/library/aa365535(v=VS.85).aspx" target="_blank">SetFileAttributes</a></li>
-  <li>MSDN ���C�u���� <a href="http://msdn.microsoft.com/en-us/library/gg258117(v=VS.85).aspx" target="_blank">File Attribute Constants</a></li>
+  <li>MSDN ライブラリ <a href="http://msdn.microsoft.com/en-us/library/aa365535(v=VS.85).aspx" target="_blank">SetFileAttributes</a></li>
+  <li>MSDN ライブラリ <a href="http://msdn.microsoft.com/en-us/library/gg258117(v=VS.85).aspx" target="_blank">File Attribute Constants</a></li>
 </ul>
 
 </body>

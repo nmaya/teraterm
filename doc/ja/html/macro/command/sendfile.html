@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>sendfile</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,35 +14,35 @@
 <h1>sendfile</h1>
 
 <p>
-�t�@�C���𑗐M����B
+ファイルを送信する。
 </p>
 
 <pre class="macro-syntax">
 sendfile &lt;filename&gt; &lt;binary flag&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-&lt;filename&gt; �Ŏw�肳�ꂽ�t�@�C���𑗐M����B���M���I���܂Ŏ��̃R�}���h�͎��s����Ȃ��B<br>
+&lt;filename&gt; で指定されたファイルを送信する。送信が終わるまで次のコマンドは実行されない。<br>
 </p>
 
 <p>
-&lt;filename&gt; �����΃p�X�̎��A<a href="../../setup/folder.html#FileDir">�t�@�C���]���p�f�B���N�g��</a>���΂Ƃ��Ĉ����B
+&lt;filename&gt; が相対パスの時、<a href="../../setup/folder.html#FileDir">ファイル転送用ディレクトリ</a>相対として扱う。
 </p>
 
 <p>
-&lt;binary flag&gt; �̒l�� 0 �ȊO�̂Ƃ��A�t�@�C���̓��e�����̂܂ܑ��M����B<br>
-&lt;binary flag&gt; �̒l�� 0 �̂Ƃ��A�t�@�C���̒��Ɋ܂܂�銿���A���s������ϊ����đ��M����BTAB ($09), LF ($0A), CR ($0D) �ȊO�̐��䕶���͑��M����Ȃ��B
+&lt;binary flag&gt; の値が 0 以外のとき、ファイルの内容をそのまま送信する。<br>
+&lt;binary flag&gt; の値が 0 のとき、ファイルの中に含まれる漢字、改行文字を変換して送信する。TAB ($09), LF ($0A), CR ($0D) 以外の制御文字は送信されない。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 sendfile 'data.dat' 1
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="changedir.html">changedir</a></li>
 </ul>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>cygconnect</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,71 +14,71 @@
 <h1>cygconnect</h1>
 
 <p>
-Cygwin�֐ڑ�����B<em>(�o�[�W���� 4.57�ȍ~)</em>
+Cygwinへ接続する。<em>(バージョン 4.57以降)</em>
 </p>
 
 <pre class="macro-syntax">
 cygconnect [&lt;command line parameters&gt;]
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-MACRO �� Tera Term �ƃ����N����Ă��Ȃ��ꍇ�ACygwin �ɐڑ����� Tera Term ���N������ MACRO �ƃ����N����B&lt;command line parameters&gt; �́ACygwin �ɐڑ����鎞�Ɏg�� CygTerm �̃R�}���h���C���p�����[�^�BCygTerm �̃R�}���h���C���p�����[�^�ɂ��ẮA"<a href="../../commandline/cygterm.html">CygTerm+ �R�}���h���C��</a>"���Q�ƁB
+MACRO が Tera Term とリンクされていない場合、Cygwin に接続した Tera Term を起動して MACRO とリンクする。&lt;command line parameters&gt; は、Cygwin に接続する時に使う CygTerm のコマンドラインパラメータ。CygTerm のコマンドラインパラメータについては、"<a href="../../commandline/cygterm.html">CygTerm+ コマンドライン</a>"を参照。
 </p>
 
 <p>
-MACRO �� Tera Term �Ƃ��łɃ����N����Ă��āATera Term ���z�X�g�ɐڑ�����Ă��Ȃ��ꍇ�A�����N���Ă��� Tera Term ���I����������Acygwin �ɐڑ�������Ԃ� Tera Term�� �N������ MACRO �ƃ����N����B
+MACRO が Tera Term とすでにリンクされていて、Tera Term がホストに接続されていない場合、リンクしている Tera Term を終了させた後、cygwin に接続した状態の Tera Termを 起動して MACRO とリンクする。
 </p>
 
 <p>
-MACRO �� Tera Term �Ƃ��łɃ����N����Ă��āATera Term ���z�X�g���� Cygwin �ɂ��łɐڑ�����Ă���ꍇ�A���̃R�}���h�͖��������B
+MACRO が Tera Term とすでにリンクされていて、Tera Term がホスト又は Cygwin にすでに接続されている場合、このコマンドは無視される。
 </p>
 
 <p>
-���̃R�}���h�̌��ʁA�����N�Ɛڑ��̏�Ԃɉ����Ĉȉ��̂����̈�̒l���V�X�e���ϐ� result �Ɋi�[�����B
+このコマンドの結果、リンクと接続の状態に応じて以下のうちの一つの値がシステム変数 result に格納される。
 </p>
 
 <table>
  <tr>
-  <th>�l</th>
-  <th>���</th>
+  <th>値</th>
+  <th>状態</th>
  </tr>
  <tr>
   <td>0</td>
-  <td>Tera Term �ƃ����N����Ă��Ȃ��B</td>
+  <td>Tera Term とリンクされていない。</td>
  </tr>
  <tr>
   <td>1</td>
-  <td>�z�X�g���� cygwin �ւ̐ڑ��͂���Ă��Ȃ����ATera Term �ւ̃����N�͂���Ă���B</td>
+  <td>ホスト又は cygwin への接続はされていないが、Tera Term へのリンクはされている。</td>
  </tr>
  <tr>
   <td>2</td>
-  <td>�����N����ѐڑ������Ƃ�����Ă���B</td>
+  <td>リンクおよび接続両方ともされている。</td>
  </tr>
 </table>
 
 <p>
-"cygconnect" �R�}���h�����s����O�Ƀ����N�Ɛڑ��̏�Ԃ𒲂ׂ�ɂ́A"<a href="testlink.html">testlink</a>" �R�}���h���g�����Ƃ��ł���B
+"cygconnect" コマンドを実行する前にリンクと接続の状態を調べるには、"<a href="testlink.html">testlink</a>" コマンドを使うことができる。
 </p>
 
 <p>
-Tera Term �� MACRO �̃����N���Ă��Ȃ���Ԃł́A"<a href="connect.html">connect</a>" �� "cygconnect", "<a href="testlink.html">testlink</a>" �ȊO�̒ʐM�R�}���h�͎��s�ł��Ȃ��B
+Tera Term と MACRO のリンクしていない状態では、"<a href="connect.html">connect</a>" と "cygconnect", "<a href="testlink.html">testlink</a>" 以外の通信コマンドは実行できない。
 </p>
 
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
-; cygwin �ɐڑ����� Tera Term ���N��
+; cygwin に接続した Tera Term を起動
 cygconnect
 
-; �J�����g�f�B���N�g���� C:\ �Ɉړ�������Ԃ� cygwin �ɐڑ����� Tera Term ���N��
+; カレントディレクトリを C:\ に移動した状態で cygwin に接続した Tera Term を起動
 cygconnect '-d C:\ -nocd -nols'
 </pre>
 
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="connect.html">connect</a></li>
   <li><a href="closett.html">closett</a></li>
@@ -86,7 +86,7 @@ cygconnect '-d C:\ -nocd -nols'
   <li><a href="testlink.html">testlink</a></li>
   <li><a href="unlink.html">unlink</a></li>
   <li><a href="http://www.cygwin.com/" target="_blank">Cygwin Information and Installation</a></li>
-  <li><a href="../appendixes/disconnecttiming.html">�ؒf�シ���ɐڑ�����ꍇ�̒��ӓ_</a></li>
+  <li><a href="../appendixes/disconnecttiming.html">切断後すぐに接続する場合の注意点</a></li>
 </ul>
 
 </body>

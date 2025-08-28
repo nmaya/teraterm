@@ -2,202 +2,202 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>�J����ƃ���</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>開発作業メモ</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>�J����ƃ���</h1>
+<h1>開発作業メモ</h1>
 
 <ol>
-  <li><a href="#ini-entry">TERATERM.INI �ւ̍��ڒǉ�</a></li>
-  <li><a href="#i18n">���ۉ����b�Z�[�W�̑Ή�</a></li>
-  <li><a href="#add-macro-command">�}�N���R�}���h�ǉ����̍�ƃ��X�g</a></li>
-  <li><a href="#menu-id">���j���[ID�ǉ����̖����K��</a></li>
-  <li><a href="#icon">�A�C�R��</a></li>
-  <li><a href="#update-library">���C�u�����o�[�W�����A�b�v���̕ύX�ӏ�</a></li>
-  <li><a href="#dump">�_���v</a></li>
+  <li><a href="#ini-entry">TERATERM.INI への項目追加</a></li>
+  <li><a href="#i18n">国際化メッセージの対応</a></li>
+  <li><a href="#add-macro-command">マクロコマンド追加時の作業リスト</a></li>
+  <li><a href="#menu-id">メニューID追加時の命名規則</a></li>
+  <li><a href="#icon">アイコン</a></li>
+  <li><a href="#update-library">ライブラリバージョンアップ時の変更箇所</a></li>
+  <li><a href="#dump">ダンプ</a></li>
 </ol>
 
 <hr>
 
-<h2 id="ini-entry">TERATERM.INI �ւ̍��ڒǉ�</h2>
+<h2 id="ini-entry">TERATERM.INI への項目追加</h2>
 
-<h3>�ǂ�ȂƂ��ɒǉ����邩</h3>
-
-<p>
-�V�����@�\���ǉ�����ē��삪�ς��ƁA����܂łǂ���̓�������҂��郆�[�U�ɂƂ��Ă͕s�ւɂȂ�B<br>
-�����؂�ւ�����悤�ɁATERATERM.INI �֍��ڂ�ǉ�����B
-</p>
-
-<h3>�f�t�H���g�l</h3>
+<h3>どんなときに追加するか</h3>
 
 <p>
-�V�������삪�命���̃��[�U�ɂƂ��ĕ֗��ɂȂ�A���S�ł���A�����𐶂܂Ȃ����̂ł���΁uon�v�Ƃ��Ă悢�B<br>
-�����łȂ��ꍇ�́uoff�v�Ƃ��āA�ȑO�Ɠ�������ɂȂ�悤�ɂ��ׂ��B
+新しい機能が追加されて動作が変わると、これまでどおりの動作を期待するユーザにとっては不便になる。<br>
+動作を切り替えられるように、TERATERM.INI へ項目を追加する。
 </p>
 
-<h3>���ږ�</h3>
+<h3>デフォルト値</h3>
 
 <p>
-���ł� EnableFoo... �� DisableBar... �����݂��Ă��܂��Ă��邪�A�������₷���B<br>
-����� Baz... �Ƃ����`���ɂ���̂��]�܂����B
+新しい動作が大多数のユーザにとって便利になる、安全である、混乱を生まないものであれば「on」としてよい。<br>
+そうでない場合は「off」として、以前と同じ動作になるようにすべき。
 </p>
 
-<h3>�ύX�ӏ�</h3>
+<h3>項目名</h3>
+
+<p>
+すでに EnableFoo... や DisableBar... が混在してしまっているが、混乱しやすい。<br>
+今後は Baz... という形式にするのが望ましい。
+</p>
+
+<h3>変更箇所</h3>
 
 <ul>
-  <li>�\�[�X�R�[�h
+  <li>ソースコード
     <ul>
-      <li>INI �t�@�C���̓ǂݏ�������<br>
+      <li>INI ファイルの読み書き部分<br>
           teraterm\ttpset\ttset.c</li>
-      <li>tttset �\����<br>
+      <li>tttset 構造体<br>
           teraterm\common\tttypes.h<br>
-          Tera Term 4(TT4) �� Tera Term 5(TT5) �̗����Ńv���O�C���𓮍삳����ɂ� TT4 �̍\���̂ƌ݊�������������K�v������<br>
-          ���̂��߁A�V���������o�[�͖����ɒǉ�����<br>
-          ���l�ɁA�g�p���Ȃ��Ȃ��������o�[�͍폜���� reserve_XXX �Ƀ��l�[�����Ďc���Ă���</li>
+          Tera Term 4(TT4) と Tera Term 5(TT5) の両方でプラグインを動作させるには TT4 の構造体と互換性を持たせる必要がある<br>
+          そのため、新しいメンバーは末尾に追加する<br>
+          同様に、使用しなくなったメンバーは削除せず reserve_XXX にリネームして残しておく</li>
     </ul>
   </li>
-  <li>�h�L�������g
+  <li>ドキュメント
     <ul>
-      <li>Tera Term �ݒ�t�@�C���̑S���ڈꗗ<br>
+      <li>Tera Term 設定ファイルの全項目一覧<br>
           setup/teraterm-ini.html</li>
-      <li>�ݒ�_�C�A���O�̃w���v�i�_�C�A���O�ɕύX UI ������ꍇ�j<br>
-          menu �ȉ��̃_�C�A���O�̃y�[�W</li>
-      <li>�ݒ荀�ڂ̃w���v�i�_�C�A���O�ɕύX UI ���Ȃ��ꍇ�j<br>
-          setup �ȉ��̊Y�����镪�ނ̃y�[�W</li>
+      <li>設定ダイアログのヘルプ（ダイアログに変更 UI がある場合）<br>
+          menu 以下のダイアログのページ</li>
+      <li>設定項目のヘルプ（ダイアログに変更 UI がない場合）<br>
+          setup 以下の該当する分類のページ</li>
     </ul>
   </li>
-  <li>�f�t�H���g�� INI �t�@�C��<br>
+  <li>デフォルトの INI ファイル<br>
       installer\release\TERATERM.INI</li>
 </ul>
 
 
-<h2 id="i18n">���ۉ����b�Z�[�W�̑Ή�</h2>
+<h2 id="i18n">国際化メッセージの対応</h2>
 
-<h3>�V�������ۉ����b�Z�[�W�ɑΉ�����</h3>
+<h3>新しく国際化メッセージに対応する</h3>
 
 <ul>
-  <li>�\�[�X�R�[�h<br>
-      ����t�@�C����ǂݍ���</li>
-  <li>�_�C�A���O�̃��b�Z�[�W�̏ꍇ�ɂ́A���\�[�X�t�@�C���ɉp��̃��b�Z�[�W���f�t�H���g�̃e�L�X�g�Ƃ��ċL�q����</li>
-  <li>����t�@�C�����C������<br>
-      �C������̂� installer/release/lang_utf8 �z���̌���t�@�C��
+  <li>ソースコード<br>
+      言語ファイルを読み込む</li>
+  <li>ダイアログのメッセージの場合には、リソースファイルに英語のメッセージをデフォルトのテキストとして記述する</li>
+  <li>言語ファイルを修正する<br>
+      修正するのは installer/release/lang_utf8 配下の言語ファイル
     <ul>
-      <li>en_US.lng�i�p��j
+      <li>en_US.lng（英語）
         <ul>
-          <li>�p��̃��b�Z�[�W��ǉ�����</li>
-          <li>���b�Z�[�W�̍X�V���Ƃ��č������L�q����</li>
-          <li>���̑Ή����ɍX�V�����̂ŁA�ŏI�|����͂Ȃ�</li>
-          <li>�p��̌���t�@�C���̓v���O��������ǂݍ��܂�Ȃ����A���̌���t�@�C���֖|�󂷂�Ƃ��̎Q�l�ƂȂ�</li>
+          <li>英語のメッセージを追加する</li>
+          <li>メッセージの更新日として今日を記述する</li>
+          <li>この対応時に更新されるので、最終翻訳日はない</li>
+          <li>英語の言語ファイルはプログラムから読み込まれないが、他の言語ファイルへ翻訳するときの参考となる</li>
         </ul>
       </li>
-      <li>ja_JP.lng�i���{��j
+      <li>ja_JP.lng（日本語）
         <ul>
-          <li>���{��ɖ|�󂵂����b�Z�[�W��ǉ�����</li>
-          <li>���b�Z�[�W�̍X�V���Ƃ��č������L�q����</li>
-          <li>���̑Ή����ɍX�V�����̂ŁA�ŏI�|����͂Ȃ�</li>
+          <li>日本語に翻訳したメッセージを追加する</li>
+          <li>メッセージの更新日として今日を記述する</li>
+          <li>この対応時に更新されるので、最終翻訳日はない</li>
         </ul>
       </li>
-      <li>���̌���t�@�C��
+      <li>他の言語ファイル
         <ul>
-          <li>�p��̃��b�Z�[�W��ǉ�����</li>
-          <li>���b�Z�[�W�̍X�V���Ƃ��č������L�q����</li>
-          <li>�|��̓A�b�v�f�[�g����Ă��Ȃ��̂ōŏI�|����͍X�V���Ȃ�</li>
+          <li>英語のメッセージを追加する</li>
+          <li>メッセージの更新日として今日を記述する</li>
+          <li>翻訳はアップデートされていないので最終翻訳日は更新しない</li>
         </ul>
       </li>
     </ul>
   </li>
 </ul>
 
-<h3>���ۉ����b�Z�[�W��|�󂷂�</h3>
+<h3>国際化メッセージを翻訳する</h3>
 
 <ul>
-  <li>����t�@�C�����C������
+  <li>言語ファイルを修正する
     <ul>
-      <li>�Ώی���̃t�@�C���ɉp��ŏ�����Ă��郁�b�Z�[�W���A�Ώی���̃��b�Z�[�W�ɖ|�󂷂�</li>
-      <li>���b�Z�[�W�̍X�V���͍X�V���Ȃ�</li>
-      <li>�ŏI�|������X�V����</li>
+      <li>対象言語のファイルに英語で書かれているメッセージを、対象言語のメッセージに翻訳する</li>
+      <li>メッセージの更新日は更新しない</li>
+      <li>最終翻訳日を更新する</li>
     </ul>
   </li>
 </ul>
 
 
-<h2 id="add-macro-command">�}�N���R�}���h�ǉ����̍�ƃ��X�g</h2>
+<h2 id="add-macro-command">マクロコマンド追加時の作業リスト</h2>
 
 <p>
-Tera Term�}�N����V�݂���Ƃ��̍�Ǝ菇�ɂ��āA�ȉ��Ɏ����܂��B
+Tera Termマクロを新設するときの作業手順について、以下に示します。
 </p>
 
 <ul>
-  <li>�\�[�X�R�[�h�̏C��
+  <li>ソースコードの修正
     <ul>
-      <li>�R�}���h�̓��� ID ���̔Ԃ���B�i�u���� ID�v��"helpid.h"�ɂ��g�p�����j<br>
+      <li>コマンドの内部 ID を採番する。（「内部 ID」は"helpid.h"にも使用される）<br>
           ... teraterm/ttmacro/ttmparse.h</li>
-      <li>�R�}���h���𑖍����ē��� ID �ɕϊ�����B<br>
+      <li>コマンド名を走査して内部 ID に変換する。<br>
           ... CheckReservedWord@teraterm/ttmacro/ttmparse.c</li>
-      <li>�R�}���h�̓��� ID ������ۂɏ���������֐����ĂԁB<br>
+      <li>コマンドの内部 ID から実際に処理をする関数を呼ぶ。<br>
           ... ExecCmnd@teraterm/ttmacro/ttl.c</li>
-      <li>��������֐������B</li>
+      <li>処理する関数を作る。</li>
     </ul>
   </li>
-  <li>�w���v(���ꂲ��)
+  <li>ヘルプ(言語ごと)
     <ul>
-      <li>�R�}���h�̃w���v�����B<br>
+      <li>コマンドのヘルプを作る。<br>
           ... doc/LANG/html/macro/command/hogefunc.html</li>
-      <li>�R�}���h�ꗗ�y�[�W�ɒǉ�����B<br>
+      <li>コマンド一覧ページに追加する。<br>
           ... doc/LANG/html/macro/command/index.html</li>
-      <li>�w���v�g�s�b�N�ɒǉ�����B<br>
+      <li>ヘルプトピックに追加する。<br>
           ... doc/LANG/teraterm.hhc</li>
-      <li>�w���v�y�[�W�̃R���e�L�X�g ID ���̔Ԃ���B<br>
-          �l�� �R�}���h�̓��� ID + 92000�B<br>
+      <li>ヘルプページのコンテキスト ID を採番する。<br>
+          値は コマンドの内部 ID + 92000。<br>
           ... teraterm/common/helpid.h</li>
-      <li>�R���e�L�X�g ID �ƌĂяo���t�@�C���̃G�C���A�X���쐬����B<br>
-          �e�L�X�g�G�f�B�^�Œ��ڊJ���A[ALIAS]��HTML��ǉ�����B<br>
+      <li>コンテキスト ID と呼び出すファイルのエイリアスを作成する。<br>
+          テキストエディタで直接開き、[ALIAS]にHTMLを追加する。<br>
           ... doc/LANG/teraterm.hhp</li>
     </ul>
   </li>
 </ul>
 
 
-<h2 id="menu-id">���j���[ID�ǉ����̖����K��</h2>
+<h2 id="menu-id">メニューID追加時の命名規則</h2>
 
 <pre>
-1���ڂ� 5
+1桁目は 5
 </pre>
 <pre>
-2���ڂ�
-  Tera Term VT �E�B���h�E�Ȃ�  0
-  Tera Term TEK �E�B���h�E�Ȃ� 1
-  TTSSH �Ȃ�                   2
-  TTProxy �Ȃ�                 3
-  TTXKanjiMenu �Ȃ�            4
+2桁目は
+  Tera Term VT ウィンドウなら  0
+  Tera Term TEK ウィンドウなら 1
+  TTSSH なら                   2
+  TTProxy なら                 3
+  TTXKanjiMenu なら            4
 </pre>
 <pre>
-3���ڂ�
-  [File] ���j���[�Ȃ�    1
-  [Edit] ���j���[�Ȃ�    2
-  [Setup] ���j���[�Ȃ�   3
-  [Control] ���j���[�Ȃ� 4
-  [Window] ���j���[�Ȃ�  8
-  [Help] ���j���[�Ȃ�    9
+3桁目は
+  [File] メニューなら    1
+  [Edit] メニューなら    2
+  [Setup] メニューなら   3
+  [Control] メニューなら 4
+  [Window] メニューなら  8
+  [Help] メニューなら    9
 </pre>
 
 <p>
-��FFile�z����TTSSH�̃��j���[��ǉ�����
+例：File配下にTTSSHのメニューを追加する
 </p>
 <pre>
 #define ID_SSHSCPMENU       52110
 </pre>
 
 
-<h2 id="icon">�A�C�R��</h2>
+<h2 id="icon">アイコン</h2>
 
 <p>
-�A�C�R���t�@�C���ɂ́A4bit �� 32px, 16px �摜�A32bit �� 256px, 48px, 32px, 16px �摜���܂߂܂��B<br>
-�e�A�C�R���t�@�C���ɂ͈ȉ��̎�ނ̉摜���܂܂�Ă��܂��B
+アイコンファイルには、4bit の 32px, 16px 画像、32bit の 256px, 48px, 32px, 16px 画像を含めます。<br>
+各アイコンファイルには以下の種類の画像が含まれています。
 </p>
 
 <strong>T (Tera Term)</strong>
@@ -327,14 +327,14 @@ Tera Term�}�N����V�݂���Ƃ��̍�Ǝ菇�ɂ��āA�ȉ��Ɏ����܂��B
 </table>
 
 <p>
-�A�C�R���t�@�C���ւ̉摜�̊i�[���́u�r�b�g�������������A�T�C�Y���傫�����v�Ƃ��܂��B<br>
-�����łȂ��ƁA�v���O�������T�C�Y���w�肹���Ɂu�ő�T�C�Y�̉摜�v���擾���悤�Ƃ����Ƃ��Ɂu�ŏ��̉摜�v�����o����邽�߂ł��B
+アイコンファイルへの画像の格納順は「ビット数が小さい順、サイズが大きい順」とします。<br>
+そうでないと、プログラムがサイズを指定せずに「最大サイズの画像」を取得しようとしたときに「最初の画像」が取り出されるためです。
 </p>
 
 <p>
-�A�C�R���t�@�C���ɂ� 4bit �摜���܂߂܂��B<br>
-Windows NT 4.0 �� 4bit �A�C�R���̂݃T�|�[�g���Ă��邽�߂ł��B�܂��AWindows 2000 �̒ʒm�̈�� 4bit �A�C�R���̂݃T�|�[�g���Ă��܂��B<br>
-4bit �A�C�R���ɂ͈ȉ��̐F���g�p�ł��܂��B
+アイコンファイルには 4bit 画像を含めます。<br>
+Windows NT 4.0 は 4bit アイコンのみサポートしているためです。また、Windows 2000 の通知領域も 4bit アイコンのみサポートしています。<br>
+4bit アイコンには以下の色が使用できます。
 </p>
 
 <table border="1">
@@ -389,7 +389,7 @@ Windows NT 4.0 �� 4bit �A�C�R���̂݃T�|�[�g���Ă��邽�߂ł��B�܂��AWindows 2000 
 </table>
 
 <p>
-�A�C�R���p�摜�̃\�[�X�t�@�C���͈ȉ��Ɋi�[����Ă��܂��B
+アイコン用画像のソースファイルは以下に格納されています。
 </p>
 
 <table border="1" style="margin-bottom:1ex;">
@@ -537,48 +537,48 @@ Windows NT 4.0 �� 4bit �A�C�R���̂݃T�|�[�g���Ă��邽�߂ł��B�܂��AWindows 2000 
 </table>
 
 
-<h2 id="update-library">���C�u�����o�[�W�����A�b�v���̕ύX�ӏ�</h2>
+<h2 id="update-library">ライブラリバージョンアップ時の変更箇所</h2>
 
-<h3>�ύX���K�v�ȃt�@�C��</h3>
+<h3>変更が必要なファイル</h3>
 
 <ul>
   <li>doc/(en|ja)/html/about/history.html
     <ul>
-      <li>���C�u�������g���R���|�[�l���g�� (���̑�|Misc) �Z�N�V�����ɒǋL����</li>
+      <li>ライブラリを使うコンポーネントの (その他|Misc) セクションに追記する</li>
     </ul>
   </li>
   <li>doc/(en|ja)/html/reference/develop.html
     <ul>
-      <li>�g�p���郉�C�u�����̃o�[�W������ύX����</li>
+      <li>使用するライブラリのバージョンを変更する</li>
     </ul>
   </li>
   <li>libs/download.cmake
     <ul>
-      <li>SRC_URL �̃o�[�W������ύX����</li>
-      <li>DIR_IN_ARC �̃o�[�W������ύX����</li>
-      <li>ARC_HASH ��ύX����B�i�_�E�����[�h�j���`�F�b�N�p�j
+      <li>SRC_URL のバージョンを変更する</li>
+      <li>DIR_IN_ARC のバージョンを変更する</li>
+      <li>ARC_HASH を変更する。（ダウンロード破損チェック用）
         <ul>
-          <li>�����z�z���̃n�b�V���l���g�p����B�iLibreSSL, Oniguruma, zlib�j</li>
-          <li>�������n�b�V���l�����J���Ă��Ȃ����̂́A�茳�ŋ��߂�B�iargon2, cJSON, SFMT�j</li>
+          <li>公式配布元のハッシュ値を使用する。（LibreSSL, Oniguruma, zlib）</li>
+          <li>公式がハッシュ値を公開していないものは、手元で求める。（argon2, cJSON, SFMT）</li>
         </ul>
       </li>
-      <li>CHECK_HASH ��ύX����B�i�o�[�W�����`�F�b�N�p�j
+      <li>CHECK_HASH を変更する。（バージョンチェック用）
         <ul>
-          <li>�o�[�W�����`�F�b�N�Ɏg���t�@�C���̃n�b�V���l���茳�ŋ��߂�B</li>
+          <li>バージョンチェックに使うファイルのハッシュ値を手元で求める。</li>
         </ul>
       </li>
     </ul>
   </li>
-  <li>TeraTermProject/update_website ���|�W�g���� add/manual �t�H���_�z��
+  <li>TeraTermProject/update_website リポジトリの add/manual フォルダ配下
     <ul>
-      <li>Web �T�C�g�ŕ\�����郉�C�Z���X�t�@�C���� TeraTermProject/update_website ���|�W�g���ŊǗ����Ă���B<br>
-          ���C�Z���X�t�@�C���ɕύX������΍����ւ���B</li>
+      <li>Web サイトで表示するライセンスファイルは TeraTermProject/update_website リポジトリで管理している。<br>
+          ライセンスファイルに変更があれば差し替える。</li>
     </ul>
   </li>
 </ul>
 
 
-<h4>�t�@�C���̃n�b�V���l�̋��߂���</h4>
+<h4>ファイルのハッシュ値の求めかた</h4>
 
 <pre>
 % sha256sum foo.bar
@@ -586,38 +586,38 @@ Windows NT 4.0 �� 4bit �A�C�R���̂݃T�|�[�g���Ă��邽�߂ł��B�܂��AWindows 2000 
 </pre>
 
 
-<h2 id="dump">�_���v</h2>
+<h2 id="dump">ダンプ</h2>
 
-�_���v�t�@�C�����g�����f�o�O���@�B
+ダンプファイルを使ったデバグ方法。
 
 <p>
-�K�v�ȃt�@�C��
+必要なファイル
 <dl>
-  <dt>dmp�t�@�C��(�~�j�_���v�t�@�C��)</dt>
+  <dt>dmpファイル(ミニダンプファイル)</dt>
   <dd>
-    ttermpro.exe ���Ŗ�肪�������Ƃ���
-    �t�H���_<code>%LOCALAPPDATA%\teraterm5</code>�ɏo�͂���܂��B<br>
-    teraterm_PLATFORM_YYMMDD-HHMMSS_HASH.dmp �Ƃ������t�@�C�����ɂȂ�܂��B
+    ttermpro.exe 内で問題があったときに
+    フォルダ<code>%LOCALAPPDATA%\teraterm5</code>に出力されます。<br>
+    teraterm_PLATFORM_YYMMDD-HHMMSS_HASH.dmp といったファイル名になります。
   </dd>
 
-  <dt>pdb�t�@�C��</dt>
+  <dt>pdbファイル</dt>
   <dd>
     pdb = program database files (symbol files)<br>
-    exe�t�@�C���̃f�o�O���t�@�C��
+    exeファイルのデバグ情報ファイル
   </dd>
 
-  <dt>exe�t�@�C��</dt>
+  <dt>exeファイル</dt>
   <dd>
     ttermpro.exe
   </dd>
 </dl>
 
 <p>
-�g����
+使い方
 
 <ul>
-  <li>�~�j�_���v���_�u���N���b�N����Visual Studio���N������</li>
-  <li>�A�N�V������[�l�C�e�B�u�݂̂Ńf�o�O]���N���b�N</li>
+  <li>ミニダンプをダブルクリックしてVisual Studioを起動する</li>
+  <li>アクションの[ネイティブのみでデバグ]をクリック</li>
 </ul>
 
 

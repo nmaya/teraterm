@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>include</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,47 +14,47 @@
 <h1>include</h1>
 
 <p>
-ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹‚ÉˆÚ‚éB
+ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã«ç§»ã‚‹ã€‚
 </p>
 
 <pre class="macro-syntax">
 include '&lt;include file name&gt;'
 </pre>
 
-<h2>‰ðà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-ˆø”‚ÉŽw’è‚µ‚½ƒ}ƒNƒƒtƒ@ƒCƒ‹‚ð“Ç‚Ýž‚ÝAƒ}ƒNƒŽÀs‚ðs‚¤BŽÀsI—¹ŒãAincludeƒRƒ}ƒ“ƒh‚ÌŽŸ‚Ìs‚©‚çˆ—‚ªÄŠJ‚³‚ê‚éB<br>
-include‚ÅƒlƒXƒg‚Å‚«‚éŠK‘w‚ÍÅ‘å9ƒŒƒxƒ‹‚Ü‚Å‚Å‚ ‚éB
+å¼•æ•°ã«æŒ‡å®šã—ãŸãƒžã‚¯ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿ã€ãƒžã‚¯ãƒ­å®Ÿè¡Œã‚’è¡Œã†ã€‚å®Ÿè¡Œçµ‚äº†å¾Œã€includeã‚³ãƒžãƒ³ãƒ‰ã®æ¬¡ã®è¡Œã‹ã‚‰å‡¦ç†ãŒå†é–‹ã•ã‚Œã‚‹ã€‚<br>
+includeã§ãƒã‚¹ãƒˆã§ãã‚‹éšŽå±¤ã¯æœ€å¤§9ãƒ¬ãƒ™ãƒ«ã¾ã§ã§ã‚ã‚‹ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
------ƒƒCƒ“ƒtƒ@ƒCƒ‹"main.ttl"------
+-----ãƒ¡ã‚¤ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«"main.ttl"------
 i=10
 :loop
-; ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹‚ÖˆÚ‚éB
+; ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã¸ç§»ã‚‹ã€‚
 include 'sub.ttl'
 if i&gt;=0 goto loop
 end
------ƒƒCƒ“ƒtƒ@ƒCƒ‹I‚í‚è----------
+-----ãƒ¡ã‚¤ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«çµ‚ã‚ã‚Š----------
 
------ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹"sub.ttl"----
+-----ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«"sub.ttl"----
 if i&lt;0 then
   messagebox 'error!' 'sub'
-  ; ƒƒCƒ“ƒtƒ@ƒCƒ‹‚Ö–ß‚éB
+  ; ãƒ¡ã‚¤ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«ã¸æˆ»ã‚‹ã€‚
   exit
 endif
 i = i - 1
-; ƒƒCƒ“ƒtƒ@ƒCƒ‹‚Ö–ß‚éB
------ƒCƒ“ƒNƒ‹[ƒhƒtƒ@ƒCƒ‹I‚í‚è-------
+; ãƒ¡ã‚¤ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«ã¸æˆ»ã‚‹ã€‚
+-----ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«çµ‚ã‚ã‚Š-------
 </pre>
 
 
-<h2>ŽQÆ</h2>
+<h2>å‚ç…§</h2>
 <ul>
-  <li><a href="../howtorun.html">’: ƒ}ƒNƒƒtƒ@ƒCƒ‹‚Ì“Ç‚Ýž‚Ý</a></li>
+  <li><a href="../howtorun.html">æ³¨: ãƒžã‚¯ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿</a></li>
   <li><a href="exit.html">exit</a></li>
 </ul>
 

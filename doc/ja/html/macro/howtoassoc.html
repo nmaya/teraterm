@@ -2,39 +2,39 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>"TTL" �t�@�C���� MACRO �Ɋ֘A�t������@</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>"TTL" ファイルを MACRO に関連付ける方法</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>"TTL" �t�@�C���� MACRO �Ɋ֘A�t������@</h1>
+<h1>"TTL" ファイルを MACRO に関連付ける方法</h1>
 
 <p class="notice">
-��: Tera Term 4.59���A�C���X�g�[���Ŋ֘A�t���ł���悤�ɂȂ�܂����B
+注: Tera Term 4.59より、インストーラで関連付けできるようになりました。
 </p>
 
 <p>
-�g���q ".TTL" �����}�N���t�@�C���� MACRO �Ɋ֘A�t����ɂ́A�ȉ��̂悤�ɂ��Ă��������B
+拡張子 ".TTL" を持つマクロファイルを MACRO に関連付けるには、以下のようにしてください。
 </p>
 
 <ol>
-  <li>�G�N�X�v���[���� [�\��]-[�I�v�V����] �����s����B</li>
-  <li>�u�t�@�C�� �^�C�v�v�^�u��I�ԁB</li>
-  <li>�u�ǉ��v�{�^���������A�ȉ��̂悤�Ɋe���ڂ�ݒ肷��B
+  <li>エクスプローラの [表示]-[オプション] を実行する。</li>
+  <li>「ファイル タイプ」タブを選ぶ。</li>
+  <li>「追加」ボタンを押し、以下のように各項目を設定する。
 <pre>
-�^�C�v�̐���:		Tera Term macro files
-�֘A�t����ꂽ�g���q:	TTL
+タイプの説明:		Tera Term macro files
+関連付けられた拡張子:	TTL
 </pre></li>
-  <li>�u�A�N�V�����v�́u�ǉ��v�{�^���������A�e���ڂ��ȉ��̂悤�ɐݒ肷��B
+  <li>「アクション」の「追加」ボタンを押し、各項目を以下のように設定する。
 <pre>
-�A�N�V����:	���s
-�A�N�V���������s����A�v���P�[�V����:
+アクション:	実行
+アクションを実行するアプリケーション:
 	"C:\Program Files\teraterm\TTPMACRO.EXE" "%1"
-	(Tera Term Pro �� C:\Program Files\teraterm �ɃC���X�g�[������Ă���ꍇ)
+	(Tera Term Pro が C:\Program Files\teraterm にインストールされている場合)
 </pre></li>
-  <li>�J����Ă���_�C�A���O�{�b�N�X�́uOK�v�{�^�������ׂĉ����B</li>
+  <li>開かれているダイアログボックスの「OK」ボタンをすべて押す。</li>
 </ol>
 
 </body>

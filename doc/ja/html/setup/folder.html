@@ -2,125 +2,125 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>Tera Term ���g�p����t�H���_</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Tera Term が使用するフォルダ</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>Tera Term ���g�p����t�H���_</h1>
+<h1>Tera Term が使用するフォルダ</h1>
 
 <p>
-<a href="../menu/setup-directory.html">[Setup]-Setup directory</a>�Ŋm�F�ł��܂��B
+<a href="../menu/setup-directory.html">[Setup]-Setup directory</a>で確認できます。
 </p>
 
 <ul>
-  <li>�C���X�g�[����
+  <li>インストール版
     <ul>
-      <li>�ݒ�t�@�C��
+      <li>設定ファイル
         <ul>
           <li><code>%APPDATA%\teraterm5</code></li>
         </ul>
       </li>
-      <li id="LogDir">���샍�O�A�_���v
+      <li id="LogDir">動作ログ、ダンプ
         <ul>
           <li><code>%LOCALAPPDATA%\teraterm5</code></li>
         </ul>
       </li>
-      <li id="FileDir">�t�@�C���]��(�D�揇,���ݒ�̎�������g�p�����)
+      <li id="FileDir">ファイル転送(優先順,未設定の時一つ下が使用される)
         <ol>
-          <li><a href="../menu/setup-additional-general.html#FileFolder">�t�@�C���]���p�t�H���_</a></li>
+          <li><a href="../menu/setup-additional-general.html#FileFolder">ファイル転送用フォルダ</a></li>
           <li><code>%USERPROFILE%\Downloads</code></li>
         </ol>
       </li>
-      <li id="TermLogDir">�[�����O(�D�揇,���ݒ�̎�������g�p�����)
+      <li id="TermLogDir">端末ログ(優先順,未設定の時一つ下が使用される)
         <ol>
-          <li><a href="../menu/setup-additional-log.html#LogDefaultPath">�W�����O�ۑ���t�H���_</a></li>
-          <li><a href="../menu/setup-additional-general.html#FileFolder">�t�@�C���]���p�t�H���_</a></li>
+          <li><a href="../menu/setup-additional-log.html#LogDefaultPath">標準ログ保存先フォルダ</a></li>
+          <li><a href="../menu/setup-additional-general.html#FileFolder">ファイル転送用フォルダ</a></li>
           <li><code>%LOCALAPPDATA%\teraterm5</code></li>
         </ol>
       </li>
     </ul>
   </li>
   
-  <li>�|�[�^�u����
+  <li>ポータブル版
     <ul>
-      <li>�ݒ�t�@�C��
+      <li>設定ファイル
         <ul>
-          <li>exe�t�@�C���̂���t�H���_</li>
+          <li>exeファイルのあるフォルダ</li>
         </ul>
       </li>
-      <li>���샍�O�A�_���v
+      <li>動作ログ、ダンプ
         <ul>
-          <li>exe�t�@�C���̂���t�H���_ + <code>\log</code></li>
+          <li>exeファイルのあるフォルダ + <code>\log</code></li>
         </ul>
       </li>
-      <li>�t�@�C���]��(�D�揇,���ݒ�̎�������g�p�����)
+      <li>ファイル転送(優先順,未設定の時一つ下が使用される)
         <ol>
-          <li><a href="../menu/setup-additional-general.html#FileFolder">�t�@�C���]���p�t�H���_</a></li>
+          <li><a href="../menu/setup-additional-general.html#FileFolder">ファイル転送用フォルダ</a></li>
           <li><code>%USERPROFILE%\Downloads</code></li>
         </ol>
       </li>
-      <li>�[�����O(�D�揇,���ݒ�̎�������g�p�����)
+      <li>端末ログ(優先順,未設定の時一つ下が使用される)
         <ol>
-          <li><a href="../menu/setup-additional-log.html#LogDefaultPath">�W�����O�ۑ���t�H���_</a></li>
-          <li><a href="../menu/setup-additional-general.html#FileFolder">�t�@�C���]���p�t�H���_</a></li>
-          <li>exe�t�@�C���̂���t�H���_ + <code>\log</code></li>
+          <li><a href="../menu/setup-additional-log.html#LogDefaultPath">標準ログ保存先フォルダ</a></li>
+          <li><a href="../menu/setup-additional-general.html#FileFolder">ファイル転送用フォルダ</a></li>
+          <li>exeファイルのあるフォルダ + <code>\log</code></li>
         </ol>
       </li>
     </ul>
   </li>
 </ul>
 
-<h1>�|�[�^�u���łɂ���</h1>
+<h1>ポータブル版について</h1>
 
 <ul>
-  <li>��(�V�X�e���ݒ�A�l�ݒ�)�ɍ��E���ꂸ�g�p���邱�Ƃ��ł���
+  <li>環境(システム設定、個人設定)に左右されず使用することができる
     <ul>
       <li>
-        ���̂悤�ȗp�r��z��
+        次のような用途を想定
         <ul>
-          <li>USB�������ɓ���āA��������N������</li>
-          <li>�C���X�g�[�������Ɏg�p���� (�R�s�[���邾���Ŏg����悤�ɂȂ�)</li>
+          <li>USBメモリに入れて、そこから起動する</li>
+          <li>インストールせずに使用する (コピーするだけで使えるようになる)</li>
         </ul>
       </li>
     </ul>
   </li>
-  <li>���s���� ttermpro.exe �Ɠ����t�H���_�� portable.ini �t�@�C����u�����ƂŃ|�[�^�u���łƂ��ē���</li>
-  <li>portable.ini �̒��g�͂Ȃ�ł��悢(�T�C�Y0�ł悢)</li>
+  <li>実行する ttermpro.exe と同じフォルダに portable.ini ファイルを置くことでポータブル版として動作</li>
+  <li>portable.ini の中身はなんでもよい(サイズ0でよい)</li>
 </ul>
 
-<h1>�C���X�g�[���ł̎g�p����t�H���_,�t�@�C���ɂ���</h1>
+<h1>インストール版の使用するフォルダ,ファイルについて</h1>
 
-<h2>Windows Vista�ȍ~ �̏ꍇ�̃t�H���_��</h2>
+<h2>Windows Vista以降 の場合のフォルダ例</h2>
 
 <ul>
   <li>
-    �ݒ�t�@�C��
+    設定ファイル
     <ul>
       <li><code>C:\Users\[username]\AppData\Roaming\teraterm5</code></li>
     </ul>
   </li>
   <li>
-    ���샍�O�A�_���v
+    動作ログ、ダンプ
     <ul>
       <li><code>C:\Users\[username]\AppData\Local\teraterm5</code></li>
     </ul>
   </li>
 </ul>
 
-<h2>Windows 2000, XP �̏ꍇ�̃t�H���_��</h2>
+<h2>Windows 2000, XP の場合のフォルダ例</h2>
 
 <ul>
   <li>
-    �ݒ�t�@�C��
+    設定ファイル
     <ul>
       <li><code>C:\Documents and Settings\[username]\AppData\Roaming\teraterm5</code></li>
     </ul>
   </li>
   <li>
-    ���샍�O�A�_���v(����`)
+    動作ログ、ダンプ(未定義)
     <ul>
       <li><code>C:\Documents and Settings\[username]\Application Data\teraterm5</code></li>
     </ul>
@@ -128,54 +128,54 @@
 </ul>
 
 <!--
-<h2>Windows NT 4.0 �̏ꍇ�̃t�H���_��</h2>
+<h2>Windows NT 4.0 の場合のフォルダ例</h2>
 
 <ul>
   <li>
-    �ݒ�t�@�C��
+    設定ファイル
     <ul>
       <li><code>C:\WINNT\Profiles\[username]\Application Data\teraterm5</code></li>
     </ul>
   </li>
   <li>
-    ���샍�O�A�_���v
+    動作ログ、ダンプ
     <ul>
       <li><code>C:\WINNT\Profiles\[username]\Application Data\teraterm5</code></li>
     </ul>
   </li>
 </ul>
 
-��%APPDATA%, %LOCALAPPDATA% ���ϐ��͓W�J����Ȃ��B"%USERPROFILE%\Application Data" ����H
+※%APPDATA%, %LOCALAPPDATA% 環境変数は展開されない。"%USERPROFILE%\Application Data" から？
 
-<h2>Windows 95, 98, Me �̏ꍇ�̃t�H���_��</h2>
+<h2>Windows 95, 98, Me の場合のフォルダ例</h2>
 
 <ul>
   <li>
-    �ݒ�t�@�C��
+    設定ファイル
     <ul>
       <li><code>C:Windows\Application Data\teraterm5</code></li>
     </ul>
   </li>
   <li>
-    ���샍�O�A�_���v
+    動作ログ、ダンプ
     <ul>
       <li><code>C:Windows\Application Data\teraterm5</code></li>
     </ul>
   </li>
 </ul>
 
-��%APPDATA%, %LOCALAPPDATA% ���ϐ��͓W�J����Ȃ��B"%WINDIR%\Application Data" ����H
+※%APPDATA%, %LOCALAPPDATA% 環境変数は展開されない。"%WINDIR%\Application Data" から？
 -->
 
-<p>�Q�l</p>
+<p>参考</p>
 
 <ul>
   <li><a href="https://torutk.hatenablog.jp/entry/20110604/p1" target="_blank">https://torutk.hatenablog.jp/entry/20110604/p1</a></li>
 </ul>
 
-<h2>�t�@�C�����w�肵���ꍇ</h2>
+<h2>ファイルを指定した場合</h2>
 
-<p>�R�}���h���C���Ńt�@�C�����t���p�X�Ŏw�肵���ꍇ�́A�����D�悵�Ďg�p����</p>
+<p>コマンドラインでファイルをフルパスで指定した場合は、それを優先して使用する</p>
 
 <ul>
   <li>TERATERM.INI</li>
@@ -183,13 +183,13 @@
   <li>broadcast.log</li>
 </ul>
 
-<h2>�ݒ�t�@�C�����Ȃ��ꍇ</h2>
+<h2>設定ファイルがない場合</h2>
 
-<p>ttermpro.exe�͎��̂悤�ɓ��삷��</p>
+<p>ttermpro.exeは次のように動作する</p>
 
 <ul>
-  <li>�ݒ�t�@�C����u���t�H���_���쐬����</li>
-  <li>ttermpro.exe�̃t�H���_�ɂ���ݒ�t�@�C���� "�ݒ�t�@�C����u���t�H���_" �ɃR�s�[����</li>
+  <li>設定ファイルを置くフォルダを作成する</li>
+  <li>ttermpro.exeのフォルダにある設定ファイルを "設定ファイルを置くフォルダ" にコピーする</li>
 </ul>
 
 </body>

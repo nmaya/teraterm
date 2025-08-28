@@ -2,61 +2,61 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>Additional settings / "Visual" �^�u ([Setup] ���j���[)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Additional settings / "Visual" タブ ([Setup] メニュー)</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1><a href="setup-additional.html">Additional settings</a> / "Visual" �^�u ([Setup] ���j���[)</h1>
+    <h1><a href="setup-additional.html">Additional settings</a> / "Visual" タブ ([Setup] メニュー)</h1>
 
     <dl>
       <dt id="AlphaBlendActive">Window Opacity / Active</dt>
       <dt id="AlphaBlend">Window Opacity / Inactive</dt>
       <dd>
-	VT �E�B���h�E���A�N�e�B�u(�t�H�[�J�X������)���A����є�A�N�e�B�u(�t�H�[�J�X���Ȃ�)���̕s�����x��ݒ�ł��܂��B
-	�l��0�`255�͈̔͂Ŏw�肷�邱�Ƃ��ł��A�l������������قǓ����x�͋����Ȃ�܂��B<br>
-  <a href="../usage/transparent.html">���߃E�B���h�E</a>���Q�Ƃ��Ă��������B
+	VT ウィンドウがアクティブ(フォーカスがある)時、および非アクティブ(フォーカスがない)時の不透明度を設定できます。
+	値は0〜255の範囲で指定することができ、値を小さくするほど透明度は強くなります。<br>
+  <a href="../usage/transparent.html">透過ウィンドウ</a>を参照してください。
       </dd>
 
       <dt id="MouseCursor">MouseCursor</dt>
       <dd>
-	�}�E�X�J�[�\���̎�ʂ�ݒ肷�邱�Ƃ��ł��܂��B
+	マウスカーソルの種別を設定することができます。
 <pre>
-ARROW = �W���̖��J�[�\��
-IBEAM = �A�C�r�[�� (�c��) �J�[�\�� (�f�t�H���g)
-CROSS = �\���J�[�\��
-HAND  = �n���h�J�[�\��
+ARROW = 標準の矢印カーソル
+IBEAM = アイビーム (縦線) カーソル (デフォルト)
+CROSS = 十字カーソル
+HAND  = ハンドカーソル
 </pre>
       </dd>
 
       <dt id="ANSIColor">ANSI color</dt>
-      <dd>PC�`�������aixterm�`����16�F���[�h�Ŏg�p����F��RGB�l��ݒ肵�܂��B</dd>
+      <dd>PC形式およびaixterm形式の16色モードで使用する色のRGB値を設定します。</dd>
 
       <dt id="FontQuality">Font quality</dt>
       <dd>
-	�t�H���g�̕i����ݒ肷�邱�Ƃ��ł��܂��BOS���Ή����Ă����ނ̂ݗL���ɓ��삵�܂��B
+	フォントの品質を設定することができます。OSが対応している種類のみ有効に動作します。
 <pre>
-Default         = OS�̐ݒ�(�X�N���[�� �t�H���g�̉������炩�ɂ���)�Ɉˑ�
-Non-Antialiased = �A���`�G�C���A�X�𖳌��ɂ���
-Antialiased     = �A���`�G�C���A�X��L���ɂ���
-ClearType       = ClearType�𗘗p����
+Default         = OSの設定(スクリーン フォントの縁を滑らかにする)に依存
+Non-Antialiased = アンチエイリアスを無効にする
+Antialiased     = アンチエイリアスを有効にする
+ClearType       = ClearTypeを利用する
 </pre>
       </dd>
 
       <dt id="FlickerlessMove">Flickerless move</dt>
       <dd>
-        �E�B���h�E�̈ړ��A���T�C�Y���ɃE�B���h�E���̕`��̂������ጸ���܂��B<br>
-        ��̓I�ȓ���:<br>
-        �E�B���h�E���b�Z�[�W WM_WINDOWPOSCHANGING ��
-        WINDOWPOS �\����(lParam)�� flags �� SWP_NOCOPYBITS ���Z�b�g���܂��B
+        ウィンドウの移動、リサイズ時にウィンドウ内の描画のちらつきを低減します。<br>
+        具体的な動作:<br>
+        ウィンドウメッセージ WM_WINDOWPOSCHANGING で
+        WINDOWPOS 構造体(lParam)の flags に SWP_NOCOPYBITS をセットします。
       </dd>
 
       <dt id="WindowCornerDontround">Window corner don't round</dt>
       <dd>
-	Windows 11 �ł̓E�B���h�E�̊p���ۂ��Ȃ邽�߁A�\����������̈悪����܂��B<br>
-	VT �E�B���h�E�� TEK �E�B���h�E�̊p���ۂ����Ȃ��悤�ɂ��܂��B
+	Windows 11 ではウィンドウの角が丸くなるため、表示が欠ける領域があります。<br>
+	VT ウィンドウと TEK ウィンドウの角を丸くしないようにします。
       </dd>
 
       <dt id="EnableBoldAttrColor">Enable Bold attribute color</dt>
@@ -68,12 +68,12 @@ ClearType       = ClearType�𗘗p����
       <dt id="EnableURLAttrColor">Enable URL attribute color</dt>
       <dt id="EnableURLAttrFont">Enable URL attribute font</dt>
       <dd>
-	���ꂼ��̐F�����̐F�܂��̓t�H���g��L���ɂ��܂��B
+	それぞれの色属性の色またはフォントを有効にします。
       </dd>
 
       <dt id="EnableANSIColor">Enable ANSI color</dt>
       <dd>
-	����ANSI color�𖳌��ɂ����ꍇ�A16�F�����256�F���[�h�������ɂȂ�܂��B
+	もしANSI colorを無効にした場合、16色および256色モードも無効になります。
       </dd>
 
     </dl>

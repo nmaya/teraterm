@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>var2clipb</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,36 +14,36 @@
 <h1>var2clipb</h1>
 
 <p>
-�e�L�X�g�f�[�^���N���b�v�{�[�h�ɃR�s�[����B<em>(�o�[�W����4.46�ȍ~)</em>
+テキストデータをクリップボードにコピーする。<em>(バージョン4.46以降)</em>
 </p>
 
 <pre class="macro-syntax">
 var2clipb &lt;string&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-&lt;string&gt;���N���b�v�{�[�h�ɃR�s�[����B<br>
-���̃R�}���h�̎��s���ʂ̓V�X�e���ϐ� result �Ɋi�[�����B�ϐ� result �̒l�̈Ӗ��͈ȉ��̂Ƃ���B
+&lt;string&gt;をクリップボードにコピーする。<br>
+このコマンドの実行結果はシステム変数 result に格納される。変数 result の値の意味は以下のとおり。
 </p>
 
 <table>
  <tr>
-  <th>�l</th>
-  <th>�Ӗ�</th>
+  <th>値</th>
+  <th>意味</th>
  </tr>
  <tr>
   <td>0</td>
-  <td>�N���b�v�{�[�h���J���Ȃ������B</td>
+  <td>クリップボードを開けなかった。</td>
  </tr>
  <tr>
   <td>1</td>
-  <td>�N���b�v�{�[�h�ւ̃R�s�[�ɐ��������B</td>
+  <td>クリップボードへのコピーに成功した。</td>
  </tr>
 </table>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 var2clipb 'Tera Term 4.46'

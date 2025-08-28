@@ -2,58 +2,58 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>�E�B���h�E�T�C�Y�ύX�v���O�C��</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ウィンドウサイズ変更プラグイン</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>�E�B���h�E�T�C�Y�ύX�v���O�C��</h1>
+<h1>ウィンドウサイズ変更プラグイン</h1>
 
-<p>Tera Term �̃��j���[�� <a href="../menu/resize.html">[Resize] ���j���[</a>��ǉ�����B</p>
+<p>Tera Term のメニューに <a href="../menu/resize.html">[Resize] メニュー</a>を追加する。</p>
 
-<h2>�@�\</h2>
+<h2>機能</h2>
 
 <p>
-TTXResizeMenu �v���O�C��������ƁATera Term �̃��j���[�� [Resize] ���j���[��ǉ����鎖���o���܂��B<br>
-[Resize] ���j���[���̍��ڂ��I�������ƁA���̃T�C�Y�� Tera Term �� VT �E�B���h�E�̃T�C�Y���ύX����܂��B
+TTXResizeMenu プラグインを入れると、Tera Term のメニューに [Resize] メニューを追加する事が出来ます。<br>
+[Resize] メニュー内の項目が選択されると、そのサイズに Tera Term の VT ウィンドウのサイズが変更されます。
 </p>
 
 
-<h2>�g�p���@</h2>
+<h2>使用方法</h2>
 
 <p>
-�v���O�C������ꂽ�����ł� [Resize] ���j���[�͕\������܂���B<br>
-�ݒ�t�@�C���Ƀ��j���[���ڂ�o�^����K�v������܂��B<br><br>
+プラグインを入れただけでは [Resize] メニューは表示されません。<br>
+設定ファイルにメニュー項目を登録する必要があります。<br><br>
 
-���j���[���̍��ڂ�ύX�������ꍇ�́ATERATERM.INI �� [Resize Menu] �Z�N�V�������쐬���A"ResizeMenuN = X, Y" �̌`���Ŏw�肵�ĉ������BN  �� 1 ����̘A�Ԃł��B<br>
-X �܂��� Y �̂����ꂩ�� 0 �̎��́A���̗v�f�͕ύX����܂���B�Ⴆ�� 0, 37 �̎��́A�����͕ύX�����ɏc���� 37 �s�ɕύX���܂��B<br>
-X �܂��� Y �̒l�� -1 �ɂ����ꍇ�A��ʃT�C�Y�𒴂��Ȃ��͈͂ł̍ő�l�Ƃ��Ĉ����܂��B<br>
-���j���[�̍��ڐ��͍ő�� 20 �ł��B
+メニュー内の項目を変更したい場合は、TERATERM.INI に [Resize Menu] セクションを作成し、"ResizeMenuN = X, Y" の形式で指定して下さい。N  は 1 からの連番です。<br>
+X または Y のいずれかが 0 の時は、その要素は変更されません。例えば 0, 37 の時は、横幅は変更せずに縦幅を 37 行に変更します。<br>
+X または Y の値を -1 にした場合、画面サイズを超えない範囲での最大値として扱われます。<br>
+メニューの項目数は最大で 20 です。
 </p>
 
-<h2>�ݒ��</h2>
+<h2>設定例</h2>
 <pre class="macro-example">
 [Resize Menu]
 ;
-; ���� 80��, �c�� 37�s
+; 横幅 80桁, 縦幅 37行
 ResizeMenu1 =  80, 37
 ;
-; VT�̕W���T�C�Y
+; VTの標準サイズ
 ResizeMenu2 =  80, 24
 ;
-; �����͕ύX�����ɁA�c����52�s�ɂ���B
+; 横幅は変更せずに、縦幅を52行にする。
 ResizeMenu3 =   0, 52
 ;
-; �c���͕ύX�����ɁA������132���ɂ���B(VT��132�����[�h(DECCOLM)����)
+; 縦幅は変更せずに、横幅を132桁にする。(VTの132桁モード(DECCOLM)相当)
 ResizeMenu4 = 132,  0
 </pre>
 
 <h2>ToDo</h2>
 
 <ul>
-  <li>���j���[�̍��ڂ��A�ݒ�_�C�A���O����ύX�ł���悤�ɂ���B</li>
+  <li>メニューの項目を、設定ダイアログから変更できるようにする。</li>
 </ul>
 
 </body>

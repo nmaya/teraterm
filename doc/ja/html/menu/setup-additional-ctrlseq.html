@@ -2,83 +2,83 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>Additional settings / "Control Sequence" �^�u ([Setup] ���j���[)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Additional settings / "Control Sequence" タブ ([Setup] メニュー)</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1><a href="setup-additional.html">Additional settings</a> / "Control Sequence" �^�u ([Setup] ���j���[)</h1>
+    <h1><a href="setup-additional.html">Additional settings</a> / "Control Sequence" タブ ([Setup] メニュー)</h1>
 
     <dl>
       <dt id="MouseEventTracking">Accept mouse event tracking request</dt>
       <dd>
-	�z�X�g���̃A�v���P�[�V�����ɂ���āAVT window ���}�E�X�g���b�L���O���[�h�ɕύX���ꂽ�ꍇ�ATera Term �̓}�E�X������z�X�g�֕񍐂���悤�ɂȂ�܂��B<br>
-	�}�E�X�g���b�L���O���[�h��xterm�̊g���@�\�ł��̂ŁATERM���ϐ���"xterm"�ȊO���ƃz�X�g���̃A�v���P�[�V�����͂��̋@�\���g��Ȃ���������܂���B
+	ホスト側のアプリケーションによって、VT window がマウストラッキングモードに変更された場合、Tera Term はマウス操作をホストへ報告するようになります。<br>
+	マウストラッキングモードはxtermの拡張機能ですので、TERM環境変数が"xterm"以外だとホスト側のアプリケーションはこの機能を使わないかもしれません。
       </dd>
 
       <dt id="DisableMouseTrackingByCtrl">Disable mouse event tracking when Control is pressed</dt>
       <dd>
-	�}�E�X�g���b�L���O���[�h���AControl�L�[��������Ă���Ԃ̓}�E�X�����ʒm���Ȃ��悤�ɂ��܂��B
+	マウストラッキングモード時、Controlキーが押されている間はマウス操作を通知しないようにします。
       </dd>
 
       <dt id="AcceptTitleChangeRequest">Accept window title change request</dt>
       <dd>
-	�����[�g����̃E�B���h�E�^�C�g���ύX�v�����󂯓���邩��ݒ肵�܂��B
+	リモートからのウィンドウタイトル変更要求を受け入れるかを設定します。
 	<dl>
 	  <dt>off</dt>
-	  <dd>�󂯓���Ȃ�</dd>
+	  <dd>受け入れない</dd>
 	  <dt>overwrite</dt>
-	  <dd>�󂯓���A�����[�g����̃E�C���h�E�^�C�g���݂̂�\������</dd>
+	  <dd>受け入れ、リモートからのウインドウタイトルのみを表示する</dd>
 	  <dt>ahead</dt>
-	  <dd>�󂯓���A�����[�g����̃E�C���h�E�^�C�g����W���̃^�C�g���̑O�ɒǉ�����</dd>
+	  <dd>受け入れ、リモートからのウインドウタイトルを標準のタイトルの前に追加する</dd>
 	  <dt>last</dt>
-	  <dd>�󂯓���A�����[�g����̃E�C���h�E�^�C�g����W���̃^�C�g���̌��ɒǉ�����</dd>
+	  <dd>受け入れ、リモートからのウインドウタイトルを標準のタイトルの後ろに追加する</dd>
 	</dl>
       </dd>
 
       <dt id="TitleReportSequence">Window title report</dt>
       <dd>
-	dtterm �̃E�B���h�E�^�C�g������уA�C�R�����x���񍐗v���ɑ΂��āA�ǂ̂悤�ɉ������邩��ύX�ł��܂��B
+	dtterm のウィンドウタイトルおよびアイコンラベル報告要求に対して、どのように応答するかを変更できます。
 	<dl>
 	  <dt>ignore</dt>
-	  <dd>�񍐗v���ɑ΂��ĉ����������Ȃ��悤�ɂ���</dd>
+	  <dd>報告要求に対して何も応答しないようにする</dd>
 	  <dt>accept</dt>
-	  <dd>���݂̃E�B���h�E�^�C�g����񍐂���B���݂̃E�B���h�E�^�C�g����񍐂���̂̓Z�L�����e�B��댯�ł��̂ŁA�{���ɕK�v�Ȏ��݂̂��̐ݒ���s���悤�ɂ��Ă��������B</dd>
+	  <dd>現在のウィンドウタイトルを報告する。現在のウィンドウタイトルを報告するのはセキュリティ上危険ですので、本当に必要な時のみこの設定を行うようにしてください。</dd>
 	  <dt>empty</dt>
-	  <dd>�E�B���h�E�^�C�g���͋󂾂ƕ񍐂���</dd>
+	  <dd>ウィンドウタイトルは空だと報告する</dd>
 	</dl>
       </dd>
 
       <dt id="WindowCtrlSequence">Window control sequence</dt>
       <dd>
-	���̐ݒ肪 on �ɂȂ��Ă���ƁAdtterm�̃E�B���h�E���쐧��V�[�P���X�̓��A�ʒu�ړ�, �ŏ���, �ő剻, �őO�ʈړ�, �Ŕw�ʈړ�, ���t���b�V��, �E�B���h�E�T�C�Y�ύX(�s�N�Z���P��, �����P��) ���L���ɂȂ�܂��B
+	この設定が on になっていると、dttermのウィンドウ操作制御シーケンスの内、位置移動, 最小化, 最大化, 最前面移動, 最背面移動, リフレッシュ, ウィンドウサイズ変更(ピクセル単位, 文字単位) が有効になります。
       </dd>
 
       <dt id="WindowReportSequence">Window report sequence</dt>
       <dd>
-	���̐ݒ肪 on �ɂȂ��Ă���ƁAdtterm�̃E�B���h�E���񍐂̐���V�[�P���X�̓��A�E�B���h�E��ԕ�, �E�B���h�E�ʒu��, �E�B���h�E�T�C�Y��(�s�N�Z���P��, �����P��), ���[�g�E�B���h�E�T�C�Y�� ���L���ɂȂ�܂��B<br>
-	�Z�L�����e�B��̗��R���ŃE�B���h�E�̏���񍐂������Ȃ��ꍇ�͖����ɂ��Ă��������B
+	この設定が on になっていると、dttermのウィンドウ情報報告の制御シーケンスの内、ウィンドウ状態報告, ウィンドウ位置報告, ウィンドウサイズ報告(ピクセル単位, 文字単位), ルートウィンドウサイズ報告 が有効になります。<br>
+	セキュリティ上の理由等でウィンドウの情報を報告したくない場合は無効にしてください。
       </dd>
 
       <dt id="CursorCtrlSequence">Cursor control sequence</dt>
       <dd>
-	�J�[�\���`��𐧌䂷��V�[�P���X���g�p���邩�ǂ�����ݒ肵�܂��B<br>
-	���̐ݒ肪 on �ɂȂ��Ă���ƁADECSCUSR(�J�[�\���`��ύX), WYSTCURM(Wyse��_�ŃJ�[�\��), WYULCURM(Wyse�����J�[�\��), AT&amp;T 610�̃J�[�\���_�Ő���V�[�P���X�ɉ����āA�J�[�\���`�󂪕ύX����܂��B
+	カーソル形状を制御するシーケンスを使用するかどうかを設定します。<br>
+	この設定が on になっていると、DECSCUSR(カーソル形状変更), WYSTCURM(Wyse非点滅カーソル), WYULCURM(Wyse下線カーソル), AT&amp;T 610のカーソル点滅制御シーケンスに応じて、カーソル形状が変更されます。
 
 	<p>
-	  vim���g�p���Ă���ꍇ�A���̋@�\�� on �ɂ��� ~/.vimrc �Ɉȉ��̂悤�ɒǉ�����Ɠ��̓��[�h�ɉ����ăJ�[�\���`�󂪕ς��悤�ɂȂ�܂��B
+	  vimを使用している場合、この機能を on にして ~/.vimrc に以下のように追加すると入力モードに応じてカーソル形状が変わるようになります。
 	</p>
 
 <pre>
 set t_SI=^[[3\ q
 set t_EI=^[[1\ q
-��: ^[ ��Control-V Control-[�œ��͂���
+注: ^[ はControl-V Control-[で入力する
 </pre>
 
-	�A�v���P�[�V�����I����ɁA�J�[�\����_�ŏ�Ԃɖ߂��ɂ́A�ȉ��̂悤�ɐݒ�����܂��B<br>
-	ncurses 5.7 �� terminfo �ł� xterm �̃J�[�\���̔�\��(civis)/�ʏ�\��(cnorm)/�����\��(cvvis)�͂��ꂼ��ȉ��̂悤�ɂȂ��Ă��܂��B
+	アプリケーション終了後に、カーソルを点滅状態に戻すには、以下のように設定をします。<br>
+	ncurses 5.7 の terminfo では xterm のカーソルの非表示(civis)/通常表示(cnorm)/強調表示(cvvis)はそれぞれ以下のようになっています。
 
 <pre>
 civis=\E[?25l
@@ -86,59 +86,59 @@ cnorm=\E[?12l\E[?25h
 cvvis=\E[?12;25h
 </pre>
 
-	���̐ݒ肾�ƁA�J�[�\���̒ʏ�\�����͔�_�łɁA�����\�����͓_�ł���悤�ɂȂ�܂��B
-	���̂��� terminfo �Ή��̃A�v���P�[�V�������J�[�\����ʏ�\�����悤�Ƃ������ɓ_�ł��Ȃ��Ȃ�܂��B<br>
-	�Ή��Ƃ��ẮA�J�[�\���̓_�Ő���𖳎�����ׂ� CursorCtrlSequence �� off �ɐݒ肷�邩�A�J�[�\���\����ԕύX���ɓ_�ŏ�Ԃ�ύX���Ȃ��悤�Ɉȉ��̎菇���z�X�g���Ŏ��{���Ă��������B
+	この設定だと、カーソルの通常表示時は非点滅に、強調表示時は点滅するようになります。
+	このため terminfo 対応のアプリケーションがカーソルを通常表示しようとした時に点滅しなくなります。<br>
+	対応としては、カーソルの点滅制御を無視する為に CursorCtrlSequence を off に設定するか、カーソル表示状態変更時に点滅状態を変更しないように以下の手順をホスト側で実施してください。
 
 <pre>
 % infocmp xterm &gt; xterm.ti
-�������ꂽxterm.ti��ҏW���Acnorm, cvvis�̒l�� \E?25h �ɕύX����
+生成されたxterm.tiを編集し、cnorm, cvvisの値を \E?25h に変更する
 % tic -o ~/.terminfo xterm.ti
-�V�X�e���S�̂ɔ��f�����邽�߂ɂ� root �ňȉ������s
+システム全体に反映させるためには root で以下を実行
 # tic xterm.ti
 </pre>
       </dd>
 
       <dt id="ClipboardAccessFromRemote">Clipboard access from remote</dt>
       <dd>
-	�z�X�g����̃N���b�v�{�[�h�ւ̃A�N�Z�X�������邩�ݒ肵�܂��B
+	ホストからのクリップボードへのアクセスを許可するか設定します。
 	<dl>
 	  <dt>off</dt>
-	  <dd>�N���b�v�{�[�h�ւ̃A�N�Z�X�������Ȃ�</dd>
+	  <dd>クリップボードへのアクセスを許可しない</dd>
 	  <dt>write only</dt>
-	  <dd>�N���b�v�{�[�h�ւ̏������݂�������</dd>
+	  <dd>クリップボードへの書き込みを許可する</dd>
 	  <dt>read only</dt>
-	  <dd>�N���b�v�{�[�h�ւ̓ǂݍ��݂�������</dd>
+	  <dd>クリップボードへの読み込みを許可する</dd>
 	  <dt>read/write</dt>
-	  <dd>�N���b�v�{�[�h�ւ̓ǂݏ���������������</dd>
+	  <dd>クリップボードへの読み書き両方を許可する</dd>
 	</dl>
       </dd>
 
       <dt id="NotifyClipboardAccess">Notify clipboard access from remote</dt>
       <dd>
-	�z�X�g����̃N���b�v�{�[�h�ւ̃A�N�Z�X��ʒm���邩�ݒ肵�܂��B
+	ホストからのクリップボードへのアクセスを通知するか設定します。
       </dd>
 
       <dt id="ed3">Accept clearing scroll buffer from remote</dt>
       <dd>
-	�z�X�g����̃X�N���[���o�b�t�@�N���A�v�����󂯓���邩��ݒ肵�܂��B�L���ɂ���� clear �R�}���h�ŃX�N���[���o�b�t�@�����������悤�ɂȂ�܂��B
+	ホストからのスクロールバッファクリア要求を受け入れるかを設定します。有効にすると clear コマンドでスクロールバッファが消去されるようになります。
       </dd>
 
       <dt id="DisablePrintStart">Disable print start sequence</dt>
       <dd>
-	�󎚊J�n�V�[�P���X�𖳌������܂��B
+	印字開始シーケンスを無効化します。
 	(<a href="../setup/teraterm-prn.html#ignoremc">see also</a>)
       </dd>
 
       <dt id="Beep">Beep</dt>
       <dd>
-	�x��(BEL, ASCII $07)�̓����I�����܂��B
+	ベル(BEL, ASCII $07)の動作を選択します。
 	<dl>
     <dt>disable</dt>
     <dt>sound</dt>
-    <dd>�V�X�e���f�t�H���g�r�[�v�����o�͂���܂�</dd>
+    <dd>システムデフォルトビープ音が出力されます</dd>
     <dt>visiualbell</dt>
-    <dd>��ʂ��t���b�V�����܂�</dd>
+    <dd>画面がフラッシュします</dd>
 	</dl>
 	(<a href="../setup/teraterm-term.html#BellLimitting">see also</a>)
       </dd>

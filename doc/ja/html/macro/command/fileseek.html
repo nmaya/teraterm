@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>fileseek</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,51 +14,51 @@
 <h1>fileseek</h1>
 
 <p>
-ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^‚ğˆÚ“®‚·‚éB
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿ã‚’ç§»å‹•ã™ã‚‹ã€‚
 </p>
 
 <pre class="macro-syntax">
 fileseek &lt;file handle&gt; &lt;offset&gt; &lt;origin&gt;
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-ƒtƒ@ƒCƒ‹ƒnƒ“ƒhƒ‹ &lt;file handle&gt; ‚Åw’è‚³‚ê‚éƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^‚ğˆÚ“®‚·‚éB<br>
-ˆÚ“®Œã‚Ìƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^‚Í‰º‹L‚Ì‚æ‚¤‚É‚È‚éB
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ« &lt;file handle&gt; ã§æŒ‡å®šã•ã‚Œã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿ã‚’ç§»å‹•ã™ã‚‹ã€‚<br>
+ç§»å‹•å¾Œã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿ã¯ä¸‹è¨˜ã®ã‚ˆã†ã«ãªã‚‹ã€‚
 </p>
 
 <table>
  <tr>
   <th>&lt;origin&gt;</th>
   <td>0</td>
-  <td>ƒtƒ@ƒCƒ‹‚Ìæ“ª‚©‚ç &lt;offset&gt; ƒoƒCƒg</td>
+  <td>ãƒ•ã‚¡ã‚¤ãƒ«ã®å…ˆé ­ã‹ã‚‰ &lt;offset&gt; ãƒã‚¤ãƒˆ</td>
  </tr>
  <tr>
   <th>&lt;origin&gt;</th>
   <td>1</td>
-  <td>Œ»İˆÊ’u‚©‚ç &lt;offset&gt; ƒoƒCƒg</td>
+  <td>ç¾åœ¨ä½ç½®ã‹ã‚‰ &lt;offset&gt; ãƒã‚¤ãƒˆ</td>
  </tr>
  <tr>
   <th>&lt;origin&gt;</th>
   <td>2</td>
-  <td>ƒtƒ@ƒCƒ‹‚Ì––”ö‚©‚ç &lt;offset&gt; ƒoƒCƒg</td>
+  <td>ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ«å°¾ã‹ã‚‰ &lt;offset&gt; ãƒã‚¤ãƒˆ</td>
  </tr>
 </table>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
-; ƒtƒ@ƒCƒ‹‚ÌÅ‰‚ÖˆÚ“®
+; ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€åˆã¸ç§»å‹•
 fileseek fhandle 0 0
 
-; Œ»İ‚ÌˆÊ’u‚©‚ç 10 ƒoƒCƒgæ‚ÖˆÚ“®
+; ç¾åœ¨ã®ä½ç½®ã‹ã‚‰ 10 ãƒã‚¤ãƒˆå…ˆã¸ç§»å‹•
 fileseek fhandle 10 1
 
-; ƒtƒ@ƒCƒ‹‚ÌÅŒã‚ÖˆÚ“®
+; ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¾Œã¸ç§»å‹•
 fileseek fhandle 0 2
 
-; ƒtƒ@ƒCƒ‹‚ÌÅŒã‚©‚ç 10 ƒoƒCƒg‘O‚ÌˆÊ’u‚ÖˆÚ“®
+; ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¾Œã‹ã‚‰ 10 ãƒã‚¤ãƒˆå‰ã®ä½ç½®ã¸ç§»å‹•
 fileseek fhandle 0-10 2
 </pre>
 

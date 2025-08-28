@@ -2,17 +2,17 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>�t�@�C���]�� (Tera Term �ݒ�t�@�C��)</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>ファイル転送 (Tera Term 設定ファイル)</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1 id="rename">��M�����t�@�C���̖��O�������I�ɕύX���ď㏑���������</h1>
+<h1 id="rename">受信したファイルの名前を自動的に変更して上書きを避ける</h1>
 
 <p>
-Kermit, Zmodem, BPlus, Quick-VAN �v���g�R�����g�p���ăt�@�C������M����ꍇ�A�t�@�C�����̓z�X�g(���M��)�ɂ��^�����܂��B�����A�����t�@�C���������łɃ��[�J���f�B�X�N�ɑ��݂���ꍇ�A���̃t�@�C���͎�M���ꂽ�t�@�C���ɂ��㏑������܂��B���̏㏑���������ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ AutoFileRename �s���ȉ��̂悤�ɕύX���Ă��������B
+Kermit, Zmodem, BPlus, Quick-VAN プロトコルを使用してファイルを受信する場合、ファイル名はホスト(送信側)により与えられます。もし、同じファイル名がすでにローカルディスクに存在する場合、そのファイルは受信されたファイルにより上書きされます。この上書きを避けるには、設定ファイルの [Tera Term] セクションの AutoFileRename 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -20,19 +20,19 @@ AutoFileRename=on
 </pre>
 
 <p>
-���̏ꍇ�A��M���ꂽ�t�@�C���͏㏑��������邽�߂Ɏ����I�ɖ��O���ύX����܂��B�Ⴆ�΁A��M���ꂽ�t�@�C���� "abc.txt" �œ������O�����łɃ��[�J���f�B�X�N�ɑ��݂���ꍇ�A��M���ꂽ�t�@�C���̖��O�� "abc1.txt" �ɕύX����܂��B
+この場合、受信されたファイルは上書きを避けるために自動的に名前が変更されます。例えば、受信されたファイルが "abc.txt" で同じ名前がすでにローカルディスクに存在する場合、受信されたファイルの名前は "abc1.txt" に変更されます。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 AutoFileRename=on
 </pre>
 
 
-<h1 id="bpauto">B-Plus ��M�̎����N��</h1>
+<h1 id="bpauto">B-Plus 受信の自動起動</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ BPAuto �s���A
+設定ファイルの [Tera Term] セクションの BPAuto 行を、
 </p>
 
 <pre>
@@ -40,19 +40,19 @@ BPAuto=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁANifty-Serve ���� BBS �ŁAB-Plus �̃_�E�����[�h�R�}���h�����s�����Ƃ��ɁA�����I�� Tera Term �� B-Plus ��M���J�n�����悤�ɂȂ�܂��B
+のように変更すると、Nifty-Serve 等の BBS で、B-Plus のダウンロードコマンドを実行したときに、自動的に Tera Term の B-Plus 受信が開始されるようになります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 BPAuto=off
 </pre>
 
 
-<h1 id="bpesc">B-Plus �ł��ׂĂ̐��䕶�����G�X�P�[�v����</h1>
+<h1 id="bpesc">B-Plus ですべての制御文字をエスケープする</h1>
 
 <p>
-B-Plus �ł́A�ʐM������ꕔ�̐��䕶����ʂ��Ȃ����Ƃ�z�肵�āA�������G�X�P�[�v����(���̕����̑g�ݍ��킹�ɒu��������)�悤�ɂȂ��Ă��܂��B�������A�z��O�̐��䕶�����ʂ��Ȃ�����̏ꍇ�͓]�������܂������܂���B���̂悤�ȏꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ BPEscCtl �s���A
+B-Plus では、通信回線が一部の制御文字を通さないことを想定して、それらをエスケープする(他の文字の組み合わせに置き換える)ようになっています。しかし、想定外の制御文字も通さない回線の場合は転送がうまくいきません。そのような場合は、設定ファイルの [Tera Term] セクションの BPEscCtl 行を、
 </p>
 
 <pre>
@@ -60,19 +60,19 @@ BPEscCtl=on
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������B����ł��ׂĂ̐��䕶�����G�X�P�[�v����悤�ɂȂ�܂��B
+のように変更してください。これですべての制御文字をエスケープするようになります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 BPEscCtl=off
 </pre>
 
 
-<h1 id="bplog">B-Plus �̃��O</h1>
+<h1 id="bplog">B-Plus のログ</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ BPLog �s���A
+設定ファイルの [Tera Term] セクションの BPLog 行を、
 </p>
 
 <pre>
@@ -80,19 +80,19 @@ BPLog=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA�z�X�g�� Tera Term �̊Ԃ� B-Plus ��p�����t�@�C���]��������Ƃ��ɁA���������p�P�b�g���e���t�@�C�� BPLUS.LOG �ɋL�^���܂��B
+のように変更すると、ホストと Tera Term の間で B-Plus を用いたファイル転送をするときに、交換されるパケット内容をファイル BPLUS.LOG に記録します。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 BPLog=off
 </pre>
 
 
-<h1 id="kmlog">Kermit �̃��O</h1>
+<h1 id="kmlog">Kermit のログ</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ KmtLog �s���A
+設定ファイルの [Tera Term] セクションの KmtLog 行を、
 </p>
 
 <pre>
@@ -100,19 +100,19 @@ KmtLog=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA�z�X�g�� Tera Term �̊Ԃ� Kermit ��p�����t�@�C���]��������Ƃ��ɁA���������p�P�b�g���e���t�@�C�� KERMIT.LOG �ɋL�^���܂��B
+のように変更すると、ホストと Tera Term の間で Kermit を用いたファイル転送をするときに、交換されるパケット内容をファイル KERMIT.LOG に記録します。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 KmtLog=off
 </pre>
 
 
-<h1 id="kmlongpkt">Kermit �̃����O�p�P�b�g</h1>
+<h1 id="kmlongpkt">Kermit のロングパケット</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ KmtLongPacket �s���A
+設定ファイルの [Tera Term] セクションの KmtLongPacket 行を、
 </p>
 
 <pre>
@@ -120,19 +120,19 @@ KmtLongPacket=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA�z�X�g�� Tera Term �̊Ԃ� Kermit ��p�����t�@�C���]��������Ƃ��ɁA94�o�C�g�ȏ�̃����O�p�P�b�g���������Ƃ��ł��܂��B�������AKermit�T�[�o�������Y�@�\���T�|�[�g���Ă���K�v������܂��B
+のように変更すると、ホストと Tera Term の間で Kermit を用いたファイル転送をするときに、94バイト以上のロングパケットを扱うことができます。ただし、Kermitサーバ側が当該機能をサポートしている必要があります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 KmtLongPacket=off
 </pre>
 
 
-<h1 id="kmfileattr">Kermit �̃t�@�C������</h1>
+<h1 id="kmfileattr">Kermit のファイル属性</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ KmtFileAttr �s���A
+設定ファイルの [Tera Term] セクションの KmtFileAttr 行を、
 </p>
 
 <pre>
@@ -140,20 +140,20 @@ KmtFileAttr=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA�z�X�g�� Tera Term �̊Ԃ� Kermit ��p�����t�@�C���]��������Ƃ��ɁA�t�@�C���������i�T�C�Y�A��ʁA�^�C���X�^���v�Ȃǁj���������Ƃ��ł��܂��B�������AKermit�T�[�o�������Y�@�\���T�|�[�g���Ă���K�v������܂��B
+のように変更すると、ホストと Tera Term の間で Kermit を用いたファイル転送をするときに、ファイル属性情報（サイズ、種別、タイムスタンプなど）を扱うことができます。ただし、Kermitサーバ側が当該機能をサポートしている必要があります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 KmtFileAttr=off
 </pre>
 
 
 
-<h1 id="qvlog">Quick-VAN �̃��O</h1>
+<h1 id="qvlog">Quick-VAN のログ</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ QVLog �s���A
+設定ファイルの [Tera Term] セクションの QVLog 行を、
 </p>
 
 <pre>
@@ -161,47 +161,47 @@ QVLog=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA�z�X�g�� Tera Term �̊Ԃ� Quick-VAN ��p�����t�@�C���]��������Ƃ��ɁA���������p�P�b�g���e���t�@�C�� QUICKVAN.LOG �ɋL�^���܂��B
+のように変更すると、ホストと Tera Term の間で Quick-VAN を用いたファイル転送をするときに、交換されるパケット内容をファイル QUICKVAN.LOG に記録します。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 QVLog=off
 </pre>
 
 
-<h1 id="qvwinsize">Quick-VAN �̃E�C���h�E�T�C�Y</h1>
+<h1 id="qvwinsize">Quick-VAN のウインドウサイズ</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ QVWinSize �s���A
+設定ファイルの [Tera Term] セクションの QVWinSize 行を、
 </p>
 
 <pre>
-QVWinSize=&lt;window size (10�i��(��))&gt;
+QVWinSize=&lt;window size (10進数(正))&gt;
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁAQuick-VAN �v���g�R���ŗp������E�C���h�E�T�C�Y�Ƃ����p�����[�^�[��ݒ肷�邱�Ƃ��ł��܂��B
+のように変更すると、Quick-VAN プロトコルで用いられるウインドウサイズというパラメーターを設定することができます。
 </p>
 
 <p>
-�ݒ�\�ȃE�C���h�E�T�C�Y�̒l�́A1�`99�ł��B��ʂɁA������\���ɍ����ŃG���[���Ȃ��ꍇ�A�E�C���h�E�T�C�Y��傫������΂���قǁA�]�����x�����サ�܂��B�������A�ᑬ�ȉ����G���[�̑���������g�p������A�z�X�g�� PC ���f�[�^����肱�ڂ����肷��ꍇ�ɂ́A�E�C���h�E�T�C�Y���傫������Ƌt�ɓ]�����x���ቺ���܂��B
+設定可能なウインドウサイズの値は、1〜99です。一般に、回線が十分に高速でエラーがない場合、ウインドウサイズを大きくすればするほど、転送速度が向上します。ただし、低速な回線やエラーの多い回線を使用したり、ホストや PC がデータを取りこぼしたりする場合には、ウインドウサイズが大きすぎると逆に転送速度が低下します。
 </p>
 
 <p>
-�܂��A���ۂɗp������E�C���h�E�T�C�Y�̒l�́A Tera Term ���̐ݒ�l�ƁA�z�X�g (PC-VAN) ���̐ݒ�l�̏��������ɂȂ�܂��B���������āA Tera Term �̐ݒ�l������l���傫������ƁA����ȏ�]�����x�͕ω����Ȃ��Ȃ�܂��B
+また、実際に用いられるウインドウサイズの値は、 Tera Term 側の設定値と、ホスト (PC-VAN) 側の設定値の小さい方になります。したがって、 Tera Term の設定値をある値より大きくすると、それ以上転送速度は変化しなくなります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 QVWinSize=8
 </pre>
 
 
-<h1 id="xmlog">XMODEM �̃��O</h1>
+<h1 id="xmlog">XMODEM のログ</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ XmodemLog �s���A
+設定ファイルの [Tera Term] セクションの XmodemLog 行を、
 </p>
 
 <pre>
@@ -209,19 +209,19 @@ XmodemLog=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA�z�X�g�� Tera Term �̊Ԃ� XMODEM ��p�����t�@�C���]��������Ƃ��ɁA���������p�P�b�g���e���t�@�C�� XMODEM.LOG �ɋL�^���܂��B
+のように変更すると、ホストと Tera Term の間で XMODEM を用いたファイル転送をするときに、交換されるパケット内容をファイル XMODEM.LOG に記録します。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 XmodemLog=off
 </pre>
 
 
-<h1 id="xmodemrecv">XMODEM �̎�M�R�}���h</h1>
+<h1 id="xmodemrecv">XMODEM の受信コマンド</h1>
 
 <p>
-XMODEM �Ńt�@�C�����M���J�n���钼�O�ɁA�z�X�g�� �uXMODEM ����M����R�}���h�v�𑗐M���A�����I�Ɏ�M���J�n�����邱�Ƃ��ł��܂��B���̂Ƃ��� Tera Term ���瑗�M����uXMODEM ����M����R�}���h�v���w�肵�܂��B
+XMODEM でファイル送信を開始する直前に、ホストに 「XMODEM を受信するコマンド」を送信し、自動的に受信を開始させることができます。このときに Tera Term から送信する「XMODEM を受信するコマンド」を指定します。
 </p>
 
 <pre>
@@ -229,39 +229,39 @@ XmodemRcvCommand=rx
 </pre>
 
 <p>
-�R�}���h���w�肵�Ȃ��ꍇ�́A�u��M�R�}���h�v�𑗐M���܂���B
+コマンドを指定しない場合は、「受信コマンド」を送信しません。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 XmodemRcvCommand=
 </pre>
 
 
-<h1 id="XmodemTimeouts">XMODEM �̃^�C���A�E�g</h1>
+<h1 id="XmodemTimeouts">XMODEM のタイムアウト</h1>
 
 <p>
-XMODEM �̃^�C���A�E�g�l�i�P�ʂ͕b�j��ݒ�ł��܂��B
+XMODEM のタイムアウト値（単位は秒）を設定できます。
 </p>
 
 <p>
-1�Ԗ� ... �ʏ�̏������^�C���A�E�g<br>
-2�Ԗ� ... CRC �̏������^�C���A�E�g<br>
-3�Ԗ� ... �Z���^�C���A�E�g<br>
-4�Ԗ� ... �����^�C���A�E�g<br>
-5�Ԗ� ... �ƂĂ������^�C���A�E�g
+1番目 ... 通常の初期化タイムアウト<br>
+2番目 ... CRC の初期化タイムアウト<br>
+3番目 ... 短いタイムアウト<br>
+4番目 ... 長いタイムアウト<br>
+5番目 ... とても長いタイムアウト
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 XmodemTimeouts=10,3,10,20,60
 </pre>
 
 
-<h1 id="ymlog">YMODEM �̃��O</h1>
+<h1 id="ymlog">YMODEM のログ</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ YmodemLog �s���A
+設定ファイルの [Tera Term] セクションの YmodemLog 行を、
 </p>
 
 <pre>
@@ -269,39 +269,39 @@ YmodemLog=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA�z�X�g�� Tera Term �̊Ԃ� YMODEM ��p�����t�@�C���]��������Ƃ��ɁA���������p�P�b�g���e���t�@�C�� YMODEM.LOG �ɋL�^���܂��B
+のように変更すると、ホストと Tera Term の間で YMODEM を用いたファイル転送をするときに、交換されるパケット内容をファイル YMODEM.LOG に記録します。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 YmodemLog=off
 </pre>
 
 
-<h1 id="YmodemTimeouts">YMODEM �̃^�C���A�E�g</h1>
+<h1 id="YmodemTimeouts">YMODEM のタイムアウト</h1>
 
 <p>
-YMODEM �̃^�C���A�E�g�l�i�P�ʂ͕b�j��ݒ�ł��܂��B
+YMODEM のタイムアウト値（単位は秒）を設定できます。
 </p>
 
 <p>
-1�Ԗ� ... �ʏ�̏������^�C���A�E�g<br>
-2�Ԗ� ... CRC �̏������^�C���A�E�g<br>
-3�Ԗ� ... �Z���^�C���A�E�g<br>
-4�Ԗ� ... �����^�C���A�E�g<br>
-5�Ԗ� ... �ƂĂ������^�C���A�E�g
+1番目 ... 通常の初期化タイムアウト<br>
+2番目 ... CRC の初期化タイムアウト<br>
+3番目 ... 短いタイムアウト<br>
+4番目 ... 長いタイムアウト<br>
+5番目 ... とても長いタイムアウト
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 YmodemTimeouts=10,3,10,20,60
 </pre>
 
 
-<h1 id="zmauto">ZMODEM ��M/���M�̎����N��</h1>
+<h1 id="zmauto">ZMODEM 受信/送信の自動起動</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ ZmodemAuto �s���A
+設定ファイルの [Tera Term] セクションの ZmodemAuto 行を、
 </p>
 
 <pre>
@@ -309,55 +309,55 @@ ZmodemAuto=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA�z�X�g���� ZMODEM ���M(�_�E�����[�h)�R�}���h�����s�����Ƃ��ɁA�����I�� Tera Term �� ZMODEM ��M���J�n�����悤�ɂȂ�܂��B<br>
-�܂��A�z�X�g���� ZMODEM ��M(�A�b�v���[�h)�R�}���h�����s�������́AZMODEM ���M�̃t�@�C���I���_�C�A���O���J���悤�ɂȂ�܂��B
+のように変更すると、ホスト側の ZMODEM 送信(ダウンロード)コマンドを実行したときに、自動的に Tera Term の ZMODEM 受信が開始されるようになります。<br>
+また、ホスト側の ZMODEM 受信(アップロード)コマンドを実行した時は、ZMODEM 送信のファイル選択ダイアログが開くようになります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 ZmodemAuto=off
 </pre>
 
 
-<h1 id="zmparam">ZMODEM ���M�̐ݒ�</h1>
+<h1 id="zmparam">ZMODEM 送信の設定</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ ZmodemDataLen �� ZmodemWinSize �s���ȉ��̂悤�ɕύX����ƁAZMODEM ���M�Ɋւ���ݒ�����邱�Ƃ��ł��܂��B�����̐ݒ�� ZMODEM ��M�ɂ͉e����^���܂���B
+設定ファイルの [Tera Term] セクションの ZmodemDataLen と ZmodemWinSize 行を以下のように変更すると、ZMODEM 送信に関する設定をすることができます。これらの設定は ZMODEM 受信には影響を与えません。
 </p>
 
 <pre>
-ZmodemDataLen=&lt;�f�[�^�T�u�p�P�b�g�̍ő咷(�o�C�g��)&gt;
-ZmodemWinSize=&lt;���M�̃E�B���h�E�T�C�Y(�o�C�g��)&gt;
+ZmodemDataLen=&lt;データサブパケットの最大長(バイト数)&gt;
+ZmodemWinSize=&lt;送信のウィンドウサイズ(バイト数)&gt;
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 ZmodemDataLen=1024
 ZmodemWinSize=32767
 </pre>
 
 <p>
-���̐ݒ�� ZMODEM ��M�ɂ͉e����^���܂���B
+この設定は ZMODEM 受信には影響を与えません。
 </p>
 
 <p>
-�ݒ�\��&lt;�f�[�^�T�u�p�P�b�g�̍ő咷&gt;�̒l��0�`1024�ł��B�ᑬ�ȉ����G���[�̑���������g�p������A�z�X�g�̃f�[�^�����\�͂��Ⴍ�f�[�^����肱�ڂ��ꍇ�́A�����Ȓl��ݒ肷��ƁA�G���[���̏�Q�ɑ΂��āA������ȃt�@�C�����M���s�����Ƃ��ł��܂��B�V���A���|�[�g�g�p���ŃX�s�[�h���Ⴂ�ꍇ�́A�ݒ�l�����������l���g�p����邱�Ƃ�����܂��B
+設定可能な&lt;データサブパケットの最大長&gt;の値は0〜1024です。低速な回線やエラーの多い回線を使用したり、ホストのデータ処理能力が低くデータを取りこぼす場合は、小さな値を設定すると、エラー等の障害に対して、より安定なファイル送信を行うことができます。シリアルポート使用時でスピードが低い場合は、設定値よりも小さい値が使用されることがあります。
 </p>
 
 <p>
-�ݒ�\��&lt;���M�̃E�B���h�E�T�C�Y&gt;�̒l��-32768�`32767�ł��B�Ⴆ�΁A�l��30000�ɂ���ƁA��30000�o�C�g�Ɉ��A�f�[�^�p�P�b�g�̑��M���x�݁A�z�X�g����m�F�����܂��B�l��(�E�B���h�E�T�C�Y������ɑΉ�)�ɂ���ƁA�z�X�g����G���[�̕񍐂��Ȃ�������A�����x�܂��Ƀf�[�^�p�P�b�g�𑗐M���Â��A�ő���̑��M���x�������܂��B�z�X�g�����̔\�͂ɂ���ẮA�E�B���h�E�T�C�Y������l���傫������ƁA����ȃt�@�C�����M���ł��Ȃ��Ȃ�����A���Ɏ��Ԃ����������肷�邱�Ƃ�����܂��B
+設定可能な&lt;送信のウィンドウサイズ&gt;の値は-32768〜32767です。例えば、値を30000にすると、約30000バイトに一回、データパケットの送信を休み、ホストから確認を取ります。値を負(ウィンドウサイズ無限大に対応)にすると、ホストからエラーの報告がないかぎり、一回も休まずにデータパケットを送信しつづけ、最大限の送信速度が得られます。ホストや回線の能力によっては、ウィンドウサイズをある値より大きくすると、正常なファイル送信ができなくなったり、非常に時間がかかったりすることがあります。
 </p>
 
 <p>
-����
-�A���C�h�e���V�X�̃��[�^�ɑ΂��ẮAZmodemDataLen=128 �Ƃ��Ȃ��ƁA�ʐM���������Ȃ��ꍇ������܂��B
+※注
+アライドテレシスのルータに対しては、ZmodemDataLen=128 としないと、通信が成功しない場合があります。
 </p>
 
 
-<h1 id="zmesc">ZMODEM �ł��ׂĂ̐��䕶�����G�X�P�[�v����</h1>
+<h1 id="zmesc">ZMODEM ですべての制御文字をエスケープする</h1>
 
 <p>
-ZMODEM �ł́A�ʐM������ꕔ�̐��䕶����ʂ��Ȃ����Ƃ�z�肵�āA�������G�X�P�[�v����(���̕����̑g�ݍ��킹�ɒu��������)�悤�ɂȂ��Ă��܂��B�������A�z��O�̐��䕶�����ʂ��Ȃ�����̏ꍇ�͓]�������܂������܂���B���̂悤�ȏꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ ZmodemEscCtl �s���A
+ZMODEM では、通信回線が一部の制御文字を通さないことを想定して、それらをエスケープする(他の文字の組み合わせに置き換える)ようになっています。しかし、想定外の制御文字も通さない回線の場合は転送がうまくいきません。そのような場合は、設定ファイルの [Tera Term] セクションの ZmodemEscCtl 行を、
 </p>
 
 <pre>
@@ -365,19 +365,19 @@ ZmodemEscCtl=on
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������B����ł��ׂĂ̐��䕶�����G�X�P�[�v����悤�ɂȂ�܂��B
+のように変更してください。これですべての制御文字をエスケープするようになります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 ZmodemEscCtl=off
 </pre>
 
 
-<h1 id="zmlog">ZMODEM �̃��O</h1>
+<h1 id="zmlog">ZMODEM のログ</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ ZmodemLog �s���A
+設定ファイルの [Tera Term] セクションの ZmodemLog 行を、
 </p>
 
 <pre>
@@ -385,23 +385,23 @@ ZmodemLog=on
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA�z�X�g�� Tera Term �̊Ԃ� ZMODEM ��p�����t�@�C���]��������Ƃ��ɁA���������p�P�b�g���e���t�@�C�� ZMODEM.LOG �ɋL�^���܂��B
+のように変更すると、ホストと Tera Term の間で ZMODEM を用いたファイル転送をするときに、交換されるパケット内容をファイル ZMODEM.LOG に記録します。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 ZmodemLog=off
 </pre>
 
 
-<h1 id="zmodemrecv">ZMODEM �̎�M�R�}���h</h1>
+<h1 id="zmodemrecv">ZMODEM の受信コマンド</h1>
 
 <p>
-ZMODEM �Ńt�@�C�����M���J�n���钼�O�ɁA�z�X�g�ɁuZMODEM ����M����R�}���h�v�𑗐M���A�����I�Ɏ�M���J�n�����邱�Ƃ��ł��܂��B���̂Ƃ��� Tera Term ���瑗�M����uZMODEM ����M����R�}���h�v���w�肵�܂��B
+ZMODEM でファイル送信を開始する直前に、ホストに「ZMODEM を受信するコマンド」を送信し、自動的に受信を開始させることができます。このときに Tera Term から送信する「ZMODEM を受信するコマンド」を指定します。
 </p>
 
 <p>
-�R�}���h���w�肵�Ȃ��ꍇ�́A�u��M�R�}���h�v�𑗐M���܂���B
+コマンドを指定しない場合は、「受信コマンド」を送信しません。
 </p>
 
 <pre>
@@ -409,34 +409,34 @@ ZmodemRcvCommand=
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 ZmodemRcvCommand=rz
 </pre>
 
 
-<h1 id="ZmodemTimeouts">ZMODEM �̃^�C���A�E�g</h1>
+<h1 id="ZmodemTimeouts">ZMODEM のタイムアウト</h1>
 
 <p>
-ZMODEM �̃^�C���A�E�g�l�i�P�ʂ͕b�j��ݒ�ł��܂��B
+ZMODEM のタイムアウト値（単位は秒）を設定できます。
 </p>
 
 <p>
-1�Ԗ� ... �V���A���|�[�g �̃^�C���A�E�g<br>
-2�Ԗ� ... TCP/IP�|�[�g �̃^�C���A�E�g<br>
-3�Ԗ� ... �������^�C���A�E�g<br>
-4�Ԗ� ... �I���^�C���A�E�g
+1番目 ... シリアルポート のタイムアウト<br>
+2番目 ... TCP/IPポート のタイムアウト<br>
+3番目 ... 初期化タイムアウト<br>
+4番目 ... 終了タイムアウト
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 ZmodemTimeouts=10,0,10,3
 </pre>
 
 
-<h1 id="filter">���M�_�C�A���O�̃t�@�C�����t�B���^</h1>
+<h1 id="filter">送信ダイアログのファイル名フィルタ</h1>
 
 <p>
-�ݒ�t�@�C���� [Tera Term] �Z�N�V������ FileSendFilter �s���A
+設定ファイルの [Tera Term] セクションの FileSendFilter 行を、
 </p>
 
 <pre>
@@ -444,19 +444,19 @@ FileSendFilter=*.txt;a.log
 </pre>
 
 <p>
-�̂悤�ɕύX����ƁA�_�C�A���O�́u�t�@�C���̎�ށv�Ƀ��[�U��`�̃t�B���^�����f����܂��B
+のように変更すると、ダイアログの「ファイルの種類」にユーザ定義のフィルタが反映されます。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 FileSendFilter=
 </pre>
 
 
-<h1 id="draganddrop">�h���b�O&amp;�h���b�v�ɂ��t�@�C�����M�̊m�F</h1>
+<h1 id="draganddrop">ドラッグ&amp;ドロップによるファイル送信の確認</h1>
 
 <p>
-Tera Term �́A�f�t�H���g�ł̓t�@�C�����E�B���h�E�Ƀh���b�O&amp;�h���b�v�����Ƃ��ɁA�t�@�C����]�����邩�ǂ����m�F�̃��b�Z�[�W�{�b�N�X��\�����܂��B�ݒ�t�@�C���� [Tera Term] �Z�N�V������ ConfirmFileDragAndDrop �s�����L�̂悤�ɕύX����ƁA�m�F�������Ƀt�@�C���̓]�����J�n���܂��B
+Tera Term は、デフォルトではファイルをウィンドウにドラッグ&amp;ドロップしたときに、ファイルを転送するかどうか確認のメッセージボックスを表示します。設定ファイルの [Tera Term] セクションの ConfirmFileDragAndDrop 行を下記のように変更すると、確認をせずにファイルの転送を開始します。
 </p>
 
 <pre>
@@ -464,16 +464,16 @@ ConfirmFileDragAndDrop=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 ConfirmFileDragAndDrop=on
 </pre>
 
 
-<h1 id="hidetransdialog">�t�@�C�����M���̓]���󋵃_�C�A���O��\�����Ȃ�</h1>
+<h1 id="hidetransdialog">ファイル送信時の転送状況ダイアログを表示しない</h1>
 
 <p>
-Tera Term �́A�t�@�C�����M���ɑ��M�ςݗe�ʓ��̓]���󋵂�\������_�C�A���O���o���܂��B
-���̃_�C�A���O��\�����Ȃ��悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ FTHideDialog �s�����L�̂悤�ɕύX���Ă��������B
+Tera Term は、ファイル送信時に送信済み容量等の転送状況を表示するダイアログを出します。
+このダイアログを表示しないようにするには、設定ファイルの [Tera Term] セクションの FTHideDialog 行を下記のように変更してください。
 </p>
 
 <pre>
@@ -481,31 +481,31 @@ FTHideDialog=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 FTHideDialog=off
 </pre>
 
 
-<h1 id="FileSendHighSpeedMode">�V���A���ڑ��ɂ����鍂���ȃt�@�C���]��</h1>
+<h1 id="FileSendHighSpeedMode">シリアル接続における高速なファイル転送</h1>
 
 <p>
-Tera Term �́A�t�@�C�����M���ɓ��e��1�o�C�g������܂��B<br>
-�������A�ʐM���x�������̂�1�o�C�g�����M���Ă���ƁA�t�@�C���̓]�����x���Ȃ��Ă��܂��܂��B<br>
-�����ɑ��M���邽�߂ɁA����̏������ł̓t�@�C���̓��e��������x�܂Ƃ߂�(8KB����)���M���܂��B
+Tera Term は、ファイル送信時に内容を1バイトずつ送ります。<br>
+しかし、通信速度が速いのに1バイトずつ送信していると、ファイルの転送が遅くなってしまいます。<br>
+高速に送信するために、特定の条件下ではファイルの内容をある程度まとめて(8KBずつ)送信します。
 </p>
 
 <pre>
-����:
-�V���A���ڑ��ł���
-�o�C�i���t���O�� on �ł���
-Bracketed Paste Mode �ł͂Ȃ�
-Telnet�t���O�� off �ł���
-LocalEcho �� off �ł���
-�X�s�[�h�� 115200 �ȏ�ł���
+条件:
+シリアル接続である
+バイナリフラグが on である
+Bracketed Paste Mode ではない
+Telnetフラグが off である
+LocalEcho が off である
+スピードが 115200 以上である
 </pre>
 
 <p>
-���̓���̂��߂ɖ�肪�o��ꍇ�ɂ� 1 �o�C�g������悤�ɁA�ݒ�t�@�C���� [Tera Term] �Z�N�V������ FileSendHighSpeedMode �s�����L�̂悤�ɕύX���Ă��������B
+この動作のために問題が出る場合には 1 バイトずつ送るように、設定ファイルの [Tera Term] セクションの FileSendHighSpeedMode 行を下記のように変更してください。
 </p>
 
 <pre>
@@ -513,21 +513,21 @@ FileSendHighSpeedMode=off
 </pre>
 
 <p>
-���̋@�\�� <a href="../menu/file.html">[File]</a>-<a href="../menu/file-sendfile.html">[Send file...]</a> �ɂ��t�@�C�����M�ɂ����ēK�p����܂��B<br>
-<a href="../menu/file.html">[File]</a>-<a href="../menu/file-transfer.html">[Transfer]</a> �ȉ��̊e��t�@�C���]���v���g�R���ł̑��M��ASSH SCP �ɂ͓K�p����܂���B
+この機能は <a href="../menu/file.html">[File]</a>-<a href="../menu/file-sendfile.html">[Send file...]</a> によるファイル送信において適用されます。<br>
+<a href="../menu/file.html">[File]</a>-<a href="../menu/file-transfer.html">[Transfer]</a> 以下の各種ファイル転送プロトコルでの送信や、SSH SCP には適用されません。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 FileSendHighSpeedMode=on
 </pre>
 
 
-<h1 id="SendfileSkipOptionDialog">�t�@�C�����M�_�C�A���O���X�L�b�v����</h1>
+<h1 id="SendfileSkipOptionDialog">ファイル送信ダイアログをスキップする</h1>
 
 <p>
-<a href="../menu/file-sendfile.html">[File]-[Send file...]</a> �I�����A�t�@�C�����M�_�C�A���O���\������܂��B<br>
-���������ݒ���g�p����ꍇ�́A���̂悤�ɐݒ肷�邱�ƂŃt�@�C���I���݂̂Ńt�@�C���𑗐M�ł��܂��B
+<a href="../menu/file-sendfile.html">[File]-[Send file...]</a> 選択時、ファイル送信ダイアログが表示されます。<br>
+いつも同じ設定を使用する場合は、次のように設定することでファイル選択のみでファイルを送信できます。
 </p>
 
 <pre>
@@ -535,12 +535,12 @@ SendfileSkipOptionDialog=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 SendfileSkipOptionDialog=off
 </pre>
 
-CTRL�L�[�������Ȃ���[File]-[Send file...]��I�����邱�ƂŁA
-���̐ݒ��on/off�����ւ���������s�����Ƃ��ł��܂��B
+CTRLキーを押しながら[File]-[Send file...]を選択することで、
+この設定のon/offを入れ替えた動作を行うことができます。
 
 
 </BODY>

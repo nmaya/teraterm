@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>getipv6addr</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,33 +14,33 @@
 <h1>getipv6addr</h1>
 
 <p>
-���[����IPv6�A�h���X���擾����B<em>(�o�[�W����4.78�ȍ~)</em>
+自端末のIPv6アドレスを取得する。<em>(バージョン4.78以降)</em>
 </p>
 
 <pre class="macro-syntax">
 getipv6addr &lt;string array&gt; &lt;intvar&gt;
 </pre>
 
-<h2>�p�����[�^</h2>
+<h2>パラメータ</h2>
 
 <dl>
-	<dt class="macro">�z�� &lt;string array&gt;</dt>
-	<dd>IP�A�h���X���i�[���镶���^�z��B</dd>
+	<dt class="macro">配列 &lt;string array&gt;</dt>
+	<dd>IPアドレスを格納する文字型配列。</dd>
 
-	<dt class="macro">�����^�ϐ� &lt;intvar&gt;</dt>
-	<dd>IP�A�h���X�̌����i�[���鐮���^�ϐ��BIP�A�h���X�����݂��Ȃ��ꍇ�A0���i�[�����B</dd>
+	<dt class="macro">整数型変数 &lt;intvar&gt;</dt>
+	<dd>IPアドレスの個数を格納する整数型変数。IPアドレスが存在しない場合、0が格納される。</dd>
 </dl>
 
-<h2>�Ԃ�l</h2>
+<h2>返り値</h2>
 
 <dl>
-	<dt class="macro">�V�X�e���ϐ� &lt;result&gt;</dt>
-	<dd>IP�A�h���X�̎擾�ɐ��������ꍇ�A1���i�[�����B<br>
-	    IP�A�h���X�̌���&lt;string array&gt;�̗v�f�����傫���ꍇ�A0���i�[�����B<br>
-	    IP�A�h���X�̎擾�Ɏ��s�����ꍇ�A-1���i�[�����BWindows 2000 �ȑO�ł͏�Ɏ��s����B</dd>
+	<dt class="macro">システム変数 &lt;result&gt;</dt>
+	<dd>IPアドレスの取得に成功した場合、1が格納される。<br>
+	    IPアドレスの個数が&lt;string array&gt;の要素数より大きい場合、0が格納される。<br>
+	    IPアドレスの取得に失敗した場合、-1が格納される。Windows 2000 以前では常に失敗する。</dd>
 </dl>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 ipaddr_size = 10
@@ -66,7 +66,7 @@ endif
 
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="getipv4addr.html">getipv4addr</a></li>
 </ul>

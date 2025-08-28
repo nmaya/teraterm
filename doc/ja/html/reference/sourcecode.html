@@ -2,109 +2,109 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>Tera Term�\�[�X�R�[�h���</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>Tera Termソースコード解説</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1 class="center">Tera Term�\�[�X�R�[�h���</h1>
+<h1 class="center">Tera Termソースコード解説</h1>
 
 <hr width=80% align=center>
 
 <ol>
-  <li><a href="#foreword">�͂��߂�</a></li>
-  <li><a href="#skillset">�K�v�X�L��</a></li>
-  <li><a href="#module">���W���[���\��</a></li>
-  <li><a href="#library">���C�u�����\��</a></li>
-  <li><a href="#plugin">�v���O�C���T�|�[�g</a></li>
-  <li><a href="#configuration">�ݒ�t�@�C���̓ǂݏ���</a></li>
-  <li><a href="#secure">�Z�L���A�v���O���~���O</a></li>
-  <li><a href="#compatibility">�Â��o�[�W������Windows�Ƃ̌݊����ێ�</a></li>
-  <li><a href="#debug">�f�o�b�O��@</a></li>
-  <li><a href="#thread">�}���`�X���b�h</a></li>
-  <li><a href="#dde">DDE�ɂ��v���Z�X�ԒʐM</a></li>
-  <li><a href="#ttssh">TTSSH�ɂ��SSH�̐݌v�Ǝ���</a></li>
-  <li><a href="#macro">�}�N������̐݌v�Ǝ���</a></li>
-  <li><a href="#caret">�L�����b�g����</a></li>
-  <li><a href="#serial">�V���A���|�[�g</a></li>
-  <li><a href="#xyzmodem">�o�C�i���]���v���g�R��</a></li>
+  <li><a href="#foreword">はじめに</a></li>
+  <li><a href="#skillset">必要スキル</a></li>
+  <li><a href="#module">モジュール構成</a></li>
+  <li><a href="#library">ライブラリ構成</a></li>
+  <li><a href="#plugin">プラグインサポート</a></li>
+  <li><a href="#configuration">設定ファイルの読み書き</a></li>
+  <li><a href="#secure">セキュアプログラミング</a></li>
+  <li><a href="#compatibility">古いバージョンのWindowsとの互換性維持</a></li>
+  <li><a href="#debug">デバッグ手法</a></li>
+  <li><a href="#thread">マルチスレッド</a></li>
+  <li><a href="#dde">DDEによるプロセス間通信</a></li>
+  <li><a href="#ttssh">TTSSHによるSSHの設計と実装</a></li>
+  <li><a href="#macro">マクロ言語の設計と実装</a></li>
+  <li><a href="#caret">キャレット制御</a></li>
+  <li><a href="#serial">シリアルポート</a></li>
+  <li><a href="#xyzmodem">バイナリ転送プロトコル</a></li>
 </ol>
 
 <hr width=80% align=center>
 
-<h2 id="foreword">�͂��߂�</h2>
-�@�{�����ł́ATera Term�̃\�[�X�R�[�h�ɂ��ĉ�������܂��B����ΏۂƂ���\�[�X�R�[�h�̓o�[�W����"4.58"�i2008�N2�����݁j�̂��̂��x�[�X�Ƃ��Ă��܂��B
+<h2 id="foreword">はじめに</h2>
+　本文書では、Tera Termのソースコードについて解説をします。解説対象とするソースコードはバージョン"4.58"（2008年2月現在）のものをベースとしています。
 <hr>
 
 
-<h2 id="skillset">�K�v�X�L��</h2>
-�@Tera Term�̃p�b�P�[�W�Ɋ܂܂��قƂ�ǂ̃v���O�����́AC����ŋL�q����Ă��܂��B�ꕔ�̃R�[�h��C++����ŁAMFC(Microsoft Foundation Class)�����p����Ă��܂��BWindows���L�̏������s�����߂ɁAWin32 API�����p����Ă��邽�߁AAPI�̒m�����K�v�ƂȂ��Ă��܂��B<br>
-�@�\�[�X�R�[�h���r���h���邽�߂ɂ́AMicrosoft Visual Studio 2005 Standard Edition�ȏオ�K�v�ł��BExpress Edition�ł�MFC�����p�ł��Ȃ����߁A�r���h���ł��܂���B�܂��AC++Builder��Turbo C++ Explorer�Agcc�Ȃǂ̃R���p�C���ɂ����Ă��A�r���h���邱�Ƃ͂ł��܂���B<br>
-�@Windows�v���O���~���O�Ɋւ�����̌��́AMicrosoft���񋟂���uMSDN���C�u�����v�ɂ���܂��B�J�����s���ۂ́AMSDN���C�u������p�ɂɎQ�Ƃ��邱�ƂɂȂ�܂��B<br>
-�@
+<h2 id="skillset">必要スキル</h2>
+　Tera Termのパッケージに含まれるほとんどのプログラムは、C言語で記述されています。一部のコードはC++言語で、MFC(Microsoft Foundation Class)が利用されています。Windows特有の処理を行うために、Win32 APIが多用されているため、APIの知識が必要となってきます。<br>
+　ソースコードをビルドするためには、Microsoft Visual Studio 2005 Standard Edition以上が必要です。Express EditionではMFCが利用できないため、ビルドができません。また、C++BuilderやTurbo C++ Explorer、gccなどのコンパイラにおいても、ビルドすることはできません。<br>
+　Windowsプログラミングに関する情報の源は、Microsoftが提供する「MSDNライブラリ」にあります。開発を行う際は、MSDNライブラリを頻繁に参照することになります。<br>
+　
 <ul>
-  <li><a href="http://msdn2.microsoft.com/en-us/library/default.aspx" target="_blank">MSDN���C�u����</a></li>
-  <li><a href="http://msdn2.microsoft.com/ja-jp/library/default.aspx" target="_blank">MSDN���C�u�����i���{��Łj</a></li>
+  <li><a href="http://msdn2.microsoft.com/en-us/library/default.aspx" target="_blank">MSDNライブラリ</a></li>
+  <li><a href="http://msdn2.microsoft.com/ja-jp/library/default.aspx" target="_blank">MSDNライブラリ（日本語版）</a></li>
 </ul>
 
 <p>
-�@�������ACygTerm�݂̂�Cygwin��gcc�ŃR���p�C�������܂��B�䂦�ɁACygTerm��gcc�̋@�\���g���������ɂȂ��Ă��܂��B�����C++�ł��B
+　ただし、CygTermのみはCygwinのgccでコンパイルをします。ゆえに、CygTermはgccの機能を使った実装になっています。言語はC++です。
 </p>
 
-�@Tera Term�̃��C���G���W����C++�Ŏ�������Ă��܂����AC����I�ȃR�[�f�B���O���Ȃ���Ă��邽�߁ATera Term�̃\�[�X�R�[�h��ǂ݉����ɂ́AC����Ɋւ����b�m��������Ζ��Ȃ��ƌ����܂��B�������AMicrosoft Visual C++(VC++)��ANSI C����(C89)�Ƃ͂����AC99�ɂ͖��Ή��ł��邽�߂ɁA�{����C99�����̋@�\���Ǝ��Ɋg������Ă��镔��������܂��B���������Ǝ��g�����ꂽ�֐��ɂ́A�������ɃA���_�[�X�R�A(_)���t���Ă��邽�߂ɁA��ʂ��t���₷���Ȃ��Ă��܂��B���Ƃ��΁AVC++��_snprintf()�́AANSI C(C99)��snprintf()�Ƃ͎��Ĕ�Ȃ���̂ł��B<br>
+　Tera TermのメインエンジンはC++で実装されていますが、C言語的なコーディングがなされているため、Tera Termのソースコードを読み解くには、C言語に関する基礎知識があれば問題ないと言えます。ただし、Microsoft Visual C++(VC++)はANSI C準拠(C89)とはいえ、C99には未対応であるために、本来のC99相当の機能が独自に拡張されている部分もあります。そうした独自拡張された関数には、頭文字にアンダースコア(_)が付いているために、区別が付けやすくなっています。たとえば、VC++の_snprintf()は、ANSI C(C99)のsnprintf()とは似て非なるものです。<br>
 
 <hr>
 
 
-<h2 id="module">���W���[���\��</h2>
-�@Tera Term�p�b�P�[�W�Ɋ܂܂����s���W���[���i.exe��.dll�j�̊֘A�}���ȉ��Ɏ����܂��B���s�t�@�C���̊g���q��".exe"�ɂȂ��Ă���A�K�v�ɉ�����DLL�����I�����N����܂��B�������32�r�b�g�v���O����(x86)�ł��邽�߂ɁAx86-64��IA-64�Ƃ�����64�r�b�g���ł͂��̂܂ܓ��삷�邩�ǂ����͕]������Ă��܂���B
-�@
+<h2 id="module">モジュール構成</h2>
+　Tera Termパッケージに含まれる実行モジュール（.exeと.dll）の関連図を以下に示します。実行ファイルの拡張子は".exe"になっており、必要に応じてDLLが動的リンクされます。いずれも32ビットプログラム(x86)であるために、x86-64やIA-64といった64ビット環境ではそのまま動作するかどうかは評価されていません。
+　
 <div align="center">
 <img src="image/module_relation.png" width=720 height=540>
 </div>
 
-�@�ʏ�A���[�U���f�X�N�g�b�v��X�^�[�g���j���[����A�v���P�[�V�������N������Ƃ��ɁA�Ăяo�������s�t�@�C����"ttermpro.exe"�ɂȂ�܂��B���s�t�@�C���͂����5��DLL�ƃ_�C�i�~�b�N�����N���Ă��܂��B�ÓI�����N���s���A�P���EXE�t�@�C���ɂ��Ă��Ȃ��̂́A1�̃v���Z�X�̃�������L����}���邽�߂ł��BTera Term�ł͑����̋N�����s���邱�Ƃ��z�肳��邽�߁A�����݌v�i�K����DLL�ɕ�������Ă��܂��B��x�ǂݍ��܂ꂽDLL�́A�����̃v���Z�X�Ԃŋ��L���邱�Ƃ��ł��܂��B<br>
-�@<br>
-�@
-�@�}�N���X�N���v�g�����s����ۂ́A"ttpmacro.exe"�Ƃ����܂������ʂ̃v���Z�X���Ăяo����܂��B"ttermpro.exe"�ƃv���Z�X�P�ʂŕ������Ă���̂́A�}�N����P�̂Ŏ��s�ł���悤�ɂ��邽�߂ł��B���v���Z�X�ԂŁA�f�[�^�̂��Ƃ���s�����߂ɂ́A�v���Z�X�ԒʐM���K�v�ł��BTera Term�ł́ADDE(Dynamic Data Exchange)�ƌĂ΂�錻�݂ł̓��K�V�[�ƂȂ��Ă��܂��������݂��̗p����Ă��܂��B������Windows�ł�DDE���T�|�[�g����Ȃ��Ȃ�\��������A���̏ꍇTera Term��Ń}�N�������s���邱�Ƃ͈�؂ł��Ȃ��Ȃ�܂��B<br>
-�@<br>
-�@
-�@TTSSH��TTProxy�ATTXKanjiMenu�Ƃ������v���O�C���`����DLL�́ATera Term�̋N�����ɖ����I�� LoadLibrary() ���g���ă_�C�i�~�b�N���[�h����܂��B���[�h�ΏۂƂȂ�DLL�̃t�@�C�����́ATTXInit()#ttplug.c �ɂ����āA"TTX*.DLL"�Ƃ����p�^�[���Ƀ}�b�`�������̂ƂȂ�܂��B<br>
-�@<br>
-�@
-�@"keycode.exe"��"ttpmenu.exe"�͒P�̃A�v���P�[�V�����ł��B<br>
-�@<br>
-�@
-�@Cygwin�ڑ��̂����݂ɂ��ẮA�ʂ̐߂Ő������܂��B
+　通常、ユーザがデスクトップやスタートメニューからアプリケーションを起動するときに、呼び出される実行ファイルは"ttermpro.exe"になります。実行ファイルはさらに5つのDLLとダイナミックリンクしています。静的リンクを行い、単一のEXEファイルにしていないのは、1つのプロセスのメモリ占有率を抑えるためです。Tera Termでは多数の起動が行われることが想定されるため、初期設計段階からDLLに分割されています。一度読み込まれたDLLは、複数のプロセス間で共有することができます。<br>
+　<br>
+　
+　マクロスクリプトを実行する際は、"ttpmacro.exe"というまったく別のプロセスが呼び出されます。"ttermpro.exe"とプロセス単位で分けられているのは、マクロを単体で実行できるようにするためです。両プロセス間で、データのやりとりを行うためには、プロセス間通信が必要です。Tera Termでは、DDE(Dynamic Data Exchange)と呼ばれる現在ではレガシーとなってしまったしくみが採用されています。将来のWindowsではDDEがサポートされなくなる可能性があり、その場合Tera Term上でマクロを実行することは一切できなくなります。<br>
+　<br>
+　
+　TTSSHやTTProxy、TTXKanjiMenuといったプラグイン形式のDLLは、Tera Termの起動時に明示的に LoadLibrary() を使ってダイナミックロードされます。ロード対象となるDLLのファイル名は、TTXInit()#ttplug.c において、"TTX*.DLL"というパターンにマッチしたものとなります。<br>
+　<br>
+　
+　"keycode.exe"と"ttpmenu.exe"は単体アプリケーションです。<br>
+　<br>
+　
+　Cygwin接続のしくみについては、別の節で説明します。
 
 <hr>
 
 
-<h2 id="library">���C�u�����\��</h2>
+<h2 id="library">ライブラリ構成</h2>
 <p>
-  ���x�ȋ@�\���������邽�߂ɁA�t���X�N���b�`�Ŏ������邱�Ƃ͌����������Ƃ͌����܂���BTera Term�ł͊J����������}�邽�߂ɁA�I�[�v���\�[�X�̃��C�u������ϋɓI�ɗ��p���Ă��܂��B�������A�I�[�v���\�[�X���i�̃��C�Z���X�ɂ�鋣���ɂ͒��ӂ𕥂��K�v������܂��i����GPL�j�B<br>
-  ���}�ɁA�I�[�v���\�[�X�̃��C�u�����������N���Ă��郂�W���[���ƁA���̃����N�󋵂������܂��B
+  高度な機能を実現するために、フルスクラッチで実装することは効率がいいとは言えません。Tera Termでは開発効率化を図るために、オープンソースのライブラリを積極的に利用しています。ただし、オープンソース製品のライセンスによる競合には注意を払う必要があります（特にGPL）。<br>
+  下図に、オープンソースのライブラリをリンクしているモジュールと、そのリンク状況を示します。
 </p>
 <p>
-  Tera Term�}�N���v���O�����́A���K�\�����C�u����"Oniguruma"�������N���Ă��܂��B"waitregex","strmatch","strreplace"�R�}���h�ɂ����Đ��K�\���𗘗p���邽�߂ł��B<br>
-  Tera Term�{�̂ł́A�o�[�W�����_�C�A���O��Oniguruma�̃o�[�W������\�����邽�߂����Ƀ����N�����Ă��܂��B
+  Tera Termマクロプログラムは、正規表現ライブラリ"Oniguruma"をリンクしています。"waitregex","strmatch","strreplace"コマンドにおいて正規表現を利用するためです。<br>
+  Tera Term本体では、バージョンダイアログにOnigurumaのバージョンを表示するためだけにリンクをしています。
 </p>
 <p>
-  Tera Term�}�N���v���O�����́A�^������������"SFMT"�������N���Ă��܂��B"random"�R�}���h�ɂ����ė����̐����ɗ��p����Ă��܂��B
+  Tera Termマクロプログラムは、疑似乱数生成器"SFMT"をリンクしています。"random"コマンドにおいて乱数の生成に利用されています。
 </p>
 <p>
-  SSH���W���[���ł���TTSSH�́A�Í��������s�����߂�"LibreSSL"�������N���Ă��܂��BLibreSSL�Ƃ����l�[�~���O����Web�A�N�Z�X�Ɏg����SSL(Secure Socket Layer)�v���g�R����p�̃��C�u�������Ǝv��ꂪ���ł����A�����ł͂���܂���BLibreSSL�͊�{�I�ȈÍ��A���S���Y�����T�|�[�g���Ă���ATTSSH�ł�LibreSSL�Ɋ܂܂��Í���/�������[�`���݂̂𗘗p���Ă��܂��B���̂��Ƃ́A���Ȃ킿LibreSSL���C�u������SSL�֘A�̃Z�L�����e�B�z�[�����������ꂽ�Ƃ��Ă��ATTSSH�ւ̉e���͋ɂ߂ĒႢ�Ƃ������Ƃł��B
+  SSHモジュールであるTTSSHは、暗号処理を行うために"LibreSSL"をリンクしています。LibreSSLというネーミングからWebアクセスに使われるSSL(Secure Socket Layer)プロトコル専用のライブラリかと思われがちですが、そうではありません。LibreSSLは基本的な暗号アルゴリズムをサポートしており、TTSSHではLibreSSLに含まれる暗号化/復号ルーチンのみを利用しています。このことは、すなわちLibreSSLライブラリにSSL関連のセキュリティホールが発見されたとしても、TTSSHへの影響は極めて低いということです。
 </p>
 <p>
-  SSH���W���[���ł���TTSSH�́ASSH�p�P�b�g�̈��k���s�����߂Ɉ��k���C�u����"zlib"�������N���Ă��܂��B�������A�_�C�����A�b�v����Ȃǂ̒ᑬ�x�ȃl�b�g���[�N�ɂ����ẮA�p�P�b�g���k�͗L���ł����A�����̍�������ł͂ނ��둬�x�ቺ�������������ƂȂ�܂��B�䂦�ɁA�f�t�H���g�ł̓p�P�b�g���k�@�\�͖���������Ă��܂��B
+  SSHモジュールであるTTSSHは、SSHパケットの圧縮を行うために圧縮ライブラリ"zlib"をリンクしています。ただし、ダイヤルアップ回線などの低速度なネットワークにおいては、パケット圧縮は有効ですが、昨今の高速回線ではむしろ速度低下を招く足かせとなります。ゆえに、デフォルトではパケット圧縮機能は無効化されています。
 </p>
 <p>
-  SSH���W���[���ł���TTSSH�́A�[���G�~�����[�^"PuTTY"�������N���Ă��܂��BPuTTY�ɂ�Pageant�ƌĂ΂��SSH�F�؃G�[�W�F���g������̂ł����ATTSSH��Pageant�ɂ����J���F�؂��T�|�[�g���邽�߂ɁAPuTTY�̃\�[�X�R�[�h�𗘗p���Ă��܂��BPuTTY�̒ʐM��������ђ[���G�~�����[�V���������̃\�[�X�R�[�h�͗��p���Ă��܂���B
+  SSHモジュールであるTTSSHは、端末エミュレータ"PuTTY"をリンクしています。PuTTYにはPageantと呼ばれるSSH認証エージェントがあるのですが、TTSSHでPageantによる公開鍵認証をサポートするために、PuTTYのソースコードを利用しています。PuTTYの通信部分および端末エミュレーション部分のソースコードは利用していません。
 </p>
 <p>
-  �Ȃ��A������̃��C�u�������ÓI�����N(static link)�Ƃ��Ă��܂��B���C�u�����̃R���p�C���I�v�V�����ɂ�"/MT"��t�����Ă��܂��B���I�����N(dynamic link)���s���ƁA�ꕔ�̃��[�U����Tera Term���N���ł��Ȃ��Ƃ������ۂ������������߂ɁA���݂ł͓��I�����N�͍s���Ă��܂���B
+  なお、いずれのライブラリも静的リンク(static link)としています。ライブラリのコンパイルオプションには"/MT"を付加しています。動的リンク(dynamic link)を行うと、一部のユーザ環境でTera Termが起動できないという現象が発生したために、現在では動的リンクは行っていません。
 <p>
 
 <div align="center">
@@ -114,17 +114,17 @@
 <hr>
 
 
-<h2 id="plugin">�v���O�C���T�|�[�g</h2>
-�@Tera Term�ł́ADLL�Ƃ����`���Ńv���O�C���̂����݂��T�|�[�g���Ă��܂��B�v���O�C���`����DLL�t�@�C�����ATera Term���C���X�g�[������Ă���f�B���N�g���֐ݒu���邾���ŁATera Term�̃\�[�X�R�[�h���C�����邱�ƂȂ��A�@�\�ǉ����s�����Ƃ��ł��܂��B��\�I�ȃv���O�C���Ƃ��āATTSSH������܂��B<br>
-�@�v���O�C�����쐬���邽�߂̃T���v���R�[�h�Ƃ��āATTXSamples\ttxtest\ttxtest.c �Ƃ����\�[�X�t�@�C�����p�ӂ���Ă��܂��B�v���O�C�����J������Ƃ��́A���̃\�[�X�t�@�C�����ЂȌ`�Ƃ���Ƃ悢�ł��傤�B���H�I�ȃv���O�C���Ƃ��āA"TTX KanjiMenu"�̃\�[�X�R�[�h�iTTXKanjiMenu\�z���j���V���v���ŕ�����₷���ł��B<br><br>
+<h2 id="plugin">プラグインサポート</h2>
+　Tera Termでは、DLLという形式でプラグインのしくみをサポートしています。プラグイン形式のDLLファイルを、Tera Termがインストールされているディレクトリへ設置するだけで、Tera Termのソースコードを修正することなく、機能追加を行うことができます。代表的なプラグインとして、TTSSHがあります。<br>
+　プラグインを作成するためのサンプルコードとして、TTXSamples\ttxtest\ttxtest.c というソースファイルが用意されています。プラグインを開発するときは、このソースファイルをひな形とするとよいでしょう。実践的なプラグインとして、"TTX KanjiMenu"のソースコード（TTXKanjiMenu\配下）がシンプルで分かりやすいです。<br><br>
 
-�@�v���O�C���́ATera Term("ttermpro.exe")�̋N�����ɓǂݍ��܂�܂��BTTXInit()#ttplug.c ���ǂݍ��݂��s���֐��ŁA�J�����g�f�B���N�g������"TTX*.DLL"�Ƃ������C���h�J�[�h�ɍ��v����DLL�t�@�C�����ǂݍ��ݑΏۂƂȂ�܂��B<br>
-�@������DLL�����݂���ꍇ�́ATera Term�{�̂���`�F�C������悤�Ȍ`�ŁA�eDLL�̃G�N�X�|�[�g�֐����A������܂��B�A������鏇�Ԃ́A���ꂼ���DLL����`����I�[�_�[�l�iTTXExports�\���̂�loadOrder�����o�j�Ō��肳��A���󉺋L�̒ʂ�ƂȂ��Ă��܂��B�@
+　プラグインは、Tera Term("ttermpro.exe")の起動時に読み込まれます。TTXInit()#ttplug.c が読み込みを行う関数で、カレントディレクトリから"TTX*.DLL"というワイルドカードに合致するDLLファイルが読み込み対象となります。<br>
+　複数のDLLが存在する場合は、Tera Term本体からチェインするような形で、各DLLのエクスポート関数が連結されます。連結される順番は、それぞれのDLLが定義するオーダー値（TTXExports構造体のloadOrderメンバ）で決定され、現状下記の通りとなっています。　
 <p>
 <table border=1 align=center>
 <tr>
-  <th>���W���[��</th>
-  <th>�I�[�_�[</th>
+  <th>モジュール</th>
+  <th>オーダー</th>
 </tr>
 
 <tr>
@@ -144,16 +144,16 @@
 </table>
  </p>
 
-�I�[�_�[�l���������قǁATera Term�{�̑��ɋ߂��Ȃ�܂��B���Ƃ��΁ATera Term�{�̂���TTXModifyMenu()���Ăяo���ꂽ�ꍇ�A
-�@
-�@<ul>
-�@ <li>TTXModifyMenu()#ttplug.c �� TTProxy��TTXModifyMenu()  �� TTSSH��TTXModifyMenu()  �� TTX Kanji Menu��TTXModifyMenu()</li>
-�@</ul><br>
-�@
-�Ƃ������ԂŁA�eDLL�̊֐����Ăяo����Ă������ƂɂȂ�܂��B
-�@<br>
+オーダー値が小さいほど、Tera Term本体側に近くなります。たとえば、Tera Term本体からTTXModifyMenu()が呼び出された場合、
+　
+　<ul>
+　 <li>TTXModifyMenu()#ttplug.c → TTProxyのTTXModifyMenu()  → TTSSHのTTXModifyMenu()  → TTX Kanji MenuのTTXModifyMenu()</li>
+　</ul><br>
+　
+という順番で、各DLLの関数が呼び出されていくことになります。
+　<br>
 
-�@�eDLL���ATera Term�{�̑�����Ăяo���Ă��炤���߂ɃG�N�X�|�[�g����֐��Q�́ATTXExports�\���̂Œ�`���ATTXBind()�œn���܂��B���Ƃ��΁ATTX Kanji Menu�̃G�N�X�|�[�g�֐��͈ȉ��̂Ƃ���ł��B�s�v�Ȋ֐��� NULL �Œ�`���Ă���܂��B
+　各DLLが、Tera Term本体側から呼び出してもらうためにエクスポートする関数群は、TTXExports構造体で定義し、TTXBind()で渡します。たとえば、TTX Kanji Menuのエクスポート関数は以下のとおりです。不要な関数は NULL で定義してあります。
 
 <pre class=code>
 static TTXExports Exports = {
@@ -178,29 +178,29 @@ static TTXExports Exports = {
 };
 </pre>
 
-�@�����A�v���O�C���̃G�N�X�|�[�g�֐��́A���̃v���O�C���Ɗ����Ȃ��悤�ɐ݌v������ׂ��ł��B�܂��ATera Term�{�̑�����̌Ăяo�����A�������Ăł��邩�ǂ����𔻒f����K�v������ꍇ������܂��B<br>
-�@�v���O�C�����G�N�X�|�[�g����֐��ɂ��āA�ȉ��Ɏ����܂��B
-�@
+　原則、プラグインのエクスポート関数は、他のプラグインと干渉しないように設計をするべきです。また、Tera Term本体側からの呼び出しが、自分宛てであるかどうかを判断する必要がある場合もあります。<br>
+　プラグインがエクスポートする関数について、以下に示します。
+　
 <p>
 <table border=1 align=center>
 <tr>
-  <th>�֐�</th>
-  <th>�Ӗ�</th>
+  <th>関数</th>
+  <th>意味</th>
 </tr>
 
 <tr>
   <td>TTXBind</td>
-  <td>��Ԏn�߂ɌĂяo�����֐��ł���A�G�N�X�|�[�g�֐��̃e�[�u����n���B</td>
+  <td>一番始めに呼び出される関数であり、エクスポート関数のテーブルを渡す。</td>
 </tr>
 
 <tr>
   <td>TTXInit</td>
-  <td>TTXBind()�̌Ăяo����ɂ����Ɏ��s�����֐��ŁATera Term�{�̂̃O���[�o���ϐ�(ts, cv)���󂯎��A�v���O�C���̏��������s���B</td>
+  <td>TTXBind()の呼び出し後にすぐに実行される関数で、Tera Term本体のグローバル変数(ts, cv)を受け取り、プラグインの初期化を行う。</td>
 </tr>
 
 <tr>
   <td>TTXGetUIHooks</td>
-  <td>�_�C�A���O�̃n���h�����t�b�N���邽�߂̊֐��BTera Term�{�̂̃_�C�A���O�C���^�[�t�F�C�X��ύX�������ꍇ�Ɏg���B�t�b�N�Ώۂ̊֐��͈ȉ��̂Ƃ���B<br>
+  <td>ダイアログのハンドルをフックするための関数。Tera Term本体のダイアログインターフェイスを変更したい場合に使う。フック対象の関数は以下のとおり。<br>
       &SetupTerminal, &SetupWin, &SetupKeyboard, &SetupSerialPort, 
       &SetupTCPIP, &GetHostName, &ChangeDirectory, &AboutDialog,   
       &ChooseFontDlg, &SetupGeneral, &WindowWindow                 
@@ -209,7 +209,7 @@ static TTXExports Exports = {
 
 <tr>
   <td>TTXGetSetupHooks</td>
-  <td>�Z�b�g�A�b�v���[�`�����t�b�N���邽�߂̊֐��B�t�b�N�������́A���̊֐����ӔC�������ČĂяo���K�v������B�����̃v���O�C�������݂���ꍇ�A�֐����`�F�C������Ă����B�t�b�N�Ώۂ̊֐��͈ȉ��̂Ƃ���B<br>
+  <td>セットアップルーチンをフックするための関数。フックした側は、元の関数も責任を持って呼び出す必要がある。複数のプラグインが存在する場合、関数がチェインされていく。フック対象の関数は以下のとおり。<br>
       &ReadIniFile, &WriteIniFile, &ReadKeyboardCnf, &CopyHostList,   
       &AddHostToList, &ParseParam                                     
   </td>
@@ -217,7 +217,7 @@ static TTXExports Exports = {
 
 <tr>
   <td>TTXOpenTCP</td>
-  <td>TCP�ڑ����s���Ƃ��ɌĂяo�����֐��B�V���A���ڑ��̂Ƃ��͌Ăяo����Ȃ��B�܂��A�ȉ��̃\�P�b�g�C���^�[�t�F�C�X���t�b�N���邱�Ƃ��ł���B<br>
+  <td>TCP接続を行うときに呼び出される関数。シリアル接続のときは呼び出されない。また、以下のソケットインターフェイスをフックすることもできる。<br>
       &Pclosesocket, &Pconnect, &Phtonl, &Phtons, &Pinet_addr,   
       &Pioctlsocket, &Precv, &Pselect, &Psend, &Psetsockopt,     
       &Psocket, &PWSAAsyncSelect, &PWSAAsyncGetHostByName,       
@@ -227,7 +227,7 @@ static TTXExports Exports = {
 
 <tr>
   <td>TTXCloseTCP</td>
-  <td>TCP�R�l�N�V�������ؒf�����Ƃ��ɌĂяo�����֐��B�V���A���ڑ��̂Ƃ��͌Ăяo����Ȃ��B���L�̂����t�b�N�����C���^�[�t�F�C�X������Ȃ�΁A���ɖ߂��K�v������B<br>
+  <td>TCPコネクションが切断されるときに呼び出される関数。シリアル接続のときは呼び出されない。下記のうちフックしたインターフェイスがあるならば、元に戻す必要がある。<br>
       &Pclosesocket, &Pconnect, &Phtonl, &Phtons, &Pinet_addr,   
       &Pioctlsocket, &Precv, &Pselect, &Psend, &Psetsockopt,     
       &Psocket, &PWSAAsyncSelect, &PWSAAsyncGetHostByName,       
@@ -237,90 +237,90 @@ static TTXExports Exports = {
 
 <tr>
   <td>TTXSetWinSize</td>
-  <td>Tera Term�E�B���h�E�̉�ʃT�C�Y���ύX���ꂽ�Ƃ��ɌĂяo�����֐��B</td>
+  <td>Tera Termウィンドウの画面サイズが変更されたときに呼び出される関数。</td>
 </tr>
 
 <tr>
   <td>TTXModifyMenu</td>
-  <td>Tera Term�̃��j���[�������������Ƃ��ɌĂяo�����֐��B�v���O�C���p�̃��j���[��}���������ꍇ�Ɏg����B
+  <td>Tera Termのメニューが初期化されるときに呼び出される関数。プラグイン用のメニューを挿入したい場合に使われる。
   </td>
 </tr>
 
 <tr>
   <td>TTXModifyPopupMenu</td>
-  <td>Tera Term�̃|�b�v�A�b�v���j���[�������������Ƃ��ɌĂяo�����֐��B�v���O�C���p�̃|�b�v�A�b�v���j���[��}���������ꍇ�Ɏg����B</td>
+  <td>Tera Termのポップアップメニューが初期化されるときに呼び出される関数。プラグイン用のポップアップメニューを挿入したい場合に使われる。</td>
 </tr>
 
 <tr>
   <td>TTXProcessCommand</td>
-  <td>���j���[���Ăяo���ꂽ�Ƃ��Ɏ��s�����֐��B�v���O�C���p�̃��j���[�������������Ƃ��Ɏg����B
+  <td>メニューが呼び出されたときに実行される関数。プラグイン用のメニューを処理したいときに使われる。
   </td>
 </tr>
 
 <tr>
   <td>TTXEnd</td>
-  <td>Tera Term�{�̂��I������Ƃ��ɌĂяo�����֐��B</td>
+  <td>Tera Term本体が終了するときに呼び出される関数。</td>
 </tr>
 
 <tr>
   <td>TTXSetCommandLine</td>
-  <td>�V�K�ڑ���Z�b�V�����̕������s���Ƃ��ɁA�R�}���h���C���p�����[�^�̏������s���Ƃ��ɌĂяo�����֐��B�v���O�C���Ǝ��̃I�v�V������ǉ������Ƃ��́A�����ŏ��������B
+  <td>新規接続やセッションの複製を行うときに、コマンドラインパラメータの処理を行うときに呼び出される関数。プラグイン独自のオプションを追加したときは、ここで処理される。
   </td>
 </tr>
 
 </table>
  </p>
-�@
+　
 
 <hr>
 
 
 
-<h2 id="configuration">�ݒ�t�@�C���̓ǂݏ���</h2>
-�@Windows�ł̓A�v���P�[�V�����̃f�[�^�ۑ��̂��߂ɁA���W�X�g�����`���I�ɗ��p����Ă��܂����ATera Term�ł͂��̒a����Windows 3.1�܂łɑk�邽�߂ɁA.ini�t�@�C���ɂ�郍�[�J���f�B���N�g���ւ̕ۑ����@���W���ƂȂ��Ă��܂��B<br>
-�@�p�b�P�[�W�ɓ��������CygTerm�Ɋւ��Ă����[�J���f�B���N�g���փf�[�^���ۑ�����܂��B<br>
-�@��O�Ƃ��āATeraTerm Menu�̓f�t�H���g�Ń��W�X�g���֕ۑ������܂��B�J�����g�f�B���N�g����"ttpmenu.ini"�i0�o�C�g�ŉj��ݒu���邱�ƂŁA���W�X�g���̑����.ini�t�@�C�����g���悤�ɂ��邱�Ƃ��ł��܂��B�������A���W�X�g������.ini�t�@�C���ւ̈ڍs�͎����ōs���܂���̂ŁA�蓮�ōēo�^���Ă��������B<br>
-�@<br>
-�@
-�@teraterm.ini�t�@�C���ɃG���g����ǉ������ꍇ�́AReadIniFile()#ttset.c�ɐݒ��ǂݍ��݂���悤�ɂ��܂��B
+<h2 id="configuration">設定ファイルの読み書き</h2>
+　Windowsではアプリケーションのデータ保存のために、レジストリが伝統的に利用されていますが、Tera Termではその誕生がWindows 3.1までに遡るために、.iniファイルによるローカルディレクトリへの保存方法が標準となっています。<br>
+　パッケージに同梱されるCygTermに関してもローカルディレクトリへデータが保存されます。<br>
+　例外として、TeraTerm Menuはデフォルトでレジストリへ保存をします。カレントディレクトリに"ttpmenu.ini"（0バイトで可）を設置することで、レジストリの代わりに.iniファイルを使うようにすることもできます。ただし、レジストリから.iniファイルへの移行は自動で行いませんので、手動で再登録してください。<br>
+　<br>
+　
+　teraterm.iniファイルにエントリを追加した場合は、ReadIniFile()#ttset.cに設定を読み込みするようにします。
 
 <pre class=code>
 	ts->ConfirmChangePaste =
 		GetOnOff(Section, "ConfirmChangePaste", FName, TRUE);
 </pre>
 
-�@WriteIniFile()#ttset.c �ɐݒ���������݂���悤�ɂ��܂��B
+　WriteIniFile()#ttset.c に設定を書き込みするようにします。
 
 <pre class=code>
 	WriteOnOff(Section, "ConfirmChangePaste", FName,
 		ts->ConfirmChangePaste);
 </pre>
 
-�@�G���g���ɕ������ݒ肷��ꍇ�́AWin32API��GetPrivateProfileString()��WritePrivateProfileString()���g���܂��B���l�����������ꍇ�́AGetPrivateProfileInt()��WriteInt()���g���܂��B
+　エントリに文字列を設定する場合は、Win32APIのGetPrivateProfileString()とWritePrivateProfileString()を使います。数値を扱いたい場合は、GetPrivateProfileInt()とWriteInt()を使います。
 
 <hr>
 
 
 
-<h2 id="secure">�Z�L���A�v���O���~���O</h2>
+<h2 id="secure">セキュアプログラミング</h2>
 
-<h3>�����񑀍�</h3>
-�@Windows�̃f�t�H���g�A�J�E���g��Administrator������ێ����邽�߂Ɂi�������AWindows Vista�ɂ͓��Ă͂܂�Ȃ��j�A�A�v���P�[�V�����Ƀo�b�t�@�I�[�o�[�t���[�̕s�������ƁA�Ǘ��Ҍ������O�҂ɒD�悳��Ă��܂��댯��������܂��B<br>
-�@�]���AC����̕����񏈗��͊J���҂̃~�X�ɂ��A�o�b�t�@�I�[�o�[�t���[���������₷���Ƃ����󋵂ɂ���܂����B�����ŁAMicrosoft��Visual Studio 2005���當���񏈗��֐��̃Z�L�����e�B�����o�[�W������񋟂���悤�ɂȂ�܂����B<br>
-�@<br>
+<h3>文字列操作</h3>
+　WindowsのデフォルトアカウントはAdministrator権限を保持するために（ただし、Windows Vistaには当てはまらない）、アプリケーションにバッファオーバーフローの不具合があると、管理者権限を第三者に奪取されてしまう危険性があります。<br>
+　従来、C言語の文字列処理は開発者のミスにより、バッファオーバーフローが発生しやすいという状況にありました。そこで、MicrosoftはVisual Studio 2005から文字列処理関数のセキュリティ強化バージョンを提供するようになりました。<br>
+　<br>
 
 <ul>
-  <li><a href="http://msdn2.microsoft.com/ja-jp/library/8ef0s5kh(VS.80).aspx" target="_blank">CRT �̃Z�L�����e�B�����iMSDN���C�u�����j</a></li>
+  <li><a href="http://msdn2.microsoft.com/ja-jp/library/8ef0s5kh(VS.80).aspx" target="_blank">CRT のセキュリティ強化（MSDNライブラリ）</a></li>
 </ul>
 <br>
 
-�@Tera Term�ł̓Z�L�����e�B������}�邽�߁A�����񑀍�̂قƂ�ǂ��Z�L�����e�B�����o�[�W�����ɒu�������Ă��܂��B�ȉ��ɑ�֊֐��������܂��B<br>
-�@<br>
+　Tera Termではセキュリティ強化を図るため、文字列操作のほとんどをセキュリティ強化バージョンに置き換えています。以下に代替関数を示します。<br>
+　<br>
 
 <table border=1 align=center>
 <tr>
-  <th>��</th>
-  <th>�V</th>
+  <th>旧</th>
+  <th>新</th>
 </tr>
 
 <tr>
@@ -338,23 +338,23 @@ static TTXExports Exports = {
   <td>strncpy_s()</td>
 </tr>
 </table>
-�@<br>
-�@
-�@�f�t�H���g�̃��P�[�����K�p�����ƁA���҂��铮��ƂȂ�Ȃ��P�[�X�ɂ����ẮA_snprintf_s_l()���g�p���Ă��܂��B<br>
-�@������̊֐��ɂ����Ă��A_s("secure")�Ƃ����ڔ������t�����߁A�����ڂɋ�ʂ��t���₷���Ȃ��Ă��܂��B���R�̂��ƂȂ���A�����̊֐���ANSI C��݊��ł��B<br>
-�@<br>
-�@�Ȃ��A�����̊֐��𗘗p����ہACount�����i�i�[����ő啶�����j�ɂ�"_TRUNCATE"�}�N�����w�肵�Ă���A�o�b�t�@�I�[�o�[�t���[����������ꍇ�́A�����I�Ƀo�b�t�@�̐؂�l�߂��s���Ă��܂��B
+　<br>
+　
+　デフォルトのロケールが適用されると、期待する動作とならないケースにおいては、_snprintf_s_l()を使用しています。<br>
+　いずれの関数においても、_s("secure")という接尾辞が付くため、見た目に区別が付きやすくなっています。当然のことながら、これらの関数はANSI C非互換です。<br>
+　<br>
+　なお、これらの関数を利用する際、Count引数（格納する最大文字数）には"_TRUNCATE"マクロを指定しており、バッファオーバーフローが発生する場合は、強制的にバッファの切り詰めを行っています。
 <p>
 
-�@�ȉ��ɁAstrncpy_s()�̎g�p��������܂��Bstrncpy_s()�̑�2����(numberOfElements)�ɂ́A<b>�i������(\0)���܂߂�</b>�o�b�t�@�T�C�Y���w�肵�܂��B�������ݐ�̃o�b�t�@��3�o�C�g�����Ȃ��̂ŁA��3����(strSource)�Ŏw�肵��5�o�C�g�̃f�[�^�́A2�o�C�g�ɐ؂�l�߂��Abuf[]�ɂ�"he\0"���i�[����܂��B
+　以下に、strncpy_s()の使用例を示します。strncpy_s()の第2引数(numberOfElements)には、<b>ナル文字(\0)も含めた</b>バッファサイズを指定します。書き込み先のバッファは3バイトしかないので、第3引数(strSource)で指定した5バイトのデータは、2バイトに切り詰められ、buf[]には"he\0"が格納されます。
 
 <pre class=code>
 char buf[3];
 strncpy_s(buf, sizeof(buf), "hello", _TRUNCATE);
 </pre>
 
-�@���ɁAstrncat_s()�̎g�p��������܂��B���Y�֐��́A���łɑ��݂��镶����ɁA����ɕ������A��������̂ł��邽�߁A��1����(strDest)��<b>���Ȃ炸null-terminate���Ă���</b>�K�v��������܂��Bstrncpy_s()�̑�2����(numberOfElements)�ɂ́A�i������(\0)���܂߂��o�b�t�@�T�C�Y���w�肵�܂��B�ȉ��̗�ł́A�ŏ��̊֐������s����ƁA5�o�C�g�i4�����{�i�������j���i�[����܂��B2�߂̊֐������s����ہA�c��2�o�C�g�����Ȃ��̂ŁA2�����������R�s�[����A�ŏI�I��"TeraTe"�i4�����{2�����{�i�������j�ƂȂ�܂��B
-�@
+　次に、strncat_s()の使用例を示します。当該関数は、すでに存在する文字列に、さらに文字列を連結するものであるため、第1引数(strDest)は<b>かならずnull-terminateしている</b>必要性があります。strncpy_s()の第2引数(numberOfElements)には、ナル文字(\0)も含めたバッファサイズを指定します。以下の例では、最初の関数を実行すると、5バイト（4文字＋ナル文字）が格納されます。2つめの関数を実行する際、残り2バイトしかないので、2文字だけがコピーされ、最終的に"TeraTe"（4文字＋2文字＋ナル文字）となります。
+　
 <pre class=code>
 char str[7];
 str[0] = '\0';
@@ -362,7 +362,7 @@ strncat_s(str, sizeof(str), "Tera", _TRUNCATE);
 strncat_s(str, sizeof(str), "Term", _TRUNCATE);
 </pre>
 
-�@�Ō�ɁA_snprintf_s()�ł��B����킵���̂� _snprintf() �Ƃ����֐��ł���A���̊֐���<b>null-terminate����Ȃ�</b>�P�[�X�����邽�߁A�g�p�֎~�ł��B�ȉ��ɁA_snprintf_s()�̎g�p��������܂��B�ȉ��̗�ł́Abuf[]�ɂ�"ab\0"���i�[����܂��B
+　最後に、_snprintf_s()です。紛らわしいのが _snprintf() という関数であり、この関数は<b>null-terminateされない</b>ケースがあるため、使用禁止です。以下に、_snprintf_s()の使用例を示します。以下の例では、buf[]には"ab\0"が格納されます。
 
 <pre class=code>
 char buf[3];
@@ -374,12 +374,12 @@ _snprintf_s(buf, sizeof(buf), _TRUNCATE, "abcdef");
 
 
 
-<h2 id="compatibility">�Â��o�[�W������Windows�Ƃ̌݊����ێ�</h2>
+<h2 id="compatibility">古いバージョンのWindowsとの互換性維持</h2>
 
-<h3>�_�C�i�~�b�N���[�f�B���O</h3>
+<h3>ダイナミックローディング</h3>
 
-�@Windows�̃A�v���P�[�V�����v���O�����́A�P��̃o�C�i���t�@�C����ύX���邱�ƂȂ��A�V���̃o�[�W������Windows��ŋN���ł���悤�ɂ��邽�߂ɂ́A�A�v���P�[�V�����v���O�������ł̍H�v���K�v�ł��B<br>
-�@���Ƃ��΁AWindows2000�œ������ꂽ SetLayeredWindowAttributes() API�𒼐ڌĂяo���ƁAWindowsNT4.0��98�Ȃǂł̓A�v���P�[�V�����̋N���Ɏ��s����悤�ɂȂ�܂��B���̂��߁A�V����API���Ăяo���Ƃ��́ALoadLibrary()���g���ē��I���[�h����悤�ɂ��܂��B<br>
+　Windowsのアプリケーションプログラムは、単一のバイナリファイルを変更することなく、新旧のバージョンのWindows上で起動できるようにするためには、アプリケーションプログラム側での工夫が必要です。<br>
+　たとえば、Windows2000で導入された SetLayeredWindowAttributes() APIを直接呼び出すと、WindowsNT4.0や98などではアプリケーションの起動に失敗するようになります。そのため、新しいAPIを呼び出すときは、LoadLibrary()を使って動的ロードするようにします。<br>
 
 <pre class=code>
 static BOOL MySetLayeredWindowAttributes(HWND hwnd, COLORREF crKey, BYTE bAlpha, DWORD dwFlags)
@@ -405,16 +405,16 @@ static BOOL MySetLayeredWindowAttributes(HWND hwnd, COLORREF crKey, BYTE bAlpha,
 }
 </pre>
 
-�@���������A��Ŋ֐��v���g�^�C�v�������Ă����͖̂ʓ|�ł���ꍇ�́A�uDLL�̒x���ǂݍ��݁v�Ƃ��������݂𗘗p����ƁA��L�̂悤�Ȏ菇�͕s�v�ł��B�����Ȃ�A�֐����Ăяo�����Ƃ��ł��܂��B�_�C���N�g�ɌĂяo�������֐�������ꍇ�A���ꂪ�Â�Windows�ł̓T�|�[�g����Ă��Ȃ����̂ł���Ȃ�΁AVisual Studio�̃v���W�F�N�g�ݒ�ŁA�uDLL�̒x���ǂݍ��݁v�ɊY������DLL���w�肵�Ă����܂��B
+　いちいち、手で関数プロトタイプを書いていくのは面倒である場合は、「DLLの遅延読み込み」というしくみを利用すると、上記のような手順は不要です。いきなり、関数を呼び出すことができます。ダイレクトに呼び出したい関数がある場合、それが古いWindowsではサポートされていないものであるならば、Visual Studioのプロジェクト設定で、「DLLの遅延読み込み」に該当するDLLを指定しておきます。
 
 
 <h3>Windows 95</h3>
 
-Visual Studio 2005�ɂȂ��Ă���AWindows 95�̃T�|�[�g���ł��؂��܂����B����āA�K�R�I��Visual Studio 2005�Ńr���h�����o�C�i���́AWindows 95�ł͓����Ȃ����ƂɂȂ�܂��B�Q�l�܂łɁAVisual Studio 2008�ł� Windows 98 �� NT4.0 �A2000 �̃T�|�[�g���ł��؂��AVisual Studio 2010�ł����l�ł��B����́AWindows XP���T�|�[�g����Ȃ��Ȃ邱�Ƃ��\�z����܂��B<p>
+Visual Studio 2005になってから、Windows 95のサポートが打ち切られました。よって、必然的にVisual Studio 2005でビルドしたバイナリは、Windows 95では動かないことになります。参考までに、Visual Studio 2008では Windows 98 と NT4.0 、2000 のサポートが打ち切られ、Visual Studio 2010でも同様です。今後は、Windows XPもサポートされなくなることが予想されます。<p>
 
-���݁ATera Term�ł�Visual Studio 2005�ɂ��r���h����Ă��܂����A�Ƃ���H�v�ɂ�� Windows 95 �ł����삷��悤�ɂȂ��Ă��܂��B�������AMicrosoft����F�̕��@�ł��邽�߁AMicrosoft����̐����ȃT�|�[�g�͎󂯂��܂���B<br>
-���������AVisual Studio 2005 �Ńr���h���ꂽ�o�C�i���́A�f�t�H���g�� IsDebuggerPresent �֐��Ƀ����N���Ă��܂��Ă��܂��B���Y�֐��� Windows 98 ����T�|�[�g���ꂽAPI�ł��邽�߁AWindows 95�ł̓����N�G���[�ƂȂ�킯�ł��B<br>
-�����ŁAWindows 95�ɂ����āA�_�~�[�� IsDebuggerPresent �֐��̃V���{�����`���Ă�����΁A�v���O�����̋N�����ɃG���[�ɂȂ邱�Ƃ͂Ȃ��Ȃ�̂ł��B�ڍׂ�"comapt_w95.h"�w�b�_���Q�Ƃ��Ă��������B<br>
+現在、Tera TermではVisual Studio 2005によりビルドされていますが、とある工夫により Windows 95 でも動作するようになっています。もちろん、Microsoft非公認の方法であるため、Microsoftからの正式なサポートは受けられません。<br>
+そもそも、Visual Studio 2005 でビルドされたバイナリは、デフォルトで IsDebuggerPresent 関数にリンクしてしまっています。当該関数は Windows 98 からサポートされたAPIであるため、Windows 95ではリンクエラーとなるわけです。<br>
+そこで、Windows 95において、ダミーで IsDebuggerPresent 関数のシンボルを定義してあげれば、プログラムの起動時にエラーになることはなくなるのです。詳細は"comapt_w95.h"ヘッダを参照してください。<br>
 
 <ul>
   <li><a href="https://github.com/TeraTermProject/teraterm/blob/4-stable/teraterm/common/compat_w95.h" target="_blank">comapt_w95.h</a></li>
@@ -423,12 +423,12 @@ Visual Studio 2005�ɂȂ��Ă���AWindows 95�̃T�|�[�g���ł��؂��܂����B����āA
 <hr>
 
 
-<h2 id="debug">�f�o�b�O��@</h2>
+<h2 id="debug">デバッグ手法</h2>
 <h3>debug printf</h3>
-�@Windows�A�v���P�[�V�����ł� printf() ���g���܂���B�W���o�͂��ǂ��ɂ����蓖�Ă��Ă��Ȃ�����ł��BAllocConsole()��freopen()���g���΁AWindows�A�v���P�[�V�����ɂ����Ă� printf() �𗘗p���邱�Ƃ��ł��܂��B<br>
-�@OutputDebugString()�Ƃ���API������܂��B����� Visual Studio �̃f�o�b�O�R���\�[���Ƀ��b�Z�[�W�o�͂��邱�Ƃ��ł���֐��ł��B���YAPI�́A"Debug build"�����"Release build"�Ɋ֌W�Ȃ��A�f�o�b�K�����݂���΁A���b�Z�[�W�𑗐M���܂��B�䂦�ɁA Visual Studio���Ȃ��Ƃ��A<a href="http://www.vector.co.jp/soft/win95/prog/se046776.html" target="_blank">DBCon</a>�̂悤�ȃc�[�����g���΁A�A�v���P�[�V�����̒P�̋N���ɂ����Ă��AOutputDebugString()�ɂ�郁�b�Z�[�W���E�����Ƃ��ł��܂��B<br>
-�@Tera Term�ł́A�ϒ�������������悤�Ƀ��b�p�[�֐���p�ӂ��Ă��܂��B
-�@
+　Windowsアプリケーションでは printf() が使えません。標準出力がどこにも割り当てられていないからです。AllocConsole()とfreopen()を使えば、Windowsアプリケーションにおいても printf() を利用することができます。<br>
+　OutputDebugString()というAPIがあります。これは Visual Studio のデバッグコンソールにメッセージ出力することができる関数です。当該APIは、"Debug build"および"Release build"に関係なく、デバッガが存在すれば、メッセージを送信します。ゆえに、 Visual Studioがなくとも、<a href="http://www.vector.co.jp/soft/win95/prog/se046776.html" target="_blank">DBCon</a>のようなツールを使えば、アプリケーションの単体起動においても、OutputDebugString()によるメッセージを拾うことができます。<br>
+　Tera Termでは、可変長引数を扱えるようにラッパー関数を用意しています。
+　
 <pre class=code>
 void OutputDebugPrintf(char *fmt, ...) {
 	char tmp[1024];
@@ -440,7 +440,7 @@ void OutputDebugPrintf(char *fmt, ...) {
 </pre>
 
 <h3>memory leak</h3>
-�@malloc()���ɂ��m�ۂ����q�[�v�������̉�����Y��ɂ��u���������[�N�v���A�����Ō��o���邵���݂� Visual Studio �ɂ͗p�ӂ���Ă��܂��B�v���O�����̋N�����ɁA�ȉ��̃R�[�h��}�����邾���ł��B�v���O�����̏I�����ɁA������Ă��Ȃ��q�[�v������������΁A Visual Studio �́u�o�́v�E�B���h�E�Ƀ��X�g�A�b�v����܂��B
+　malloc()等による確保したヒープメモリの解放し忘れによる「メモリリーク」を、自動で検出するしくみが Visual Studio には用意されています。プログラムの起動時に、以下のコードを挿入するだけです。プログラムの終了時に、解放していないヒープメモリがあれば、 Visual Studio の「出力」ウィンドウにリストアップされます。
 
 <pre class=code>
 #ifdef _DEBUG
@@ -448,35 +448,35 @@ void OutputDebugPrintf(char *fmt, ...) {
 #endif
 </pre>
 
-�@�Ȃ��AWindows�̂悤�ɉ��z�L���œ����A�v���P�[�V�����v���O�����Ɋւ��ẮA�v���O�����̏I�����ɉ������Ă��Ȃ������������݂����ꍇ�AOS���ʓ|�����āA����������������悤�ɂȂ��Ă��܂��B
+　なお、Windowsのように仮想記憶で動くアプリケーションプログラムに関しては、プログラムの終了時に解放されていないメモリが存在した場合、OSが面倒を見て、メモリが解放されるようになっています。
 
 <hr>
 
 
-<h2 id="thread">�}���`�X���b�h</h2>
-�@Windows�̃A�v���P�[�V�����̓}���`�X���b�h�Ő݌v����邱�Ƃ��قƂ�ǂł����AWindows 3.1����95�̎���ł͂��܂��ʓI�ł͂���܂���ł����B���̂��߁A���XTera Term�̓}���`�X���b�h������Ă��܂���B�\�[�X�R�[�h������ƕ�����悤�ɁA�O���[�o���ϐ������p����Ă��邽�߁A�قƂ�ǂ̏������X���b�h�Z�[�t�ł͂���܂���B<br>
-�@�������A�ꕔ�̏����ɂ����Ă� _beginthreadex() API ���g���ăX���b�h����������Ă��܂��B�ȉ��ɃX���b�h�����ӏ��������܂��B
+<h2 id="thread">マルチスレッド</h2>
+　Windowsのアプリケーションはマルチスレッドで設計されることがほとんどですが、Windows 3.1から95の時代ではあまり一般的ではありませんでした。そのため、元々Tera Termはマルチスレッド化されていません。ソースコードを見ると分かるように、グローバル変数が多用されているため、ほとんどの処理がスレッドセーフではありません。<br>
+　ただし、一部の処理においては _beginthreadex() API を使ってスレッドが生成されています。以下にスレッド生成箇所を示します。
 
 <p>
 <div align=center><b>Tera Term</b></div>
 <table border=1 align=center>
 <tr>
-  <th>�����ӏ�</th>
-  <th>�\�[�X�t�@�C��</th>
+  <th>生成箇所</th>
+  <th>ソースファイル</th>
 </tr>
 
 <tr>
-  <td>�V���A���ڑ�</td>
+  <td>シリアル接続</td>
   <td>CommStart()#commlib.c</td>
 </tr>
 
 <tr>
-  <td>TELNET�L�[�v�A���C�u</td>
+  <td>TELNETキープアライブ</td>
   <td>TelStartKeepAliveThread()#telnet.c</td>
 </tr>
 
 <tr>
-  <td>IPv4/v6�\�P�b�g�̐���</td>
+  <td>IPv4/v6ソケットの生成</td>
   <td>WSAAsyncGetAddrInfo()#WSAAsyncGetAddrInfo.c</td>
 </tr>
 </table>
@@ -486,30 +486,30 @@ void OutputDebugPrintf(char *fmt, ...) {
 <div align=center><b>TTSSH</b></div>
 <table border=1 align=center>
 <tr>
-  <th>�����ӏ�</th>
-  <th>�\�[�X�t�@�C��</th>
+  <th>生成箇所</th>
+  <th>ソースファイル</th>
 </tr>
 
 <tr>
-  <td>SSH�L�[�v�A���C�u</td>
+  <td>SSHキープアライブ</td>
   <td>start_ssh_heartbeat_thread()#ssh.c</td>
 </tr>
 
 <tr>
-  <td>SCP���M����</td>
+  <td>SCP送信処理</td>
   <td>SSH2_scp_tolocal()#ssh.c</td>
 </tr>
 
 <tr>
-  <td>SCP��M����</td>
+  <td>SCP受信処理</td>
   <td>SSH2_scp_fromremote()#ssh.c</td>
 </tr>
 </table>
 </p>
 
-�@���łɐ��������Ƃ���ATera Term�iTTSSH�܂ށj�̓��������̓X���b�h�Z�[�t�ł͂Ȃ����߁A�V���v���ɃX���b�h�𐶐����A�X���b�h�����瑗��M���������s�����Ƃ���ƁA�s����������Ă��܂��܂��B<br>
-�@TELNET��SSH�̃L�[�v�A���C�u�i�n�[�g�r�[�g�j�������������邽�߂ɂ́A����I�Ƀp�P�b�g�̑��M�������s���K�v������܂��B�܂��ASCP�ɂ��t�@�C������M���s���ۂɂ����Ă��A�t�@�C���̑��M�������ɁA���[�U�̒[������̃��X�|���X�𗎂Ƃ��Ȃ����߂ɁA�X���b�h�̎g�p���s���ł��B<br>
-�@�����ŁA�}���`�X���b�h���g���ꍇ�́A���[�h���X�_�C�A���O���\���ō쐬�������ƂɁA_beginthreadex() API�ŃX���b�h�𐶐����A���ۂ̏����̓��[�h���X�_�C�A���O�ɍs�킹��Ƃ�����i���g�p���Ă��܂��B���̂����݂ɂ��A�}���`�X���b�h���g���Ȃ���A�X���b�h�Z�[�t��ۂ��Ƃ��ł��܂��B�ȉ��ɁA�R�[�h��������܂��B<br>
+　すでに説明したとおり、Tera Term（TTSSH含む）の内部処理はスレッドセーフではないため、シンプルにスレッドを生成し、スレッド内から送受信処理等を行おうとすると、不具合が発生してしまいます。<br>
+　TELNETやSSHのキープアライブ（ハートビート）処理を実現するためには、定期的にパケットの送信処理を行う必要があります。また、SCPによるファイル送受信を行う際においても、ファイルの送信処理中に、ユーザの端末操作のレスポンスを落とさないために、スレッドの使用が不可欠です。<br>
+　そこで、マルチスレッドを使う場合は、モードレスダイアログを非表示で作成したあとに、_beginthreadex() APIでスレッドを生成し、実際の処理はモードレスダイアログに行わせるという手段を使用しています。このしくみにより、マルチスレッドを使いながら、スレッドセーフを保つことができます。以下に、コード例を示します。<br>
 
 <pre class=code>
 #define WM_SEND_HEARTBEAT (WM_USER + 1)
@@ -582,125 +582,125 @@ void TelStartKeepAliveThread() {
 <hr>
 
 
-<h2 id="dde">DDE�ɂ��v���Z�X�ԒʐM</h2>
-  <h3>�T�v</h3>
-�@DDE(Dynamic Data Exchange)�̒a���́A1987�N��Windows 2.0�܂łɑk��܂��BDDE�̓v���Z�X�ԒʐM���s�����߂̂����݂ł����A���݂ł̓��K�V�[�ȕ����ł���A�قƂ�ǂ̃A�v���P�[�V�����ł͗��p����Ă��܂���BWindows�ɂ�����v���Z�X�ԒʐM�Ƃ����΁A���[���X���b�g�▼�O�t���p�C�v�AOLE�Ȃǂ���Ԃł��B<br>
-�@���ẮADDE�ɂ��v���Z�X�Ԃ̒ʐM�f�[�^���L���v�`�����邱�Ƃ��ł���uDDE�X�p�C�v(DDESPY.EXE)�Ƃ����c�[����Visual Studio�ɕt�����Ă��܂������A���݂�Visual Studio�ɂ͂��͂�܂܂�Ă��܂���B<br>
-�@DDE�Ɋւ��郊�t�@�����X��MSDN���C�u��������Q�Ƃ��邱�Ƃ��ł��܂��B<br>
+<h2 id="dde">DDEによるプロセス間通信</h2>
+  <h3>概要</h3>
+　DDE(Dynamic Data Exchange)の誕生は、1987年のWindows 2.0までに遡ります。DDEはプロセス間通信を行うためのしくみですが、現在ではレガシーな方式であり、ほとんどのアプリケーションでは利用されていません。Windowsにおけるプロセス間通信といえば、メールスロットや名前付きパイプ、OLEなどが定番です。<br>
+　かつては、DDEによるプロセス間の通信データをキャプチャすることができる「DDEスパイ」(DDESPY.EXE)というツールがVisual Studioに付属していましたが、現在のVisual Studioにはもはや含まれていません。<br>
+　DDEに関するリファレンスはMSDNライブラリから参照することができます。<br>
 
 <p>
 <ul>
-  <li><a href="http://msdn2.microsoft.com/en-us/library/ms648711(VS.85).aspx" target="_blank">Dynamic Data Exchange�iMSDN���C�u�����j</a></li>
-  <li><a href="http://msdn2.microsoft.com/en-us/library/ms648712(VS.85).aspx" target="_blank">Dynamic Data Exchange Management Library�iMSDN���C�u�����j</a></li>
+  <li><a href="http://msdn2.microsoft.com/en-us/library/ms648711(VS.85).aspx" target="_blank">Dynamic Data Exchange（MSDNライブラリ）</a></li>
+  <li><a href="http://msdn2.microsoft.com/en-us/library/ms648712(VS.85).aspx" target="_blank">Dynamic Data Exchange Management Library（MSDNライブラリ）</a></li>
 </ul>
 </p>
 
-�@DDE�́ATCP�ɂ��l�b�g���[�N�ʐM�Ǝ��Ă���A�T�[�o�ƃN���C�A���g�Ԃ���Έ�Őڑ����A�ʐM���s���܂��B�A�v���P�[�V������DDE�ɂ��ʐM���s�����߂ɁADDEML(Dynamic Data Exchange Management Library)�ƌĂ΂�郉�C�u������Win32 API�Ƃ��Ē񋟂���Ă��܂��B<br>
-�@DDE�ʐM���s�����߂ɁA������T�[�o�ƂȂ�A�������N���C�A���g�ɂȂ�K�v������܂��B�܂��A�ʐM�̃Z�b�V�������V�X�e���S�̂Ń��j�[�N�Ƃ��邽�߂ɁA���ʏ�񂪕K�v�ł��BTCP�ʐM�ł�IP�A�h���X�ƃ|�[�g�ԍ����g���܂����ADDE�ʐM�ł́u�T�[�r�X���v�Ɓu�g�s�b�N���v�̑g�ݍ��킹���g���܂��BTera Term�ł̓T�[�r�X����"TERATERM"�Ƃ��������񂪎g���A�g�s�b�N����Tera Term�{�̂̃E�B���h�E�n���h��(HVTWin)��16�i���l�𕶎��񉻂������̂��g���Ă��܂��B<br>
-�@���̂悤�Ȃ����݂ɂȂ��Ă��邽�߂ɁA�}�N���X�N���v�g����܂������ʂ�Tera Term�փR�}���h�𑗂邱�Ƃ͂ł��܂���B<br>
+　DDEは、TCPによるネットワーク通信と似ており、サーバとクライアント間を一対一で接続し、通信を行います。アプリケーションがDDEによる通信を行うために、DDEML(Dynamic Data Exchange Management Library)と呼ばれるライブラリをWin32 APIとして提供されています。<br>
+　DDE通信を行うために、一方がサーバとなり、他方がクライアントになる必要があります。また、通信のセッションをシステム全体でユニークとするために、識別情報が必要です。TCP通信ではIPアドレスとポート番号が使われますが、DDE通信では「サービス名」と「トピック名」の組み合わせが使われます。Tera Termではサービス名は"TERATERM"という文字列が使われ、トピック名はTera Term本体のウィンドウハンドル(HVTWin)の16進数値を文字列化したものが使われています。<br>
+　このようなしくみになっているために、マクロスクリプトからまったく別のTera Termへコマンドを送ることはできません。<br>
 
 <div align="center">
 <img src="image/dde.png" width=720 height=540>
 </div>
 
-�@��}�Ɏ����悤�ɁATera Term�{��("ttermpro.exe")��DDE�T�[�o�ƂȂ�A�}�N���v���O����("ttpmacro.exe")��DDE�N���C�A���g�ƂȂ�܂��BDDE�ł́A���Ƃ肷��f�[�^�̉�̂��Ƃ��u�g�����U�N�V�����v�ƌĂт܂��B�g�����U�N�V�����ɂ͈ȉ��Ɏ����悤�ȉ���ނ�������܂��B�^�C�v��"ddeml.h"�Ń}�N����`����Ă��܂��B<br>
+　上図に示すように、Tera Term本体("ttermpro.exe")がDDEサーバとなり、マクロプログラム("ttpmacro.exe")がDDEクライアントとなります。DDEでは、やりとりするデータの塊のことを「トランザクション」と呼びます。トランザクションには以下に示すような何種類かがあります。タイプは"ddeml.h"でマクロ定義されています。<br>
 
 <p>
 <table border=1 align=center>
 <tr>
-  <th>�^�C�v</th>
-  <th>�Ӗ�</th>
+  <th>タイプ</th>
+  <th>意味</th>
 </tr>
 
 <tr>
   <td>XTYP_ADVREQ</td>
-  <td>DDE�T�[�o���N���C�A���g�փf�[�^�𑗂邽�߂ɁADDE�T�[�o���������g�ɑ��郁�b�Z�[�W�B</td>
+  <td>DDEサーバがクライアントへデータを送るために、DDEサーバが自分自身に送るメッセージ。</td>
 </tr>
 
 <tr>
   <td>XTYP_POKE</td>
-  <td>DDE�N���C�A���g����T�[�o�փf�[�^�𑗂�B</td>
+  <td>DDEクライアントからサーバへデータを送る。</td>
 </tr>
 
 <tr>
   <td>XTYP_ADVSTART</td>
-  <td>DDE�T�[�o�ɑ΂��ăA�h�o�C�Y���[�v�̊J�n���w������B</td>
+  <td>DDEサーバに対してアドバイズループの開始を指示する。</td>
 </tr>
 
 <tr>
   <td>XTYP_ADVDATA</td>
-  <td>DDE�N���C�A���g�Ƀf�[�^�����I�ɑ���B</td>
+  <td>DDEクライアントにデータを定期的に送る。</td>
 </tr>
 
 <tr>
   <td>XTYP_EXECUTE</td>
-  <td>DDE�T�[�o�ɕ�����𑗂�A���炩�̏������T�[�o�Ɏw������B</td>
+  <td>DDEサーバに文字列を送り、何らかの処理をサーバに指示する。</td>
 </tr>
 
 </table>
 </p>
 
-�@DDE�ʐM�̓����Ƃ��āA�A�h�o�C�Y���[�v(advise loop)�Ƃ����T�O������܂��BDDE�T�[�o���A�h�o�C�Y���[�v�ɓ���ƁA�N���C�A���g�̓T�[�o�������I�Ƀf�[�^���󂯎�葱���邱�Ƃ��ł��܂��BTera Term�ł́A�����[�g�z�X�g����̎�M�f�[�^���A�}�N���v���O�����֓n�����߂ɁA�A�h�o�C�Y���[�v���g���Ă��܂��B<br>
+　DDE通信の特徴として、アドバイズループ(advise loop)という概念があります。DDEサーバがアドバイズループに入ると、クライアントはサーバから定期的にデータを受け取り続けることができます。Tera Termでは、リモートホストからの受信データを、マクロプログラムへ渡すために、アドバイズループが使われています。<br>
 
-  <h3>���C�u����</h3>
-�@Tera Term�Ŏg���Ă���DDEML�ɂ��āA�ȉ��Ɏ����܂��B
-�@
-�@
+  <h3>ライブラリ</h3>
+　Tera Termで使われているDDEMLについて、以下に示します。
+　
+　
 <p>
 <table border=1 align=center>
 <tr>
-  <th>�֐���</th>
-  <th>�@�\</th>
+  <th>関数名</th>
+  <th>機能</th>
 </tr>
 
 <tr>
   <td>DdeInitialize</td>
-  <td>DDE�����������A�R�[���o�b�N�֐���o�^����B�������ł���ƃC���X�^���X��Ԃ��B</td>
+  <td>DDEを初期化し、コールバック関数を登録する。初期化できるとインスタンスを返す。</td>
 </tr>
 
 <tr>
   <td>DdeCreateStringHandle</td>
-  <td>�����񃊃e��������n���h�����쐬����B�n���h���̓T�[�o�ƃN���C�A���g�̒ʐM�p�Ɏg����B</td>
+  <td>文字列リテラルからハンドルを作成する。ハンドルはサーバとクライアントの通信用に使われる。</td>
 </tr>
 
 <tr>
   <td>DdeNameService</td>
-  <td>�C���X�^���X�ƃT�[�r�X��("TERATERM")���T�[�o�ɓo�^����B�o�^��AXTYP_REGISTER�g�����U�N�V�������N���C�A���g�֑�����B�o�^��������ۂɂ��g����B</td>
+  <td>インスタンスとサービス名("TERATERM")をサーバに登録する。登録後、XTYP_REGISTERトランザクションがクライアントへ送られる。登録解除する際にも使われる。</td>
 </tr>
 
 <tr>
   <td>DdeCmpStringHandles</td>
-  <td>2�̕�����n���h�����r����B</td>
+  <td>2つの文字列ハンドルを比較する。</td>
 </tr>
 
 <tr>
   <td>DdeClientTransaction</td>
-  <td>�N���C�A���g����T�[�o�փg�����U�N�V�����𑗂邱�Ƃ��ł���B�g�����U�N�V�����^�C�v�Ƃ��āAXTYP_REQUEST�EXTYP_EXECUTE�EXTYP_ADVSTART�EXTYP_POKE�Ȃǂ��w��ł���B�T�[�o�����ACK��҂܂ł̃^�C���A�E�g���Ԃ��w�肷�邱�Ƃ��ł��ATera Term�ł͂قƂ��"1000�~���b�i1�b�j"���w�肳��Ă���B�������AACK���m�F����P�[�X�ɂ����Ă�"5000�~���b�i5�b�j"���w�肳��Ă���B</td>
+  <td>クライアントからサーバへトランザクションを送ることができる。トランザクションタイプとして、XTYP_REQUEST・XTYP_EXECUTE・XTYP_ADVSTART・XTYP_POKEなどが指定できる。サーバからのACKを待つまでのタイムアウト時間を指定することができ、Tera Termではほとんど"1000ミリ秒（1秒）"が指定されている。ただし、ACKを確認するケースにおいては"5000ミリ秒（5秒）"が指定されている。</td>
 </tr>
 
 <tr>
   <td>DdeAccessData</td>
-  <td>DDE�n���h��������ۂ̃f�[�^�ւ̃|�C���^���擾����B�f�[�^�̎��o�����I�������ADdeUnaccessData()���Ăяo�����ƁB</td>
+  <td>DDEハンドルから実際のデータへのポインタを取得する。データの取り出しが終わったら、DdeUnaccessData()を呼び出すこと。</td>
 </tr>
 
 <tr>
   <td>DdeCreateDataHandle</td>
-  <td>DDE�I�u�W�F�N�g���쐬���A�n���h����Ԃ��BDDE�T�[�o�̃A�h�o�C�Y���[�v��AXTYP_REQUEST�g�����U�N�V������M���ɁADDE�N���C�A���g�փf�[�^�𑗂邽�߂Ɏg���Ă���B</td>
+  <td>DDEオブジェクトを作成し、ハンドルを返す。DDEサーバのアドバイズループや、XTYP_REQUESTトランザクション受信時に、DDEクライアントへデータを送るために使われている。</td>
 </tr>
 
 <tr>
   <td>DdeGetData</td>
-  <td>DDE�I�u�W�F�N�g����o�b�t�@�փR�s�[����B</td>
+  <td>DDEオブジェクトからバッファへコピーする。</td>
 </tr>
 
 <tr>
   <td>DdeDisconnect</td>
-  <td>DDE�ʐM���I������</td>
+  <td>DDE通信を終了する</td>
 </tr>
 
 <tr>
   <td>DdePostAdvise</td>
-  <td>DDE�T�[�o���Ŏg����֐��ŁA�������g�� XTYP_ADVREQ �g�����U�N�V�����𑗂�B</td>
+  <td>DDEサーバ側で使われる関数で、自分自身に XTYP_ADVREQ トランザクションを送る。</td>
 </tr>
 
 </table>
@@ -708,11 +708,11 @@ void TelStartKeepAliveThread() {
 
 
 
-  <h3>����</h3>
-�@DDE�T�[�o���̎����ɂ��Č��Ă����܂��BTera Term�{��("ttermpro.exe")��DDE�T�[�o�ƂȂ�A���Ȃ炸DDE�T�[�o����N������܂��B�}�N���v���O����("ttpmacro.exe")���璼�ڃ}�N���X�N���v�g�����s�����P�[�X�ɂ����Ă��A"connect"�}�N���ɂ��DDE�ڑ������Ȃ��ƁA�ʐM���J�n�ł��܂���B<br>
-�@Tera Term��Control���j���[����Macro���Ăяo�����ꍇ�ARunMacro()#ttdde.c ���R�[������܂��B<br>
-�@HVTWin�E�B���h�E�n���h������g�s�b�N���i8�o�C�g�j���쐬���ADDE�̏������ƃT�[�o�̓o�^���s���܂��B�܂��A���̃^�C�~���O��DDE�o�b�t�@�i1KB�j���쐬���Ă��܂��B���̌�A"ttpmacro.exe"�� /D= �I�v�V�����Ńg�s�b�N����n���A�N�������܂��B<br>
-�@
+  <h3>実装</h3>
+　DDEサーバ側の実装について見ていきます。Tera Term本体("ttermpro.exe")がDDEサーバとなり、かならずDDEサーバから起動されます。マクロプログラム("ttpmacro.exe")から直接マクロスクリプトが実行されるケースにおいても、"connect"マクロによりDDE接続をしないと、通信が開始できません。<br>
+　Tera TermのControlメニューからMacroを呼び出した場合、RunMacro()#ttdde.c がコールされます。<br>
+　HVTWinウィンドウハンドルからトピック名（8バイト）を作成し、DDEの初期化とサーバの登録を行います。また、このタイミングでDDEバッファ（1KB）を作成しています。その後、"ttpmacro.exe"を /D= オプションでトピック名を渡しつつ、起動をします。<br>
+　
 <pre class=code>
 	SetTopic();
 	if (! InitDDE()) return;
@@ -720,10 +720,10 @@ void TelStartKeepAliveThread() {
 	strncat_s(Cmnd,sizeof(Cmnd),TopicName,_TRUNCATE);
 </pre>
 
-�@DDE�T�[�o�ɁADDE�N���C�A���g����g�����U�N�V�����������Ă����Ƃ��́ADdeCallbackProc�R�[���o�b�N�֐����Ăяo����܂��B�R�[���o�b�N�֐��́ADdeInitialize()��DDE�̏��������s���Ƃ��ɓo�^����܂��B<br><br>
-�@
-�@���ɁADDE�N���C�A���g�ɂ��Č��Ă݂܂��傤�B�}�N���v���O�����̋N�����AInitDDE()#ttmdde.c ���Ăяo����ADDE�N���C�A���g�Ƃ��ď��������s���܂��BDDE�̏������́ADdeInitialize()�ōs���A������DdeCallbackProc�R�[���o�b�N�֐����o�^����܂��BDDE�T�[�o����͂����g�����U�N�V�����́A�R�[���o�b�N�֐��ŏ�������܂��B<br>
-�@DDE�ʐM���n�߂邽�߂ɂ́ADdeConnect()���Ăяo���A�T�[�o�Ɛڑ�����K�v������܂��B���ɁA"ttpmacro.exe"�̃E�B���h�E�n���h��(HWin)���T�[�o�֒ʒm���邽�߂ɁAXTYP_EXECUTE�g�����U�N�V�����ő���܂��B�Ō�ɁAXTYP_ADVSTART�g�����U�N�V�������T�[�o�֑���A�A�h�o�C�Y���[�v���J�n���܂��B<br>
+　DDEサーバに、DDEクライアントからトランザクションが送られてきたときは、DdeCallbackProcコールバック関数が呼び出されます。コールバック関数は、DdeInitialize()でDDEの初期化を行うときに登録されます。<br><br>
+　
+　次に、DDEクライアントについて見てみましょう。マクロプログラムの起動時、InitDDE()#ttmdde.c が呼び出され、DDEクライアントとして初期化が行われます。DDEの初期化は、DdeInitialize()で行われ、同時にDdeCallbackProcコールバック関数が登録されます。DDEサーバから届いたトランザクションは、コールバック関数で処理されます。<br>
+　DDE通信を始めるためには、DdeConnect()を呼び出し、サーバと接続する必要があります。次に、"ttpmacro.exe"のウィンドウハンドル(HWin)をサーバへ通知するために、XTYP_EXECUTEトランザクションで送ります。最後に、XTYP_ADVSTARTトランザクションをサーバへ送り、アドバイズループを開始します。<br>
 
 <pre class=code>
   ConvH = DdeConnect(Inst, Service, Topic, NULL);
@@ -744,39 +744,39 @@ void TelStartKeepAliveThread() {
 </pre>
 
 
-  <h3>�o�b�t�@�̊Ǘ�</h3>
-�@�}�N���v���O�����ł�"wait"�R�}���h���ŁA�����[�g�z�X�g���瑗���Ă����f�[�^���Ď����邽�߂̋@�\���p�ӂ���Ă��܂��B���̋@�\���������邽�߂ɂ́ATera Term�{�̂ƃ}�N���v���O�����̂��ꂼ��ɂ����āA�o�b�t�@��p�ӂ���K�v������A�v���Z�X�ԒʐM�iDDE�g�����U�N�V�����j�ɂ��ATera Term�{�̂���}�N���v���O�����փ����[�g�z�X�g����̎�M�f�[�^�𑗂�Ȃ���΂Ȃ�܂���B<br>
+  <h3>バッファの管理</h3>
+　マクロプログラムでは"wait"コマンド等で、リモートホストから送られてきたデータを監視するための機能が用意されています。この機能を実現するためには、Tera Term本体とマクロプログラムのそれぞれにおいて、バッファを用意する必要があり、プロセス間通信（DDEトランザクション）により、Tera Term本体からマクロプログラムへリモートホストからの受信データを送らなければなりません。<br>
 
 <div align="center">
 <img src="image/dde_flowcontrol.png" width=720 height=540>
 </div>
 
-�@�܂��ATera Term�{�̂ɂ����郊���[�g�z�X�g�����TCP�p�P�b�g��M�́A�A�C�h�����[�v OnIdle()#teraterm.cpp �ɂčs���܂��BOnIdle()����Ăяo����� CommReceive()#commlib.c �ɂ����āATCP�p�P�b�g�f�[�^���o�b�t�@(cv->InBuff[])�Ɋi�[���܂��B���̃o�b�t�@�� 1KB �̑傫���������܂��B�܂��A�����O�o�b�t�@�ł͂Ȃ����߁A�o�b�t�@�t���ɂȂ����ꍇ�́ATCP�p�P�b�g�̎�M�����܂���B�������A�o�b�t�@�t����Ԃ����������ƁAWindows�J�[�l������TCP�p�P�b�g�����܂��Ă����A������̓����[�g�z�X�g����̃p�P�b�g����M�ł��Ȃ��Ȃ�\��������܂��B<br>
-�@�G�X�P�[�v�V�[�P���X�̉�͏������s���ߒ��ŁA�u���O�̎�v���u�}�N�����s�v���s���Ă���ꍇ�́ALogPut1()���Ăяo����ADDE�o�b�t�@(cv.LogBuf[])�֎�M�f�[�^���i�[����܂��B���Ȃ킿�A���O�̎�ƃ}�N�����s�ɂ�����o�b�t�@�͋��ʂł��B���̃o�b�t�@��1KB�̑傫�����������O�o�b�t�@�ł���A�o�b�t�@�t���ɂȂ����ꍇ�́A�ŌẪf�[�^����㏑������Ă䂫�܂��B<br>
-�@�Ȃ��A�o�C�i�����[�h�Ń��O�̎�ɂ����ẮAcv.BinBuf[] �Ƃ����ʂ̃o�b�t�@�փf�[�^���i�[����܂��̂ŁADDE�o�b�t�@�Ƃ͕ʕ��ł��B����������ƁA�o�C�i�����[�h�ɂ�����f�[�^��DDE�ʐM�����邱�Ƃ͂ł��Ȃ��Ƃ������Ƃł��B�P����"wait"�R�}���h�ł́A�o�C�i���f�[�^�i����R�[�h�Ȃǁj��҂��Ƃ͂ł��܂���B<br>
-�@Tera Term�{�̂�DDE�o�b�t�@�̃f�[�^�́A�G�X�P�[�v�V�[�P���X�̉�͏�����������ADDEAdv()#ttdde.c �������ɌĂяo����A�������g�iDDE�T�[�o�j�� XTYP_ADVREQ �g�����U�N�V�����𑗂�܂��BXTYP_ADVREQ���󂯎������ADDE�R�[���o�b�N�֐� DdeCallbackProc() ���Ăяo����A�}�N���v���O�����ւ̃f�[�^���M���s���܂��B�����ŃA�h�o�C�Y���[�v���g���Ă��܂��B<br>
+　まず、Tera Term本体におけるリモートホストからのTCPパケット受信は、アイドルループ OnIdle()#teraterm.cpp にて行われます。OnIdle()から呼び出される CommReceive()#commlib.c において、TCPパケットデータをバッファ(cv->InBuff[])に格納します。このバッファは 1KB の大きさを持ちます。また、リングバッファではないため、バッファフルになった場合は、TCPパケットの受信をしません。ただし、バッファフル状態が長く続くと、Windowsカーネル内にTCPパケットが溜まっていき、いずれはリモートホストからのパケットを受信できなくなる可能性があります。<br>
+　エスケープシーケンスの解析処理を行う過程で、「ログ採取」か「マクロ実行」を行っている場合は、LogPut1()が呼び出され、DDEバッファ(cv.LogBuf[])へ受信データが格納されます。すなわち、ログ採取とマクロ実行におけるバッファは共通です。このバッファは1KBの大きさを持つリングバッファであり、バッファフルになった場合は、最古のデータから上書きされてゆきます。<br>
+　なお、バイナリモードでログ採取においては、cv.BinBuf[] という別のバッファへデータが格納されますので、DDEバッファとは別物です。言い換えると、バイナリモードにおけるデータをDDE通信させることはできないということです。単純な"wait"コマンドでは、バイナリデータ（制御コードなど）を待つことはできません。<br>
+　Tera Term本体のDDEバッファのデータは、エスケープシーケンスの解析処理が完了後、DDEAdv()#ttdde.c がすぐに呼び出され、自分自身（DDEサーバ）へ XTYP_ADVREQ トランザクションを送ります。XTYP_ADVREQを受け取ったら、DDEコールバック関数 DdeCallbackProc() が呼び出され、マクロプログラムへのデータ送信を行います。ここでアドバイズループが使われています。<br>
 
 <div align="center">
 <img src="image/dde_buffer.png" width=720 height=540>
 </div>
 
-�@�A�h�o�C�Y���[�v�ɂ��DDE�T�[�o���f�[�^�������Ă���ƁADDE�N���C�A���g�ł���}�N���v���O�����ɂ����ẮAXTYP_ADVDATA�g�����U�N�V������DDE�R�[���o�b�N�֐� DdeCallbackProc()#ttmdde.c �ɂ�菈������܂��B<br>
-�@
-�@�Ȃ��ATera Term�{�̂ɂ����āADDE�ʐM�p�̃o�b�t�@�ƁA���O�̎�p�̃o�b�t�@�� cv.LogBuf[] �ŋ��L����Ă��܂��B�o�b�t�@�̐擪�ƃf�[�^�T�C�Y��\���C���f�b�N�X�́ADDE�ʐM�̏ꍇ��"DStart"��"Dcount"�A���O�̎�̏ꍇ��"LStart"��"Lcount"�Ƌ�ʂ���Ă��܂��B���ۂɂ́A1�̃o�b�t�@�����L���Ă���킯�Ȃ̂ŁA���ꂼ��̃C���f�b�N�X���H���Ⴄ�ƁA�듮�삷�錴���ƂȂ邽�߁A��ɓ���������Ă������ƂɂȂ�܂��B<br>
+　アドバイズループによりDDEサーバよりデータが送られてくると、DDEクライアントであるマクロプログラムにおいては、XTYP_ADVDATAトランザクションがDDEコールバック関数 DdeCallbackProc()#ttmdde.c により処理されます。<br>
+　
+　なお、Tera Term本体において、DDE通信用のバッファと、ログ採取用のバッファは cv.LogBuf[] で共有されています。バッファの先頭とデータサイズを表すインデックスは、DDE通信の場合は"DStart"と"Dcount"、ログ採取の場合は"LStart"と"Lcount"と区別されています。実際には、1つのバッファを共有しているわけなので、それぞれのインデックスが食い違うと、誤動作する原因となるため、常に同期を取っておくことになります。<br>
 <hr>
 
 
-<h2 id="ttssh">TTSSH�ɂ��SSH�̐݌v�Ǝ���</h2>
-  <h3>�T�v</h3>
-�@�I���W�i����TTSSH��<a href="http://www.cs.cmu.edu/People/roc/" target="_blank">Robert O'Callahan</a>���i���݂�<a href="http://robert.ocallahan.org/" target="_blank">��Mozilla hacker</a>�Ƃ��Ċ���j�ɂ��J�����ꂽ�v���O�C���ł��BSSH1�֑Ή����Ă���A�|�[�g�t�H���[�f�B���O��zlib�ɂ��p�P�b�g���k���T�|�[�g���Ă��܂����BTTSSH�́ATera Term���Z�L���A�ʐM�ɑΉ������邽�߂̃v���O�C���ł��������߂ɁASCP��SFTP���ɂ͖��Ή��ł����B�I���W�i��Tera Term��1998�N�ɊJ����������A2001�N����܂Ń����e�i���X���������Ă��܂����B<br>
-�@TTSSH��SSH2�Ή����������邽�߂ɁATeraTerm Project�ɂ��2004�N����݌v�Ǝ������n�߂��܂����B3�N�̍Ό��������āA�ق�SSH2�v���g�R���̃t���T�|�[�g���������܂����B���݂ł�SCP�ւ��Ή����Ă��܂��B�����I�ɂ�SFTP�ւ��Ή�����邩������܂���B<br>
-�@�����ATTSSH�̎�����<a href="http://www.openssh.com/" target="_blank">OpenSSH</a>���Q�l�ɂ��Ă��܂��B�ꕔ�A�R�[�h�����̂܂ܗ��p���Ă���Ƃ��������܂��B�������AOpenSSH��UNIX�̃R�}���h���C�������ɐ݌v����Ă��邽�߁ATera Term�̂悤��Windows�A�v���P�[�V�����ɂ͂��̂܂ܓK�����Ȃ��ӏ��������A�t���[�����[�N�Ƃ��Ă�OpenSSH�Ƒ傫���قȂ������̂ƂȂ��Ă��܂��B<br>
+<h2 id="ttssh">TTSSHによるSSHの設計と実装</h2>
+  <h3>概要</h3>
+　オリジナルのTTSSHは<a href="http://www.cs.cmu.edu/People/roc/" target="_blank">Robert O'Callahan</a>氏（現在は<a href="http://robert.ocallahan.org/" target="_blank">元Mozilla hacker</a>として活躍）により開発されたプラグインです。SSH1へ対応しており、ポートフォワーディングやzlibによるパケット圧縮もサポートしていました。TTSSHは、Tera Termをセキュア通信に対応させるためのプラグインであったために、SCPやSFTP等には未対応でした。オリジナルTera Termが1998年に開発凍結後も、2001年ごろまでメンテナンスが続けられていました。<br>
+　TTSSHのSSH2対応を実現するために、TeraTerm Projectにより2004年から設計と実装が始められました。3年の歳月をかけて、ほぼSSH2プロトコルのフルサポートを実現しました。現在ではSCPへも対応しています。将来的にはSFTPへも対応されるかもしれません。<br>
+　原則、TTSSHの実装は<a href="http://www.openssh.com/" target="_blank">OpenSSH</a>を参考にしています。一部、コードをそのまま流用しているところもあります。ただし、OpenSSHはUNIXのコマンドライン向けに設計されているため、Tera TermのようなWindowsアプリケーションにはそのまま適合しない箇所も多く、フレームワークとしてはOpenSSHと大きく異なったものとなっています。<br>
 
 
-  <h3>SSH�v���g�R��</h3>
-�@SSH(Secure Shell)�́A�o�[�W����1�i�����ɂ�1.5�j�ƃo�[�W����2�����݂��A������"SSH1"�����"SSH2"�ƌĂ΂�܂��B�����̃o�[�W�����Ԃɂ̓v���g�R���d�l�Ƃ��Ă̌݊����͂���܂���BSSH1�ɂ̓Z�L�����e�B��̖�肪���邽�߂ɁA���݂͂قƂ�Ǘ��p����܂���B<br>
-�@SSH2�v���g�R���̎d�l�Ɋւ��ẮARFC������Ă��܂��B
-�@
+  <h3>SSHプロトコル</h3>
+　SSH(Secure Shell)は、バージョン1（厳密には1.5）とバージョン2が存在し、略して"SSH1"および"SSH2"と呼ばれます。それらのバージョン間にはプロトコル仕様としての互換性はありません。SSH1にはセキュリティ上の問題があるために、現在はほとんど利用されません。<br>
+　SSH2プロトコルの仕様に関しては、RFC化されています。
+　
 <p>
 <ul>
   <li><a href="http://www.ietf.org/rfc/rfc4250.txt" target="_blank">RFC4250: The Secure Shell (SSH) Protocol Assigned Numbers</a></li>
@@ -798,16 +798,16 @@ void TelStartKeepAliveThread() {
 </p>
 
 
-  <h3>�ڑ�����</h3>
-�@TTSSH�́ATera Term�̈ꕔ�̃R�[�h�ł����邽�߁A�l�b�g���[�N�ڑ�������Tera Term��TTSSH�̊Ԃ��s�������邱�ƂɂȂ�A�����̗��ꂪ���G�ɂȂ��Ă��܂��B�܂��ASSH�v���g�R�����̂��̂̃t���[���n�m���Ă��Ȃ��ƁATTSSH�̃V�[�P���X��ǂ��Ă����̂�����Ȃ��Ă��܂��B�ȉ��ɁA�����[�g�z�X�g�ւ̐ڑ����s���܂ł̃t���[�������܂��B<br>
+  <h3>接続処理</h3>
+　TTSSHは、Tera Termの一部のコードでもあるため、ネットワーク接続処理はTera TermとTTSSHの間を行き来することになり、処理の流れが複雑になっています。また、SSHプロトコルそのもののフローを熟知していないと、TTSSHのシーケンスを追っていくのが難しくなっています。以下に、リモートホストへの接続を行うまでのフローを示します。<br>
 
 <div align="center">
 <img src="image/ssh.png" width=720 height=540>
 </div>
 
 
-  <h3>���M�p�P�b�g����</h3>
-  SSH2�v���g�R���ɍڂ��āA�p�P�b�g���T�[�o�֑���Ƃ��̃R�[�h�͈ȉ��̂悤�ȏ������ƂȂ�܂��Bbegin_send_packet()�̌Ăяo���ŁA�upvar->ssh_state.outbuf + 12�v���Ԃ�l�ƂȂ�A���ꂪ�y�C���[�h��\���܂��B�y�C���[�h�͏����ɃT�[�o�֑��肽���f�[�^�̂��ƂŁA�T�C�Y��p�f�B���O�����܂݂܂���B<br>
+  <h3>送信パケット処理</h3>
+  SSH2プロトコルに載せて、パケットをサーバへ送るときのコードは以下のような書き方となります。begin_send_packet()の呼び出しで、「pvar->ssh_state.outbuf + 12」が返り値となり、それがペイロードを表します。ペイロードは純粋にサーバへ送りたいデータのことで、サイズやパディング等を含みません。<br>
   
 <pre class=code>
 	buffer_t *msg;
@@ -831,18 +831,18 @@ void TelStartKeepAliveThread() {
 	}
 </pre>
 
-�@SSH�ʐM�ɍڂ����āA���ۂɃp�P�b�g�����o�����̂́Afinish_send_packet()����Ăяo����� finish_send_packet_special() �ł��B�p�P�b�g�𑗐M����Ƃ��̃t�H�[�}�b�g�ɂ��āA�ȉ��Ɏ����܂��B���ʌ��Í��Ńp�P�b�g�f�[�^���Í�������O�ɁA�w�b�_�ƃt�b�^��t����K�v������܂��B<br>
-�@�p�P�b�g�T�C�Y��HMAC�����������ł��B�p�P�b�g�T�C�Y���̂��̂̓r�b�O�G���f�B�A���`���ŁA4�o�C�g���i�[���܂����A����"4"�o�C�g�͊܂܂�܂���B�y�C���[�h�̒���Ƀp�f�B���O�𖄂߂�̂́A���ʌ��Í��ňÍ�������Ƃ��Ɂu�u���b�N�T�C�Y�P�ʁv�ɂȂ��Ă��Ȃ���΁A�A���S���Y���I�ɈÍ����ł��Ȃ�����ł��B�u���b�N�T�C�Y�͈Í��A���S���Y���ɂ��قȂ�A���Ƃ���3DES-CBC�Ȃ��24�o�C�g�AAES128�Ȃ��16�o�C�g�ł��B<br>
-�@HMAC(Keyed-Hashing for Message Authentication)�́A�Í����{���ɑ΂���n�b�V���ł��B�n�b�V���̃A���S���Y���͑I���\�ł���A"MD5"��"SHA-1"���悭�g���Ă��܂��BHMAC��t�����邱�Ƃɂ��A�u��O�҂ɂ��f�[�^�̉�����v�����o���邱�Ƃ��ł��܂��BHMAC�́A�Í����ΏۂƂȂ�{����閧���ƃV�[�P���X�ԍ��������A�n�b�V���l���v�Z���܂��B�閧���ƃV�[�P���X�ԍ��������邱�Ƃɂ��A��O�҂��f�[�^���܂邲�ƍ����ւ����Ƃ��Ă��A���M�҂����������n�b�V���l�𕜌����邱�Ƃ͗��_��ł��܂���B<br>
-�@
+　SSH通信に載せられて、実際にパケットが送出されるのは、finish_send_packet()から呼び出される finish_send_packet_special() です。パケットを送信するときのフォーマットについて、以下に示します。共通鍵暗号でパケットデータを暗号化する前に、ヘッダとフッタを付ける必要があります。<br>
+　パケットサイズはHMACを除く長さです。パケットサイズそのものはビッグエンディアン形式で、4バイト分格納しますが、その"4"バイトは含まれません。ペイロードの直後にパディングを埋めるのは、共通鍵暗号で暗号化するときに「ブロックサイズ単位」になっていなければ、アルゴリズム的に暗号化できないからです。ブロックサイズは暗号アルゴリズムにより異なり、たとえば3DES-CBCならば24バイト、AES128ならば16バイトです。<br>
+　HMAC(Keyed-Hashing for Message Authentication)は、暗号化本文に対するハッシュです。ハッシュのアルゴリズムは選択可能であり、"MD5"や"SHA-1"がよく使われています。HMACを付加することにより、「第三者によるデータの改ざん」を検出することができます。HMACは、暗号化対象となる本文を秘密鍵とシーケンス番号を加え、ハッシュ値を計算します。秘密鍵とシーケンス番号を加えることにより、第三者がデータをまるごと差し替えたとしても、送信者が生成したハッシュ値を復元することは理論上できません。<br>
+　
 
 <div align="center">
 <img src="image/ssh_packet_format1.png" width=720 height=540>
 </div>
 
-�@zlib�ɂ��p�P�b�g���k���s���ꍇ�ɂ�����A�p�P�b�g�𑗐M����Ƃ��̃t�H�[�}�b�g�ɂ��āA�ȉ��Ɏ����܂��B�p�P�b�g���k���s���̂́A�u�y�C���[�h�v�̕����݂̂ŁA�c��͒ʏ�̑��M�p�P�b�g�ƃt�H�[�}�b�g�͓����ł��B�Ȃ��A�p�P�b�g�����k�����Ƃ��Ă��A���Ȃ炸�������̃T�C�Y�����������Ȃ�Ƃ͌���Ȃ��̂ŁA���̂��Ƃ��l�������o�b�t�@�Ǘ����K�v�ł��B<br>
-�@�p�P�b�g���k���M�œ���̂́A���k���J�n����^�C�~���O�ł��B���[�J���z�X�g���烊���[�g�z�X�g�ւ�SSH�ڑ����J�n����ƁA���ɂ�������̃l�S�V�G�[�V�������s���܂����A�p�P�b�g�����k���Ă悢�̂͌��߂�ꂽ�^�C�~���O�ł���A���̃^�C�~���O���ԈႦ��ƁA�T�[�o�Ƃ܂������ʐM���ł��Ȃ��Ȃ�܂��B<br>
-�@�ʏ�̃p�P�b�g���k�̏ꍇ�́A"SSH2_MSG_KEXINIT"����M�����^�C�~���O�ł��B�x���p�P�b�g���k�̏ꍇ�́A���[�U�F�؂����������^�C�~���O�i"SSH2_MSG_USERAUTH_SUCCESS"����M�������j�ł��B�x���p�P�b�g���k�Ƃ����̂́A����܂�"SSH2_MSG_KEXINIT"����M�����^�C�~���O�ň��k���J�n���Ă����̂��A���[�U�F�؂���������܂ŉ�����������ł��B�x���p�P�b�g���k�́Azlib���C�u�����̃Z�L�����e�B�z�[���ɂ��A�s����SSH�T�[�o�֐ڑ����������ŁA�N���C�A���g���ɉe�����o��̂�������邽�߂̂����݂ł��B
+　zlibによるパケット圧縮を行う場合における、パケットを送信するときのフォーマットについて、以下に示します。パケット圧縮を行うのは、「ペイロード」の部分のみで、残りは通常の送信パケットとフォーマットは同じです。なお、パケットを圧縮したとしても、かならずしも元のサイズよりも小さくなるとは限らないので、そのことを考慮したバッファ管理が必要です。<br>
+　パケット圧縮送信で難しいのは、圧縮を開始するタイミングです。ローカルホストからリモートホストへのSSH接続を開始すると、実にたくさんのネゴシエーションが行われますが、パケットを圧縮してよいのは決められたタイミングであり、このタイミングを間違えると、サーバとまったく通信ができなくなります。<br>
+　通常のパケット圧縮の場合は、"SSH2_MSG_KEXINIT"を受信したタイミングです。遅延パケット圧縮の場合は、ユーザ認証が成功したタイミング（"SSH2_MSG_USERAUTH_SUCCESS"を受信した時）です。遅延パケット圧縮というのは、それまで"SSH2_MSG_KEXINIT"を受信したタイミングで圧縮を開始していたのを、ユーザ認証が完了するまで延長する方式です。遅延パケット圧縮は、zlibライブラリのセキュリティホールにより、不正なSSHサーバへ接続しただけで、クライアント側に影響が出るのを回避するためのしくみです。
 
 
 <div align="center">
@@ -850,56 +850,56 @@ void TelStartKeepAliveThread() {
 </div>
 
 
-  <h3>��M�p�P�b�g����</h3>
-�@�p�P�b�g�̎�M�́ATeraTerm�{�̑������ recv �\�P�b�g�֐����Ăяo�����ꍇ�ɁA���ꂪTELNET�Ȃ̂�SSH�Ȃ̂����ӎ������Ȃ��悤�Ȑ݌v�ɂȂ��Ă��邱�ƂƁA recv �\�P�b�g�֐��̌Ăяo���ł́A���Ȃ炸�����\���ȃo�b�t�@�T�C�Y���w�肳��Ă���Ƃ͌���Ȃ����߁A���X���������G�ɂȂ��Ă��܂��B<br>
+  <h3>受信パケット処理</h3>
+　パケットの受信は、TeraTerm本体側からは recv ソケット関数を呼び出した場合に、それがTELNETなのかSSHなのかを意識させないような設計になっていることと、 recv ソケット関数の呼び出しでは、かならずしも十分なバッファサイズが指定されてくるとは限らないため、少々実装が複雑になっています。<br>
 
 <div align="center">
 <img src="image/ssh_recv_packet.png" width=720 height=540>
 </div>
 
-�@TeraTerm�{�̑��� OnIdle()#teraterm.cpp �Ƃ����A�C�h�����[�v�ɂ����āA�펞�p�P�b�g�̎�M���Ȃ������|�[�����O���Ă��܂��B���ꂪ CommReceive() �ŁArecv()���Ăяo���܂��Brecv()��TTSSH�ɂ��t�b�N����Ă���̂ŁA�\�P�b�g�֐��ł͂Ȃ��ATTXrecv()#ttxssh.c ���Ăяo����܂��B<br>
-�@CommReceive()�� recv() ���Ăяo���ۂɁA�o�b�t�@(cv->InBuff[])�̋󂫃|�C���^�ƃT�C�Y�������ɓn���܂��B�o�b�t�@�T�C�Y�� 1KB �ł��B�܂�ATTXrecv()�̃T�C�Y�ɂ́A1�`1024 �܂ł̐��l���n�����\��������Ƃ������Ƃł��B<br>
-�@TTXrecv()����Ăяo����� PKT_recv() �́A���X���G�ȃ��[�v�����ƂȂ��Ă��܂��BSSH�ڑ������߂čs���Ƃ��̃V�[�P���X���ȉ��Ɏ����܂��B
-�@
+　TeraTerm本体側は OnIdle()#teraterm.cpp というアイドルループにおいて、常時パケットの受信がないかをポーリングしています。それが CommReceive() で、recv()を呼び出します。recv()はTTSSHによりフックされているので、ソケット関数ではなく、TTXrecv()#ttxssh.c が呼び出されます。<br>
+　CommReceive()は recv() を呼び出す際に、バッファ(cv->InBuff[])の空きポインタとサイズを引数に渡します。バッファサイズは 1KB です。つまり、TTXrecv()のサイズには、1〜1024 までの数値が渡される可能性があるということです。<br>
+　TTXrecv()から呼び出される PKT_recv() は、少々複雑なループ処理となっています。SSH接続を初めて行うときのシーケンスを以下に示します。
+　
 <ol>
- <li>recv_data() �Ŗ{���� recv() ���Ăяo���A�T�[�o����̎�M�p�P�b�g���J�[�l������󂯎��Bpvar->pkt_state.datalen���X�V�����B </li>
- <li>SSH_handle_server_ID() ��SSH�T�[�o�̃o�[�W�����`�F�b�N���s����Bpvar->pkt_state.datastart �� pvar->pkt_state.datalen ���X�V����B</li>
- <li>�ēx�Arecv_data() ���Ă΂�邪�A�T�[�o����̎�M�f�[�^�������Ȃ��̂ŁAconnection_closed=TRUE �Ƃ��� while ���[�v�𔲂���B</li>
- <li>TeraTerm�� recv() ��"0"�ŕԂ��Ă���B���Ȃ킿�A��M�f�[�^�Ȃ��B</li>
+ <li>recv_data() で本当の recv() を呼び出し、サーバからの受信パケットをカーネルから受け取る。pvar->pkt_state.datalenが更新される。 </li>
+ <li>SSH_handle_server_ID() でSSHサーバのバージョンチェックが行われる。pvar->pkt_state.datastart と pvar->pkt_state.datalen を更新する。</li>
+ <li>再度、recv_data() が呼ばれるが、サーバからの受信データがもうないので、connection_closed=TRUE として while ループを抜ける。</li>
+ <li>TeraTermの recv() は"0"で返ってくる。すなわち、受信データなし。</li>
 </ol>
 
-�@���ɁASSH�ʐM�̂��߂̋��ʌ������܂ł̃V�[�P���X���ȉ��Ɏ����܂��B
+　次に、SSH通信のための共通鍵生成までのシーケンスを以下に示します。
 
 <ol>
- <li>recv_data() �Ŗ{���� recv() ���Ăяo���A�T�[�o����̎�M�p�P�b�g���J�[�l������󂯎��Bpvar->pkt_state.datalen���X�V�����B </li>
- <li>SSH_predecrpyt_packet() �ŁA��M�p�P�b�g�̐擪�u���b�N�݂̂𕜍�������BSSH�p�P�b�g�̃T�C�Y���擾����B</li>
- <li>�Ó���SSH�p�P�b�g�T�C�Y�Ȃ�΁ASSH_handle_packet() ���Ăяo���A���b�Z�[�W�^�C�v�ɉ������n���h�����Ăяo���Bpvar->ssh_state.payload �� pvar->ssh_state.payloadlen ��ݒ肷��B</li>
- <li>pvar->pkt_state.datastart �� pvar->pkt_state.datalen ���X�V����B</li>
- <li>pvar->pkt_state.datalen ���[���ɂȂ�܂ŁASSH_predecrpyt_packet() �̏������J��Ԃ��B</li>
- <li>recv_data() ���Ă΂�邪�A�T�[�o����̎�M�f�[�^�������Ȃ��̂ŁAconnection_closed=TRUE �Ƃ��� while ���[�v�𔲂���B</li>
- <li>TeraTerm�� recv() ��"0"�ŕԂ��Ă���B���Ȃ킿�A��M�f�[�^�Ȃ��B</li>
+ <li>recv_data() で本当の recv() を呼び出し、サーバからの受信パケットをカーネルから受け取る。pvar->pkt_state.datalenが更新される。 </li>
+ <li>SSH_predecrpyt_packet() で、受信パケットの先頭ブロックのみを復号化する。SSHパケットのサイズを取得する。</li>
+ <li>妥当なSSHパケットサイズならば、SSH_handle_packet() を呼び出し、メッセージタイプに応じたハンドラを呼び出す。pvar->ssh_state.payload と pvar->ssh_state.payloadlen を設定する。</li>
+ <li>pvar->pkt_state.datastart と pvar->pkt_state.datalen を更新する。</li>
+ <li>pvar->pkt_state.datalen がゼロになるまで、SSH_predecrpyt_packet() の処理を繰り返す。</li>
+ <li>recv_data() が呼ばれるが、サーバからの受信データがもうないので、connection_closed=TRUE として while ループを抜ける。</li>
+ <li>TeraTermの recv() は"0"で返ってくる。すなわち、受信データなし。</li>
 </ol>
 
-�@���ɁA�[���f�[�^�ʐM�̃V�[�P���X���ȉ��Ɏ����܂��B
+　次に、端末データ通信のシーケンスを以下に示します。
 
 <ol>
- <li>recv_data() �Ŗ{���� recv() ���Ăяo���A�T�[�o����̎�M�p�P�b�g���J�[�l������󂯎��Bpvar->pkt_state.datalen���X�V�����B </li>
- <li>SSH_predecrpyt_packet() �ŁA��M�p�P�b�g�̐擪�u���b�N�݂̂𕜍�������BSSH�p�P�b�g�̃T�C�Y���擾����B</li>
- <li>�Ó���SSH�p�P�b�g�T�C�Y�Ȃ�΁ASSH_handle_packet() ���Ăяo���A���b�Z�[�W�^�C�v�ɉ������n���h�����Ăяo���Bpvar->ssh_state.payload �� pvar->ssh_state.payloadlen ��ݒ肷��B</li>
- <li>���b�Z�[�W�^�C�v��SSH2_MSG_CHANNEL_DATA�Ȃ̂ŁAhandle_SSH2_channel_data() ���Ăяo���Bpvar->ssh_state.payload_datalen �� pvar->ssh_state.payload_datastart ��ݒ肷��B</li>
- <li>pvar->pkt_state.datastart �� pvar->pkt_state.datalen ���X�V����B</li>
- <li>SSH_is_any_payload() ���^��Ԃ��悤�ɂȂ�APKT_recv()�ɓn����Ă����o�b�t�@�փf�[�^���R�s�[����B</li>
- <li>TeraTerm���̃o�b�t�@�T�C�Y�������ς��ɂȂ����ꍇ�́ASSH�[���f�[�^���c���Ă����Ƃ��Ă��APKT_recv()�͕Ԃ�B</li>
- <li>TeraTerm���̃o�b�t�@�T�C�Y�ɗ]�T������ꍇ�́Arecv_data()���Ăяo���A�T�[�o����̎�M�f�[�^���擾����B</li>
- <li>TeraTerm�� recv() �́u��M�f�[�^�T�C�Y�v�ŕԂ��Ă���B</li>
+ <li>recv_data() で本当の recv() を呼び出し、サーバからの受信パケットをカーネルから受け取る。pvar->pkt_state.datalenが更新される。 </li>
+ <li>SSH_predecrpyt_packet() で、受信パケットの先頭ブロックのみを復号化する。SSHパケットのサイズを取得する。</li>
+ <li>妥当なSSHパケットサイズならば、SSH_handle_packet() を呼び出し、メッセージタイプに応じたハンドラを呼び出す。pvar->ssh_state.payload と pvar->ssh_state.payloadlen を設定する。</li>
+ <li>メッセージタイプがSSH2_MSG_CHANNEL_DATAなので、handle_SSH2_channel_data() を呼び出す。pvar->ssh_state.payload_datalen と pvar->ssh_state.payload_datastart を設定する。</li>
+ <li>pvar->pkt_state.datastart と pvar->pkt_state.datalen を更新する。</li>
+ <li>SSH_is_any_payload() が真を返すようになり、PKT_recv()に渡されてきたバッファへデータをコピーする。</li>
+ <li>TeraTerm側のバッファサイズがいっぱいになった場合は、SSH端末データが残っていたとしても、PKT_recv()は返る。</li>
+ <li>TeraTerm側のバッファサイズに余裕がある場合は、recv_data()を呼び出し、サーバからの受信データを取得する。</li>
+ <li>TeraTermの recv() は「受信データサイズ」で返ってくる。</li>
 </ol>
 
 
-  <h3>�V�[�P���X����</h3>
-�@SSH�͒ʐM�o�H���Í������邱�Ƃ��ł���̂������ł����A�p�P�b�g�̈Í������s�����߂ɂ́u���v���K�v�ł��B�ʐM�o�H�̈Í����ɂ́A���ʌ��ɂ�鋤�ʌ��Í������p����܂��B���J���Í��̂ق����Z�L�����e�B���x�͍����̂ł����A�Í������ɑ���Ȏ��Ԃ������邽�߁ASSH�̂悤�ȒʐM���\���v������邵���݂ł͍̗p����܂���BSSH2�ł́A���ʌ��Í��A���S���Y���Ƃ��āAAES(Advanced Encryption Standard�FRijndael�A���S���Y��)��3DES(Triple DES)�Ȃǂ����p����܂��B<br>
-�@���ʌ��͒ʐM���s����ҊԂł݂̂ɋ��L�������ł���A��O�҂ɒm���Ă͂Ȃ�܂���BSSH2�ł́A�N���C�A���g�������[�g�z�X�g�iSSH�T�[�o�j��TCP�ڑ��������ɁA"Diffie-Hellman"�A���S���Y�����x�[�X�Ƃ����Ǝ��̕����ɂ��A�N���C�A���g�ƃT�[�o�ł����m�蓾�Ȃ����ʌ������L���܂��BDH�����L����������܂ł̉ߒ��́A�l�b�g���[�N����p�P�b�g�������ŗ���邽�߁A��O�҂ɂ��p�P�b�g�L���v�`�����\�ƂȂ��Ă��܂����A�p�P�b�g��`����Ă��A���ʌ��͗��_���O�҂ɂ͕�����Ȃ��悤�ɂȂ��Ă��܂��B<br>
-�@���ʌ������L�ł������Ƃ́A���̌����g���ăp�P�b�g���Í������܂��BSSH2�ł́A����M�����p�P�b�g�͎�ނ����邽�߁A���ꂼ��Ɂu���b�Z�[�W�ԍ��v������U���Ă��܂��BRFC4250�Ƀ��b�Z�[�W�ԍ��̈ꗗ������܂��B���b�Z�[�W����"SSH2_MSG_xxxx"�Ƃ����l�[�~���O�ɂȂ��Ă���ATTSSH�����ł��������O�Ń}�N����`���Ă��܂��B<br>
-�@�ȉ��ɁA�N���C�A���g����T�[�o��TCP�ڑ��i�|�[�g22�ԁj���Ă���A�p�X���[�h�F�؂Ń��[�U�F�؂����܂ł̗���������܂��B<br>
+  <h3>シーケンス制御</h3>
+　SSHは通信経路を暗号化することができるのが特徴ですが、パケットの暗号化を行うためには「鍵」が必要です。通信経路の暗号化には、共通鍵による共通鍵暗号が利用されます。公開鍵暗号のほうがセキュリティ強度は高いのですが、暗号処理に多大な時間がかかるため、SSHのような通信性能が要求されるしくみでは採用されません。SSH2では、共通鍵暗号アルゴリズムとして、AES(Advanced Encryption Standard：Rijndaelアルゴリズム)や3DES(Triple DES)などが利用されます。<br>
+　共通鍵は通信を行う二者間でのみに共有される情報であり、第三者に知られてはなりません。SSH2では、クライアントがリモートホスト（SSHサーバ）へTCP接続した時に、"Diffie-Hellman"アルゴリズムをベースとした独自の方式により、クライアントとサーバでしか知り得ない共通鍵を共有します。DH鍵共有が完了するまでの過程は、ネットワーク上をパケットが平文で流れるため、第三者によるパケットキャプチャが可能となっていますが、パケットを覗かれても、共通鍵は理論上第三者には分からないようになっています。<br>
+　共通鍵が共有できたあとは、その鍵を使ってパケットを暗号化します。SSH2では、送受信されるパケットは種類があるため、それぞれに「メッセージ番号」を割り振っています。RFC4250にメッセージ番号の一覧があります。メッセージ名は"SSH2_MSG_xxxx"というネーミングになっており、TTSSH内部でも同じ名前でマクロ定義しています。<br>
+　以下に、クライアントからサーバへTCP接続（ポート22番）してから、パスワード認証でユーザ認証されるまでの流れを示します。<br>
 
 
 <div align="center">
@@ -918,7 +918,7 @@ void TelStartKeepAliveThread() {
 <img src="image/ssh2_connect4_channel.png">
 </div>
 
-�@�ȉ��́A�����[�g�z�X�g�̃V�F�����"exit"��"logout"�Ƃ��āA�N���C�A���g���疾���I�ɃV�F�����N���[�Y����Ƃ��́A�p�P�b�g�̗���������Ă��܂��B<br>
+　以下は、リモートホストのシェル上で"exit"や"logout"として、クライアントから明示的にシェルをクローズするときの、パケットの流れを示しています。<br>
 
 <div align="center">
 <img src="image/ssh2_disconnect.png">
@@ -926,239 +926,239 @@ void TelStartKeepAliveThread() {
 
 
 
-  <h3>�^���[���̂�����</h3>
-�@SSH2�ł́A�V�����u�t���[����v�Ƃ����T�O����荞�܂�Ă��܂��BTCP�̃E�B���h�E�Ɠ����l�����ŁA�u�E�B���h�E�T�C�Y�v�Ƃ��������݂𓱓����Ă��܂��B���̋@�\�ɂ��A�N���C�A���g�iTera Term�j�ƃT�[�o�iSSH�f�[�����j�Ԃɂ����āA�t���[���䂪�������߁A�����f�[�^�����邱�Ƃ͂���܂���B<br>
-�@�Ƃ���ŁASSH2�ɂ�����t���[���䂪����ɂ��ւ�炸�A��ʂ̃N���b�v�{�[�h��TeraTerm�̒[���փy�[�X�g����ƁA�T�[�o���ł́u�f�[�^�̎�肱�ڂ��v���������邱�Ƃ�����܂��B���̌��ۂ𗝉����邽�߂ɂ́AUNIX�ɂ�����^���[���iPTY: pseudo-terminal�j�̓��쌴����m��K�v������܂��B
+  <h3>疑似端末のしくみ</h3>
+　SSH2では、新しく「フロー制御」という概念が取り込まれています。TCPのウィンドウと同じ考え方で、「ウィンドウサイズ」というしくみを導入しています。この機能により、クライアント（Tera Term）とサーバ（SSHデーモン）間において、フロー制御が働くため、原則データが溢れることはありません。<br>
+　ところで、SSH2におけるフロー制御があるにも関わらず、大量のクリップボードをTeraTermの端末へペーストすると、サーバ側での「データの取りこぼし」が発生することがあります。この現象を理解するためには、UNIXにおける疑似端末（PTY: pseudo-terminal）の動作原理を知る必要があります。
 
 <div align="center">
 <img src="image/pty.png" width=720 height=540>
 </div>
 
-�@SSH�f�[����(sshd)�̓N���C�A���g�ɑ΂��āA���������T�[�o���̃V�F�������ڐڑ�����Ă��邩�̂悤�Ɍ�����K�v������܂��B�t�ɁA�V�F����œ����v���O�����́A�����𑗂肽���Ƃ��� printf(3) ���A�������󂯎�肽���ꍇ�� scanf(3) �Ƃ�����C���C�u�����֐����Ăяo�������ł悭�A���̐悪�V���A���R���\�[���Ȃ̂��AVGA�R���\�[���Ȃ̂��ASSH�ڑ�����Ă���̂��́A��؋C�ɂ��Ȃ��Ă悢�悤�ɂȂ��Ă��܂��B<br>
-�@sshd�́A�N���C�A���g����̐ڑ��v�����������^�C�~���O�ŁAopenpty(3)���g���āA�^���[���̏��������s���܂��B�^���[���ł́A�J�[�l����ԂŃN���C�A���g�ƃT�[�o���Ȃ����߂ɁA�u�}�X�^�[�f�o�C�X�h���C�o�v�Ɓu�X���[�u�f�o�C�X�h���C�o�v���p�ӂ���܂��B�}�X�^�[�f�o�C�X�h���C�o���S������f�o�C�X�t�@�C����"/dev/pty[p-za-e][0-9a-f]"�A�X���[�u�f�o�C�X�h���C�o�ł�"/dev/tty[p-za-e][0-9a-f]"�ł��B�܂�Asshd�̓}�X�^�[�f�o�C�X�h���C�o�փA�N�Z�X���邱�ƂŁA�V�F���Ƃ��b�����邱�Ƃ��ł��܂��B�V�F���́Asshd����fork����Ďq�v���Z�X�ƂȂ�A�e�v���Z�X(sshd)���������ς݂̃X���[�u�f�o�C�X�h���C�o�Ƃ��b�����邱�ƂɂȂ�܂��B���̋^���[���̂����݂ɂ��Asshd�ƃV�F�����ڑ�����܂��B<br>
-�@�Ȃ��A�[�����C���f�B�V�v����(line discipline: ����K��)�Ƃ����̂́A���Ƃ��΃v���O������ getchar() ���Ăяo�����Ƃ��ɁAEnter�L�[����������܂ŁA�v���O�����ɐ��䂪�n��܂���B�[�����C���f�B�V�v�����́A�v���O�������s���ł́u�s���ҏW�v���\�Ƃ��邽�߂̃��W���[���ł��BLinux�ł́A�[�����C���f�B�V�v������ /proc/tty/ldiscs �Ŋm�F�ł��܂��iN_TTY���W���I�ɗ��p�����j�B
+　SSHデーモン(sshd)はクライアントに対して、あたかもサーバ側のシェルが直接接続されているかのように見せる必要があります。逆に、シェル上で動くプログラムは、文字を送りたいときは printf(3) を、文字を受け取りたい場合は scanf(3) といったCライブラリ関数を呼び出すだけでよく、その先がシリアルコンソールなのか、VGAコンソールなのか、SSH接続されているのかは、一切気にしなくてよいようになっています。<br>
+　sshdは、クライアントからの接続要求があったタイミングで、openpty(3)を使って、疑似端末の初期化を行います。疑似端末では、カーネル空間でクライアントとサーバをつなぐために、「マスターデバイスドライバ」と「スレーブデバイスドライバ」が用意されます。マスターデバイスドライバが担当するデバイスファイルは"/dev/pty[p-za-e][0-9a-f]"、スレーブデバイスドライバでは"/dev/tty[p-za-e][0-9a-f]"です。つまり、sshdはマスターデバイスドライバへアクセスすることで、シェルとお話をすることができます。シェルは、sshdからforkされて子プロセスとなり、親プロセス(sshd)が初期化済みのスレーブデバイスドライバとお話をすることになります。この疑似端末のしくみにより、sshdとシェルが接続されます。<br>
+　なお、端末ラインディシプリン(line discipline: 回線規約)というのは、たとえばプログラムが getchar() を呼び出したときに、Enterキーを押下するまで、プログラムに制御が渡りません。端末ラインディシプリンは、プログラム実行中での「行内編集」を可能とするためのモジュールです。Linuxでは、端末ラインディシプリンは /proc/tty/ldiscs で確認できます（N_TTYが標準的に利用される）。
 
 
   <h3>SCP(Secure Copy)</h3>
-�@SCP�� OpenSSH �p�b�P�[�W�Ɋ܂܂��v���O������1�ł���ASSH�Z�b�V�������g���ăt�@�C���̑���M���s�����Ƃ��ł��܂��BSCP�𗘗p���邽�߂ɂ́A�����[�g�T�[�o��"sshd"�����ł͂Ȃ��A"scp"�R�}���h����������Ă���K�v������܂��BOpenSSH��SCP�́Asshd �f�[��������"scp"�R�}���h���q�v���Z�X�Ƃ��ċN������邱�ƂŎ�������Ă��܂��B�Ȃ��ASCP��SFTP(Secure File Transfer Program)�͂܂������ʂ̃v���g�R���ŁA�݊����͂Ȃ��ASCP�͏����Ƀt�@�C���́u���M�v�Ɓu��M�v�����ł��܂���B<br>
-�@SSH�Z�b�V������Ńt�@�C���]�����s���ɂ́A�N���C�A���g����T�[�o�֐ڑ��������������ƂɁA�V�F���I�[�v��(pty-req)�̑���ɁA�u�O���R�}���h�̎��s�v(exec)�Ƃ����`���ŁASCP�����p�ł���悤�ɂȂ�܂��B
-�@
-�@<p><font size=3>�ESSH2�̏ꍇ</font></p>
-�@SSH2_MSG_CHANNEL_REQUEST ���T�[�o�֑���Ƃ��ɁA"pty-req"�̑����"exec"���T�[�r�X���Ƃ��Ďw�肷��ƁA�O���R�}���h�����s���邱�Ƃ��ł��܂��B
+　SCPは OpenSSH パッケージに含まれるプログラムの1つであり、SSHセッションを使ってファイルの送受信を行うことができます。SCPを利用するためには、リモートサーバに"sshd"だけではなく、"scp"コマンドも導入されている必要があります。OpenSSHのSCPは、sshd デーモンから"scp"コマンドが子プロセスとして起動されることで実現されています。なお、SCPとSFTP(Secure File Transfer Program)はまったく別のプロトコルで、互換性はなく、SCPは純粋にファイルの「送信」と「受信」しかできません。<br>
+　SSHセッション上でファイル転送を行うには、クライアントからサーバへ接続が成功したあとに、シェルオープン(pty-req)の代わりに、「外部コマンドの実行」(exec)という形式で、SCPが利用できるようになります。
+　
+　<p><font size=3>・SSH2の場合</font></p>
+　SSH2_MSG_CHANNEL_REQUEST をサーバへ送るときに、"pty-req"の代わりに"exec"をサービス名として指定すると、外部コマンドを実行することができます。
 <pre>
-�@�@���[�U�F�ؐ�����
-�@�@     ----&gt; SSH2_MSG_CHANNEL_OPEN(90)
-�@�@     &lt;---- SSH2_MSG_CHANNEL_OPEN_CONFIRMATION(91)
-�@�@     ----&gt; SSH2_MSG_CHANNEL_REQUEST(98)  �T�[�r�X��&quot;exec&quot;�ŊO���R�}���h���M(&quot;scp -f&quot;)
-�@�@     &lt;---- SSH2_MSG_CHANNEL_WINDOW_ADJUST  (remote_window+=131072�o�C�g)
-�@�@     &lt;---- SSH2_MSG_CHANNEL_EXTENDED_DATA  (local_window-=36�o�C�g)
-�@�@     &lt;---- SSH2_MSG_CHANNEL_DATA(94)
+　　ユーザ認証成功後
+　　     ----&gt; SSH2_MSG_CHANNEL_OPEN(90)
+　　     &lt;---- SSH2_MSG_CHANNEL_OPEN_CONFIRMATION(91)
+　　     ----&gt; SSH2_MSG_CHANNEL_REQUEST(98)  サービス名&quot;exec&quot;で外部コマンド送信(&quot;scp -f&quot;)
+　　     &lt;---- SSH2_MSG_CHANNEL_WINDOW_ADJUST  (remote_window+=131072バイト)
+　　     &lt;---- SSH2_MSG_CHANNEL_EXTENDED_DATA  (local_window-=36バイト)
+　　     &lt;---- SSH2_MSG_CHANNEL_DATA(94)
 </pre>
 
-�@<p><font size=3>�ESSH1�̏ꍇ</font></p>
-�@�@�Z�b�V�������J���Ƃ��ɁASSH_CMSG_EXEC_CMD ���T�[�o�֑���ƁA�O���R�}���h�����s���邱�Ƃ��ł��܂��B
-�@
-�@<p><font size=3>�E�O���R�}���h�̏���</font></p>
+　<p><font size=3>・SSH1の場合</font></p>
+　　セッションを開くときに、SSH_CMSG_EXEC_CMD をサーバへ送ると、外部コマンドを実行することができます。
+　
+　<p><font size=3>・外部コマンドの書式</font></p>
 <pre>
-�@* "scp [-v] [-r] [-p] [-d] -t �t�@�C����"�@���[�J�����烊���[�g�ւ̃R�s�[
-�@* "scp [-v] [-r] [-p] [-d] -f �t�@�C����"�@�����[�g���烍�[�J���ւ̃R�s�[
-�@   -v verbose
-�@   -r ���J�[�V�u
-�@   -p �^�C���X�^���v�ێ�
-�@   -d �f�B���N�g��
-�@   -t Local-to-Remote�փR�s�[
-�@   -f Remote-to-Local�փR�s�[
+　* "scp [-v] [-r] [-p] [-d] -t ファイル名"　ローカルからリモートへのコピー
+　* "scp [-v] [-r] [-p] [-d] -f ファイル名"　リモートからローカルへのコピー
+　   -v verbose
+　   -r リカーシブ
+　   -p タイムスタンプ保持
+　   -d ディレクトリ
+　   -t Local-to-Remoteへコピー
+　   -f Remote-to-Localへコピー
 </pre>
 
-�@<p><font size=3>�E�f�[�^�]��</font></p>
-�@�@�O���R�}���h�̑��M�������������ƂɁA�t�@�C���̓��e�𑗐M����ю�M���邱�Ƃ��ł��܂��B
+　<p><font size=3>・データ転送</font></p>
+　　外部コマンドの送信が完了したあとに、ファイルの内容を送信および受信することができます。
 <pre>
-�@�@�P�D���M�̗���
-�@  �@�E"T�^�C���X�^���v 0 �^�C���X�^���v 0"�𑗐M�i�I�v�V�����j
-�@  �@�E"C0666 �T�C�Y �t�@�C����"�𑗐M
-�@  �@�E�t�@�C���̓��e�𑗐M
-�@  �@�E�Z�b�V�����N���[�Y
+　　１．送信の流れ
+　  　・"Tタイムスタンプ 0 タイムスタンプ 0"を送信（オプション）
+　  　・"C0666 サイズ ファイル名"を送信
+　  　・ファイルの内容を送信
+　  　・セッションクローズ
 
-�@�@�Q�D��M�̗���
-�@  �@�E"T�^�C���X�^���v 0 �^�C���X�^���v 0"����M�i�I�v�V�����j
-�@  �@�E0�𑗐M
-�@  �@�E"C0666 �T�C�Y �t�@�C����"����M
-�@  �@�E0�𑗐M
-�@  �@�E�t�@�C���̓��e����M
-�@  �@�E�t�@�C���̃^�C���X�^���v��ݒ�i�I�v�V�����j
-�@  �@�E0�𑗐M
-�@  �@�E�Z�b�V�����N���[�Y
+　　２．受信の流れ
+　  　・"Tタイムスタンプ 0 タイムスタンプ 0"を受信（オプション）
+　  　・0を送信
+　  　・"C0666 サイズ ファイル名"を受信
+　  　・0を送信
+　  　・ファイルの内容を受信
+　  　・ファイルのタイムスタンプを設定（オプション）
+　  　・0を送信
+　  　・セッションクローズ
 </pre>
 
-�@<p><font size=3>�E���ӎ���</font></p>
-�@�@�t�@�C�����Ƀf�B���N�g�����܂܂��Ƃ��́A�p�X�̋�؂�́u/�v�ƂȂ�܂��B�u\�v�͎󂯕t���Ȃ��̂ŁA�ϊ����K�v�ł��B
+　<p><font size=3>・注意事項</font></p>
+　　ファイル名にディレクトリが含まれるときは、パスの区切りは「/」となります。「\」は受け付けないので、変換が必要です。
 
 
 
-  <h3>X11�]��</h3>
-�@X11�]��(X11 port forwarding)�́ASSH�T�[�o���X�E�B���h�E�A�v���P�[�V�������N�����A�A�v���P�[�V������GUI��ʂ�Tera Term�����삵�Ă���R���\�[��PC�ɔ�΂������݂ł��B���̂����݂��g���ƁASSH�Z�b�V�������"xeyes"��"firefox"�A"xemacs"�Ȃǂ̃\�t�g�E�F�A�𓮂������Ƃ��ł���悤�ɂȂ�܂��B�Ȃ��A�R���\�[��PC��ɂ́AXming(http://sourceforge.net/projects/xming/)�Ȃǂ�X�T�[�o�����炩���ߗp�ӂ��Ă����K�v������܂��B<br>
-�@���}��X11�]���̃t���[�������܂��B�}������ƕ�����悤�ɁATera Term(TTSSH)��X�A�v���P�[�V������X�T�[�o���Ȃ����n���̖�ڂ������܂��B���̂悤��Tera Term�̂��Ƃ�"Redirector"��"Port forwarder"�A"TCP proxy"�ƌĂт܂��B
+  <h3>X11転送</h3>
+　X11転送(X11 port forwarding)は、SSHサーバ上でXウィンドウアプリケーションを起動し、アプリケーションのGUI画面をTera Termが動作しているコンソールPCに飛ばすしくみです。このしくみを使うと、SSHセッション上で"xeyes"や"firefox"、"xemacs"などのソフトウェアを動かすことができるようになります。なお、コンソールPC上には、Xming(http://sourceforge.net/projects/xming/)などのXサーバをあらかじめ用意しておく必要があります。<br>
+　下図にX11転送のフローを示します。図を見ると分かるように、Tera Term(TTSSH)はXアプリケーションとXサーバをつなぐ橋渡しの役目を持ちます。このようなTera Termのことを"Redirector"や"Port forwarder"、"TCP proxy"と呼びます。
 
 <div align="center">
 <img src="image/x11forward.png" width=720 height=540>
 </div>
 
-�@X11�]���𗘗p���邽�߂ɂ́ATera Term�����SSH�T�[�o�̑o���Ɏ��O�ݒ肪�K�v�ł��B�܂��ATera Term�̂ق���teraterm.ini�ɉ��L�̐ݒ肪�K�v�ł��B
+　X11転送を利用するためには、Tera TermおよびSSHサーバの双方に事前設定が必要です。まず、Tera Termのほうはteraterm.iniに下記の設定が必要です。
 
 <pre class=code>
 [TTSSH]
 DefaultForwarding=X
 </pre>
 
-�@SSH�T�[�o�̂ق��́AOpenSSH���ɋ�����ƁA"sshd_config"�ɉ��L�̐ݒ肪�K�v�ł��B�f�t�H���g��"no"�ɂȂ��Ă��邽�߁A�ʏ�̓f�t�H���g�ł�X11�]�����g���܂���B
+　SSHサーバのほうは、OpenSSHを例に挙げると、"sshd_config"に下記の設定が必要です。デフォルトは"no"になっているため、通常はデフォルトではX11転送が使えません。
 
 <pre class=code>
 X11Forwarding=yes
 </pre>
 
-�@Tera Term��X11�]�����L���ł���ƁAspec.type��"FWD_REMOTE_X11_TO_LOCAL"��ݒ肵�܂��B�����SSH�T�[�o������Tera Term���Ɍ������āAX11�]�����s�����Ƃ��Ӗ����܂��BTera Term�́A�����[�g�z�X�g��SSH�ڑ�����ہA�Z�b�V�����I�[�v�����"SSH2_MSG_CHANNEL_OPEN_CONFIRMATION"�ɂ����āAX11�]���̏��������s���܂��B
+　Tera TermはX11転送が有効であると、spec.typeに"FWD_REMOTE_X11_TO_LOCAL"を設定します。これはSSHサーバ側からTera Term側に向かって、X11転送を行うことを意味します。Tera Termは、リモートホストにSSH接続する際、セッションオープン後の"SSH2_MSG_CHANNEL_OPEN_CONFIRMATION"において、X11転送の初期化を行います。
 
 <pre class=code>
 	if (c->type == TYPE_SHELL) {
-		// �|�[�g�t�H���[�f�B���O�̏��� (2005.2.26, 2005.6.21 yutaka)
-		// �V�F���I�[�v���������Ƃ� X11 �̗v�����o���Ȃ��Ă͂Ȃ�Ȃ��B(2005.7.3 yutaka)
+		// ポートフォワーディングの準備 (2005.2.26, 2005.6.21 yutaka)
+		// シェルオープンしたあとに X11 の要求を出さなくてはならない。(2005.7.3 yutaka)
 		FWD_prep_forwarding(pvar);
 		FWD_enter_interactive_mode(pvar);
 	}
 </pre>
 
-�@FWD_prep_forwarding()�ł́A"x11-req"�T�[�r�X����"MIT-MAGIC-COOKIE-1"��SSH�T�[�o�ɑ��M���ASSH�T�[�o����X11�]���̏������𑣂��܂��BSSH�ڑ�����X11�̏���������������ƁASSH�T�[�o���Ɋ��ϐ�"DISPLAY"�������I�ɐݒ肳��܂��B
+　FWD_prep_forwarding()では、"x11-req"サービス名と"MIT-MAGIC-COOKIE-1"をSSHサーバに送信し、SSHサーバ側のX11転送の初期化を促します。SSH接続時にX11の初期化が完了すると、SSHサーバ側に環境変数"DISPLAY"が自動的に設定されます。
 
 <pre class=code>
 # echo $DISPLAY
 DISPLAY=localhost:10.0
 </pre>
 
-�@�����܂ŏ����������ƁASSH�T�[�o���X�A�v���P�[�V�������N�������邱�Ƃ��ł��܂��BX�A�v���P�[�V��������X�T�[�o�A���Ȃ킿SSH�T�[�o����Tera Term�֑����Ă���f�[�^�́ASSH2_MSG_CHANNEL_DATA ���b�Z�[�W�`���ƂȂ�܂��B���Y���b�Z�[�W�� FWD_received_data() �ŏ�������AX�T�[�o(TCP/6000)�֑����܂��BX�T�[�o�̃\�P�b�g�� channel->local_socket �ŁA�m���u���b�L���O���[�h�ň����܂��B���̂��߁A��x�Ńp�P�b�g��S������Ȃ��ꍇ�����邽�߁A����Ȃ������f�[�^�͓����o�b�t�@�ɗ��߂Ă����K�v������܂��B�܂��Achannel->local_socket �Ƀp�P�b�g��send���邱�Ƃɂ��AFD_WRITE ���b�Z�[�W���������Awrite_local_connection_buffer() ���Ăяo����܂��B�����ł́A�O�񑗂�Ȃ������f�[�^������΁A�����o�b�t�@������o���A�ēxX�T�[�o�ւ̑��M�����݂܂��B<br>
-�@���΂ɁAX�T�[�o�A���Ȃ킿X11�̉�ʏ�ŉ��炩�̑��삪�s��ꂽ�ꍇ�ATera Term����SSH�T�[�o�Ƀf�[�^�𑗐M����K�v������܂��B���̂Ƃ��ATera Term�ւ� FD_READ ���b�Z�[�W���������Aread_local_connection() ���Ăяo����܂��B�����ł́AX�T�[�o���瑗���Ă����f�[�^�� SSH2_MSG_CHANNEL_DATA ���b�Z�[�W�`���ɍڂ��āASSH�T�[�o�֑���܂��B
+　ここまで準備が整うと、SSHサーバ上でXアプリケーションを起動させることができます。XアプリケーションからXサーバ、すなわちSSHサーバからTera Termへ送られてくるデータは、SSH2_MSG_CHANNEL_DATA メッセージ形式となります。当該メッセージは FWD_received_data() で処理され、Xサーバ(TCP/6000)へ送られます。Xサーバのソケットは channel->local_socket で、ノンブロッキングモードで扱われます。そのため、一度でパケットを全部送れない場合があるため、送れなかったデータは内部バッファに溜めておく必要があります。また、channel->local_socket にパケットをsendすることにより、FD_WRITE メッセージが発生し、write_local_connection_buffer() が呼び出されます。ここでは、前回送れなかったデータがあれば、内部バッファから取り出し、再度Xサーバへの送信を試みます。<br>
+　反対に、Xサーバ、すなわちX11の画面上で何らかの操作が行われた場合、Tera TermからSSHサーバにデータを送信する必要があります。このとき、Tera Termへは FD_READ メッセージが発生し、read_local_connection() が呼び出されます。ここでは、Xサーバから送られてきたデータを SSH2_MSG_CHANNEL_DATA メッセージ形式に載せて、SSHサーバへ送ります。
 
 <hr>
 
 
-<h2 id="macro">�}�N������̐݌v�Ǝ���</h2>
-  <h3>�T�v</h3>
-�@Tera Term�̃}�N���X�N���v�g�́ABASIC���̌���d�l�ƂȂ��Ă��܂��BBison��Flex�Ƃ����������݂͗��p���Ă��炸�A�͋ƓI�ȓƎ��̍\����́i�ċA�I���~�@�j�ɂ���������Ă��܂��B���̂��߁A�{�i�I�ȃX�N���v�g����Ƃ��Ă̋L�q�͂ł��Ȃ����ʂ�����܂��B<br>
-�@
-  <h3>�t�@�C���̓ǂݍ���</h3>
-�@ttpmacro.exe�̋N�����ɁA�}�N���t�@�C��(.ttl)���ꊇ���ăo�b�t�@�֓ǂݍ��܂�܂��B
-�@
+<h2 id="macro">マクロ言語の設計と実装</h2>
+  <h3>概要</h3>
+　Tera Termのマクロスクリプトは、BASIC風の言語仕様となっています。BisonやFlexといったしくみは利用しておらず、力業的な独自の構文解析（再帰的下降法）により実装されています。そのため、本格的なスクリプト言語としての記述はできない側面があります。<br>
+　
+  <h3>ファイルの読み込み</h3>
+　ttpmacro.exeの起動時に、マクロファイル(.ttl)が一括してバッファへ読み込まれます。
+　
 <p><ul>
   <li>OnInitDialog()#ttmmain.cpp -> InitTTL() -> InitBuff() -> LoadMacroFile()</li>
 </ul></p>
 
-�@���߂ēǂݍ��܂��}�N���t�@�C���̑S���e�� Buff[0] # ttmbuff.c �Ɋi�[����܂��B���̎��_�ŁA�t�@�C���̓��e�͈ꊇ���ēǂݍ��܂�邽�߁A�}�N�����s���̓t�@�C�����폜���Ă��܂��Ă����͂���܂���B�������A"include"�ŕʂ̃t�@�C����ǂݍ��ޏꍇ�́Ainclude�����s���鎞�_�ŁAinclude�ΏۂƂȂ�t�@�C���̓ǂݍ��݂��������܂��B
-�@
+　初めて読み込まれるマクロファイルの全内容は Buff[0] # ttmbuff.c に格納されます。この時点で、ファイルの内容は一括して読み込まれるため、マクロ実行中はファイルを削除してしまっても問題はありません。ただし、"include"で別のファイルを読み込む場合は、includeを実行する時点で、include対象となるファイルの読み込みが発生します。
+　
 <pre class=code>
-#define MAXNESTLEVEL 10     /* ������t�@�C�����iinclude��9�܂Łj*/
+#define MAXNESTLEVEL 10     /* 扱えるファイル数（includeは9つまで）*/
 
-static int INest;     /* ���݂̃l�X�g�ʒu */
-static HANDLE BuffHandle[MAXNESTLEVEL];   /* GlobalAlloc()�ɂ��o�b�t�@ */
-static PCHAR Buff[MAXNESTLEVEL];          /* �o�b�t�@�̈� */
-static BINT BuffLen[MAXNESTLEVEL];        /* �t�@�C���T�C�Y�i�o�b�t�@�T�C�Y�j */
-static BINT BuffPtr[MAXNESTLEVEL];        /* �o�b�t�@�̃I�t�Z�b�g�i�ǂݍ��݈ʒu�j*/
+static int INest;     /* 現在のネスト位置 */
+static HANDLE BuffHandle[MAXNESTLEVEL];   /* GlobalAlloc()によるバッファ */
+static PCHAR Buff[MAXNESTLEVEL];          /* バッファ領域 */
+static BINT BuffLen[MAXNESTLEVEL];        /* ファイルサイズ（バッファサイズ） */
+static BINT BuffPtr[MAXNESTLEVEL];        /* バッファのオフセット（読み込み位置）*/
 </pre>
 
 
-  <h3>�}�N���G���W��</h3>
-�@�}�N�������̓A�C�h�����[�v OnIdle()#ttmmain.cpp �ōs���܂��B�A�C�h�����[�v�ł� TTLStatus �ϐ��ɂ��A�}�N���G���W���̓����ς��Ă��܂��B�ʏ�̎��s��Ԃ� IdTTLRun ���Z�b�g����Ă��܂��B�ȉ��ɁA����ꗗ�������܂��B
+  <h3>マクロエンジン</h3>
+　マクロ処理はアイドルループ OnIdle()#ttmmain.cpp で行われます。アイドルループでは TTLStatus 変数により、マクロエンジンの動作を変えています。通常の実行状態は IdTTLRun がセットされています。以下に、動作一覧を示します。
 
 <p>
 <table border=1 align=center>
 <tr>
-  <th>����</th>
-  <th>����</th>
+  <th>条件</th>
+  <th>処理</th>
 </tr>
 
 <tr>
   <td>TTLStatus==IdTTLEnd</td>
-  <td>�}�N���v���O�������I������</td>
+  <td>マクロプログラムを終了する</td>
 </tr>
 
 <tr>
-  <td>���M�f�[�^������ꍇ�iOutLen > 0�j</td>
-  <td>Tera Term�{�̂փf�[�^�𑗂�</td>
+  <td>送信データがある場合（OutLen > 0）</td>
+  <td>Tera Term本体へデータを送る</td>
 </tr>
 
 <tr>
   <td>TTLStatus==IdTTLRun</td>
-  <td>��s���}�N�������s����</td>
+  <td>一行ずつマクロを実行する</td>
 </tr>
 
 <tr>
   <td>TTLStatus==IdTTLWait</td>
-  <td>�E�F�C�g����i'wait'�R�}���h�j</td>
+  <td>ウェイトする（'wait'コマンド）</td>
 </tr>
 
 <tr>
   <td>TTLStatus==IdTTLWaitLn</td>
-  <td>�E�F�C�g����i'waitln'�R�}���h�j</td>
+  <td>ウェイトする（'waitln'コマンド）</td>
 </tr>
 
 <tr>
   <td>TTLStatus==IdTTLWaitNL</td>
-  <td>��s��M����i'recvln'�R�}���h�j</td>
+  <td>一行受信する（'recvln'コマンド）</td>
 </tr>
 
 <tr>
   <td>TTLStatus==IdTTLWait2</td>
-  <td>�������҂i'waitrecv'�R�}���h�j</td>
+  <td>文字列を待つ（'waitrecv'コマンド）</td>
 </tr>
 
 </table>
  </p>
 
 
-  <h3>�C���^�[�v���^����</h3>
-�@�A�C�h�����[�v���� Exec()#ttl.c ������I�ɌĂяo�����x�ɁA�}�N���t�@�C������s����������Ă䂫�܂��BGetNewLine() �ł́A�o�b�t�@�����s�������o���ALineBuff[]#ttmparse.c �֊i�[���܂��B�s�̏I��肩�ǂ����́A�uASCII�R�[�h��0x20�����ŁA���^�u(0x09)�ȊO�v�̃R�[�h���o�������^�C�~���O�Ŕ��肵�Ă��܂��B�擪�̋󔒂�^�u�͖�������܂��B�Z�~�R����(;)���o������ƁA�ȍ~�̏������X�L�b�v���邽�߁A�R�����g�͍s�̓r���ł��t�����邱�ƂɂȂ�܂��B<br>
+  <h3>インタープリタ処理</h3>
+　アイドルループから Exec()#ttl.c が定期的に呼び出される度に、マクロファイルが一行ずつ処理されてゆきます。GetNewLine() では、バッファから一行分を取り出し、LineBuff[]#ttmparse.c へ格納します。行の終わりかどうかは、「ASCIIコードが0x20未満で、かつタブ(0x09)以外」のコードが出現したタイミングで判定しています。先頭の空白やタブは無視されます。セミコロン(;)が出現すると、以降の処理をスキップするため、コメントは行の途中でも付けられることになります。<br>
 
 <pre class=code>
-char LineBuff[MaxLineLen];      /* 1�̍s��500�o�C�g�܂Ŋi�[�\ */
-WORD LinePtr;       /* �o�b�t�@�I�t�Z�b�g */
-WORD LineLen;       /* �o�b�t�@�T�C�Y */
+char LineBuff[MaxLineLen];      /* 1つの行は500バイトまで格納可能 */
+WORD LinePtr;       /* バッファオフセット */
+WORD LineLen;       /* バッファサイズ */
 </pre>
 
-�@Exec()����Ă΂�� ExecCmnd() �ŁA�����͂��s���܂��B�����͂͒P���ȕ����񌟍��ł���ALineBuff[]��1�o�C�g���Q�Ƃ��Ă����܂��B��܂��ȏ����̗���͈ȉ��̂Ƃ���ł��B
+　Exec()から呼ばれる ExecCmnd() で、字句解析を行います。字句解析は単純な文字列検索であり、LineBuff[]を1バイトずつ参照していきます。大まかな処理の流れは以下のとおりです。
 
 <p><ol>
-  <li>endwhile�̔���</li>
-  <li>break����</li>
-  <li>endif�̔���</li>
-  <li>else�̔���</li>
-  <li>�}�N���R�}���h�̎��s</li>
-  <li>���ʎq�̔���</li>
-  <li>���@�G���[�i��L�̂�����ł��Ȃ��ꍇ�j</li>
+  <li>endwhileの判定</li>
+  <li>break処理</li>
+  <li>endifの判定</li>
+  <li>elseの判定</li>
+  <li>マクロコマンドの実行</li>
+  <li>識別子の判定</li>
+  <li>文法エラー（上記のいずれでもない場合）</li>
 </ol></p>
 
-�@�}�N���R�}���h���ǂ����́AGetReservedWord()�Ŕ��ʂ��Ă��܂��B_stricmp()�Ŕ�r���Ă���̂ŁA�A���t�@�x�b�g�̑啶���E�������͋�ʂ���܂���(case-insensitive)�B�}�N���R�}���h�̏ꍇ�́ATTLxxx() �̊֐����Ăяo���܂��B<br>
-�@���ʎq�̔���́AGetIdentifier() �ōs���܂��B�A���t�@�x�b�g(a-z, A-Z)����ѐ��l(0-9)�A�A���_�[�X�R�A(_)����\�������g�[�N����؂�o���܂��B�g�[�N����32�����܂łł��B�g�[�N���́u�ϐ��v�Ƃ��Ĉ����܂��B���Ӓl�ɕϐ�������ꍇ�́A�u�ϐ��ւ̑���v�������肦�Ȃ��̂ŁA���̒���Ɂu�C�R�[��(=)�v�����邩�ǂ����𒲂ׂ܂��B<br>
-�@�C�R�[���ȍ~�̔��菈���́A�ȉ��̏��ԂƂȂ�܂��B
-�@
+　マクロコマンドかどうかは、GetReservedWord()で判別しています。_stricmp()で比較しているので、アルファベットの大文字・小文字は区別されません(case-insensitive)。マクロコマンドの場合は、TTLxxx() の関数を呼び出します。<br>
+　識別子の判定は、GetIdentifier() で行います。アルファベット(a-z, A-Z)および数値(0-9)、アンダースコア(_)から構成されるトークンを切り出します。トークンは32文字までです。トークンは「変数」として扱われます。左辺値に変数が来る場合は、「変数への代入」しかありえないので、その直後に「イコール(=)」があるかどうかを調べます。<br>
+　イコール以降の判定処理は、以下の順番となります。
+　
 <p><ol>
-  <li>������̔���</li>
-  <li>�v�Z���̔���</li>
+  <li>文字列の判定</li>
+  <li>計算式の判定</li>
 </ol></p>
 
-�@�����񂩂ǂ����� GetString() �Ŕ��肵�܂��B������́f���h�ŃN�H�[�g����Ă��邽�߁A���o���̂͗e�Ղł��B<br>
-�@�v�Z���̔���́AGetExpression() �ōs���܂��B�����ł͍ċA�I���~�@�ɂ��A�\����͂���܂��B<br>
-�@���Ӓl����`�ς݂̕ϐ����ǂ����� CheckVar() �Ń`�F�b�N���A���l�������͕�������Z�b�g���܂��B�����ł͂Ȃ��ꍇ�� NewStrVar() �ŁA�V�����ϐ��Ƃ��ēo�^���܂��B
-�@
+　文字列かどうかは GetString() で判定します。文字列は’か”でクォートされているため、取り出すのは容易です。<br>
+　計算式の判定は、GetExpression() で行います。ここでは再帰的下降法により、構文解析されます。<br>
+　左辺値が定義済みの変数かどうかは CheckVar() でチェックし、数値もしくは文字列をセットします。そうではない場合は NewStrVar() で、新しい変数として登録します。
+　
 
 <hr>
 
 
 
-<h2 id="caret">�L�����b�g����</h2>
-  <h3>�T�v</h3>
-�@���[�U���[����ŃL�[�{�[�h���͂��s���ƁA�J�[�\�����ړ����܂����A�T�[�o����̃G�X�P�[�v�V�[�P���X�ɂ��A�L�[�{�[�h���͂Ȃ��ɃJ�[�\�����ړ�������K�v������܂��B�܂��A�E�B���h�E����A�N�e�B�u��Ԃ̏ꍇ�ɂ����Ă��A�J�[�\����\�������邱�Ƃɂ��A�u���[�h�L���X�g���[�h�ɂ����āA�����[���̓������쐫�����コ���Ă��܂��B
+<h2 id="caret">キャレット制御</h2>
+  <h3>概要</h3>
+　ユーザが端末上でキーボード入力を行うと、カーソルが移動しますが、サーバからのエスケープシーケンスにより、キーボード入力なしにカーソルを移動させる必要があります。また、ウィンドウが非アクティブ状態の場合においても、カーソルを表示させることにより、ブロードキャストモードにおいて、複数端末の同時操作性を向上させています。
 <br>
 
-  <h3>�V�X�e���L�����b�g</h3>
-�@Tera Term�ɂ�����J�[�\���`��ɂ́A�V�X�e���L�����b�g�𗘗p���Ă��܂��BTera Term�Ŏg�p����Ă���V�X�e���L�����b�g�𐧌䂷��API���ȉ��Ɏ����܂��B
+  <h3>システムキャレット</h3>
+　Tera Termにおけるカーソル描画には、システムキャレットを利用しています。Tera Termで使用されているシステムキャレットを制御するAPIを以下に示します。
 
 <p><ul>
   <li>CreateCaret</li>
@@ -1170,26 +1170,26 @@ WORD LineLen;       /* �o�b�t�@�T�C�Y */
   <li>ShowCaret</li>
 </ul></p>
 
-�@<a href="https://msdn.microsoft.com/ja-jp/library/cc410685.aspx" target="_blank">CreateCaret�̃h�L�������g</a>�ɂ��ƁA
+　<a href="https://msdn.microsoft.com/ja-jp/library/cc410685.aspx" target="_blank">CreateCaretのドキュメント</a>によると、
 
 <pre>
-�V�X�e���� 1 �̃L���[�ɂ� 1 �̃L�����b�g��񋟂��܂��B�E�B���h�E��
-�L�[�{�[�h�t�H�[�J�X������Ă���Ƃ��A�܂��̓A�N�e�B�u�ȏ�Ԃ̂Ƃ��ɂ����A
-�L�����b�g���쐬����ׂ��ł��B�܂��A�L�[�{�[�h�t�H�[�J�X�����������A�N
-�e�B�u�ɂȂ�O�ɁA�L�����b�g��j������ׂ��ł��B
+システムは 1 つのキューにつき 1 つのキャレットを提供します。ウィンドウが
+キーボードフォーカスを備えているとき、またはアクティブな状態のときにだけ、
+キャレットを作成するべきです。また、キーボードフォーカスを失ったり非アク
+ティブになる前に、キャレットを破棄するべきです。
 </pre>
 
-�Ƃ��邽�߁A�E�B���h�E���A�N�e�B�u�ɂȂ����^�C�~���O�� CreateCaret() ���Ăяo���A�t�H�[�J�X���O��A��A�N�e�B�u�ɂȂ�^�C�~���O�� DestroyCaret() ���Ăяo���K�v�����邱�Ƃ��Ӗ����Ă��܂��B<br>
-�@�L�����b�g�̕\���� CaretOn()#vtdisp.c �ŁA������ CaretOff()#vtdisp.c �Ŏ�������Ă��܂��BCaretOn()��CaretOff()���Ăяo�����^�C�~���O�́A�G�X�P�[�v�V�[�P���X���� VTParse() �̉ӏ��ȊO�ɂ��A�}�E�X�{�^�����������Ƃ���E�B���h�E�̃��T�C�Y���s���Ă���Ƃ��Ȃǂ�����܂��B<br>
+とあるため、ウィンドウがアクティブになったタイミングで CreateCaret() を呼び出し、フォーカスが外れ、非アクティブになるタイミングで DestroyCaret() を呼び出す必要があることを意味しています。<br>
+　キャレットの表示は CaretOn()#vtdisp.c で、消去は CaretOff()#vtdisp.c で実装されています。CaretOn()やCaretOff()が呼び出されるタイミングは、エスケープシーケンス処理 VTParse() の箇所以外にも、マウスボタンを押したときやウィンドウのリサイズを行っているときなどがあります。<br>
 
 
 
-  <h3>��A�N�e�B�u���̃J�[�\���\��</h3>
-�@�E�B���h�E����A�N�e�B�u�̏ꍇ�́A�J�[�\�������ł��܂��BWindows�̏�ł̓��[�U������ł�����E�B���h�E��1�ł��邽�߁A�V�X�e���L�����b�g��1�̂ݗp�ӂ���Ă��܂��B�ʏ�̃I�y���[�V�����ɂ����ẮA���̓���Ŗ�肪����܂���B<br>
-�@�������A�u���[�h�L���X�g���[�h�𗘗p����ꍇ�A��A�N�e�B�u��Tera Term�E�B���h�E�ɑ΂��āA�R�}���h�𓊓����邱�ƂɂȂ�܂��B���ɁAvi�Ȃǂŕ����̒[���𓯎����삷��Ƃ��́A�J�[�\���������Ă���ƕs�s��������܂��B<br>
-�@�����ŁA�E�B���h�E����A�N�e�B�u�̏ꍇ�ɂ����Ă��A�J�[�\����`�悷��悤�ɂ��Ă��܂��B�������A�V�X�e���L�����b�g�͎g���Ȃ��̂ŁA���O�ŃJ�[�\����`�悷��K�v������܂��BTera Term�̃E�B���h�E����A�N�e�B�u�̏ꍇ�ɂ����Ă��A�����[�g�z�X�g���瑗���Ă���G�X�P�[�v�V�[�P���X���������邽�߂Ƀ��C���G���W���͓����Ă���A��ɃJ�[�\���ʒu�͍X�V����Ă��܂��B���݂̃J�[�\���ʒu�́ACursorX��CursorY�ɐݒ肳��Ă��܂��B<br>
-�@��A�N�e�B�u���̃J�[�\���\���� CaretKillFocus() �ōs���Ă��܂��B���̂Ƃ��ɕ\�������J�[�\�����u�|���S���J�[�\���v�ƌĂ�ł��܂��Bts.VTColor[0] �� Text color �ł��B��A�N�e�B�u��ԂŃJ�[�\���ʒu���X�V�����Ƃ��́A�ȑO�ɕ`�����J�[�\���������K�v������̂ŁA���̂Ƃ��� ts.VTColor[1] �ŕ\����� Background color �ōĕ`�悷�邱�ƂŁA�ȑO�̃J�[�\�����������Ă��܂��B<br>
-�@Background color�Ń|���S���J�[�\����`�悷��ƁA���傤�ǂ��̂Ƃ��w�i�ɂ����������̈ꕔ�������邱�Ƃ�����܂��B���̂��߁A���̕����̍ĕ`����s���K�v������AUpdateCaretKillFocus() �Ŏ������Ă��܂��B���Y�֐��ł� InvalidateRect() �� WM_PAINT �𑗂邱�Ƃɂ��A�����̍ĕ`��𑣂��Ă��܂��B<br>
+  <h3>非アクティブ時のカーソル表示</h3>
+　ウィンドウが非アクティブの場合は、カーソルが消滅します。Windowsの上ではユーザが操作できうるウィンドウは1つであるため、システムキャレットも1つのみ用意されています。通常のオペレーションにおいては、この動作で問題がありません。<br>
+　しかし、ブロードキャストモードを利用する場合、非アクティブのTera Termウィンドウに対して、コマンドを投入することになります。特に、viなどで複数の端末を同時操作するときは、カーソルが消えていると不都合があります。<br>
+　そこで、ウィンドウが非アクティブの場合においても、カーソルを描画するようにしています。ただし、システムキャレットは使えないので、自前でカーソルを描画する必要があります。Tera Termのウィンドウが非アクティブの場合においても、リモートホストから送られてくるエスケープシーケンスを処理するためにメインエンジンは動いており、常にカーソル位置は更新されています。現在のカーソル位置は、CursorXとCursorYに設定されています。<br>
+　非アクティブ時のカーソル表示は CaretKillFocus() で行っています。このときに表示されるカーソルを「ポリゴンカーソル」と呼んでいます。ts.VTColor[0] は Text color です。非アクティブ状態でカーソル位置が更新されるときは、以前に描いたカーソルを消す必要があるので、そのときは ts.VTColor[1] で表される Background color で再描画することで、以前のカーソルを消去しています。<br>
+　Background colorでポリゴンカーソルを描画すると、ちょうどそのとき背景にあった文字の一部が欠けることがあります。そのため、その文字の再描画を行う必要があり、UpdateCaretKillFocus() で実現しています。当該関数では InvalidateRect() で WM_PAINT を送ることにより、文字の再描画を促しています。<br>
 
 <pre class=code>
 void CaretKillFocus(BOOL show)
@@ -1222,7 +1222,7 @@ void CaretKillFocus(BOOL show)
   p[4].x = CaretX;
   p[4].y = CaretY;
 
-  if (show) {  // �|���S���J�[�\����\���i��t�H�[�J�X���j
+  if (show) {  // ポリゴンカーソルを表示（非フォーカス時）
 	  oldpen = SelectObject(hdc, CreatePen(PS_SOLID, 0, ts.VTColor[0]));
   } else {
 	  oldpen = SelectObject(hdc, CreatePen(PS_SOLID, 0, ts.VTColor[1]));
@@ -1236,18 +1236,18 @@ void CaretKillFocus(BOOL show)
 </pre>
 
 
-  <h3>��A�N�e�B�u���̃J�[�\���\���^�C�~���O</h3>
-�@��A�N�e�B�u���̃J�[�\���\���̃^�C�~���O�́A�������̃p�^�[�������邽�߁A�R��Ȃ��Ώ����Ă����K�v������܂��B�\���^�C�~���O�Ƃ��Ă͈ȉ��̂Ƃ���ł��B
+  <h3>非アクティブ時のカーソル表示タイミング</h3>
+　非アクティブ時のカーソル表示のタイミングは、いくつかのパターンがあるため、漏れなく対処しておく必要があります。表示タイミングとしては以下のとおりです。
 
 <p>
 <ul>
-  <li>�E�B���h�E���A�N�e�B�u(Active == TRUE)�̏ꍇ�́A�|���S���L�����b�g�`��֐�(CaretKillFocus)����،Ă΂Ȃ��悤�ɂ���B</li>
-  <li>CaretOn()�ł́A��A�N�e�B�u(Active == FALSE)�̏ꍇ�AShowCaret()���Ăԃ^�C�~���O�ŁA�|���S���L�����b�g�`��֐�(true)���ĂԁB</li>
-  <li>CaretOff()�ł́A��A�N�e�B�u(Active == FALSE)�̏ꍇ�AHideCaret()���Ăԃ^�C�~���O�ŁA�|���S���L�����b�g�`��֐�(false)���ĂԁB</li>
-  <li>IsCaretOn()�̔���_���ɁA(!Active && (CaretStatus==0)) ��OR��ǉ�����B</li>
-  <li>ChangeCaret()�͉������Ȃ�</li>
-  <li>WM_KILLFOCUS�����^�C�~���O�ł́AIsCaretOn()���^�ł���΁A�|���S���L�����b�g�`��֐�(true)���ĂԁB</li>
-  <li>WM_ACTIVE�����^�C�~���O�ł́AIsCaretOn()���^�ł���΁A�|���S���L�����b�g�`��֐�(false)���ĂԁB</li>
+  <li>ウィンドウがアクティブ(Active == TRUE)の場合は、ポリゴンキャレット描画関数(CaretKillFocus)を一切呼ばないようにする。</li>
+  <li>CaretOn()では、非アクティブ(Active == FALSE)の場合、ShowCaret()を呼ぶタイミングで、ポリゴンキャレット描画関数(true)を呼ぶ。</li>
+  <li>CaretOff()では、非アクティブ(Active == FALSE)の場合、HideCaret()を呼ぶタイミングで、ポリゴンキャレット描画関数(false)を呼ぶ。</li>
+  <li>IsCaretOn()の判定論理に、(!Active && (CaretStatus==0)) のORを追加する。</li>
+  <li>ChangeCaret()は何もしない</li>
+  <li>WM_KILLFOCUSされるタイミングでは、IsCaretOn()が真であれば、ポリゴンキャレット描画関数(true)を呼ぶ。</li>
+  <li>WM_ACTIVEされるタイミングでは、IsCaretOn()が真であれば、ポリゴンキャレット描画関数(false)を呼ぶ。</li>
 </ul>
 </p>
 
@@ -1257,13 +1257,13 @@ void CaretKillFocus(BOOL show)
 <hr>
 
 
-<h2 id="serial">�V���A���|�[�g</h2>
-  <h3>�T�v</h3>
-�@Tera Term��UART(16550A)�݊��̃V���A���|�[�g�ɑΉ����Ă��邽�߁A�V���A���R���\�[�����g�p�ł��܂��B�V���A���|�[�g�̂��Ƃ��ACOM(Communication Port)�|�[�g�ƌĂԂ��Ƃ�����܂��BOS�����o����COM�|�[�g�́A����"COM1"�A"COM2"�Ƃ��������O���t�����A�A�v���P�[�V�������痘�p���邱�Ƃ��ł��܂��BMicrosoft Windows XP�ł́A�ő�256��COM�|�[�g�iCOM1�`COM256�j�܂ł����p�\�ł��B<br>
-�@�p�\�R���ɓ��ڂ����COM�|�[�g�́A��������1�A�����Ă�2�ł���A�ŋ߂ł͂܂�����COM�|�[�g���Ȃ��p�\�R�������݂��܂��B���̂��߁AUSB�ڑ��ɂ��V���A���|�[�g����������uUSB�V���A���ϊ��P�[�u���v����������Ă��܂��B�������������i�̓����Ƃ��āAOS�ɔF��������COM�|�[�g�̔ԍ����A���[�U�����R�ɐݒ�ł���悤�ɂȂ��Ă��܂��B���Ȃ킿�ATera Term�����ɂ́A2��COM�|�[�g���������ꍇ�A���ꂼ��"COM1"�A"COM2"�Ƃ��ĔF���ł���Ƃ͌��炸�A"COM1"�A"COM7"�Ƃ������ӂ��ɔF���ł���悤�ɂȂ�K�v������܂��B<br>
-�@
-  <h3>COM�|�[�g�̃��X�g�A�b�v</h3>
-�@���Ă�Tera Term�ł́A"COM1"����"COM256"�܂ł̂��ׂĂ�COM�|�[�g���A�ڑ��_�C�A���O�Ƀ��X�g�A�b�v���Ă��܂������A�g�����肪�悭����܂���ł����B�����ŁA�ڑ��_�C�A���O���Ăяo�����^�C�~���O�ɂ����āiTera Term�N�����݂̂ł͕s�\���j�AOS���F�����Ă���COM�|�[�g�����o����悤�ɂ��āA�K�v��COM�|�[�g�݂̂�\��������悤�ɂ��܂����B���̌��o���W�b�N���ADetectComPorts()#ttcmn.c �ł��BQueryDosDevice() API���g�p���AMS-DOS�f�o�C�X������"COM"��T���܂��B<br>
+<h2 id="serial">シリアルポート</h2>
+  <h3>概要</h3>
+　Tera TermはUART(16550A)互換のシリアルポートに対応しているため、シリアルコンソールが使用できます。シリアルポートのことを、COM(Communication Port)ポートと呼ぶこともあります。OSが検出したCOMポートは、順に"COM1"、"COM2"といった名前が付けられ、アプリケーションから利用することができます。Microsoft Windows XPでは、最大256個のCOMポート（COM1〜COM256）までが利用可能です。<br>
+　パソコンに搭載されるCOMポートは、せいぜい1つ、多くても2つであり、最近ではまったくCOMポートがないパソコンも存在します。そのため、USB接続によるシリアルポートを実現する「USBシリアル変換ケーブル」が発売されています。こういった製品の特徴として、OSに認識させるCOMポートの番号を、ユーザが自由に設定できるようになっています。すなわち、Tera Term見えには、2つのCOMポートがあった場合、それぞれ"COM1"、"COM2"として認識できるとは限らず、"COM1"、"COM7"といったふうに認識できるようになる必要があります。<br>
+　
+  <h3>COMポートのリストアップ</h3>
+　かつてのTera Termでは、"COM1"から"COM256"までのすべてのCOMポートを、接続ダイアログにリストアップしていましたが、使い勝手がよくありませんでした。そこで、接続ダイアログを呼び出したタイミングにおいて（Tera Term起動時のみでは不十分）、OSが認識しているCOMポートを検出するようにして、必要なCOMポートのみを表示させるようにしました。その検出ロジックが、DetectComPorts()#ttcmn.c です。QueryDosDevice() APIを使用し、MS-DOSデバイス名から"COM"を探します。<br>
 
 <pre class=code>
 	if (((h = GetModuleHandle("kernel32.dll")) != NULL) &&
@@ -1280,10 +1280,10 @@ void CaretKillFocus(BOOL show)
 		}
 </pre>
 
-  <h3>COM�|�[�g�̃t���l�[���擾</h3>
+  <h3>COMポートのフルネーム取得</h3>
 
-�@��L�̏��������ł����[�U�r���e�B�͌��シ��̂ł����A����Ȃ�~���Ƃ��āA�eCOM�|�[�g�ɕt������u�t���l�[���v�𓯎��ɕ\���������Ȃ�܂��BCOM�|�[�g�̔ԍ��ƂƂ��ɁA�t���l�[�����t���\���ł���ƁA����Ɏg�����肪�悭�Ȃ邱�Ƃ����҂���܂��B���̉ۑ����������̂��AListupSerialPort()#ttcmn.c �ł��B<br>
-�@
+　上記の処理だけでもユーザビリティは向上するのですが、さらなる欲求として、各COMポートに付けられる「フルネーム」を同時に表示したくなります。COMポートの番号とともに、フルネームも付加表示できると、さらに使い勝手がよくなることが期待されます。この課題を解決するのが、ListupSerialPort()#ttcmn.c です。<br>
+　
 <pre class=code>
 static void ListupSerialPort(LPWORD ComPortTable, int comports, char **ComPortDesc, int ComPortMax)
 {
@@ -1343,12 +1343,12 @@ static void ListupSerialPort(LPWORD ComPortTable, int comports, char **ComPortDe
 				RegCloseKey(hKey);
 			}
 
-			if (_strnicmp(szPortName, "COM", 3) == 0) {  // COM�|�[�g�h���C�o�𔭌�
+			if (_strnicmp(szPortName, "COM", 3) == 0) {  // COMポートドライバを発見
 				int port = atoi(&szPortName[3]);
 				int i;
 
 				for (i = 0 ; i < comports ; i++) {
-					if (ComPortTable[i] == port) {  // �ڑ����m�F
+					if (ComPortTable[i] == port) {  // 接続を確認
 						ComPortDesc[i] = _strdup(szFriendlyName);
 						break;
 					}
@@ -1366,17 +1366,17 @@ cleanup:
 <hr>
 
 
-<h2 id="xyzmodem">�o�C�i���]���v���g�R��</h2>
-  <h3>�T�v</h3>
-�p�\�R���ʐM����ɁA�o�C�i���t�@�C����]�����邽�߂̃v���g�R���������J������ATera Term�ł͂������̓]���������T�|�[�g���Ă��܂��B�����̃v���g�R���́A���ƂȂ��Ă̓��K�V�[�d�l�ł���A�قƂ�Ǘ��p����邱�Ƃ͂���܂���B���݂ł́A���[�^�Ȃǂ̑g�ݍ��݋@��ɂ����āA�t�@�[���E�F�A�̃A�b�v���[�h�Ɏg���邮�炢�ł��B
-�{�߂ł́AXMODEM/YMODEM/ZMODEM�Ɋւ��Đ������܂��B<br>
+<h2 id="xyzmodem">バイナリ転送プロトコル</h2>
+  <h3>概要</h3>
+パソコン通信時代に、バイナリファイルを転送するためのプロトコルが多数開発され、Tera Termではいくつかの転送方式をサポートしています。これらのプロトコルは、今となってはレガシー仕様であり、ほとんど利用されることはありません。現在では、ルータなどの組み込み機器において、ファームウェアのアップロードに使われるぐらいです。
+本節では、XMODEM/YMODEM/ZMODEMに関して説明します。<br>
 
-  <h3>�d�l</h3>
-XMODEM�̓o���1977�N�Ƃ��Ȃ�Â��A�܂��d�l���V���v���ł��邪�䂦�A�I���W�i���̎d�l(Ward Christensen�����J��)�����ł������킪�������݂��܂����B���̌�AXMODEM�����ǂ���YMODEM(Chuck Forsberg�����J��)���o�ꂵ�A�����YMODEM�̌��_�����P����ZMODEM(Chuck Forsberg�����J��)��1986�N�ɊJ������܂����B<br>
-���̂悤�Ɏd�l���̂��A�ǂ����̒c�̂ɂ��K�肳�ꂽ�킯�ł͂Ȃ����߁AXMODEM/YMODEM/ZMODEM�̎����ɂ̓N�Z������܂��BTera Term���T�|�[�g����XMODEM/YMODEM/ZMODEM�̓x�[�V�b�N�Ȃ��̂ł����A�ڑ�����ɂ���Ă͂��܂������Ȃ����Ƃ������A���[�U�ɂ��R���t�B�O���[�V�������K�v�ƂȂ�ꍇ������܂��B<br>
+  <h3>仕様</h3>
+XMODEMの登場は1977年とかなり古く、また仕様がシンプルであるがゆえ、オリジナルの仕様(Ward Christensen氏が開発)を改版した亜種が多数存在しました。その後、XMODEMを改良したYMODEM(Chuck Forsberg氏が開発)が登場し、さらにYMODEMの欠点を改善したZMODEM(Chuck Forsberg氏が開発)が1986年に開発されました。<br>
+このように仕様自体が、どこかの団体により規定されたわけではないため、XMODEM/YMODEM/ZMODEMの実装にはクセがあります。Tera TermがサポートするXMODEM/YMODEM/ZMODEMはベーシックなものですが、接続相手によってはうまく動かないことも多く、ユーザによるコンフィグレーションが必要となる場合があります。<br>
 
-  <h3>�K�w�\��</h3>
-�o�C�i���]���v���g�R����e�Ղɒǉ��ł���悤�ɂ��邽�߁A�e���W���[���͊K�w�\���ɂȂ��Ă��܂��B
+  <h3>階層構造</h3>
+バイナリ転送プロトコルを容易に追加できるようにするため、各モジュールは階層構造になっています。
 
 <pre class=code>
       +-------------------------------------------------------+
@@ -1388,7 +1388,7 @@ XMODEM�̓o���1977�N�Ƃ��Ȃ�Â��A�܂��d�l���V���v���ł��邪�䂦�A�I���W�i���̎d
       +-------+--------+--------+--------+--------+-----------+
 </pre>
 
-���Ƃ��΁AXMODEM�̑��M���j���[��I�������ꍇ�A�����̃t���[�͈ȉ��̂悤�ɂȂ�܂��B
+たとえば、XMODEMの送信メニューを選択した場合、処理のフローは以下のようになります。
 
 <pre class=code>
 filesys.cpp: OnFileXSend() -> XMODEMStart() -> OpenProtoDlg() ->
@@ -1396,7 +1396,7 @@ ttfile.c: ProtoInit() ->
 xmodem.c: XInit()
 </pre>
 
-ZMODEM�̎�M���j���[�̏����Ɋւ��ẮA�ȉ��̂Ƃ���ł��B
+ZMODEMの受信メニューの処理に関しては、以下のとおりです。
 
 <pre class=code>
 filesys.cpp: OnFileZRcv() -> ZMODEMStart() -> OpenProtoDlg() ->
@@ -1404,89 +1404,89 @@ ttfile.c: ProtoInit() ->
 zmodem.c: ZInit()
 </pre>
 
-  <h3>�G���g���|�C���g</h3>
-�����Ȃ�v���g�R�����������悤�Ƃ��Attpfile.dll�ɂ�����֐��C���^�[�t�F�C�X�i�G���g���|�C���g�j���p�ӂ���Ă���΁A�e�ՂɐV�K�v���g�R���Ƃ��đg�ݍ��ނ��Ƃ��ł���悤�ɂȂ��Ă��܂��B�G���g���|�C���g�́AProtoInit()�EProtoParse()�EProtoTimeOutProc()�EProtoCancel()����Ăяo����܂��B<br>
-XMODEM�̃G���g���|�C���g�ɂ��āA�ȉ��Ɏ����܂��B
+  <h3>エントリポイント</h3>
+いかなるプロトコルを実装しようとも、ttpfile.dllにおける関数インターフェイス（エントリポイント）が用意されていれば、容易に新規プロトコルとして組み込むことができるようになっています。エントリポイントは、ProtoInit()・ProtoParse()・ProtoTimeOutProc()・ProtoCancel()から呼び出されます。<br>
+XMODEMのエントリポイントについて、以下に示します。
 
 <table border=1 align=center>
 <tr>
-  <th>�֐�</th>
-  <th>�Ӗ�</th>
+  <th>関数</th>
+  <th>意味</th>
 </tr>
 
 <tr>
   <td>XInit</td>
-  <td>������</td>
+  <td>初期化</td>
 </tr>
 
 <tr>
   <td>XSendPacket</td>
-  <td>�t�@�C�����M</td>
+  <td>ファイル送信</td>
 </tr>
 
 <tr>
   <td>XReadPacket</td>
-  <td>�t�@�C����M</td>
+  <td>ファイル受信</td>
 </tr>
 
 <tr>
   <td>XTimeOutProc</td>
-  <td>�^�C���A�E�g����</td>
+  <td>タイムアウト処理</td>
 </tr>
 
 <tr>
   <td>XCancel</td>
-  <td>�L�����Z������</td>
+  <td>キャンセル処理</td>
 </tr>
 </table>
 <br>
 
-ZMODEM�̃G���g���|�C���g�ɂ��āA�ȉ��Ɏ����܂��B
+ZMODEMのエントリポイントについて、以下に示します。
 
 <table border=1 align=center>
 <tr>
-  <th>�֐�</th>
-  <th>�Ӗ�</th>
+  <th>関数</th>
+  <th>意味</th>
 </tr>
 
 <tr>
   <td>ZInit</td>
-  <td>������</td>
+  <td>初期化</td>
 </tr>
 
 <tr>
   <td>ZParse</td>
-  <td>�t�@�C�����M</td>
+  <td>ファイル送信</td>
 </tr>
 
 <tr>
   <td>ZParse</td>
-  <td>�t�@�C����M</td>
+  <td>ファイル受信</td>
 </tr>
 
 <tr>
   <td>ZTimeOutProc</td>
-  <td>�^�C���A�E�g����</td>
+  <td>タイムアウト処理</td>
 </tr>
 
 <tr>
   <td>ZCancel</td>
-  <td>�L�����Z������</td>
+  <td>キャンセル処理</td>
 </tr>
 </table>
 
-  <h3>�e�X�g��@</h3>
-�@�o�C�i���]���v���g�R���̓V���A������ŗ��p����邱�Ƃ������̂ł����A�ŋ߂�PC�́A�V���A���|�[�g�����ڂ���Ă��Ȃ����߁A�V���A���ڑ��ł̃e�X�g���s�����Ƃ�����Ȃ��Ă��܂��B�����ŁA<a href="http://com0com.sourceforge.net/" target="_blank">com0com�Ƃ���Null-modem emulator</a>�𗘗p����ƁA1��PC���ŉ��z�I��2��COM�|�[�g�𐶐����ATera Term���m�ATera Term�ƕʃ^�[�~�i���\�t�g���m�ŁA�V���A���ʐM���s�����Ƃ��ł��܂��B
-�@
+  <h3>テスト手法</h3>
+　バイナリ転送プロトコルはシリアル回線で利用されることが多いのですが、最近のPCは、シリアルポートが搭載されていないため、シリアル接続でのテストを行うことが難しくなっています。そこで、<a href="http://com0com.sourceforge.net/" target="_blank">com0comというNull-modem emulator</a>を利用すると、1つのPC内で仮想的に2つのCOMポートを生成し、Tera Term同士、Tera Termと別ターミナルソフト同士で、シリアル通信を行うことができます。
+　
 
 <div align="center">
 <img src="image/devman_com0com.png" width=468 height=171>
 </div>
 
 
-  <h3>�L��</h3>
-�@�o�C�i���]���v���g�R���ł́AACK��CAN�Ƃ������L�����N�^�\�L���g���܂����A������ASCII�R�[�h�\���痈�Ă��܂��Bman 7 ascii ��ASCII�R�[�h�ꗗ���Q�Ƃł��܂��B�ȉ��ɑ�\�I�ȋL���ƒl�����p���܂��B
-�@
+  <h3>記号</h3>
+　バイナリ転送プロトコルでは、ACKやCANといったキャラクタ表記が使われますが、これらはASCIIコード表から来ています。man 7 ascii でASCIIコード一覧が参照できます。以下に代表的な記号と値を引用します。
+　
 
 <pre class=code>
 Oct   Dec   Hex   Char                        Oct   Dec   Hex   Char
@@ -1502,24 +1502,24 @@ Oct   Dec   Hex   Char                        Oct   Dec   Hex   Char
 
 
   <h3>XMODEM</h3>
-XMODEM�́A�t�@�C���̃f�[�^�����̃T�C�Y�i128�o�C�g�����1024�o�C�g�j�ɕ������A�u���b�N���Ƃ�ACK���m�F���Ȃ���A���M���s���v���g�R���ł��B�u���b�N�P�ʂŁA����ACK���m�F���邽�߁A�]�����x�͑����͂���܂��񂪁A�������V���v���ƂȂ�܂��B<br>
-�Ō�̃u���b�N�����̃T�C�Y�ɖ����Ȃ��ꍇ�́A�������悤��CPMEOF(0x1A)���p�f�B���O����܂��B���Ȃ킿�A�f�[�^�𑗂�ƁA���Ȃ炸�f�[�^�̃T�C�Y�����̃T�C�Y�̔{���ƂȂ�A������CPMEOF���t�������ꍇ������Ƃ������Ƃł��B���̂��߁A�t�@�C���̑��M�Ɋ��S�������߂�ꍇ�́AXMOMDE�͎g���܂���B�Ȃ��ACPMEOF�Ƃ����̂́AMS-DOS�̑O�g�ł���CP/M�Ƃ���OS�ɂ����āA�e�L�X�g�t�@�C���̏I�[(EOF)��\���l�̂��Ƃł��B<br>
-�@XMODEM�̃v���g�R���ɂ��ẮA���L�T�C�g���Q�l�ɂȂ�܂��B
+XMODEMは、ファイルのデータを一定のサイズ（128バイトおよび1024バイト）に分割し、ブロックごとにACKを確認しながら、送信を行うプロトコルです。ブロック単位で、毎回ACKを確認するため、転送速度は速くはありませんが、実装がシンプルとなります。<br>
+最後のブロックが一定のサイズに満たない場合は、満たすようにCPMEOF(0x1A)がパディングされます。すなわち、データを送ると、かならずデータのサイズが一定のサイズの倍数となり、末尾にCPMEOFが付加される場合があるということです。そのため、ファイルの送信に完全性を求める場合は、XMOMDEは使えません。なお、CPMEOFというのは、MS-DOSの前身であるCP/MというOSにおいて、テキストファイルの終端(EOF)を表す値のことです。<br>
+　XMODEMのプロトコルについては、下記サイトが参考になります。
 
 <ul>
-�@<li><a href="http://ja.wikipedia.org/wiki/XMODEM" target="_blank">XMODEM - Wikipedia</a></li>
+　<li><a href="http://ja.wikipedia.org/wiki/XMODEM" target="_blank">XMODEM - Wikipedia</a></li>
 </ul>
 <br>
 
-�@teraterm.ini �� XmodemLog �G���g����L���ɂ���ƁA�ʐM���O���̎悷�邱�Ƃ��ł��܂��B�ʐM���O�t�@�C���́Attermpro.exe �Ɠ����f�B���N�g����"XMODEM.LOG"�Ƃ������O�Ő�������܂��B
+　teraterm.ini で XmodemLog エントリを有効にすると、通信ログを採取することができます。通信ログファイルは、ttermpro.exe と同じディレクトリに"XMODEM.LOG"という名前で生成されます。
 
 <pre class=code>
 ; XMODEM log
 XmodemLog=on
 </pre>
 
-�@�ȒP�ȗ�Ƃ��āATera Term(COM10)����<a href="http://nanno.dip.jp/softlib/man/rlogin/" target="_blank">RLogin</a>(COM11)�ɑ΂��āA67�o�C�g�̃t�@�C���𑗐M�����ꍇ�̒ʐM���O�������܂��B�u&lt;&lt;&lt;�v�s��Tera Term���z�X�g�����M�����f�[�^�ŁA�u&gt;&gt;&gt;�v�s��Tera Term�����M�����f�[�^�ł��B
-�@
+　簡単な例として、Tera Term(COM10)から<a href="http://nanno.dip.jp/softlib/man/rlogin/" target="_blank">RLogin</a>(COM11)に対して、67バイトのファイルを送信した場合の通信ログを示します。「&lt;&lt;&lt;」行はTera Termがホストから受信したデータで、「&gt;&gt;&gt;」行はTera Termが送信したデータです。
+　
 <pre class=code>
 &lt;&lt;&lt;
 15                                                  .
@@ -1545,22 +1545,22 @@ XmodemLog=on
 06 
 </pre>
 
-�@��L���O�̈Ӗ��͈ȉ��̂Ƃ���ł��B
-�@
+　上記ログの意味は以下のとおりです。
+　
 <ol>
- <li>NAK��M(15)</li>
- <li>�u���b�N�f�[�^�̑��M</li>
- <li>ACK��M(06)</li>
- <li>EOT�̑��M(04)</li>
- <li>ACK��M(06)</li>
+ <li>NAK受信(15)</li>
+ <li>ブロックデータの送信</li>
+ <li>ACK受信(06)</li>
+ <li>EOTの送信(04)</li>
+ <li>ACK受信(06)</li>
 </ol>
 
-�@�u���b�N�f�[�^�́A�u�w�b�_(3byte)�{�f�[�^(128byte)�{CRC(1byte)�v����\������܂��B���̗�ł́A���M�f�[�^��128byte�����Ȃ̂ŁA�p�f�B���O�Ƃ���CPMEOF(0x1A)�Ŗ��߂��Ă��܂��B
+　ブロックデータは、「ヘッダ(3byte)＋データ(128byte)＋CRC(1byte)」から構成されます。この例では、送信データが128byte未満なので、パディングとしてCPMEOF(0x1A)で埋められています。
 
 <p></p>
 
-�@���͂��������傫�߂̃T�C�Y(1772byte)�̃f�[�^�𑗐M���Ă݂܂��B(1772+127)/128=14 �ŁA14��u���b�N�]�������͂��ł��B���L�ɒʐM���O�������܂��B�w�b�_�̑�2�o�C�g���u���b�N�ԍ��i1�I���W���j�ł���A1(0x01)�`14(0x0E)�܂ő������Ă��邱�Ƃ�������܂��B�Ō�̃u���b�N��128�o�C�g�Ɏ��܂�悤�ɁACPMEOF���p�f�B���O�Ƃ��ĕt������Ă��܂��B<br>
-�@���̂悤��XMODEM�ɂ��ʐM�ł́A���M��t�@�C���̖����ɃS�~���t�����悤�Ɍ�����̂ŁA�����ɂ̓t�@�C�������܂��B
+　次はもう少し大きめのサイズ(1772byte)のデータを送信してみます。(1772+127)/128=14 で、14回ブロック転送されるはずです。下記に通信ログを示します。ヘッダの第2バイトがブロック番号（1オリジン）であり、1(0x01)〜14(0x0E)まで増加していることが分かります。最後のブロックは128バイトに収まるように、CPMEOFがパディングとして付加されています。<br>
+　このようにXMODEMによる通信では、送信後ファイルの末尾にゴミが付いたように見えるので、厳密にはファイルが壊れます。
 
 <pre class=code>
 &lt;&lt;&lt;
@@ -1635,24 +1635,24 @@ XmodemLog=on
 
 
   <h3>YMODEM</h3>
-�@YMODEM�́AXMODEM�����ǂ����v���g�R���ł��BXMODEM�Ƃ̈Ⴂ�͂���������܂����A�傫�ȈႢ��1�Ƃ��āA�t�@�C����񂪑����Ƃ������Ƃł��BYMODEM�ł́A�t�@�C������t�@�C���T�C�Y���z�X�g�ɒm�点�邱�Ƃ��ł���̂ŁA���M�����t�@�C���̖�������CPMEOF���������邱�Ƃ��ł��܂��B<br>
+　YMODEMは、XMODEMを改良したプロトコルです。XMODEMとの違いはいくつかありますが、大きな違いの1つとして、ファイル情報が送れるということです。YMODEMでは、ファイル名やファイルサイズをホストに知らせることができるので、送信したファイルの末尾からCPMEOFを除去することができます。<br>
 
-�@YMODEM�̃v���g�R���ɂ��ẮA���L�T�C�g���Q�l�ɂȂ�܂��B
+　YMODEMのプロトコルについては、下記サイトが参考になります。
 
 <ul>
-�@<li><a href="http://ja.wikipedia.org/wiki/YMODEM" target="_blank">YMODEM - Wikipedia</a></li>
+　<li><a href="http://ja.wikipedia.org/wiki/YMODEM" target="_blank">YMODEM - Wikipedia</a></li>
 </ul>
 <br>
 
-�@teraterm.ini �� YmodemLog �G���g����L���ɂ���ƁA�ʐM���O���̎悷�邱�Ƃ��ł��܂��B�ʐM���O�t�@�C���́Attermpro.exe �Ɠ����f�B���N�g����"YMODEM.LOG"�Ƃ������O�Ő�������܂��B
+　teraterm.ini で YmodemLog エントリを有効にすると、通信ログを採取することができます。通信ログファイルは、ttermpro.exe と同じディレクトリに"YMODEM.LOG"という名前で生成されます。
 
 <pre class=code>
 ; YMODEM log
 YmodemLog=on
 </pre>
 
-�@�ȒP�ȗ�Ƃ��āATera Term(COM10)����<a href="http://nanno.dip.jp/softlib/man/rlogin/" target="_blank">RLogin</a>(COM11)�ɑ΂��āA67�o�C�g�̃t�@�C���𑗐M�����ꍇ�̒ʐM���O�������܂��B�u&lt;&lt;&lt;�v�s��Tera Term���z�X�g�����M�����f�[�^�ŁA�u&gt;&gt;&gt;�v�s��Tera Term�����M�����f�[�^�ł��B
-�@
+　簡単な例として、Tera Term(COM10)から<a href="http://nanno.dip.jp/softlib/man/rlogin/" target="_blank">RLogin</a>(COM11)に対して、67バイトのファイルを送信した場合の通信ログを示します。「&lt;&lt;&lt;」行はTera Termがホストから受信したデータで、「&gt;&gt;&gt;」行はTera Termが送信したデータです。
+　
 <pre class=code>
 &lt;&lt;&lt;
 43                                                  C
@@ -1874,20 +1874,20 @@ YmodemLog=on
 06 
 </pre>
 
-�@��L���O�̈Ӗ��͈ȉ��̂Ƃ���ł��B
-�@
+　上記ログの意味は以下のとおりです。
+　
 <ol>
- <li>'C'�i���M�v���j��M(43)</li>
- <li>�u���b�N0�i�t�@�C�����j�̑��M</li>
- <li>ACK��M(06)</li>
- <li>'C'�i���M�v���j��M (43)</li>
- <li>�u���b�N1�̑��M</li>
- <li>ACK��M (06)</li>
- <li>EOT�̑��M (04)</li>
- <li>ACK��M(06)</li>
- <li>'C'�i���M�v���j��M (43)</li>
- <li>�u���b�N0�i�I�[���[���j�̑��M</li>
- <li>ACK��M(06)</li>
+ <li>'C'（送信要求）受信(43)</li>
+ <li>ブロック0（ファイル情報）の送信</li>
+ <li>ACK受信(06)</li>
+ <li>'C'（送信要求）受信 (43)</li>
+ <li>ブロック1の送信</li>
+ <li>ACK受信 (06)</li>
+ <li>EOTの送信 (04)</li>
+ <li>ACK受信(06)</li>
+ <li>'C'（送信要求）受信 (43)</li>
+ <li>ブロック0（オールゼロ）の送信</li>
+ <li>ACK受信(06)</li>
 </ol>
 
 
@@ -1899,24 +1899,24 @@ TBD
 
 
   <h3>KERMIT</h3>
-�@KERMIT�i�J�[�~�b�g�F�Z�T�~�X�g���[�g�ɓo�ꂷ��J�G���̃}�y�b�g�j�́A1981�N�ɃR�����r�A��w�ŊJ�����ꂽ�t�@�C���]���v���g�R���ł���A���݂̓J�[�~�b�g�v���W�F�N�g�ɂ�胁���e�i���X����Ă��܂��B���L�̃T�C�g����d�l��������ł��܂��B<br>
-�@
+　KERMIT（カーミット：セサミストリートに登場するカエルのマペット）は、1981年にコロンビア大学で開発されたファイル転送プロトコルであり、現在はカーミットプロジェクトによりメンテナンスされています。下記のサイトから仕様書が入手できます。<br>
+　
 <ul>
   <li><a href="http://www.kermitproject.org/" target="_blank">The Kermit Project</a></li>
 </ul>
 <br>
 
-�@��L�T�C�g�ł́A�\�[�X�R�[�h���z�z����Ă���A�l�X�ȃv���b�g�t�H�[���Ɏ�������Ă��܂��B�����̖��̂Ƃ��ẮAC-Kermit��E-Kermit�AKermit95�Ȃǂ�����܂��B<br>
-�@teraterm.ini �� KmtLog �G���g����L���ɂ���ƁA�ʐM���O���̎悷�邱�Ƃ��ł��܂��B�ʐM���O�t�@�C���́Attermpro.exe �Ɠ����f�B���N�g����"KERMIT.LOG"�Ƃ������O�Ő�������܂��B
-�@
+　上記サイトでは、ソースコードも配布されており、様々なプラットフォームに実装されています。実装の名称としては、C-KermitやE-Kermit、Kermit95などがあります。<br>
+　teraterm.ini で KmtLog エントリを有効にすると、通信ログを採取することができます。通信ログファイルは、ttermpro.exe と同じディレクトリに"KERMIT.LOG"という名前で生成されます。
+　
 <pre class=code>
 ; Kermit log
 KmtLog=on
 </pre>
 
-�@KERMIT�͌��X�ᑬ�ȃV���A���ʐM��z�肵�Ă��邽�߁A��x�ɑ����f�[�^�T�C�Y�͂�������94�o�C�g�ł��B�������A�g���I�v�V�����Ő���o�C�g�̃f�[�^���������Ƃ͂ł��܂����A�N���C�A���g�ƃT�[�o�̗��������Y�@�\���T�|�[�g���Ă���K�v������܂��B<br>
-�@�p�P�b�g�̃t�H�[�}�b�g�͊�{�`���Ɗg���`��������A�d�l���́uAppendix I Packet Format and Types�v�ɕ�����₷���}��������܂��B���L�Ɉ��p���܂��B<br>
-�@�ȉ��͊�{�`���ł��B94�o�C�g�܂ł��������܂���B
+　KERMITは元々低速なシリアル通信を想定しているため、一度に送れるデータサイズはせいぜい94バイトです。ただし、拡張オプションで数千バイトのデータを扱うことはできますが、クライアントとサーバの両方が当該機能をサポートしている必要があります。<br>
+　パケットのフォーマットは基本形式と拡張形式があり、仕様書の「Appendix I Packet Format and Types」に分かりやすい図解があります。下記に引用します。<br>
+　以下は基本形式です。94バイトまでしか扱えません。
 
 <pre class=code>
 Basic Kermit Packet Layout
@@ -1928,16 +1928,16 @@ Basic Kermit Packet Layout
              |                                 |
              |&lt;--------LEN-32 characters------&gt;|
 
-  MARK   �p�P�b�g�̐擪�BCTRL-A(0x01)������B
-  LEN    �p�P�b�g�T�C�Y+32�B"LEN+2"�o�C�g���S�̃T�C�Y�ƂȂ�B
-  SEQ    �u�V�[�P���X�ԍ�+32�v�̏�]64�B�V�[�P���X�ԍ���0�`63�܂ŁB
-  TYPE   �啶���A���t�@�x�b�g�Ńp�P�b�g�̎�ʂ�\���B
-  DATA   �f�[�^
-  CHECK  ���Z�`�F�b�N�T���B1,2,3�o�C�g�̂����ꂩ�̌`����I�ׂ�B
-  &lt;terminator&gt;   ����R�[�h
+  MARK   パケットの先頭。CTRL-A(0x01)が入る。
+  LEN    パケットサイズ+32。"LEN+2"バイトが全体サイズとなる。
+  SEQ    「シーケンス番号+32」の剰余64。シーケンス番号は0〜63まで。
+  TYPE   大文字アルファベットでパケットの種別を表す。
+  DATA   データ
+  CHECK  加算チェックサム。1,2,3バイトのいずれかの形式を選べる。
+  &lt;terminator&gt;   制御コード
 </pre>
 
-�@�ȉ��͊g���`���ł��B
+　以下は拡張形式です。
 
 <pre class=code>
 Kermit Extended Packet Layout
@@ -1954,11 +1954,11 @@ Kermit Extended Packet Layout
 HCHECK is a single-character type 1 checksum
 </pre>
 
-�@�g���`���ł�94�o�C�g�ȏ�̃f�[�^����x�ɑ����悤�ɂ��邽�߁A�f�[�^�T�C�Y��\������̈悪2�o�C�g�ɑ����Ă��܂��B��{�`����"LEN"�͏�Ƀ[���ł��i32�����Z����̂ŁAASCII�R�[�h�̋󔒂ɂȂ�j�B�܂��A�w�b�_�T�C�Y��3�o�C�g�����Ă���A�w�b�_�p�̃`�F�b�N�T�����ǉ�����Ă��܂��B<br>
-�@<br>
-�@
-�@���L�͏���������ł��B
-�@
+　拡張形式では94バイト以上のデータを一度に送れるようにするため、データサイズを表現する領域が2バイトに増えています。基本形式の"LEN"は常にゼロです（32を加算するので、ASCIIコードの空白になる）。また、ヘッダサイズが3バイト増えており、ヘッダ用のチェックサムが追加されています。<br>
+　<br>
+　
+　下記は初期文字列です。
+　
 <pre class=code>
 Initialization String
 1         2      3       4       5       6       7       8       9       10
@@ -1986,7 +1986,7 @@ MAXLX2
       Low part of extended packet maximum length (mod(max,95)+32)
 </pre>
 
-�@���L�̓p�P�b�g��ʂł��B
+　下記はパケット種別です。
 
 <pre class=code>
 Packet Types

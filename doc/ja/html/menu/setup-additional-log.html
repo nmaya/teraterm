@@ -2,14 +2,14 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>Additional settings / "Log" �^�u ([Setup] ���j���[)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Additional settings / "Log" タブ ([Setup] メニュー)</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1><a href="setup-additional.html">Additional settings</a> / "Log" �^�u ([Setup] ���j���[) </h1>
+    <h1><a href="setup-additional.html">Additional settings</a> / "Log" タブ ([Setup] メニュー) </h1>
 
     <dl>
       <dt>View log editor</dt>
@@ -17,152 +17,152 @@
         <dl>
           <dt id="ViewlogEditor">exe file</dt>
           <dd>
-            ���O��\������v���O�������w�肵�܂��B<br>
-            ���΃p�X�Ŏw�肷��ƁAttermpro.exe�̃t�H���_�A���ϐ�PATH�̃t�H���_����v���O�������������܂��B<br>
-            �󔒂̎��̓t�@�C���̊g���q�Ɋ֘A�t�����ꂽ�v���O�������g�p����܂��B
+            ログを表示するプログラムを指定します。<br>
+            相対パスで指定すると、ttermpro.exeのフォルダ、環境変数PATHのフォルダからプログラムを検索します。<br>
+            空白の時はファイルの拡張子に関連付けされたプログラムが使用されます。
           </dd>
           <dt id="ViewlogEditorArg">args</dt>
           <dd>
-            �v���O�����̈��������w�肵�܂��B
+            プログラムの引き数を指定します。
           </dd>
         </dl>
       </dd>
 
       <dt id="LogDefaultName">Default log file name(strftime format)</dt>
       <dd>
-	�W���̃��O�t�@�C�������w�肵�܂��B<br />
-	<span id="LogFileNameFormat">Tera Term �Ǝ��̏����� strftime�Ɠ��l�̏������g�p�ł��܂��B</span>
+	標準のログファイル名を指定します。<br />
+	<span id="LogFileNameFormat">Tera Term 独自の書式と strftimeと同様の書式が使用できます。</span>
 <pre>
-Tera Term �Ǝ��̏���:
-&amp;h      �z�X�g���B���ڑ��̏ꍇ�͋�B
-&amp;p      TCP �|�[�g�ԍ��B���ڑ��̏ꍇ�͋�BTCP �ڑ��łȂ��Ƃ�����B
-&amp;u      Windows �̃��O�I�����[�U��
+Tera Term 独自の書式:
+&amp;h      ホスト名。未接続の場合は空。
+&amp;p      TCP ポート番号。未接続の場合は空。TCP 接続でないときも空。
+&amp;u      Windows のログオンユーザ名
 
-strftime �Ɠ��l�̏���:
-%a      ���݂̃��P�[���̗j���̏ȗ��`�B
-%A      ���݂̃��P�[���̗j���̐������B
-%b      ���݂̃��P�[���̌��̏ȗ��`�B
-%B      ���݂̃��P�[���̌��̐������B
-%c      ���P�[���ɑΉ�������t�Ǝ����̕\���B
-%d      10 �i���ŕ\�����̓��t (01 �` 31)�B
-%H      24 ���ԕ\�L�̎��� (00 �` 23)�B
-%I      12 ���ԕ\�L�̎��� (01 �` 12)�B
-%j      10 �i���ŕ\���N������̓��� (001 �` 366)�B
-%m      10 �i���ŕ\���� (01 �` 12)�B
-%M      10 �i���ŕ\���� (00 �` 59)�B
-%p      ���݂̃��P�[���̌ߑO/�ߌ�B
-%S      10 �i���ŕ\���b (00 �` 59)�B
-%U      10 �i���ŕ\���T�̒ʂ��ԍ��B���j�����T�̍ŏ��̓��Ƃ��� (00 �` 53)�B
-%w      10 �i���ŕ\���j�� (0 �` 6�A���j���� 0)�B
-%W      10 �i���ŕ\���T�̒ʂ��ԍ��B���j�����T�̍ŏ��̓��Ƃ��� (00 �` 53)�B
-%x      ���݂̃��P�[���̓��t�\���B
-%X      ���݂̃��P�[���̎����\���B
-%y      10 �i���ŕ\������̉� 2 �� (00 �` 99)�B
-%Y      10 �i���ŕ\�� 4 ���̐���B
-%z, %Z  ���W�X�g���̐ݒ�ɉ����āA�^�C�� �]�[���̖��O�܂��͏ȗ��`���w�肵�܂��B
-	�^�C�� �]�[�����s���ȏꍇ�͎w�肵�܂���B
-%%      �p�[�Z���g�L���B
+strftime と同様の書式:
+%a      現在のロケールの曜日の省略形。
+%A      現在のロケールの曜日の正式名。
+%b      現在のロケールの月の省略形。
+%B      現在のロケールの月の正式名。
+%c      ロケールに対応する日付と時刻の表現。
+%d      10 進数で表す月の日付 (01 〜 31)。
+%H      24 時間表記の時間 (00 〜 23)。
+%I      12 時間表記の時間 (01 〜 12)。
+%j      10 進数で表す年初からの日数 (001 〜 366)。
+%m      10 進数で表す月 (01 〜 12)。
+%M      10 進数で表す分 (00 〜 59)。
+%p      現在のロケールの午前/午後。
+%S      10 進数で表す秒 (00 〜 59)。
+%U      10 進数で表す週の通し番号。日曜日を週の最初の日とする (00 〜 53)。
+%w      10 進数で表す曜日 (0 〜 6、日曜日が 0)。
+%W      10 進数で表す週の通し番号。月曜日を週の最初の日とする (00 〜 53)。
+%x      現在のロケールの日付表現。
+%X      現在のロケールの時刻表現。
+%y      10 進数で表す西暦の下 2 桁 (00 〜 99)。
+%Y      10 進数で表す 4 桁の西暦。
+%z, %Z  レジストリの設定に応じて、タイム ゾーンの名前または省略形を指定します。
+	タイム ゾーンが不明な場合は指定しません。
+%%      パーセント記号。
 </pre>
 	    <div id="LogFullpath">
-	      <div style="font-weight:bold;">���O�t�@�C�������t���p�X�łȂ��Ƃ��̓���</div>
-	      �ȉ��̏����Őݒ�l�𑖍����A�l������΂��̃t�H���_����̑��΃p�X�Ƃ݂Ȃ��܂��B
+	      <div style="font-weight:bold;">ログファイル名がフルパスでないときの動作</div>
+	      以下の順序で設定値を走査し、値があればそのフォルダからの相対パスとみなします。
 	      <ul>
-	        <li><a href="#LogDefaultPath">�W���̃��O�ۑ���</a></li>
-	        <li><a href="../setup/folder.html#LogDir">���O�t�H���_</a></li>
+	        <li><a href="#LogDefaultPath">標準のログ保存先</a></li>
+	        <li><a href="../setup/folder.html#LogDir">ログフォルダ</a></li>
 	      </ul>
         </div>
       </dd>
 
       <dt id="LogDefaultPath">Default log save folder</dt>
       <dd>
-	�[�����O�̕ۑ�����w�肵�܂��B<br>
-	�[�����O�̕ۑ���ɂ��Ă�<a href="../setup/folder.html#TermLogDir">Tera Term ���g�p����t�H���_ / �[�����O</a>���Q�Ƃ��������B<br>
-	���݂̃t�H���_��<a href="../menu/setup-directory.html">Setup Directory</a>�Ŋm�F�ł��܂��B
+	端末ログの保存先を指定します。<br>
+	端末ログの保存先については<a href="../setup/folder.html#TermLogDir">Tera Term が使用するフォルダ / 端末ログ</a>を参照ください。<br>
+	現在のフォルダは<a href="../menu/setup-directory.html">Setup Directory</a>で確認できます。
       </dd>
 
       <dt id="LogAutoStart">Auto start logging</dt>
       <dd>
-	�ڑ����Ɏ����I�Ƀ��O�̎���J�n����@�\��L���ɂ��܂��B���O�t�@�C�����ɂ́A�W���̃��O�t�@�C�������g�p����܂��B<br>
-	<a href="../commandline/teraterm.html#nolog">/nolog</a> �R�}���h���C���I�v�V�������w�肳��Ă���ƁA���Y�@�\�͖���������܂��B
+	接続時に自動的にログ採取を開始する機能を有効にします。ログファイル名には、標準のログファイル名が使用されます。<br>
+	<a href="../commandline/teraterm.html#nolog">/nolog</a> コマンドラインオプションが指定されていると、当該機能は無効化されます。
       </dd>
 
       <dt id="LogRotate">Log Rotate</dt>
       <dd>
-	���O�̃��[�e�[�g��L���ɂ��܂��B���[�e�[�g���ꂽ���O�t�@�C���ɂ́A�g���q�� .1, .2, .3 �c �ƕt�^����܂��B
+	ログのローテートを有効にします。ローテートされたログファイルには、拡張子に .1, .2, .3 … と付与されます。
 	<dl>
 	  <dt id="LogRotateSize">Size</dt>
 	  <dd>
-	    ���O�����[�e�[�g���������T�C�Y��ݒ肵�܂��B�P�ʂ�"KB", "MB"���w�肷�邱�Ƃ��ł��܂��B
+	    ログをローテートさせる上限サイズを設定します。単位に"KB", "MB"を指定することもできます。
 	  </dd>
 
 	  <dt id="LogRotateStep">Rotate</dt>
 	  <dd>
-	    ���O�����[�e�[�g�����鐢�㐔��ݒ肵�܂��B"0"�̏ꍇ�́A����Ǘ������܂���B
+	    ログをローテートさせる世代数を設定します。"0"の場合は、世代管理をしません。
 	  </dd>
 	</dl>
       </dd>
 
       <dt id="LogOption">Log option</dt>
       <dd>
-	���O�t�@�C���̎�ʂ�ݒ肵�܂��B
+	ログファイルの種別を設定します。
 	<dl>
 	  <dt id="LogBinary">Binary</dt>
 	  <dd>
-	    �z�X�g�����M�������������̂܂܃t�@�C���ɏ������݂����ꍇ�͑I�����Ă��������B
-	    �I�����Ȃ��ꍇ�́A�����R�[�h�A���s�����͕ϊ�����A
-	    �G�X�P�[�v�V�[�P���X�͎�菜����Ă��珑�����܂�܂��B
+	    ホストから受信した文字をそのままファイルに書き込みたい場合は選択してください。
+	    選択しない場合は、漢字コード、改行文字は変換され、
+	    エスケープシーケンスは取り除かれてから書き込まれます。
 	  </dd>
 
 	  <dt id="LogAppend">Append</dt>
 	  <dd>
-	    ���łɑ��݂���t�@�C���ɒǉ����ď������݂����ꍇ�͑I�����Ă��������B
-	    �I�����Ȃ��ꍇ�͏㏑������܂��B
+	    すでに存在するファイルに追加して書き込みたい場合は選択してください。
+	    選択しない場合は上書きされます。
 	  </dd>
 
 	  <dt id="LogTypePlainText">Plain text</dt>
 	  <dd>
-	    ASCII ��\���������������݂����Ȃ��ꍇ�͑I�����Ă��������B<br>
-	    ��Binary �I�v�V�������L���̏ꍇ�͑I��s�ł���A�ݒ�͖���������܂��B
+	    ASCII 非表示文字を書き込みたくない場合は選択してください。<br>
+	    ※Binary オプションが有効の場合は選択不可であり、設定は無効化されます。
 	  </dd>
 
 	  <dt id="LogHideDialog">Hide dialog</dt>
 	  <dd>
-	    ���O�]���̃_�C�A���O��\���������Ȃ��ꍇ�͑I�����Ă��������B
+	    ログ転送のダイアログを表示したくない場合は選択してください。
 	  </dd>
 
 	  <dt id="LogIncludeScreenBuffer">Include screen buffer</dt>
 	  <dd>
-	    ���݂̒[���o�b�t�@�����ׂă��O�t�@�C���ɏ����o���Ă���A���O�̎���J�n���܂��B
+	    現在の端末バッファをすべてログファイルに書き出してから、ログ採取を開始します。
 	  </dd>
 
 	  <dt id="LogTimestamp">Timestamp</dt>
 	  <dd>
-	    ���O�̍s���Ɏ�����ǉ��������ꍇ�͑I�����Ă��������B�s�̍ŏ��̕������o�͂��ꂽ�������ǉ�����܂��B<br>
-	    �^�C���X�^���v�̎�ʂƂ��Ĉȉ����I���ł��܂��B
+	    ログの行頭に時刻を追加したい場合は選択してください。行の最初の文字が出力された時刻が追加されます。<br>
+	    タイムスタンプの種別として以下が選択できます。
 	    <dl id="LogTimestampType">
 	      <dt>Local Time</dt>
 	      <dd>
-		���[�J���^�C���ł̓������L�^���܂��B
+		ローカルタイムでの日時を記録します。
 	      </dd>
 
 	      <dt>UTC</dt>
 	      <dd>
-		UTC �ł̓������L�^���܂��B
+		UTC での日時を記録します。
 	      </dd>
 
 	      <dt>Elapsed Time (Logging)</dt>
 	      <dd>
-		���O�擾�J�n����̌o�ߎ��Ԃ��L�^���܂��B
+		ログ取得開始からの経過時間を記録します。
 	      </dd>
 
 	      <dt>Elapsed Time (Connection)</dt>
 	      <dd>
-		�ڑ��J�n����̌o�ߎ��Ԃ��L�^���܂��B
+		接続開始からの経過時間を記録します。
 	      </dd>
 	    </dl>
-	    Local Time, UTC �ł̓����̃t�H�[�}�b�g�� <a href="../setup/teraterm-misc.html#LogTimestampFormat">LogTimestampFormat</a> �̐ݒ�ɏ]���܂��B<br>
-	    Elapsed Time (Logging), Elapsed Time (Connection) �ł� LogTimestampFormat �̐ݒ�͖�������܂��B<br>
-	    ��Binary �I�v�V�������L���̏ꍇ�͑I��s�ł���A�ݒ�͖���������܂��B
+	    Local Time, UTC での日時のフォーマットは <a href="../setup/teraterm-misc.html#LogTimestampFormat">LogTimestampFormat</a> の設定に従います。<br>
+	    Elapsed Time (Logging), Elapsed Time (Connection) では LogTimestampFormat の設定は無視されます。<br>
+	    ※Binary オプションが有効の場合は選択不可であり、設定は無効化されます。
 	  </dd>
 	</dl>
       </dd>

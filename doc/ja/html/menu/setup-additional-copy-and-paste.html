@@ -2,83 +2,83 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>Additional settings / "Copy and Paste" �^�u ([Setup] ���j���[)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Additional settings / "Copy and Paste" タブ ([Setup] メニュー)</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1><a href="setup-additional.html">Additional settings</a> / "Copy and Paste" �^�u ([Setup] ���j���[)</h1>
+    <h1><a href="setup-additional.html">Additional settings</a> / "Copy and Paste" タブ ([Setup] メニュー)</h1>
 
     <dl>
       <dt id="EnableContinuedLineCopy">Enable continued line copy</dt>
       <dd>
-	�p�����Ă���s�����s�����ɃR�s�[����@�\��L���ɂ��܂��B<br>
-	�_�u���N���b�N�Ń��[�h��I�����鎞�A�_�u���N���b�N��̃h���b�O�ł��L���ł��B<br>
-	<a href="../usage/mouse.html">�}�E�X�̎g����</a>���Q�Ƃ��������B
+	継続している行を改行せずにコピーする機能を有効にします。<br>
+	ダブルクリックでワードを選択する時、ダブルクリック後のドラッグでも有効です。<br>
+	<a href="../usage/mouse.html">マウスの使い方</a>を参照ください。
       </dd>
 
       <dt id="DisablePasteMouseRButton">Disable mouse R button paste</dt>
       <dd>
-	�E�N���b�N�ŃN���b�v�{�[�h�̓��e��\��t����@�\�𖳌��ɂ��܂��B
+	右クリックでクリップボードの内容を貼り付ける機能を無効にします。
       </dd>
 
       <dt id="ConfirmPasteMouseRButton">Confirm mouse R button paste</dt>
       <dd>
-	�E�N���b�N�ŃN���b�v�{�[�h�̓��e��\��t����Ƃ��A
-	�|�b�v�A�b�v���j���[�Ŋm�F����@�\��L���ɂ��܂��B
+	右クリックでクリップボードの内容を貼り付けるとき、
+	ポップアップメニューで確認する機能を有効にします。
       </dd>
 
       <dt id="DisablePasteMouseMButton">Disable mouse M button paste</dt>
       <dd>
-	���N���b�N�ŃN���b�v�{�[�h�̓��e��\��t����@�\�𖳌��ɂ��܂��B
+	中クリックでクリップボードの内容を貼り付ける機能を無効にします。
       </dd>
 
       <dt id="SelectOnlyByLButton">Select only by L button</dt>
       <dd>
-	�}�E�X�h���b�O�ɂ��I�����A���{�^���ł̂ݗL���ɂ���B
+	マウスドラッグによる選択を、左ボタンでのみ有効にする。
       </dd>
 
       <dt id="TrimTrailingNL">Trim trailing new line character when pasting</dt>
       <dd>
-	�\��t�����ɖ����̉��s���폜����B
+	貼り付け時に末尾の改行を削除する。
       </dd>
 
       <dt id="ConfirmChangePaste">Confirm change paste</dt>
       <dd>
-	�N���b�v�{�[�h�ɉ��s�R�[�h(CR/LF)���܂ޏꍇ�A�}�E�X�̉E�N���b�N�����Alt+V��
-	Tera Term�E�B���h�E�֓\��t���悤�Ƃ���^�C�~���O�ŁA�m�F�_�C�A���O��\�������邱�Ƃ��ł��܂��B
-	�둀��ɂ��A�[���֗\�����ʃR�}���h������h�����Ƃ��ł��܂��B
+	クリップボードに改行コード(CR/LF)を含む場合、マウスの右クリックおよびAlt+Vで
+	Tera Termウィンドウへ貼り付けようとするタイミングで、確認ダイアログを表示させることができます。
+	誤操作により、端末へ予期せぬコマンド投入を防ぐことができます。
       </dd>
 
       <dt id="ConfirmChangePasteStringFile">String file</dt>
       <dd>
-	�N���b�v�{�[�h�ɁA���̐ݒ�Ŏw�肵���t�@�C�����ɑ��݂���e�L�X�g���܂܂��ꍇ�A�}�E�X�̉E�N���b�N�����Alt+V��
-	Tera Term�E�B���h�E�֓\��t���悤�Ƃ���^�C�~���O�ŁA�m�F�_�C�A���O��\�������邱�Ƃ��ł��܂��B
-	�둀��ɂ��A�[���֗\�����ʃR�}���h������h�����Ƃ��ł��܂��B<br>
-	���̐ݒ�́AConfirmChangePaste�̐ݒ肪�L���ȏꍇ�ɍ�p���܂��B
+	クリップボードに、この設定で指定したファイル内に存在するテキストが含まれる場合、マウスの右クリックおよびAlt+Vで
+	Tera Termウィンドウへ貼り付けようとするタイミングで、確認ダイアログを表示させることができます。
+	誤操作により、端末へ予期せぬコマンド投入を防ぐことができます。<br>
+	この設定は、ConfirmChangePasteの設定が有効な場合に作用します。
       </dd>
 
       <dt id="DelimiterChar">Delimiter characters</dt>
       <dd>
-	�P��I���̋�؂蕶����ݒ肵�܂��B
+	単語選択の区切り文字を設定します。
       </dd>
 
       <dt id="PasteDelayPerLine">Paste delay per line</dt>
       <dd>
-	�����s�̃f�[�^��\��t����Ƃ��A���s������邲�ƂɃf�[�^�̑��M��x�������邱�Ƃ��ł��܂��B�x�����鎞�Ԃ��~���b�Őݒ肵�܂��B
+	複数行のデータを貼り付けるとき、改行が現れるごとにデータの送信を遅延させることができます。遅延する時間をミリ秒で設定します。
       </dd>
 
       <dt id="SelectOnActivate">Enabling text selection when the window is activated by mouse</dt>
       <dd>
-        ��I����Ԃ̃E�B���h�E���A�����̈���}�E�X�ŃN���b�N���邱�Ƃ�
-        �I������Ƃ��A�����̑I�����֎~���܂��B
+        非選択状態のウィンドウを、文字領域をマウスでクリックすることで
+        選択するとき、文字の選択を禁止します。
       </dd>
 
       <dt id="AutoTextCopy">Copy to windows clipboard when text is selected</dt>
       <dd>
-        �}�E�X�ŕ������I�������Ƃ��A�N���b�v�{�[�h�փR�s�[���܂��B
+        マウスで文字列を選択したとき、クリップボードへコピーします。
       </dd>
 
     </dl>

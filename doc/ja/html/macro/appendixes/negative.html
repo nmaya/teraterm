@@ -2,34 +2,34 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>���̐����萔�ɂ��Ă̒���</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>負の整数定数についての注意</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </head>
 <body>
 
-<h1>���̐����萔�ɂ��Ă̒���</h1>
+<h1>負の整数定数についての注意</h1>
 <p>
-�R�}���h�̃p�����[�^�ɕ��̐����萔���g�p����ꍇ�A�ȉ��̂悤�Ȗ�肪��������ꍇ������B�Ⴆ�΁A
+コマンドのパラメータに負の整数定数を使用する場合、以下のような問題が発生する場合がある。例えば、
 </p>
 
 <pre><code>for i 5 -1</code></pre>
 
 <p>
-���̃R�}���h�͕��@�G���[�𔭐�������B�Ȃ��Ȃ�A2�Ԗڂ̃p�����[�^�� "5" �ł͂Ȃ��āA"5-1" �Ƃ݂Ȃ���A3�Ԗڂ̃p�����[�^���Ȃ��Ȃ邩��ł���B���̖���h���ɂ͈ȉ��̂����ꂩ�̕��@���Ƃ�B
+このコマンドは文法エラーを発生させる。なぜなら、2番目のパラメータは "5" ではなくて、"5-1" とみなされ、3番目のパラメータがなくなるからである。この問題を防ぐには以下のいずれかの方法をとる。
 </p>
 
 <ol>
-  <li>"-" �̑O�� "0" ������B
+  <li>"-" の前に "0" をつける。
 <pre><code>for i 5 0-1</code></pre>
   </li>
 
-  <li>�ۊ��ʂ�����B
+  <li>丸括弧をつける。
 <pre><code>for i 5 (-1)</code></pre>
   </li>
 
-  <li>���̐����萔��ϐ��ɑ�����Ă���g�p����B
+  <li>負の整数定数を変数に代入してから使用する。
 <pre><code>
 A = -1
 for i 5 A

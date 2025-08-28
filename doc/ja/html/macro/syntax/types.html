@@ -2,41 +2,41 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>�f�[�^�^</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>データ型</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>�f�[�^�^</h1>
+<h1>データ型</h1>
 
 <p>
-TTL ��������f�[�^�̌^��4��ށB
+TTL が扱えるデータの型は4種類。
 </p>
 
-<h2 id="Integer">1) ����</h2>
+<h2 id="Integer">1) 整数</h2>
 <p>
-�����t�� 32 bit�A-2147483648����2147483647�܂ŁB<br />
-���������_�͖��T�|�[�g�B
+符号付き 32 bit、-2147483648から2147483647まで。<br />
+浮動小数点は未サポート。
 </p>
 
-<h2 id="String">2) ������</h2>
+<h2 id="String">2) 文字列</h2>
 <p>
-NUL �������������ׂĂ̕������܂ނ��Ƃ��ł���B�ő咷��511�����B<br />
-�����񃊃e�����A�}�N���R�}���h�̕����R�[�h��UTF-8�Ȃ̂ŁA������ϐ��̕����R�[�h��UTF-8�ň����̂����R�ƂȂ�B
+NUL 文字を除くすべての文字を含むことができる。最大長は511文字。<br />
+文字列リテラル、マクロコマンドの文字コードはUTF-8なので、文字列変数の文字コードはUTF-8で扱うのが自然となる。
 </p>
 
-<h2 id="IntegerArray">3) �����z��</h2>
+<h2 id="IntegerArray">3) 整数配列</h2>
 <p>
-<a href="../command/intdim.html">intdim</a> �}�N���R�}���h�ł��炩���ߗv�f����錾���邱�ƂŐ����̔z����������Ƃ��ł���B�v�f���͍ő�65536�B<br />
-�e�v�f�ň�����f�[�^�͐����Ɠ����B<br />
+<a href="../command/intdim.html">intdim</a> マクロコマンドであらかじめ要素数を宣言することで整数の配列を扱うことができる。要素数は最大65536。<br />
+各要素で扱えるデータは整数と同じ。<br />
 </p>
 
-<h2 id="StringArray">4) ������z��</h2>
+<h2 id="StringArray">4) 文字列配列</h2>
 <p>
-<a href="../command/strdim.html">strdim</a> �}�N���R�}���h�ł��炩���ߗv�f����錾���邱�Ƃŕ�����̔z����������Ƃ��ł���B�v�f���͍ő�65536�B<br />
-�e�v�f�ň�����f�[�^�͕�����Ɠ����B
+<a href="../command/strdim.html">strdim</a> マクロコマンドであらかじめ要素数を宣言することで文字列の配列を扱うことができる。要素数は最大65536。<br />
+各要素で扱えるデータは文字列と同じ。
 </p>
 
 </BODY>

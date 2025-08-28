@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>loginfo</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,70 +14,70 @@
 <h1>loginfo</h1>
 
 <p>
-Tera Term �̃��O�擾��Ԃ𓾂�<em>(�o�[�W���� 4.73�ȍ~)</em>
+Tera Term のログ取得状態を得る<em>(バージョン 4.73以降)</em>
 </p>
 
 <pre class="macro-syntax">
 loginfo &lt;strvar&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-���O���擾���Ă���ꍇ�Astrvar �Ƀ��O�t�@�C�������i�[����A���O�擾���̃t���O�̏�Ԃ� result �Ɋi�[�����B<br>
-���O���擾���Ă��Ȃ��ꍇ�� result �� -1 ���i�[�����B
+ログを取得している場合、strvar にログファイル名が格納され、ログ取得時のフラグの状態が result に格納される。<br>
+ログを取得していない場合は result に -1 が格納される。
 </p>
 <p>
-���O�擾���� result �Ɋi�[�����l�́A�ȉ��̓� on �ɂȂ��Ă���t���O�ɑΉ�����l�̍��v�ƂȂ�B
+ログ取得時に result に格納される値は、以下の内 on になっているフラグに対応する値の合計となる。
 </p>
 
 <table>
  <tr>
-  <th>�l</th>
-  <th>�Ӗ�</th>
+  <th>値</th>
+  <th>意味</th>
  </tr>
  <tr>
   <td>1</td>
-  <td>�o�C�i���t���O</td>
+  <td>バイナリフラグ</td>
  </tr>
  <tr>
   <td>2</td>
-  <td>�A�y���h�t���O</td>
+  <td>アペンドフラグ</td>
  </tr>
  <tr>
   <td>4</td>
-  <td>�v���C���e�L�X�g�t���O</td>
+  <td>プレインテキストフラグ</td>
  </tr>
  <tr>
   <td>8</td>
-  <td>�^�C���X�^���v�t���O</td>
+  <td>タイムスタンプフラグ</td>
  </tr>
  <tr>
   <td>16</td>
-  <td>�_�C�A���O��\���t���O</td>
+  <td>ダイアログ非表示フラグ</td>
  </tr>
 </table>
 
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 loginfo logfile
 
 if result == -1 then
-	; ���O���擾���Ă��Ȃ��̂ŁA�V���Ƀ��O�擾���J�n����
+	; ログを取得していないので、新たにログ取得を開始する
 	logopen "test.log" 0 0 0 1
 
 elseif result &amp; 8 == 0 then
 	flags = result
-	; �^�C���X�^���v�������Ȃ̂ŁA�^�C���X�^���v��L���ɂ��ĊJ���Ȃ����B
+	; タイムスタンプが無効なので、タイムスタンプを有効にして開きなおす。
 	logclose
 	logopen logfile 0 1 flags&amp;4 1 flags&amp;16
 endif
 </pre>
 
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="logopen.html">logopen</a></li>
 </ul>

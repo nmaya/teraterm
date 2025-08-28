@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>strmatch</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,47 +14,47 @@
 <h1>strmatch</h1>
 
 <p>
-³‹K•\Œ»‚É‚æ‚éƒpƒ^[ƒ“ƒ}ƒbƒ`ƒ“ƒO‚ğs‚¤B<em>(ƒo[ƒWƒ‡ƒ“4.59ˆÈ~)</em>
+æ­£è¦è¡¨ç¾ã«ã‚ˆã‚‹ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã†ã€‚<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³4.59ä»¥é™)</em>
 </p>
 
 <pre class="macro-syntax">
 strmatch &lt;target string&gt; &lt;string with regular expression&gt;
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-<a href="../../reference/RE.txt">Oniguruma ‚Ì³‹K•\Œ»</a> ‚ªg—p‚Å‚«‚éB<br>
-&lt;target string&gt;ˆø”‚Éw’è‚³‚ê‚½•¶š—ñ‚ğA³‹K•\Œ» &lt;string with regular expression&gt; ‚É‚æ‚éƒpƒ^[ƒ“‚É‡’v‚·‚é‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<br>
-‚±‚ÌƒRƒ}ƒ“ƒh‚ÌÀsŒ‹‰Ê‚ÍƒVƒXƒeƒ€•Ï” result , matchstr , groupmatchstr ‚ÉŠi”[‚³‚ê‚éB•Ï” result ‚Ì’l‚ÌˆÓ–¡‚ÍˆÈ‰º‚Ì‚Æ‚¨‚èB
+<a href="../../reference/RE.txt">Oniguruma ã®æ­£è¦è¡¨ç¾</a> ãŒä½¿ç”¨ã§ãã‚‹ã€‚<br>
+&lt;target string&gt;å¼•æ•°ã«æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’ã€æ­£è¦è¡¨ç¾ &lt;string with regular expression&gt; ã«ã‚ˆã‚‹ãƒ‘ã‚¿ãƒ¼ãƒ³ã«åˆè‡´ã™ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<br>
+ã“ã®ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè¡Œçµæœã¯ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° result , matchstr , groupmatchstr ã«æ ¼ç´ã•ã‚Œã‚‹ã€‚å¤‰æ•° result ã®å€¤ã®æ„å‘³ã¯ä»¥ä¸‹ã®ã¨ãŠã‚Šã€‚
 </p>
 
 <table>
  <tr>
-  <th>’l</th>
-  <th>ˆÓ–¡</th>
+  <th>å€¤</th>
+  <th>æ„å‘³</th>
  </tr>
  <tr>
   <td>0</td>
-  <td>ƒ}ƒbƒ`‚µ‚È‚©‚Á‚½</td>
+  <td>ãƒãƒƒãƒã—ãªã‹ã£ãŸ</td>
  </tr>
  <tr>
   <td>1</td>
-  <td>ƒ}ƒbƒ`‚µ‚½ˆÊ’ui1ƒIƒŠƒWƒ“j</td>
+  <td>ãƒãƒƒãƒã—ãŸä½ç½®ï¼ˆ1ã‚ªãƒªã‚¸ãƒ³ï¼‰</td>
  </tr>
 </table>
 
 <p>
-•Ï” matchstr ‚É‚ÍÅ‰‚Éƒ}ƒbƒ`‚µ‚½ƒpƒ^[ƒ“‚ªŠi”[‚³‚ê‚éB<br>
-•Ï” groupmatchstr1`groupmatchstr9 ‚É‚ÍƒOƒ‹[ƒvƒ}ƒbƒ`‚µ‚½ƒpƒ^[ƒ“‚ªŠi”[‚³‚ê‚éB<br>
-‚È‚¨Aƒ}ƒbƒ`‚µ‚È‚©‚Á‚½ê‡‚É‚ÍA‚±‚ê‚ç‚Ì•Ï”‚Í strmatch Às‘O‚Ì“à—e‚ª•Û‚³‚ê‚éB
+å¤‰æ•° matchstr ã«ã¯æœ€åˆã«ãƒãƒƒãƒã—ãŸãƒ‘ã‚¿ãƒ¼ãƒ³ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+å¤‰æ•° groupmatchstr1ã€œgroupmatchstr9 ã«ã¯ã‚°ãƒ«ãƒ¼ãƒ—ãƒãƒƒãƒã—ãŸãƒ‘ã‚¿ãƒ¼ãƒ³ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+ãªãŠã€ãƒãƒƒãƒã—ãªã‹ã£ãŸå ´åˆã«ã¯ã€ã“ã‚Œã‚‰ã®å¤‰æ•°ã¯ strmatch å®Ÿè¡Œå‰ã®å†…å®¹ãŒä¿æŒã•ã‚Œã‚‹ã€‚
 </p>
 
 <p>
-“ú–{Œê“™‚Ìƒ}ƒ‹ƒ`ƒoƒCƒg•¶š—ñ‚ğŒŸõ‚·‚éê‡A–‘O‚É<a href="regexoption.html">regexoption</a>‚Å“KØ‚ÈƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB
+æ—¥æœ¬èªç­‰ã®ãƒãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—åˆ—ã‚’æ¤œç´¢ã™ã‚‹å ´åˆã€äº‹å‰ã«<a href="regexoption.html">regexoption</a>ã§é©åˆ‡ãªã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 strmatch 'Microsoft Windows XP [Version 5.1.2600]' '\[(Version (\d+).(\d+).(\d+))\]'
@@ -68,7 +68,7 @@ messagebox groupmatchstr3 'groupmatchstr3'   ; 1
 messagebox groupmatchstr4 'groupmatchstr4'   ; 2600
 </pre>
 
-<h2>QÆ</h2>
+<h2>å‚ç…§</h2>
 <ul>
   <li><a href="regexoption.html">regexoption</a></li>
   <li><a href="strreplace.html">strreplace</a></li>

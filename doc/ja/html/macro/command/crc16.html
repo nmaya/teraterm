@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>crc16, crc16file</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,7 +14,7 @@
 <h1>crc16, crc16file</h1>
 
 <p>
-CRC-16-CCITT‚ğŒvZ‚·‚éB<em>(ƒo[ƒWƒ‡ƒ“4.78ˆÈ~)</em>
+CRC-16-CCITTã‚’è¨ˆç®—ã™ã‚‹ã€‚<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³4.78ä»¥é™)</em>
 </p>
 
 <pre class="macro-syntax">
@@ -22,26 +22,26 @@ crc16 &lt;intvar&gt; &lt;string&gt;
 crc16file &lt;intvar&gt; &lt;filename&gt;
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-ˆø”‚Ì•¶š—ñ‚¨‚æ‚Ñƒtƒ@ƒCƒ‹‚©‚çCRC(Cyclic Redundancy Checking)‚ğŒvZ‚·‚éB‘½€®i‰E‰ñ‚èj‚ÍˆÈ‰º‚Ì‚Æ‚¨‚èB
+å¼•æ•°ã®æ–‡å­—åˆ—ãŠã‚ˆã³ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰CRC(Cyclic Redundancy Checking)ã‚’è¨ˆç®—ã™ã‚‹ã€‚å¤šé …å¼ï¼ˆå³å›ã‚Šï¼‰ã¯ä»¥ä¸‹ã®ã¨ãŠã‚Šã€‚
 <br><br>
 
 10001000000100001 (x<sup>16</sup>+x<sup>12</sup>+x<sup>5</sup>+x<sup>0</sup>)
 <br><br>
 
-ŒvZŒ‹‰Ê‚Í intvar •Ï”‚É”’l‚Æ‚µ‚ÄŠi”[‚³‚ê‚éB<br>
-crc16file ‚Åƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚È‚©‚Á‚½ê‡‚ÍAƒVƒXƒeƒ€•Ï” result ‚É -1 ‚ªŠi”[‚³‚ê‚éB
+è¨ˆç®—çµæœã¯ intvar å¤‰æ•°ã«æ•°å€¤ã¨ã—ã¦æ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+crc16file ã§ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ãªã‹ã£ãŸå ´åˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° result ã« -1 ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚
 </p>
 
-CRCƒAƒ‹ƒSƒŠƒYƒ€‚ÌÀ‘•iCŒ¾Œêj‚ğˆÈ‰º‚É¦‚·B
+CRCã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã®å®Ÿè£…ï¼ˆCè¨€èªï¼‰ã‚’ä»¥ä¸‹ã«ç¤ºã™ã€‚
 <pre>
 <code>
 static unsigned int crc16(int n, unsigned char c[])
 {
 #define CRC16POLY1  0x1021U
-#define CRC16POLY2  0x8408U  /* ¶‰E‹t“] */
+#define CRC16POLY2  0x8408U  /* å·¦å³é€†è»¢ */
 	int i, j;
 	unsigned long r;
 
@@ -57,7 +57,7 @@ static unsigned int crc16(int n, unsigned char c[])
 </code></pre>
 
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 str = 'this is a test string to be CRC16ed'

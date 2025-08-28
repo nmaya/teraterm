@@ -2,50 +2,50 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>IME�̃q���g</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>IMEのヒント</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </head>
 <body>
 
-<h1>IME�̃q���g</h1>
+<h1>IMEのヒント</h1>
 
-<h2 id="feedback">�O��Q�ƕϊ�</h2>
+<h2 id="feedback">前後参照変換</h2>
 <p>
-���łɊm��ς݂̕������������ꍇ�ɂ����Ă��A�J�[�\���O��̕������Q�Ƃ��āA�œK�ȕϊ����s�������݂ł��B
-ATOK�ł́u�J�[�\���ʒu�O��̕��͂��Q�Ƃ��ĕϊ�����v�AMS-IME�ł́u�}�����A�O�̓��e���Q�Ƃ��ĕϊ�������v�ƌĂ΂�Ă��܂��B<br>
-���̋@�\��IME(Input Method Editor)[*1]�ƃA�v���P�[�V�����ƘA�g���Ď������邽�߁A�A�v���P�[�V�������̑Ή����K�v�ł��B�܂��A���Y�@�\�͌�����Microsoft����d�l���J������Ă��Ȃ��̂ŁA�A�v���P�[�V����(Tera Term)�̎����̓A�h�z�b�N�Ȃ��̂ƂȂ�AIME�Ƃ̑g�ݍ��킹�ɂ���ẮA���������삵�Ȃ��ꍇ������܂��B<br>
-<i>[*1] ���Ă�FEP(Front End Processor)�ƌĂ΂�Ă����B</i>
+すでに確定済みの文字があった場合においても、カーソル前後の文字を参照して、最適な変換を行うしくみです。
+ATOKでは「カーソル位置前後の文章を参照して変換する」、MS-IMEでは「挿入時、前の内容を参照して変換をする」と呼ばれています。<br>
+この機能はIME(Input Method Editor)[*1]とアプリケーションと連携して実現するため、アプリケーション側の対応も必要です。また、当該機能は厳密にMicrosoftから仕様が開示されていないので、アプリケーション(Tera Term)の実装はアドホックなものとなり、IMEとの組み合わせによっては、正しく動作しない場合があります。<br>
+<i>[*1] かつてはFEP(Front End Processor)と呼ばれていた。</i>
 </p>
 
 <p>
-<b>�Ăɂ��������݂Ȃ���A�{��ǂށB</b>
+<b>夏にお茶を飲みながら、本を読む。</b>
 </p>
 
-��Ƃ��āA��L�̊m�肵�����͂�����Ƃ��܂��B
+例として、上記の確定した文章があるとします。
 
 <p>
-<b>(A)�Ă�(B)���������݂Ȃ���A(C)�{��ǂށB</b>
+<b>(A)夏に(B)お茶を飲みながら、(C)本を読む。</b>
 </p>
 
-�O��Q�ƕϊ��@�\���L���ɂȂ��Ă���ꍇ�A(A),(B),(C)�̈ʒu�ɃJ�[�\��������A�uatui�v�Ɠ��͂���ƁAIME�͂��ꂼ�ꉺ�L�̂悤�ɓK�؂Ȋ����ɕϊ����܂��B
+前後参照変換機能が有効になっている場合、(A),(B),(C)の位置にカーソルがあり、「atui」と入力すると、IMEはそれぞれ下記のように適切な漢字に変換します。
 
 <p>
-<b><font color=red>����</font>�Ă�<font color=red>�M��</font>���������݂Ȃ���A<font color=red>����</font>�{��ǂށB</b>
+<b><font color=red>暑い</font>夏に<font color=red>熱い</font>お茶を飲みながら、<font color=red>厚い</font>本を読む。</b>
 </p>
 
-Tera Term�̎����Ƃ��ẮAWM_IME_REQUEST���b�Z�[�W��IMR_DOCUMENTFEED�p�����[�^����M������A���݂̃J�[�\��������s�̃f�[�^��ԋp���邱�ƂŁAIME�̕ϊ������ɍv�����܂��B<br>
-�f�[�^�̕ԋp���@�́AATOK��IME�ňقȂ�܂��B
+Tera Termの実装としては、WM_IME_REQUESTメッセージでIMR_DOCUMENTFEEDパラメータを受信したら、現在のカーソルがある行のデータを返却することで、IMEの変換処理に貢献します。<br>
+データの返却方法は、ATOKとIMEで異なります。
 
 <p>
-<b>�Ă�|���������݂Ȃ���A�{��ǂށB</b>
+<b>夏に|お茶を飲みながら、本を読む。</b>
 </p>
 
-ATOK2012�̏ꍇ�A|�̈ʒu�ɃJ�[�\��������A�ua�v�Ɠ��͂������_�ŁA���b�Z�[�W�����ł��܂��B
-���̂Ƃ�Tera Term�́A�u<font color=blue>�Ăɂ��������݂Ȃ���A�{��ǂށB</font>�v�Ƃ����f�[�^��Ԃ��܂��B<br>
-MS-IME2002/2003�̏ꍇ�A�u����i�v�Ɠ��͂������_�ŁA���b�Z�[�W�����ł��܂��B
-���̂Ƃ�Tera Term�́A�u<font color=blue>�Ă�<u>����</u>���������݂Ȃ���A�{��ǂށB</font>�v�Ƃ����f�[�^��Ԃ��܂��B<br>
+ATOK2012の場合、|の位置にカーソルがあり、「a」と入力した時点で、メッセージが飛んできます。
+このときTera Termは、「<font color=blue>夏にお茶を飲みながら、本を読む。</font>」というデータを返します。<br>
+MS-IME2002/2003の場合、「あつi」と入力した時点で、メッセージが飛んできます。
+このときTera Termは、「<font color=blue>夏に<u>あつ</u>お茶を飲みながら、本を読む。</font>」というデータを返します。<br>
 
 </body>
 </html>

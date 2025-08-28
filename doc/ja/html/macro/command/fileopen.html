@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>fileopen</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,41 +14,41 @@
 <h1>fileopen</h1>
 
 <p>
-�t�@�C�����J���B
+ファイルを開く。
 </p>
 
 <pre class="macro-syntax">
 fileopen &lt;file handle&gt; &lt;filename&gt; &lt;append flag&gt; [&lt;readonly flag&gt;]
 </pre>
 
-<h2>�p�����[�^</h2>
+<h2>パラメータ</h2>
 
 <dl>
-	<dt class="macro">�����ϐ� &lt;file handle&gt;</dt>
-	<dd>�����t�@�C�����������I�[�v�����ꂽ�ꍇ�A�t�@�C���n���h�����i�[�����B<br />
-        �o�[�W���� 4.101 �ȑO�� 4.104 �ȍ~: ����ȊO�̏ꍇ�A&lt;file handle&gt; ��-1���i�[�����B�}�N���G���[�Ƃ͂Ȃ�Ȃ��B<br />
-        �o�[�W���� 4.102, 4.103: ����ȊO�̏ꍇ�A&lt;file handle&gt; ��-1���i�[�����B�}�N���G���[�ƂȂ�A�}�N���̎��s���ꎟ��~����B</dd>
+	<dt class="macro">整数変数 &lt;file handle&gt;</dt>
+	<dd>もしファイルが正しくオープンされた場合、ファイルハンドルが格納される。<br />
+        バージョン 4.101 以前と 4.104 以降: それ以外の場合、&lt;file handle&gt; に-1が格納される。マクロエラーとはならない。<br />
+        バージョン 4.102, 4.103: それ以外の場合、&lt;file handle&gt; に-1が格納される。マクロエラーとなり、マクロの実行が一次停止する。</dd>
 
-	<dt class="macro">������ &lt;filename&gt;</dt>
-	<dd>�J���t�@�C�������w�肷��B<br />
-	    �t�@�C�������݂��Ȃ��ꍇ�́A�V���ɍ쐬����Ă���I�[�v�������B</dd>
+	<dt class="macro">文字列 &lt;filename&gt;</dt>
+	<dd>開くファイル名を指定する。<br />
+	    ファイルが存在しない場合は、新たに作成されてからオープンされる。</dd>
 
-	<dt class="macro">���� &lt;append flag&gt;</dt>
-	<dd>0���w�肷��ƁA�t�@�C���|�C���^�̈ʒu�̓t�@�C���̎n�߂ɃZ�b�g�����B<br />
-	    0�ȊO���w�肷��ƁA�t�@�C���|�C���^�̓t�@�C���̍Ō�ɃZ�b�g�����B</dd>
+	<dt class="macro">整数 &lt;append flag&gt;</dt>
+	<dd>0を指定すると、ファイルポインタの位置はファイルの始めにセットされる。<br />
+	    0以外を指定すると、ファイルポインタはファイルの最後にセットされる。</dd>
 
-	<dt class="macro">���� &lt;readonly flag&gt; (�I�v�V���� �f�t�H���g=0) (�o�[�W���� 4.85 �ȍ~)</dt>
-	<dd>0���w�肷��ƁA�ǂݏ������[�h�Ńt�@�C�����J���B<br />
-	    0�ȊO���w�肷��ƁA�ǂݎ���p���[�h�Ńt�@�C�����J���B</dd>
+	<dt class="macro">整数 &lt;readonly flag&gt; (オプション デフォルト=0) (バージョン 4.85 以降)</dt>
+	<dd>0を指定すると、読み書きモードでファイルを開く。<br />
+	    0以外を指定すると、読み取り専用モードでファイルを開く。</dd>
 </dl>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-�t�@�C���̓o�C�i�����[�h�ŃI�[�v�������B
+ファイルはバイナリモードでオープンされる。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 fileopen fhandle 'data.dat' 0
@@ -65,7 +65,7 @@ pause 10
 end
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="filewrite.html">filewrite</a></li>
   <li><a href="fileclose.html">fileclose</a></li>

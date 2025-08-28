@@ -2,129 +2,129 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>Proxy ([Setup] ���j���[)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Proxy ([Setup] メニュー)</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1>Proxy ([Setup] ���j���[)</h1>
+    <h1>Proxy ([Setup] メニュー)</h1>
 
-<strong>���ӁF�ݒ��L���ɂ���ɂ́A�ݒ�̕ۑ���Tera Term�̍ċN�����K�v�ł��B</strong>
+<strong>注意：設定を有効にするには、設定の保存とTera Termの再起動が必要です。</strong>
 
-    <h2>"Proxy Setup" �_�C�A���O�{�b�N�X</h2>
+    <h2>"Proxy Setup" ダイアログボックス</h2>
     <dl>
       <dt>Type</dt>
       <dd>
-	�v���L�V�̃^�C�v��ݒ肵�܂��B
+	プロキシのタイプを設定します。
 	<ul>
-	  <li>Without Proxy�F�v���L�V���g�p���܂���B</li>
-	  <li>HTTP�FHTTP �v���L�V���g�p���܂��B</li>
-	  <li>TELNET�FTELNET �v���L�V���g�p���܂��B</li>
-	  <li>SOCKS4�FSOCKS4 �v���L�V���g�p���܂��B��IPv6 �̓v���g�R���ɂ��T�|�[�g����Ă��܂���B</li>
-	  <li>SOCKS5�FSOCKS5 �v���L�V���g�p���܂��B</li>
+	  <li>Without Proxy：プロキシを使用しません。</li>
+	  <li>HTTP：HTTP プロキシを使用します。</li>
+	  <li>TELNET：TELNET プロキシを使用します。</li>
+	  <li>SOCKS4：SOCKS4 プロキシを使用します。※IPv6 はプロトコルによりサポートされていません。</li>
+	  <li>SOCKS5：SOCKS5 プロキシを使用します。</li>
 	</ul>
       </dd>
 
       <dt>Hostname</dt>
       <dd>
-	�v���L�V�T�[�o���w�肵�܂��B
+	プロキシサーバを指定します。
 	
 	<p>
-	�z�X�g���AIPv4�A�h���X�AIPv6�A�h���X���w��ł��܂��B<br>
-	IPv6�A�h���X�͊p���ʁi�劇�ʁj�ň͂ޕK�v�͂���܂���B
+	ホスト名、IPv4アドレス、IPv6アドレスが指定できます。<br>
+	IPv6アドレスは角括弧（大括弧）で囲む必要はありません。
 	</p>
       </dd>
 
       <dt>Port number</dt>
       <dd>
-	�v���L�V�T�[�o�̃|�[�g�ԍ����w�肵�܂��B
+	プロキシサーバのポート番号を指定します。
       </dd>
 
       <dt>Username</dt>
       <dd>
-	�v���L�V�T�[�o�̗��p�ɔF�؂��K�v�ȏꍇ�A���̃��[�U�����w�肵�܂��B
+	プロキシサーバの利用に認証が必要な場合、そのユーザ名を指定します。
       </dd>
 
       <dt>Password</dt>
       <dd>
-	�v���L�V�T�[�o�̗��p�ɔF�؂��K�v�ȏꍇ�A���̃p�X���[�h���w�肵�܂��B
+	プロキシサーバの利用に認証が必要な場合、そのパスワードを指定します。
       </dd>
 
       <dt>Other setup</dt>
       <dd>
-	"Other Setup" ���j���[�Ɉڂ�܂��B
+	"Other Setup" メニューに移ります。
       </dd>
     </dl>
 
-    <h2>"Other Setup" ���j���[</h2>
+    <h2>"Other Setup" メニュー</h2>
 
     <h3>Common setup</h3>
     <dl>
       <dt>Connection Timeout</dt>
       <dd>
-	�v���L�V�Ƃ̒ʐM (�ڑ��ێ��p�̒ʐM���܂ށB)
-	�������Ŏw�肵���b�������r�₦����ڑ���؂�܂��B
+	プロキシとの通信 (接続維持用の通信を含む。)
+	がここで指定した秒数だけ途絶えたら接続を切ります。
       </dd>
 
       <dt>Proxy connection log</dt>
       <dd>
-	�v���L�V�Ƃ̒ʐM���w�肵���t�@�C���ɋL�^���܂��B
+	プロキシとの通信を指定したファイルに記録します。
       </dd>
     </dl>
 
     <h3>SOCKS proxy setup</h3>
     <p>
-      Name �Ŗ��O�����̕��@���w�肵�܂��B
+      Name で名前解決の方法を指定します。
     </p>
 
     <dl>
       <dt>auto resolve</dt>
       <dd>
-	����
+	自動
       </dd>
 
       <dt>resolve remote</dt>
       <dd>
-	SOCKS �T�[�o���Ŗ��O�������܂��B
+	SOCKS サーバ側で名前解決します。
       </dd>
 
       <dt>resolve local</dt>
       <dd>
-	Tera Term �������Ă��� PC �Ŗ��O�������܂��B
+	Tera Term が動いている PC で名前解決します。
       </dd>
     </dl>
 
     <h3>TELNET Proxy setup</h3>
     <p>
-      TELNET �v���L�V�Ɋւ���ݒ���s���܂��B
+      TELNET プロキシに関する設定を行います。
     </p>
 
     <dl>
       <dt>Hostname prompt</dt>
       <dd>
-	�z�X�g���̓��͂��Â��v���L�V���̃v�����v�g���w�肵�܂��B
+	ホスト名の入力を催すプロキシ側のプロンプトを指定します。
       </dd>
 
       <dt>Username prompt</dt>
       <dd>
-	���[�U���̓��͂��Â��v���L�V���̃v�����v�g���w�肵�܂��B
+	ユーザ名の入力を催すプロキシ側のプロンプトを指定します。
       </dd>
 
       <dt>Password</dt>
       <dd>
-	�p�X���[�h�̓��͂��Â��v���L�V���̃v�����v�g���w�肵�܂��B
+	パスワードの入力を催すプロキシ側のプロンプトを指定します。
       </dd>
 
       <dt>Connected</dt>
       <dd>
-	�ڑ������̃��b�Z�[�W���w�肵�܂��B
+	接続完了のメッセージを指定します。
       </dd>
 
       <dt>Error message</dt>
       <dd>
-	�v���L�V������̃G���[���b�Z�[�W�̕\�����w�肵�܂��B
+	プロキシ側からのエラーメッセージの表示を指定します。
       </dd>
     </dl>
   </body>

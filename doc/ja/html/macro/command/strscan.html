@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>strscan</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,34 +14,34 @@
 <h1>strscan</h1>
 
 <p>
-•”•ª•¶š—ñ‚ÌˆÊ’u‚ğ•Ô‚·
+éƒ¨åˆ†æ–‡å­—åˆ—ã®ä½ç½®ã‚’è¿”ã™
 </p>
 
-<h2>Œ`®</h2>
+<h2>å½¢å¼</h2>
 
 <pre class="macro-syntax">
 strscan &lt;string&gt; &lt;substring&gt;
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-•¶š—ñ &lt;string&gt; ‚Ì’†‚ÉA •”•ª•¶š—ñ  &lt;substring&gt; ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©’²‚×‚éB<br>
-‚à‚µA  &lt;substring&gt; ‚ªŒ©‚Â‚©‚Á‚½ê‡A‚»‚ÌˆÊ’ui1ƒIƒŠƒWƒ“j‚ªƒVƒXƒeƒ€•Ï” result ‚ÉŠi”[‚³‚ê‚éB<br>
-&lt;substring&gt; ‚ª•¡”ŠÜ‚Ü‚ê‚Ä‚¢‚éê‡AÅ‰‚Ì‚à‚Ì‚ÌˆÊ’u‚ªŠi”[‚³‚ê‚éB‚à‚µA &lt;substring&gt; ‚ªŒ©‚Â‚©‚ç‚È‚©‚Á‚½ê‡A result ‚É0‚ªŠi”[‚³‚ê‚éB
+æ–‡å­—åˆ— &lt;string&gt; ã®ä¸­ã«ã€ éƒ¨åˆ†æ–‡å­—åˆ—  &lt;substring&gt; ãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹èª¿ã¹ã‚‹ã€‚<br>
+ã‚‚ã—ã€  &lt;substring&gt; ãŒè¦‹ã¤ã‹ã£ãŸå ´åˆã€ãã®ä½ç½®ï¼ˆ1ã‚ªãƒªã‚¸ãƒ³ï¼‰ãŒã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° result ã«æ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+&lt;substring&gt; ãŒè¤‡æ•°å«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã€æœ€åˆã®ã‚‚ã®ã®ä½ç½®ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚ã‚‚ã—ã€ &lt;substring&gt; ãŒè¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸå ´åˆã€ result ã«0ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 strscan 'tera term' 'term'
-; result ‚Ì’l‚Í6
+; result ã®å€¤ã¯6
 int2str valstr result
 messagebox valstr 'result'
 </pre>
 
 <pre class="macro-example">
-; 16i•¶š—ñ‚ğ16i‚¨‚æ‚Ñ2i‚Ö•ÏŠ·‚·‚é
+; 16é€²æ–‡å­—åˆ—ã‚’16é€²ãŠã‚ˆã³2é€²ã¸å¤‰æ›ã™ã‚‹
 basenum='0060E3da'
 base=16
 call base2dec
@@ -79,7 +79,7 @@ return
 
 
 <pre class="macro-example">
-; IPƒAƒhƒŒƒX‚Ìƒlƒbƒgƒ[ƒNƒAƒhƒŒƒX‚ÆƒTƒuƒlƒbƒgƒ}ƒXƒN‚ğ‹‚ß‚é
+; IPã‚¢ãƒ‰ãƒ¬ã‚¹ã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã‚µãƒ–ãƒãƒƒãƒˆãƒã‚¹ã‚¯ã‚’æ±‚ã‚ã‚‹
 ip='192.168.1.189'
 sn='255.255.255.248'
 bits=0          ;calculate bits &amp; first address in sn

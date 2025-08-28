@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>statusbox</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,28 +14,28 @@
 <h1>statusbox</h1>
 
 <p>
-�X�e�[�^�X�_�C�A���O�{�b�N�X��\������B
+ステータスダイアログボックスを表示する。
 </p>
 
 <pre class="macro-syntax">
 statusbox &lt;message&gt; &lt;title&gt; [&lt;special&gt;]
 </pre>
 
-<h2>�p�����[�^</h2>
+<h2>パラメータ</h2>
 
 <dl>
-	<dt class="macro">������ &lt;message&gt;</dt>
-	<dd>�_�C�A���O�{�b�N�X�ɕ\������郁�b�Z�[�W�B</dd>
+	<dt class="macro">文字列 &lt;message&gt;</dt>
+	<dd>ダイアログボックスに表示されるメッセージ。</dd>
 
-	<dt class="macro">������ &lt;title&gt;</dt>
-	<dd>�_�C�A���O�{�b�N�X�̃^�C�g���B</dd>
+	<dt class="macro">文字列 &lt;title&gt;</dt>
+	<dd>ダイアログボックスのタイトル。</dd>
 
-	<dt class="macro">�����l &lt;special&gt; (�I�v�V���� �f�t�H���g=0)</dt>
-	<dd>0 �łȂ��ꍇ�́A&lt;message&gt; �Ɋ܂܂��ȉ��̕�����͓��ꕶ���Ƃ��Ĉ����܂��B<br>
+	<dt class="macro">整数値 &lt;special&gt; (オプション デフォルト=0)</dt>
+	<dd>0 でない場合は、&lt;message&gt; に含まれる以下の文字列は特殊文字として扱われます。<br>
 	    <table border="2">
 	     <tr>
-	      <th>����</th>
-	      <th>�o��</th>
+	      <th>入力</th>
+	      <th>出力</th>
 	     </tr>
 	     <tr>
 	      <td>\\</td>
@@ -43,47 +43,47 @@ statusbox &lt;message&gt; &lt;title&gt; [&lt;special&gt;]
 	     </tr>
 	     <tr>
 	      <td>\n</td>
-	      <td>���s</td>
+	      <td>改行</td>
 	     </tr>
 	     <tr>
 	      <td>\t</td>
-	      <td>�^�u</td>
+	      <td>タブ</td>
 	     </tr>
 	    </table>
-	    ���̃I�v�V�����̎g�p�͐�������܂���Bstrspecial �}�N���R�}���h���g�p���ĕ������ϊ����邱�Ƃœ����̌��ʂ𓾂��܂��B
+	    このオプションの使用は推奨されません。strspecial マクロコマンドを使用して文字列を変換することで同等の結果を得られます。
 	</dd>
 </dl>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-�X�e�[�^�X�_�C�A���O�{�b�N�X���\������Ă��Ȃ��ꍇ�A�����\�����܂��B<br>
-�_�C�A���O�{�b�N�X�̃��b�Z�[�W�� &lt;message&gt; �ɁA�^�C�g���� &lt;title&gt; �ɕς��܂��B
+ステータスダイアログボックスが表示されていない場合、それを表示します。<br>
+ダイアログボックスのメッセージを &lt;message&gt; に、タイトルを &lt;title&gt; に変えます。
 </p>
 
 <p>
-"<a href="setdlgpos.html">setdlgpos</a>" �R�}���h�̓X�e�[�^�X�_�C�A���O�{�b�N�X�̈ʒu��ς��܂��B<br>
-"<a href="closesbox.html">closesbox</a>" �R�}���h�̓X�e�[�^�X�_�C�A���O�{�b�N�X����܂��BEnter�L�[��ESC�L�[�ł͕��邱�Ƃ͂ł��܂���B
+"<a href="setdlgpos.html">setdlgpos</a>" コマンドはステータスダイアログボックスの位置を変えます。<br>
+"<a href="closesbox.html">closesbox</a>" コマンドはステータスダイアログボックスを閉じます。EnterキーやESCキーでは閉じることはできません。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
-; �\���ʒu���w��
+; 表示位置を指定
 setdlgpos 200 200
-; �_�C�A���O�{�b�N�X��\��
+; ダイアログボックスを表示
 statusbox 'Message' 'Title'
 pause 3
-; �_�C�A���O�{�b�N�X���ړ�
+; ダイアログボックスを移動
 setdlgpos 0 0
 pause 3
-; �_�C�A���O�{�b�N�X�����
+; ダイアログボックスを閉じる
 closesbox
 </pre>
 
 
 <pre class="macro-example">
-; �J�E���^��\�����Ȃ��烋�[�v����
+; カウンタを表示しながらループする
 step = 0
 while 1
   call show_step
@@ -101,7 +101,7 @@ statusbox timestr s
 return
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="strspecial.html">strspecial</a></li>
   <li><a href="closesbox.html">closesbox</a></li>

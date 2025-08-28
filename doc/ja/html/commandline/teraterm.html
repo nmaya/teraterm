@@ -2,18 +2,18 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>Tera Term Pro �R�}���h���C��</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Tera Term Pro コマンドライン</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
 
-<h1>Tera Term Pro �R�}���h���C��</h1>
+<h1>Tera Term Pro コマンドライン</h1>
 
 <p>
-Tera Term Pro ���N������Ƃ��̃R�}���h���C��(�V���[�g�J�b�g�̃����N��)�̌`��
+Tera Term Pro を起動するときのコマンドライン(ショートカットのリンク先)の形式
 </p>
 
 <pre class="syntax">
@@ -32,44 +32,44 @@ TTERMPRO [ &lt;host&gt;[[:]&lt;TCP port#&gt;] | telnet://&lt;host&gt;[:&lt;TCP p
 </pre>
 
 
-<h2 id="options">�I�v�V����</h2>
+<h2 id="options">オプション</h2>
 
 <dl>
   <dt id="host">&lt;host&gt;</dt>
-  <dd>�z�X�g���܂��� IP �A�h���X</dd>
+  <dd>ホスト名または IP アドレス</dd>
 
   <dt>&lt;host&gt;:&lt;TCP port#&gt;</dt>
-  <dd>TCP �|�[�g�ԍ��� &lt;host&gt;<br>
-      &lt;host&gt; �� &lt;TCP port#&gt; �̊Ԃ�":"���u�����B</dd>
+  <dd>TCP ポート番号つき &lt;host&gt;<br>
+      &lt;host&gt; と &lt;TCP port#&gt; の間に":"が置かれる。</dd>
 
   <dt>&lt;host&gt; &lt;TCP port#&gt;</dt>
-  <dd>TCP �|�[�g�ԍ��� &lt;host&gt;<br>
-      &lt;host&gt; �� &lt;TCP port#&gt; �̊Ԃ�1�ȏ�̋󔒕������u�����B<br>
-      &lt;host&gt; �̂�����ɂ��鐔���� TCP �|�[�g�ԍ��Ƃ݂Ȃ����B</dd>
+  <dd>TCP ポート番号つき &lt;host&gt;<br>
+      &lt;host&gt; と &lt;TCP port#&gt; の間に1個以上の空白文字が置かれる。<br>
+      &lt;host&gt; のすぐ後にくる数字は TCP ポート番号とみなされる。</dd>
 
   <dt>telnet://&lt;host&gt;[:&lt;TCP port#&gt;][/]</dt>
-  <dd>URL�`�� - telnet�n���h���p<br>
-      TCP �|�[�g�ԍ�����і����� / �͏ȗ��\�B<br>
-      TCP �|�[�g�ԍ����ȗ����ꂽ�ꍇ��23�ƂȂ�B(�ݒ�t�@�C����TCPPort�̒l�͖��������)
+  <dd>URL形式 - telnetハンドラ用<br>
+      TCP ポート番号および末尾の / は省略可能。<br>
+      TCP ポート番号が省略された場合は23となる。(設定ファイルのTCPPortの値は無視される)
   </dd>
 
   <dt>\\&lt;server&gt;\pipe\&lt;pipe name&gt;</dt>
-  <dd>�p�C�v��<br>
-      &lt;server&gt; ��̖��O�t���p�C�v &lt;pipe name&gt; �ɐڑ�����B<br>
-      \\.\pipe\&lt;pipe name&gt; �Ƃ����ꍇ�̓��[�J���̖��O�t���p�C�v�ɐڑ�����B
+  <dd>パイプ名<br>
+      &lt;server&gt; 上の名前付きパイプ &lt;pipe name&gt; に接続する。<br>
+      \\.\pipe\&lt;pipe name&gt; とした場合はローカルの名前付きパイプに接続する。
   </dd>
 
   <dt id="b">/B</dt>
-  <dd>Telnet �o�C�i���I�v�V����</dd>
+  <dd>Telnet バイナリオプション</dd>
 
   <dt id="baud">/BAUD=&lt;speed&gt;</dt>
   <dd>
-    �V���A���|�[�g�̃X�s�[�h���w�肵�܂��B<a href="#speed">/SPEED=</a> �Ɠ�������ł��B
-    �w�肵���l�����ۂɔ��f����邩�́A�V���A���|�[�g�̃`�b�v�E�h���C�o�̎d�l�ɂ��܂��B
+    シリアルポートのスピードを指定します。<a href="#speed">/SPEED=</a> と同じ動作です。
+    指定した値が実際に反映されるかは、シリアルポートのチップ・ドライバの仕様によります。
   </dd>
 
   <dt id="c">/C=&lt;serial port#&gt;</dt>
-  <dd>�V���A���|�[�g
+  <dd>シリアルポート
       <ul>
         <li><span class="syntax">/C=1</span> COM1</li>
         <li><span class="syntax">/C=2</span> COM2</li>
@@ -77,11 +77,11 @@ TTERMPRO [ &lt;host&gt;[[:]&lt;TCP port#&gt;] | telnet://&lt;host&gt;[:&lt;TCP p
         <li>:</li>
         <li><span class="syntax">/C=256</span> COM256</li>
       </ul>
-      �V���A���|�[�g�ԍ��̍ő�l�̓f�t�H���g��256�ƂȂ��Ă��܂��B<a href="../setup/teraterm-com.html#maxport">MaxComPort</a>�ōő�l��ύX�ł��܂��B
+      シリアルポート番号の最大値はデフォルトで256となっています。<a href="../setup/teraterm-com.html#maxport">MaxComPort</a>で最大値を変更できます。
       </dd>
 
   <dt id="cdatabit">/CDATABIT=&lt;value&gt;</dt>
-  <dd>�V���A���|�[�g�̃f�[�^�r�b�g
+  <dd>シリアルポートのデータビット
       <ul>
         <li><span class="syntax">/CDATABIT=7</span> 7bit</li>
         <li><span class="syntax">/CDATABIT=8</span> 8bit</li>
@@ -89,7 +89,7 @@ TTERMPRO [ &lt;host&gt;[[:]&lt;TCP port#&gt;] | telnet://&lt;host&gt;[:&lt;TCP p
       </dd>
 
   <dt id="cparity">/CPARITY=&lt;value&gt;</dt>
-  <dd>�V���A���|�[�g�̃p���e�B
+  <dd>シリアルポートのパリティ
       <ul>
         <li><span class="syntax">/CPARITY=none</span> none</li>
         <li><span class="syntax">/CPARITY=odd</span> odd</li>
@@ -100,7 +100,7 @@ TTERMPRO [ &lt;host&gt;[[:]&lt;TCP port#&gt;] | telnet://&lt;host&gt;[:&lt;TCP p
       </dd>
 
   <dt id="cstopbit">/CSTOPBIT=&lt;value&gt;</dt>
-  <dd>�V���A���|�[�g�̃X�g�b�v�r�b�g
+  <dd>シリアルポートのストップビット
       <ul>
         <li><span class="syntax">/CSTOPBIT=1</span> 1bit</li>
         <li><span class="syntax">/CSTOPBIT=1.5</span> 1.5bit</li>
@@ -109,7 +109,7 @@ TTERMPRO [ &lt;host&gt;[[:]&lt;TCP port#&gt;] | telnet://&lt;host&gt;[:&lt;TCP p
       </dd>
 
   <dt id="cflowctrl">/CFLOWCTRL=&lt;value&gt;</dt>
-  <dd>�V���A���|�[�g�̃t���[����
+  <dd>シリアルポートのフロー制御
       <ul>
         <li><span class="syntax">/CFLOWCTRL=x</span> Xon/Xoff</li>
         <li><span class="syntax">/CFLOWCTRL=hard</span> RTS/CTS</li>
@@ -120,160 +120,160 @@ TTERMPRO [ &lt;host&gt;[[:]&lt;TCP port#&gt;] | telnet://&lt;host&gt;[:&lt;TCP p
       </dd>
 
   <dt id="cdelayperchar">/CDELAYPERCHAR=&lt;value&gt;</dt>
-  <dd>�V���A���|�[�g�̈ꕶ��������̑��M�x������(�~���b)
+  <dd>シリアルポートの一文字あたりの送信遅延時間(ミリ秒)
       <ul>
-        <li><span class="syntax">/CDELAYPERCHAR=n</span> n�~���b</li>
+        <li><span class="syntax">/CDELAYPERCHAR=n</span> nミリ秒</li>
       </ul>
       </dd>
 
   <dt id="cdelayperline">/CDELAYPERLINE=&lt;value&gt;</dt>
-  <dd>�V���A���|�[�g�̈�s������̑��M�x������(�~���b)
+  <dd>シリアルポートの一行あたりの送信遅延時間(ミリ秒)
       <ul>
-        <li><span class="syntax">/CDELAYPERLINE=n</span> n�~���b</li>
+        <li><span class="syntax">/CDELAYPERLINE=n</span> nミリ秒</li>
       </ul>
       </dd>
 
 <!--
   <dt id="duplicate">/DUPLICATE</dt>
-  <dd>�g�p�֎~�i�Z�b�V�����̕����œ����Ŏg����j</dd>
+  <dd>使用禁止（セッションの複製で内部で使われる）</dd>
 -->
 
   <dt id="ds">/DS</dt>
-  <dd>�N������ "New connection" �_�C�A���O��\�����Ȃ�</dd>
+  <dd>起動時に "New connection" ダイアログを表示しない</dd>
 
   <dt id="e">/E</dt>
-  <dd>TCPLocalEcho/TCPCRSend �̐ݒ�𖳌��ɂ���</dd>
+  <dd>TCPLocalEcho/TCPCRSend の設定を無効にする</dd>
 
   <dt id="es">/ES</dt>
-  <dd>�N������ "<a href="../menu/file-new.html">New connection</a>" �_�C�A���O��\������<br>
-      Tera Term �̓|�[�g�̎�ނ� TCP/IP �̏ꍇ�� "New connection" �_�C�A���O��\�����܂����A<a href="../setup/teraterm-ini.html#HostDialogOnStartup">HostDialogOnStartup</a> �� off �ɂ��邱�ƂŃ_�C�A���O��\�����Ȃ��悤�ɂł��܂��B/ES �I�v�V������ HostDialogOnStartup �� off �ɂȂ��Ă��Ă� "New connection" �_�C�A���O��\�������邽�߂ɗp���܂��B<br>
-      Tera Term �̓|�[�g�̎�ނ� Serial �̏ꍇ�ɂ� "New connection" �_�C�A���O��\�����܂���B�|�[�g�̎�ނ� Serial �̏ꍇ�� /ES �I�v�V�����͂Ȃɂ���p���܂���B</dd>
+  <dd>起動時に "<a href="../menu/file-new.html">New connection</a>" ダイアログを表示する<br>
+      Tera Term はポートの種類が TCP/IP の場合に "New connection" ダイアログを表示しますが、<a href="../setup/teraterm-ini.html#HostDialogOnStartup">HostDialogOnStartup</a> を off にすることでダイアログを表示しないようにできます。/ES オプションは HostDialogOnStartup が off になっていても "New connection" ダイアログを表示させるために用います。<br>
+      Tera Term はポートの種類が Serial の場合には "New connection" ダイアログを表示しません。ポートの種類が Serial の場合に /ES オプションはなにも作用しません。</dd>
 
   <dt id="f">/F=&lt;setup file&gt;</dt>
-  <dd>�ݒ�t�@�C��<br>
-      <span class="syntax">/F=TERATERM.INI</span> (�ȗ���)<br>
-      �t�@�C��������΃p�X�łȂ��Ƃ��́A%APPDATA%\teraterm5\ ����̑��΃p�X�ƌ��Ȃ���܂��B</dd>
+  <dd>設定ファイル<br>
+      <span class="syntax">/F=TERATERM.INI</span> (省略時)<br>
+      ファイル名が絶対パスでないときは、%APPDATA%\teraterm5\ からの相対パスと見なされます。</dd>
 
   <dt id="fd">/FD=&lt;file transfer directory&gt;</dt>
-  <dd>�t�@�C���]���p�f�B���N�g��</dd>
+  <dd>ファイル転送用ディレクトリ</dd>
 
   <dt id="h">/H</dt>
-  <dd>�^�C�g���o�[���B��</dd>
+  <dd>タイトルバーを隠す</dd>
 
   <dt id="i">/I</dt>
-  <dd>�N�����ɃA�C�R����Ԃɂ���<br>
-      �����O�I�t��Ԃ�Windows�^�X�N�X�P�W���[��������s����ꍇ�ɂ��w�肵�Ă��������B
+  <dd>起動時にアイコン状態にする<br>
+      ※ログオフ状態でWindowsタスクスケジューラから実行する場合にも指定してください。
       </dd>
 
   <dt id="k">/K=&lt;keyboard setup file&gt;</dt>
-  <dd>�L�[�{�[�h�ݒ�t�@�C��<br>
-      <span class="syntax">/K=KEYBOARD.CNF</span> (�ȗ���)<br>
-      �t�@�C��������΃p�X�łȂ��Ƃ��́A%APPDATA%\teraterm5\ ����̑��΃p�X�ƌ��Ȃ���܂��B</dd>
+  <dd>キーボード設定ファイル<br>
+      <span class="syntax">/K=KEYBOARD.CNF</span> (省略時)<br>
+      ファイル名が絶対パスでないときは、%APPDATA%\teraterm5\ からの相対パスと見なされます。</dd>
 
   <dt id="kr">/KR=&lt;kanji code (receive)&gt;</dt>
-  <dd>�����R�[�h (��M)<br>
-    �g�p�\�����R�[�h��<a href="../usage/character_encoding.html">�����R�[�h�y�[�W</a>���Q�Ƃ��������B</dd>
+  <dd>漢字コード (受信)<br>
+    使用可能文字コードは<a href="../usage/character_encoding.html">文字コードページ</a>を参照ください。</dd>
 
   <dt id="kt">/KT=&lt;kanji code (transmit)&gt;</dt>
-  <dd>�����R�[�h (���M)<br>
-    �g�p�\�����R�[�h��<a href="../usage/character_encoding.html">�����R�[�h�y�[�W</a>���Q�Ƃ��������B</dd>
+  <dd>漢字コード (送信)<br>
+    使用可能文字コードは<a href="../usage/character_encoding.html">文字コードページ</a>を参照ください。</dd>
 
   <dt id="l">/L=&lt;log file&gt;</dt>
-  <dd>�N�����Ƀ��O���J�n<br />
-      �t�@�C�����Ɋ܂܂ꂽ<a href="../menu/setup-additional-log.html#LogFileNameFormat">Tera Term �� strftime �̏���</a>�����߂���܂��B<br />
-      �t�@�C�������t���p�X�łȂ��Ƃ��́A<a href="../menu/setup-additional-log.html#LogFullpath">�t���p�X�ɕϊ�</a>���ĊJ����܂��B</dd>
+  <dd>起動時にログを開始<br />
+      ファイル名に含まれた<a href="../menu/setup-additional-log.html#LogFileNameFormat">Tera Term と strftime の書式</a>が解釈されます。<br />
+      ファイル名がフルパスでないときは、<a href="../menu/setup-additional-log.html#LogFullpath">フルパスに変換</a>して開かれます。</dd>
 
   <dt id="m">/M=&lt;macro file&gt;</dt>
-  <dd>�N�����Ƀ}�N�������s<br>
-      �t�@�C��������΃p�X�łȂ��Ƃ��́A%APPDATA%\teraterm5\ ����̑��΃p�X�ƌ��Ȃ���܂��B</dd>
+  <dd>起動時にマクロを実行<br>
+      ファイル名が絶対パスでないときは、%APPDATA%\teraterm5\ からの相対パスと見なされます。</dd>
 
   <dt id="mn">/MN=&lt;multicastname&gt;</dt>
-  <dd><a href="../macro/command/sendmulticast.html">sendmulticast</a> �}�N���R�}���h�Ŏw�肷�邽�߂̃}���`�L���X�g��</dd>
+  <dd><a href="../macro/command/sendmulticast.html">sendmulticast</a> マクロコマンドで指定するためのマルチキャスト名</dd>
 
   <dt id="nolog">/NOLOG</dt>
-  <dd>�N�����Ƀ��O���J�n���Ȃ�</dd>
+  <dd>起動時にログを開始しない</dd>
 
   <dt id="osc52">/OSC52=&lt;operations to permit&gt;</dt>
   <dd>
-    �z�X�g����̃N���b�v�{�[�h�A�N�Z�X�ŋ����鑀��
+    ホストからのクリップボードアクセスで許可する操作
     <ul>
-      <li><span class="syntax">/OSC52=off</span> �����Ȃ�</li>
-      <li><span class="syntax">/OSC52=read</span> �ǂݍ��݂̂݋�����</li>
-      <li><span class="syntax">/OSC52=write</span> �������݂̂݋�����</li>
-      <li><span class="syntax">/OSC52=readwrite</span> �ǂݏ�����������</li>
+      <li><span class="syntax">/OSC52=off</span> 許可しない</li>
+      <li><span class="syntax">/OSC52=read</span> 読み込みのみ許可する</li>
+      <li><span class="syntax">/OSC52=write</span> 書き込みのみ許可する</li>
+      <li><span class="syntax">/OSC52=readwrite</span> 読み書きを許可する</li>
     </ul>
   </dd>
 
   <dt id="p">/P=&lt;TCP port#&gt;</dt>
-  <dd>TCP �|�[�g�ԍ�</dd>
+  <dd>TCP ポート番号</dd>
 
   <dt id="r">/R=&lt;replay file&gt;</dt>
-  <dd>�t�@�C�����Đ�</dd>
+  <dd>ファイルを再生</dd>
 
   <dt id="speed">/SPEED=&lt;speed&gt;</dt>
   <dd>
-    �V���A���|�[�g�̃X�s�[�h���w�肵�܂��B<a href="#speed">/BAUD=</a> �Ɠ�������ł��B
-    �w�肵���l�����ۂɔ��f����邩�́A�V���A���|�[�g�̃`�b�v�E�h���C�o�̎d�l�ɂ��܂��B
+    シリアルポートのスピードを指定します。<a href="#speed">/BAUD=</a> と同じ動作です。
+    指定した値が実際に反映されるかは、シリアルポートのチップ・ドライバの仕様によります。
   </dd>
 
   <dt id="t">/T=&lt;telnet flag&gt;</dt>
   <dd><ul>
-        <li><span class="syntax">/T=1</span> Telnet �v���g�R�����g�p</li>
-        <li><span class="syntax">/T=0</span> Telnet �v���g�R����s�g�p</li>
+        <li><span class="syntax">/T=1</span> Telnet プロトコルを使用</li>
+        <li><span class="syntax">/T=0</span> Telnet プロトコルを不使用</li>
       </ul></dd>
 
   <dt id="tekicon">/TEKICON=&lt;icon name&gt;</dt>
-  <dd>TEK�E�B���h�E�̃E�B���h�E�A�C�R�����w�肷��<br>
-      icon name�ɂ́A�ݒ�t�@�C����<a href="../setup/teraterm-win.html#WindowIcon">TEKIcon�ݒ�</a>�Ɠ������̂��g�p�ł���B</dd>
+  <dd>TEKウィンドウのウィンドウアイコンを指定する<br>
+      icon nameには、設定ファイルの<a href="../setup/teraterm-win.html#WindowIcon">TEKIcon設定</a>と同じものが使用できる。</dd>
 
   <dt id="theme">/THEME=&lt;theme file&gt;</dt>
-  <dd>�e�[�}�t�@�C��<br>
-      �t�@�C��������΃p�X�łȂ��Ƃ��́A%APPDATA%\teraterm5\ ����̑��΃p�X�ƌ��Ȃ���܂��B</dd>
+  <dd>テーマファイル<br>
+      ファイル名が絶対パスでないときは、%APPDATA%\teraterm5\ からの相対パスと見なされます。</dd>
 
   <dt id="timeout">/TIMEOUT=&lt;connecting timeout value&gt;</dt>
-  <dd>�ڑ����̏������L�����Z������܂ł̎��ԁi�b�P�ʁj</dd>
+  <dd>接続中の処理をキャンセルするまでの時間（秒単位）</dd>
 
   <dt id="v">/V</dt>
-  <dd>�E�B���h�E�������Ȃ���ԂŋN��</dd>
+  <dd>ウィンドウが見えない状態で起動</dd>
 
   <dt id="vticon">/VTICON=&lt;icon name&gt;</dt>
-  <dd>VT�E�B���h�E�̃E�B���h�E�A�C�R�����w�肷��<br>
-      icon name�ɂ́A�ݒ�t�@�C����<a href="../setup/teraterm-win.html#WindowIcon">VTIcon�ݒ�</a>�Ɠ������̂��g�p�ł���B</dd>
+  <dd>VTウィンドウのウィンドウアイコンを指定する<br>
+      icon nameには、設定ファイルの<a href="../setup/teraterm-win.html#WindowIcon">VTIcon設定</a>と同じものが使用できる。</dd>
 
   <dt id="w">/W=&lt;window title&gt;</dt>
-  <dd>�E�B���h�E�̃^�C�g��</dd>
+  <dd>ウィンドウのタイトル</dd>
 
   <dt id="waitcom">/WAITCOM</dt>
-  <dd>�N������/C�Ŏw�肳�ꂽ�V���A���|�[�g�����݂��Ȃ��ꍇ�A�V���A���|�[�g�̐ڑ���҂��܂��B</dd>
+  <dd>起動時に/Cで指定されたシリアルポートが存在しない場合、シリアルポートの接続を待ちます。</dd>
 
   <dt id="x">/X=&lt;window position (x)&gt;</dt>
-  <dd>�E�B���h�E�̈ʒu(����)</dd>
+  <dd>ウィンドウの位置(水平)</dd>
 
   <dt id="y">/Y=&lt;window position (y)&gt;</dt>
-  <dd>�E�B���h�E�̈ʒu(����)</dd>
+  <dd>ウィンドウの位置(垂直)</dd>
 
   <dt id="pipe">/PIPE</dt>
-  <dd>���O�t���p�C�v�֐ڑ�����B���̃I�v�V�������w�肷��ƁA�ȉ��̃��[���Ńz�X�g��(�p�C�v��)�������B
+  <dd>名前付きパイプへ接続する。このオプションを指定すると、以下のルールでホスト名(パイプ名)が補われる。
       <ul>
-        <li>�z�X�g���� \ �Ŏn�܂�ꍇ�͂��̂܂܎g����B</li>
-        <li>�z�X�g���� \ ���܂܂�Ȃ��ꍇ�͐擪�� \\.\pipe\ ���t�������B</li>
-        <li>�z�X�g���̐擪�ȊO�� \ ���L��ꍇ�́A������O���T�[�o���A�����p�C�v���Ƃ��Ĉ����B</li>
+        <li>ホスト名が \ で始まる場合はそのまま使われる。</li>
+        <li>ホスト名に \ が含まれない場合は先頭に \\.\pipe\ が付加される。</li>
+        <li>ホスト名の先頭以外に \ が有る場合は、それより前をサーバ名、後ろをパイプ名として扱う。</li>
       </ul>
   </dd>
 
   <dt id="autowinclose">/AUTOWINCLOSE=&lt;flag&gt;</dt>
-  <dd>�����I�ɃE�B���h�E�����(AutoWinClose)
+  <dd>自動的にウィンドウを閉じる(AutoWinClose)
       <ul>
-        <li><span class="syntax">/AUTOWINCLOSE=on</span> �ؒf���A�����I�ɃE�B���h�E�����B</li>
-        <li><span class="syntax">/AUTOWINCLOSE=off</span> �ؒf���A�����I�ɃE�B���h�E����Ȃ��B</li>
+        <li><span class="syntax">/AUTOWINCLOSE=on</span> 切断時、自動的にウィンドウを閉じる。</li>
+        <li><span class="syntax">/AUTOWINCLOSE=off</span> 切断時、自動的にウィンドウを閉じない。</li>
       </ul></dd>
 
   <dt id="comment">;&lt;comment&gt;</dt>
-  <dd>�R�����g�B�R�}���h���C���̍Ō�ɒu���K�v������B</dd>
+  <dd>コメント。コマンドラインの最後に置く必要がある。</dd>
 </dl>
 
 
-<h2 id="example">��</h2>
+<h2 id="example">例</h2>
 
 <pre>
 TTERMPRO
@@ -290,14 +290,14 @@ TTERMPRO /C=2 /SPEED=9600 /F=MYSETUP.INI
 TTERMPRO /K=MYKEY.CNF /W="My host"
 TTERMPRO /R=README.TXT ; replay a file
 TTERMPRO myhost /B /X=100 /Y=50
-TTERMPRO /PIPE pipename ; \\.\pipe\pipename �ւ̐ڑ�
+TTERMPRO /PIPE pipename ; \\.\pipe\pipename への接続
 </pre>
 
 
-<h2 id="default">�ȗ����̒l</h2>
+<h2 id="default">省略時の値</h2>
 
 <p>
-�ȉ��̏ȗ����̒l�� Tera Term �ݒ�t�@�C���ɕۑ�����Ă��܂��B
+以下の省略時の値は Tera Term 設定ファイルに保存されています。
 </p>
 
 <pre>
@@ -319,15 +319,15 @@ TTERMPRO /PIPE pipename ; \\.\pipe\pipename �ւ̐ڑ�
 </pre>
 
 
-<h2 id="notes">��</h2>
+<h2 id="notes">注</h2>
 
 <p id="note1">
-[1] &lt;telnet flag&gt; �� 1 �ŁA���� &lt;TCP port#&gt; �� 23 �̂Ƃ������ATera Term ���玩���I�� telnet �� option negotiation ���J�n���܂��B����ȊO�̏ꍇ�ł� Tera Term �̓z�X�g���瑗���Ă��� telnet �R�}���h�ɉ������邱�Ƃ��ł��܂��B
+[1] &lt;telnet flag&gt; が 1 で、かつ &lt;TCP port#&gt; が 23 のときだけ、Tera Term から自発的に telnet の option negotiation を開始します。それ以外の場合でも Tera Term はホストから送られてきた telnet コマンドに応答することができます。
 </p>
 
 <p id="note2">
-[2] �p�����[�^�̒l�ɃX�y�[�X�� `"' ���܂߂邽�߂ɂ́A�l�S�̂� `"' �ň͂�ł��������B<br />
-�l�� " ���܂߂邽�߂ɂ́A�A������ `"'("") ���w�肵�Ă��������B(�o�[�W���� 4.63�ȍ~)
+[2] パラメータの値にスペースや `"' を含めるためには、値全体を `"' で囲んでください。<br />
+値に " を含めるためには、連続した `"'("") を指定してください。(バージョン 4.63以降)
 </p>
 
 <pre>
@@ -338,13 +338,13 @@ TTERMPRO /PIPE pipename ; \\.\pipe\pipename �ւ̐ڑ�
 </pre>
 
 <p id="note3">
-[3] portable.ini �� ttermpro.exe �Ɠ����t�H���_�ɑ��݂���ƃ|�[�^�u���łƂ��ē��삵�܂��B<br />
-�|�[�^�u���ł̎��A�ݒ�t�@�C���t�H���_�� ttermpro.exe �Ɠ����t�H���_�ƂȂ�܂��B
+[3] portable.ini が ttermpro.exe と同じフォルダに存在するとポータブル版として動作します。<br />
+ポータブル版の時、設定ファイルフォルダは ttermpro.exe と同じフォルダとなります。
 
-<h2 id="refs">�Q��</h2>
+<h2 id="refs">参照</h2>
 
 <p>
-<a href="../usage/tips/not_port23.html">Telnet �p�|�[�g�ԍ� / �� telnet �ڑ��p�̒[���ݒ�</a>
+<a href="../usage/tips/not_port23.html">Telnet 用ポート番号 / 非 telnet 接続用の端末設定</a>
 </p>
 
 

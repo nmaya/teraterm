@@ -2,67 +2,67 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>Proxy �ڑ�</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Proxy 接続</title>
     <META http-equiv="Content-Style-Type" content="text/css">
 
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1>Proxy �ڑ�</h1>
+    <h1>Proxy 接続</h1>
 
     <p>
-      Tera Term �Ŏ������ꂽ Proxy �ڑ��ɂ��ĉ�����܂��B
+      Tera Term で実装された Proxy 接続について解説します。
     </p>
 
-    <h2>�O��m��</h2>
+    <h2>前提知識</h2>
 
     <p>
-      Proxy �Ƃ́A���}�̂悤�ɃC���^�[�l�b�g����LAN�����؂藣���ꂽ�l�b�g���[�N�\���̂Ƃ��A�O���Ƃ̐ڑ��ɗp�����i�ł��B�Q�[�g�E�F�C��NAT�ɑΉ����Ă��炸�A���ڊO���ɐڑ��ł��Ȃ��ꍇ�ɐݒu����Ă��邱�Ƃ�����܂��B
+      Proxy とは、下図のようにインターネット環境とLAN環境が切り離されたネットワーク構成のとき、外部との接続に用いる手段です。ゲートウェイがNATに対応しておらず、直接外部に接続できない場合に設置されていることがあります。
     </p>
-    <div class="img"><img src="../image/connection.png" alt="Proxy �ڑ�"></div>
+    <div class="img"><img src="../image/connection.png" alt="Proxy 接続"></div>
     <p>
-      ���̂悤�Ȍ`�ԂŎg���� Proxy �ɂ͂������̎�ނ�����܂��BTera Term �ł� TTProxy �v���O�C���𓱓�����Ǝ��̂悤�Ȏ�ނ� Proxy �ɑΉ����܂��B
+      このような形態で使われる Proxy にはいくつもの種類があります。Tera Term では TTProxy プラグインを導入すると次のような種類の Proxy に対応します。
     </p>
 
     <ul>
       <li>HTTP <a href="#http_proxy">(*)</a></li>
-      <li>TELNET�itelnet �p�j</li>
+      <li>TELNET（telnet 用）</li>
       <li>SOCKS4</li>
       <li>SOCKS5</li>
     </ul>
 
-    <h2>�ݒ���@</h2>
+    <h2>設定方法</h2>
 
-    <h3>�ݒ�̎菇</h3>
+    <h3>設定の手順</h3>
 
     <p>
-      ��̓I�Ȑݒ���@�ł����A�܂��A[Setup] ���j���[����uProxy...�v��I�����܂��B
+      具体的な設定方法ですが、まず、[Setup] メニューから「Proxy...」を選択します。
     </p>
     <div class="img"><img src="../image/Proxy.png" alt="Proxy"></div>
     <p>
-      ���ɁA���}�́uProxy Setup�v�_�C�A���O������܂��̂ŁA�uType�v�Ɏg�p���� Proxy �̎�ނ��A�uHostname�v�� Proxy �T�[�o�̃z�X�g���i�������� IP �A�h���X�j���w��A�uPort number�v�� Proxy �̃|�[�g�ԍ�����͂��āuOK�v���N���b�N���܂��B�uUsername�v�ƁuPassword�v�� Proxy �ł̔F�؂��K�v�ȏꍇ�ɂ̂ݓ��͂��Ă��������B
+      次に、下図の「Proxy Setup」ダイアログが現れますので、「Type」に使用する Proxy の種類を、「Hostname」に Proxy サーバのホスト名（もしくは IP アドレス）を指定、「Port number」に Proxy のポート番号を入力して「OK」をクリックします。「Username」と「Password」は Proxy での認証が必要な場合にのみ入力してください。
     </p>
-    <div class="img"><img src="../image/ProxySetup.png" alt="Proxy �ݒ�"></div>
+    <div class="img"><img src="../image/ProxySetup.png" alt="Proxy 設定"></div>
     <p>
-      ����� Proxy �̐ݒ�͊����ł�����A�ʏ�̐ڑ����s���܂��B
+      これで Proxy の設定は完了ですから、通常の接続を行います。
     </p>
     
-    <h2 id="http_proxy">HTTP �v���L�V���g���Ƃ��̒��ӓ_</h2>
+    <h2 id="http_proxy">HTTP プロキシを使うときの注意点</h2>
     
     <p>
-    HTTP �v���L�V�T�[�o�͒ʏ� HTTP ���N�G�X�g���������߂ɐݒu����Ă���̂ŁA�ݒ�ɂ���Ă͈ȉ��̂悤�Ȑڑ��������Ȃ����Ƃ�����܂��B
+    HTTP プロキシサーバは通常 HTTP リクエストを扱うために設置されているので、設定によっては以下のような接続を許さないことがあります。
     </p>
     
     <ul>
-      <li>�ʐM���e�� HTTP, HTTPS �ł͂Ȃ�</li>
-      <li>�ʐM��̃|�[�g�ԍ��� 80, 443 �ł͂Ȃ�</li>
-      <li>CONNECT ���\�b�h�Őڑ����悤�Ƃ��邪�A�ʐM��̃|�[�g�ԍ��� 443 �ł͂Ȃ�</li>
+      <li>通信内容が HTTP, HTTPS ではない</li>
+      <li>通信先のポート番号が 80, 443 ではない</li>
+      <li>CONNECT メソッドで接続しようとするが、通信先のポート番号が 443 ではない</li>
     </ul>
     
     <p>
-    �ʏ�� TELNET �T�[�o�� SSH �T�[�o�ւ̐ڑ��͏�L�̏����ɊY�����邽�߁A���̂悤�Ȑݒ�̃v���L�V�T�[�o��ʐM�̒��p�ɗ��p���邱�Ƃ͂ł��܂���B
+    通常の TELNET サーバや SSH サーバへの接続は上記の条件に該当するため、このような設定のプロキシサーバを通信の中継に利用することはできません。
     </p>
     
   </body>

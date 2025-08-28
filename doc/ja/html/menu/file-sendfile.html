@@ -2,69 +2,69 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>Send file ([File] ���j���[)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Send file ([File] メニュー)</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1>Send file ([File] ���j���[)</h1>
+    <h1>Send file ([File] メニュー)</h1>
     <p>
-      �t�@�C���𑗐M���܂��B
+      ファイルを送信します。
     </p>
 
     <p>
-      ���j���[��I������� "Send file" �_�C�A���O���\������܂��B<br>
-      CTRL�L�[�������Ȃ�������j���[��I������ƁA
-      "Send file" �_�C�A���O���X�L�b�v���āA���M�t�@�C���̑I���݂̂ƂȂ�܂��B<br>
-      ���̎��A���M�I�v�V�����͑O��Ɠ������̂��g�p����܂��B<br>
+      メニューを選択すると "Send file" ダイアログが表示されます。<br>
+      CTRLキーを押しながらをメニューを選択すると、
+      "Send file" ダイアログをスキップして、送信ファイルの選択のみとなります。<br>
+      この時、送信オプションは前回と同じものが使用されます。<br>
     <p>
 
     <p>
-      ���̓���� <a href="#SpecialOption">���ʃI�v�V����</a> ��
-      �ύX���邱�Ƃ��ł��܂��B
+      この動作は <a href="#SpecialOption">特別オプション</a> で
+      変更することができます。
     </p>
 
-    <h2 id="dialog">"Send file" �_�C�A���O�{�b�N�X(���M�O�̃t�@�C�����w��)</h2>
+    <h2 id="dialog">"Send file" ダイアログボックス(送信前のファイル名指定)</h2>
     <dl>
       <dt>File Name</dt>
       <dd>
-    ���M����t�@�C���̃t�@�C��������͂܂��͑I�����Ă��������B<br>
-    �_�C�A���O�Ƀt�@�C�����h���b�v���邱�ƂŃt�@�C��������͂��邱�Ƃ��ł��܂��B
+    送信するファイルのファイル名を入力または選択してください。<br>
+    ダイアログにファイルをドロップすることでファイル名を入力することもできます。
       </dd>
 
-      <dt id="Sequential">�t�@�C���̓ǂݍ��ݕ��@</dt>
+      <dt id="Sequential">ファイルの読み込み方法</dt>
       <dd>
-        ���M����t�@�C���̓ǂݍ��ݕ��@
+        送信するファイルの読み込み方法
         <dl>
-          <dt>�ꊇ�ǂݍ���</dt>
+          <dt>一括読み込み</dt>
           <dd>
             <ul>
-              <li>�t�@�C���S�̂��������ɓǂݍ���ł��瑗�M���܂��B</li>
+              <li>ファイル全体をメモリに読み込んでから送信します。</li>
               <ul>
-                <li>�t�@�C�����傫���Ɠǂݍ��߂Ȃ��\��������܂��B</li>
-                <li>���M�����͒����ǂݍ��݂�荂���ɂȂ�܂��B</li>
-                <li>�f�B���C�ݒ���s���đ��M���x�𒲐��ł��܂��B</li>
+                <li>ファイルが大きいと読み込めない可能性があります。</li>
+                <li>送信処理は逐次読み込みより高速になります。</li>
+                <li>ディレイ設定を行って送信速度を調整できます。</li>
               </ul>
-              <li>�e�L�X�g�t�@�C���̃G���R�[�h�͎������肵�܂��B</li>
-              <li>Tera Term 5 �Ŏ������ꂽ���@�ł�</li>
+              <li>テキストファイルのエンコードは自動判定します。</li>
+              <li>Tera Term 5 で実装された方法です</li>
             </ul>
           </dd>
-          <dt>�����ǂݍ���</dt>
+          <dt>逐次読み込み</dt>
           <dd>
             <ul>
-              <li>�t�@�C������1byte���ǂݍ��݂Ȃ��瑗�M���܂��B</li>
+              <li>ファイルから1byteずつ読み込みながら送信します。</li>
               <ul>
-                <li>��������������ɑ傫�ȃt�@�C���𑗐M�\�ł��B</li>
-                <li>����̏������Ńf�[�^���܂Ƃ߂�(8Ki byte)���M���܂�(<a href="../setup/teraterm-trans.html#FileSendHighSpeedMode">�V���A���ڑ��ɂ����鍂���ȃt�@�C���]��</a>)�B</li>
+                <li>メモリを消費せずに大きなファイルを送信可能です。</li>
+                <li>特定の条件下でデータをまとめて(8Ki byte)送信します(<a href="../setup/teraterm-trans.html#FileSendHighSpeedMode">シリアル接続における高速なファイル転送</a>)。</li>
               </ul>
-              <li>�e�L�X�g�t�@�C����ACP�Ƃ��ēǂݍ��݁A�G���R�[�h�͎������肳��܂���B</li>
+              <li>テキストファイルはACPとして読み込み、エンコードは自動判定されません。</li>
               <ul>
-                <li>UTF-8�̃t�@�C���𐳂����������Ƃ͂ł��܂���B</li>
+                <li>UTF-8のファイルを正しく扱うことはできません。</li>
               </ul>
-              <li>�f�B���C�ݒ�͍s���܂���B</li>
-              <li>Tera Term 4 �� Send file �Ɠ������@�ł��B</li>
+              <li>ディレイ設定は行えません。</li>
+              <li>Tera Term 4 の Send file と同じ方法です。</li>
             </ul>
           </dd>
         </dl>
@@ -72,36 +72,36 @@
 
       <dt id="Binary">Binary</dt>
       <dd>
-	�t�@�C���̓��e�����̂܂ܑ��M�������ꍇ�͑I�����Ă��������B
-	�I�����Ȃ��ꍇ�́A�����R�[�h�A���s�������ϊ�����đ��M����A
-	TAB ($09), LF ($0A), CR ($0D)�ȊO�̐��䕶���͑��M����܂���B
+	ファイルの内容をそのまま送信したい場合は選択してください。
+	選択しない場合は、漢字コード、改行文字が変換されて送信され、
+	TAB ($09), LF ($0A), CR ($0D)以外の制御文字は送信されません。
       </dd>
 
-      <dt>�f�B���C�ݒ�</dt>
+      <dt>ディレイ設定</dt>
       <dd>
-        �t�@�C���ꊇ�ǂݍ��ݎ��̂ݎg�p�\�ł��B
+        ファイル一括読み込み時のみ使用可能です。
         <dl>
           <dt id="DelayType">delay type</dt>
           <dd>
             <dl>
               <dt>no delay</dt>
               <dd>
-                �f�B���C�����Ȃ�
+                ディレイ処理なし
               </dd>
 
               <dt>per character</dt>
               <dd>
-                1�������Ƀf�B���C�������s��
+                1文字毎にディレイ処理を行う
               </dd>
 
               <dt>per line</dt>
               <dd>
-                1�s���Ƀf�B���C�������s��
+                1行毎にディレイ処理を行う
               </dd>
 
               <dt>per sendsize</dt>
               <dd>
-                �w�著�M�������Ƀf�B���C�������s��
+                指定送信文字毎にディレイ処理を行う
               </dd>
             </dl>
 
@@ -109,102 +109,102 @@
 
           <dt id="Size">send size</dt>
           <dd>
-            ���M�T�C�Y(delay type�� "per sendsize"�̂Ƃ��L��)
+            送信サイズ(delay typeが "per sendsize"のとき有効)
           </dd>
 
           <dt id="DelayTick">delay time(ms)</dt>
           <dd>
-            �f�B���C����(delay type�� "no delay"�ȊO�̂Ƃ��L��)
+            ディレイ時間(delay typeが "no delay"以外のとき有効)
           </dd>
         </dl>
       </dd>
     </dl>
 
-    <h3 id="SpecialOption">�ݒ�t�@�C���̓��ʃI�v�V����</h3>
-    ���̐ݒ���Q�Ƃ�������
+    <h3 id="SpecialOption">設定ファイルの特別オプション</h3>
+    次の設定も参照ください
     <ul>
-      <li><a href="../setup/teraterm-trans.html#FileSendHighSpeedMode">�V���A���ڑ��ɂ����鍂���ȃt�@�C���]�� ([Tera Term 4 �Ɠ������@�ő��M]=on ���ɗL��)</a>
-      <li><a href="../setup/teraterm-trans.html#SendfileSkipOptionDialog">�t�@�C�����M�_�C�A���O���X�L�b�v����</a>
+      <li><a href="../setup/teraterm-trans.html#FileSendHighSpeedMode">シリアル接続における高速なファイル転送 ([Tera Term 4 と同じ方法で送信]=on 時に有効)</a>
+      <li><a href="../setup/teraterm-trans.html#SendfileSkipOptionDialog">ファイル送信ダイアログをスキップする</a>
     </ul>
 
 
-    <h3>���M�T�C�Y</h3>
+    <h3>送信サイズ</h3>
 
     <p>
-      Tera Term�̒ʐM����̎�M�o�b�t�@�T�C�Y�Ə������x���l�����邱�ƂŁA
-      �w�肵�����M�T�C�Y���Ƀf�B���C�����邱�ƂŁA
-      1�L�����N�^���A1�s���Ƀf�B���C������������I�Ƀt�@�C�����M���s�����Ƃ��ł��܂��B
+      Tera Termの通信相手の受信バッファサイズと処理速度を考慮することで、
+      指定した送信サイズ毎にディレイを入れることで、
+      1キャラクタ毎、1行毎にディレイを入れるより効率的にファイル送信を行うことができます。
     </p>
 
     <p>
-      ���M�f�[�^�̃h���b�v�͎��̂Ƃ���Ŕ������邱�Ƃ��l�����܂��B
+      送信データのドロップは次のところで発生することが考えられます。
     </p>
 
     <pre>
                      s1            s2                 s3                s4                         program
-Tera Term ---> Tera Term��  ---> Windows ---> (sshd,telnet,pipe) ---> OS,driver      ---> �[���[��(pty) + �V�F��,���̑��R�}���h
-               ���M�o�b�t�@                   (serial          )      UART�`�b�v�Ȃ�      �g���v���O������
+Tera Term ---> Tera Term内  ---> Windows ---> (sshd,telnet,pipe) ---> OS,driver      ---> 擬似端末(pty) + シェル,その他コマンド
+               送信バッファ                   (serial          )      UARTチップなど      組込プログラム等
 
-               ��M�o�b�t�@ <---         <---                    <---                <---
+               受信バッファ <---         <---                    <---                <---
                      r1            r2                 r3                r4
     </pre>
 
     <dl>
-      <dt>s1 Tera Term���̑��M�o�b�t�@</dt>
+      <dt>s1 Tera Term内の送信バッファ</dt>
       <dd>
-        �\���͒Ⴂ�ł��傤�B<br>
-        ���M�o�b�t�@�̋󂫃T�C�Y�����Ȃ���f�[�^���l�߂Ă����܂��B
+        可能性は低いでしょう。<br>
+        送信バッファの空きサイズを見ながらデータを詰めていきます。
       </dd>
       <dt>s2 Windows</dt>
       <dd>
-        �\���͒Ⴂ�ł��傤�B<br>
-        �g�p����n�[�h�E�F�A�A�h���C�o�̃o�[�W�����ɂ���Ă�BSoD���܂߂ėl�X�ȕs����������邱�Ƃ�����܂��B<br>
-        Tera Term�̃V���A���|�[�g�ݒ�ł̓h���C�o�̏ڍׂ����邱�Ƃ��ł��܂��B
+        可能性は低いでしょう。<br>
+        使用するハードウェア、ドライバのバージョンによってはBSoDを含めて様々な不具合が発生することがあります。<br>
+        Tera Termのシリアルポート設定ではドライバの詳細を見ることができます。
       </dd>
-      <dt>s3 ���M�H</dt>
+      <dt>s3 送信路</dt>
       <dd>
-        serial�̏ꍇ�G���[���̍đ������͂���܂���B�f�[�^�ɃG���[����������ƃh���b�v���܂��B<br>
-        TCP/IP, pipe�̏ꍇ�͉\���͒Ⴂ�Ǝv���܂��B
+        serialの場合エラー時の再送処理はありません。データにエラーが発生するとドロップします。<br>
+        TCP/IP, pipeの場合は可能性は低いと思われます。
       </dd>
-      <dt>s4 OS,UART�`�b�v(��M��)</dt>
+      <dt>s4 OS,UARTチップ(受信側)</dt>
       <dd>
-        PC(CPU)�̏����\�͂𒴂����f�[�^�̎�M(program��OS��`�b�v�����M�f�[�^���������Ȃ��ꍇ)���ŁA
-        OS(�h���C�o)�AUART�`�b�v�̎�M�o�b�t�@���I�[�o�[�t���[���ăh���b�v���܂��B<br>
-        �t���[���䓙��OS(�h���C�o)���s����program���s�����͎����ɂ��܂��B<br>
-        TCP/IP�ł̓t���[����,�G���[���̍đ����s���A�����̏ꍇOS���̃v���g�R���X�^�b�N�������̏������s���܂��B<br>
-        �V���A���ł̓t���[����̗L���̓��[�U�[�����߂邱�Ƃ��ł��A�I�[�o�[�t���[�ȂǃG���[���̍đ��͎����ōs���܂���B
+        PC(CPU)の処理能力を超えたデータの受信(programがOSやチップから受信データを引き取らない場合)等で、
+        OS(ドライバ)、UARTチップの受信バッファがオーバーフローしてドロップします。<br>
+        フロー制御等はOS(ドライバ)が行うかprogramが行うかは実装によります。<br>
+        TCP/IPではフロー制御,エラー時の再送が行われ、多くの場合OS内のプロトコルスタックがこれらの処理を行います。<br>
+        シリアルではフロー制御の有無はユーザーが決めることができ、オーバーフローなどエラー時の再送は自動で行われません。
       </dd>
       <dt>program</dt>
       <dd>
-        �v���O�������̎�M�o�b�t�@�I�[�o�[�t���[�ȂǂŃh���b�v���܂��B<br>
-        ���z�[��(pty)�ł̓o�b�t�@����ꂻ���ɂȂ��0x07(BEL)�������ATera Term�Ńx�����Ȃ�܂��B
+        プログラム内の受信バッファオーバーフローなどでドロップします。<br>
+        仮想端末(pty)ではバッファが溢れそうになると0x07(BEL)が送られ、Tera Termでベルがなります。
       </dd>
     </dl>
 
-    ���UART�`�b�v�A�h���C�o�̎�M�o�b�t�@�T�C�Y
+    主なUARTチップ、ドライバの受信バッファサイズ
     <pre>
-      8250 UART                 ��M�o�b�t�@�Ȃ�
+      8250 UART                 受信バッファなし
       16550 UART                16 Byte FIFO
       FT232R                    256 Byte receive buffer
-      TTY drive(Linux 2.6.26)   4KB  (<a href="../reference/sourcecode.html#ttssh">TTSSH�ɂ��SSH�̐݌v�Ǝ���/�^���[���̂�����</a>)
+      TTY drive(Linux 2.6.26)   4KB  (<a href="../reference/sourcecode.html#ttssh">TTSSHによるSSHの設計と実装/疑似端末のしくみ</a>)
 </pre>
 
     <p>
-      ���M�f�[�^�̃G�R�[���Ԃ��Ă��Ȃ��ꍇ�͎�M�f�[�^���ǂ����Ńh���b�v���Ă��邱�Ƃ��l�����܂��B
+      送信データのエコーが返ってこない場合は受信データがどこかでドロップしていることも考えられます。
     </p>
 
-    <h2>"Send file" �_�C�A���O�{�b�N�X(���M��)</h2>
+    <h2>"Send file" ダイアログボックス(送信中)</h2>
     <dl>
       <dt>Close</dt>
       <dd>
-	Close �{�^���������ƃt�@�C���̑��M�𒆎~���܂��B
+	Close ボタンを押すとファイルの送信を中止します。
       </dd>
 
       <dt>Pause/Start</dt>
       <dd>
-	Pause �{�^���������ƃt�@�C���̑��M���ꎞ���f���܂��B
-	���̂Ƃ� Pause �{�^���� Start �{�^���ɕω����܂��B
-	���̌� Start �{�^���������Ƒ��M���ĊJ���܂��B
+	Pause ボタンを押すとファイルの送信を一時中断します。
+	このとき Pause ボタンは Start ボタンに変化します。
+	その後 Start ボタンを押すと送信を再開します。
       </dd>
     </dl>
   </body>

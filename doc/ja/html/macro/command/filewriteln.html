@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>filewriteln</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,32 +14,32 @@
 <h1>filewriteln</h1>
 
 <p>
-ƒtƒ@ƒCƒ‹‚Éƒf[ƒ^‚ð‰üs•t‚«‚Å‘‚«ž‚ÞB
+ãƒ•ã‚¡ã‚¤ãƒ«ã«ãƒ‡ãƒ¼ã‚¿ã‚’æ”¹è¡Œä»˜ãã§æ›¸ãè¾¼ã‚€ã€‚
 </p>
 
 <pre class="macro-syntax">
 filewriteln &lt;file handle&gt; &lt;data&gt;
 </pre>
 
-<h2>‰ðà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-ƒtƒ@ƒCƒ‹ƒnƒ“ƒhƒ‹ &lt;file handle&gt; ‚ÅŽw’è‚³‚ê‚éƒtƒ@ƒCƒ‹‚ÖA&lt;data&gt; ‚Æ‰üs•¶Žš (CR+LF) ‚ð‘‚«ž‚ÞB
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ« &lt;file handle&gt; ã§æŒ‡å®šã•ã‚Œã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã€&lt;data&gt; ã¨æ”¹è¡Œæ–‡å­— (CR+LF) ã‚’æ›¸ãè¾¼ã‚€ã€‚
 </p>
 
 <p>
-&lt;data&gt; ‚ª•¶Žš—ñŒ^‚Ìê‡A•¶Žš—ñ‚ð‘‚«ž‚ÞB<br />
-&lt;data&gt; ‚ª®”Œ^‚Ìê‡‚ÍA‚»‚Ì’l‚Ì‰ºˆÊƒoƒCƒg(0-255)‚ð ASCII ƒR[ƒh‚Æ‚Ý‚È‚µA‚»‚Ì•¶Žš‚ð‘‚«ž‚ÞB
+&lt;data&gt; ãŒæ–‡å­—åˆ—åž‹ã®å ´åˆã€æ–‡å­—åˆ—ã‚’æ›¸ãè¾¼ã‚€ã€‚<br />
+&lt;data&gt; ãŒæ•´æ•°åž‹ã®å ´åˆã¯ã€ãã®å€¤ã®ä¸‹ä½ãƒã‚¤ãƒˆ(0-255)ã‚’ ASCII ã‚³ãƒ¼ãƒ‰ã¨ã¿ãªã—ã€ãã®æ–‡å­—ã‚’æ›¸ãè¾¼ã‚€ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 filewriteln fhandle '---------cut here---------'
 </pre>
 
 <pre class="macro-example">
-; NUL•¶Žš(0x00)‚Æ‰üs•¶Žš(CR+LF)‚ð‘‚«ž‚Þ
+; NULæ–‡å­—(0x00)ã¨æ”¹è¡Œæ–‡å­—(CR+LF)ã‚’æ›¸ãè¾¼ã‚€
 filewrite fhandle 0
 </pre>
 

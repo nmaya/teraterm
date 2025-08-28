@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>getdir</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,28 +14,28 @@
 <h1>getdir</h1>
 
 <p>
-MACRO �̃J�����g�f�B���N�g���𓾂�B
+MACRO のカレントディレクトリを得る。
 </p>
 
 <pre class="macro-syntax">
 getdir &lt;strvar&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-(Tera Term �ł͂Ȃ�) "MACRO �̃J�����g�f�B���N�g��" �𕶎���ϐ� &lt;strvar&gt; �Ɋi�[����B<br>
-���[�g�f�B���N�g���̏ꍇ�A������̖����ɂ͉~�L�� (\) ���t���B���[�g�ȊO�̃f�B���N�g���̏ꍇ�A������̓f�B���N�g�����ŏI���A�����ɉ~�L���͕t���Ȃ��B
+(Tera Term ではなく) "MACRO のカレントディレクトリ" を文字列変数 &lt;strvar&gt; に格納する。<br>
+ルートディレクトリの場合、文字列の末尾には円記号 (\) が付く。ルート以外のディレクトリの場合、文字列はディレクトリ名で終わり、末尾に円記号は付かない。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 getdir dir
 ; dir = C:\Documents and Settings\yutaka\My Documents\TeraTermMacro
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="setdir.html">setdir</a></li>
 </ul>

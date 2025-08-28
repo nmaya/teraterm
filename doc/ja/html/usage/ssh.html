@@ -2,181 +2,181 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>SSH �ڑ�</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>SSH 接続</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1>SSH �ڑ�</h1>
+    <h1>SSH 接続</h1>
 
     <p>
-      Tera Term �̓����Ƃ������� SSH �ڑ��ɂ��ĉ�����܂��BTera Term �� TTSSH �v���O�C���𓱓������ SSH �ڑ��ɑΉ����܂��B
+      Tera Term の特徴とも言える SSH 接続について解説します。Tera Term は TTSSH プラグインを導入すると SSH 接続に対応します。
     </p>
 
-    <h2 id="prerequisite">�O��m��</h2>
+    <h2 id="prerequisite">前提知識</h2>
 
     <p>
-      SSH �ɂ� SSH1�ASSH2 ��2��ނ̃v���g�R��������܂��BSSH2 �� SSH1 �̏�ʌ݊��ł͂Ȃ��̂Œ��ӂ��K�v�ł��B�ڑ�����z�X�g�ɉ����ēK�؂ɑI������K�v������܂��BTTSSH �͗����̃o�[�W�����ɑΉ����Ă��܂��B
+      SSH には SSH1、SSH2 の2種類のプロトコルがあります。SSH2 は SSH1 の上位互換ではないので注意が必要です。接続するホストに応じて適切に選択する必要があります。TTSSH は両方のバージョンに対応しています。
     </p>
 
     <p>
-      �܂��ASSH �̔F�ؕ����ɂ�
+      また、SSH の認証方式には
     </p>
       <ul>
-        <li>�p�X���[�h�F��</li>
-        <li>���J���i�Ɣ閧���̃y�A�ɂ��j�F��
+        <li>パスワード認証</li>
+        <li>公開鍵（と秘密鍵のペアによる）認証
           <ul>
-            <li>�F�؃G�[�W�F���g Pageant �𗘗p����</li>
+            <li>認証エージェント Pageant を利用する</li>
           </ul>
         </li>
-        <li>SSH1 �ɂ����� rhosts �F��</li>
-        <li>SSH1 �ɂ����� challenge/response(TIS) �F��</li>
-        <li>SHS2 �ɂ����� keyboard-interactive �F��</li>
+        <li>SSH1 における rhosts 認証</li>
+        <li>SSH1 における challenge/response(TIS) 認証</li>
+        <li>SHS2 における keyboard-interactive 認証</li>
       </ul>
     <p>
-      ������܂��B�����ł͎��v�������Ǝv����F�ؕ��@�ɂ��ĐG�ꂽ���Ǝv���܂��B
+      があります。ここでは需要が多いと思われる認証方法について触れたいと思います。
     </p>
 
-    <h2 id="connproc">�ڑ��̎菇</h2>
+    <h2 id="connproc">接続の手順</h2>
 
     <p>
-      Tera Term ���N������ƁA���}�̂悤�ȃ_�C�A���O�ɂ��ڑ����@��I�Ԃ��Ƃ��ł��܂��B
+      Tera Term を起動すると、下図のようなダイアログにより接続方法を選ぶことができます。
     </p>
-    <div class="img"><img src="../image/NewConnection.png" alt="�ڑ��_�C�A���O"></div>
+    <div class="img"><img src="../image/NewConnection.png" alt="接続ダイアログ"></div>
     <p>
-      SSH �Őڑ�����ꍇ�A�ڑ���̃T�[�o�ɂ��킹�āuSSH version�v��I�����Ă��������B
+      SSH で接続する場合、接続先のサーバにあわせて「SSH version」を選択してください。
     </p>
 
     <p id="ssh_auth_dialog">
-      �ڑ�����ƁA���x�͔F�ؕ��@��I������_�C�A���O������܂��B<br />
-	  ���̃_�C�A���O�̃f�t�H���g�l�� <a href="../menu/setup-sshauth.html">"TTSSH: Authentication Setup" �_�C�A���O�{�b�N�X</a>�Őݒ肷�邱�Ƃ��ł��܂��B
+      接続すると、今度は認証方法を選択するダイアログが現れます。<br />
+	  このダイアログのデフォルト値は <a href="../menu/setup-sshauth.html">"TTSSH: Authentication Setup" ダイアログボックス</a>で設定することができます。
     </p>
-    <div class="img"><img src="../image/Authentication.png" alt="�F�ؕ��@"></div>
+    <div class="img"><img src="../image/Authentication.png" alt="認証方法"></div>
     <p>
-      TTSSH �͕����̔F�ؕ��@���T�|�[�g���Ă��܂����A�����I�Ɉ�̔F�ؕ��@��I������K�v������܂��B��̔F�ؕ��@�Ɏ��s�����ꍇ�A�����ĕʂ̎�ނ̔F�؂����݂邱�Ƃ͂���܂���B<br>
-      ���Ƃ��� OpenSSH �N���C�A���g�ł̓p�X���[�h�F�؂� keyboard-interactive �F�؂̌����ڂ������ς��Ȃ����߃T�[�o�̔F�ؕ������ӎ������Ƀ��O�C���ł��܂����ATTSSH �͂����ł͂���܂���Bkeyboard-interactive �F�؂ƌ��J���F�؂������T�|�[�g���Ă���T�[�o�Ƀp�X���[�h�F�؂Ń��O�C�����悤�Ƃ��Ă��K�����s���܂��B
+      TTSSH は複数の認証方法をサポートしていますが、明示的に一つの認証方法を選択する必要があります。一つの認証方法に失敗した場合、続けて別の種類の認証を試みることはありません。<br>
+      たとえば OpenSSH クライアントではパスワード認証と keyboard-interactive 認証の見た目がそう変わらないためサーバの認証方式を意識せずにログインできますが、TTSSH はそうではありません。keyboard-interactive 認証と公開鍵認証だけをサポートしているサーバにパスワード認証でログインしようとしても必ず失敗します。
     </p>
     <ul>
-      <li>�p�X���[�h�F�؂��g�p����ꍇ�́uUse plain password to log in�v�Ƀ`�F�b�N�����Ă��邱�Ƃ��m�F���A���[�U���ƃp�X���[�h����͂��܂��B����炪��������Ζ������O�C���ł��܂��B<br>
-          ���p�X���[�h���M���� SSH �p�P�b�g�͈Í�������Ă���̂ŁATELNET �̂悤�Ƀp�X���[�h�������ő��M����邱�Ƃ͂���܂���B</li>
-      <li>���J���F�؂�p����ꍇ�́A�ォ��2�Ԗڂ́uUse RSA/DSA/ECDSA/ED25519 key to log in�v�Ƀ`�F�b�N�����A�uPrivate key file:�v�{�^���������Ĕ閧���̃t�@�C�����w�肵�܂��B���̌テ�[�U���Ɣ閧���̃p�X�t���[�Y����͂��ă��O�C�����܂��B<br>
-          ��OpenSSH �`���̂ق��ATTSSH 2.63(Tera Term 4.76) �ȍ~�ł� PuTTY �`���ESECSH(ssh.com) �`���� SSH2 �閧���ɑΉ����Ă��܂��B</li>
-      <li>keyboard-interactive�F�؂��g�p����ꍇ�́uUse keyboard-interactive to log in�v�Ƀ`�F�b�N�����A���[�U������͂��܂��B<br>
-          �T�[�o����̃v�����v�g�ƕ��������͂���_�C�A���O���\�������̂ŁA�p�X���[�h����͂��܂��B</li>
-      <li>Pageant ��p���ĔF�؂���ꍇ�́uUse Pageant�v�Ƀ`�F�b�N�����A���[�U������͂��܂��B</li>
+      <li>パスワード認証を使用する場合は「Use plain password to log in」にチェックがついていることを確認し、ユーザ名とパスワードを入力します。これらが正しければ無事ログインできます。<br>
+          ※パスワード送信時の SSH パケットは暗号化されているので、TELNET のようにパスワードが平文で送信されることはありません。</li>
+      <li>公開鍵認証を用いる場合は、上から2番目の「Use RSA/DSA/ECDSA/ED25519 key to log in」にチェックをつけ、「Private key file:」ボタンを押して秘密鍵のファイルを指定します。その後ユーザ名と秘密鍵のパスフレーズを入力してログインします。<br>
+          ※OpenSSH 形式のほか、TTSSH 2.63(Tera Term 4.76) 以降では PuTTY 形式・SECSH(ssh.com) 形式の SSH2 秘密鍵に対応しています。</li>
+      <li>keyboard-interactive認証を使用する場合は「Use keyboard-interactive to log in」にチェックをつけ、ユーザ名を入力します。<br>
+          サーバからのプロンプトと文字列を入力するダイアログが表示されるので、パスワードを入力します。</li>
+      <li>Pageant を用いて認証する場合は「Use Pageant」にチェックをつけ、ユーザ名を入力します。</li>
     </ul>
 
-    <h3 id="username_input">���[�U������</h3>
+    <h3 id="username_input">ユーザ名入力</h3>
 	<p>
-	  ���̃_�C�A���O���\�����ꂽ�Ƃ���
-	  <a href="../menu/setup-sshauth.html#DefaultUserName">�ݒ�</a>�ɂ���Ă��炩����
-	  ���[�U�������͂���܂��B
+	  このダイアログが表示されたときに
+	  <a href="../menu/setup-sshauth.html#DefaultUserName">設定</a>によってあらかじめ
+	  ユーザ名が入力されます。
 	</p>
 	<p>
-	  �܂��A
-	  ���[�U�������͂���Ă������A�܂��́A���[�U������͂��ē��͗�����t�H�[�J�X���ړ��������A
-	  <a href="../menu/setup-sshauth.html#CheckAuthListFirst">�ݒ�</a>�ɂ���ăT�[�o�[�փA�N�Z�X���܂��B
+	  また、
+	  ユーザ名が入力されていた時、または、ユーザ名を入力して入力欄からフォーカスが移動した時、
+	  <a href="../menu/setup-sshauth.html#CheckAuthListFirst">設定</a>によってサーバーへアクセスします。
 	</p>
 	<p>
-	  ���[�U���̓��͗��̉��̃{�^���������ƃI�v�V������I���ł��܂��B
-	  ���[�U�������͂���Ă��Ȃ��ꍇ�́Atab�L�[�ł��̃{�^���Ƀt�H�[�J�X���ړ����܂��B
-	  ���[�U�������͂���Ă���ꍇ�́Atab�L�[�Ńp�X���[�h / �p�X�t���[�Y�̓��͗���
-	  �t�H�[�J�X���ړ����܂��B
+	  ユーザ名の入力欄の横のボタンを押すとオプションを選択できます。
+	  ユーザ名が入力されていない場合は、tabキーでこのボタンにフォーカスが移動します。
+	  ユーザ名が入力されている場合は、tabキーでパスワード / パスフレーズの入力欄に
+	  フォーカスが移動します。
 	  <dl>
 		<dt>Use default usename</dt>
-		<dd><a href="../menu/setup-sshauth.html#DefaultUserName">�ݒ�</a>�̃f�t�H���g���[�U������͂��܂��B
-		  �f�t�H���g���[�U����ݒ肵�Ă��Ȃ��ꍇ�͑I���ł��܂���B
+		<dd><a href="../menu/setup-sshauth.html#DefaultUserName">設定</a>のデフォルトユーザ名を入力します。
+		  デフォルトユーザ名を設定していない場合は選択できません。
 		</dd>
 	  </dl>
 
 	  <dl>
 		<dt>Use logon usename</dt>
-		<dd>Windows �̃��O�I�����[�U������͂��܂��B</dd>
+		<dd>Windows のログオンユーザ名を入力します。</dd>
 	  </dl>
 	</p>
 
-    <h3 id="passwd_input">�p�X���[�h / �p�X�t���[�Y����</h3>
+    <h3 id="passwd_input">パスワード / パスフレーズ入力</h3>
     <p>
-      �p�X���[�h / �p�X�t���[�Y�̓��͗��́A�ʏ�̃_�C�A���O�ƈႢ�ȉ��̂悤�ȓ���ƂȂ�܂��B
+      パスワード / パスフレーズの入力欄は、通常のダイアログと違い以下のような動作となります。
     </p>
     <ul>
-      <li>Control + A �` Z, [, \, ], ^, _ �Ő��䕶�� (0x01 - 0x1F) ����͂ł��܂��B���̓��삪�f�t�H���g�ł�</li>
-      <li>Control + V �� SYN (0x16) �̓��͂ƂȂ�܂��̂ŁA�\��t���ɂ͗��p�ł��܂���B�\��t�����s���ɂ� Shift + Insert ���g�p���Ă��������B</li>
+      <li>Control + A 〜 Z, [, \, ], ^, _ で制御文字 (0x01 - 0x1F) を入力できます。この動作がデフォルトです</li>
+      <li>Control + V は SYN (0x16) の入力となりますので、貼り付けには利用できません。貼り付けを行うには Shift + Insert を使用してください。</li>
     </ul>
 	<p>
-	  ���͗��̉��̃{�^���������ƃI�v�V������I���ł��܂��B
+	  入力欄の横のボタンを押すとオプションを選択できます。
 	  <dl>
 		<dt>Paste from clipboard</dt>
-		<dd>�N���b�v�{�[�h����p�X�t���[�Y���y�[�X�g���܂��B</dd>
+		<dd>クリップボードからパスフレーズをペーストします。</dd>
 
 		<dt>Paste from clipboard and clear clipboard</dt>
-		<dd>�N���b�v�{�[�h����p�X�t���[�Y���y�[�X�g���ăN���b�v�{�[�h����ɂ��܂��B</dd>
+		<dd>クリップボードからパスフレーズをペーストしてクリップボードを空にします。</dd>
 
 		<dt>Use control characters</dt>
-		<dd>�`�F�b�N�������Ă���Ɛ��䕶������͂��邱�Ƃ��ł��܂����A
-		  Control + V�ŃN���b�v�{�[�h�̃y�[�X�g���̑���͂ł��܂���B
-		  �`�F�b�N�������Ă��Ȃ��Ɛ��䕶������͂ł��܂��񂪁A
-		  Control + V�ŃN���b�v�{�[�h�̃y�[�X�g���̑��삪�\�ł��B
+		<dd>チェックが入っていると制御文字を入力することができますが、
+		  Control + Vでクリップボードのペースト等の操作はできません。
+		  チェックが入っていないと制御文字を入力できませんが、
+		  Control + Vでクリップボードのペースト等の操作が可能です。
 		</dd>
 
 		<dt>Show passphrase</dt>
-		<dd>�p�X�t���[�Y��\�����邩�A�����ɂ��邩�I���ł��܂�</dd>
+		<dd>パスフレーズを表示するか、伏字にするか選択できます</dd>
 	  </dl>
     </p>
 
-    <h2 id="securitywarning">�Z�L�����e�B�x��</h2>
+    <h2 id="securitywarning">セキュリティ警告</h2>
 
-    <h3 id="known_hosts">ssh_known_hosts �t�@�C��</h3>
+    <h3 id="known_hosts">ssh_known_hosts ファイル</h3>
 
-    <p>SSH �ڑ����ɂ� SSH �T�[�o�̃z�X�g�����`�F�b�N���A��v���錮�� ssh_known_hosts �ɂȂ��ꍇ�ɂ͌x����\�����܂��B<br />
-       �`�F�b�N�̌��ʂ͈ȉ��̂悤�ɕ��ނ���܂��B</p>
+    <p>SSH 接続時には SSH サーバのホスト鍵をチェックし、一致する鍵が ssh_known_hosts にない場合には警告を表示します。<br />
+       チェックの結果は以下のように分類されます。</p>
 
     <ul>
-      <li>ssh_known_hosts �ɐڑ����̃z�X�g�̌�������o�^����Ă��Ȃ�</li>
-      <li>ssh_known_hosts �ɐڑ����̃z�X�g�̌����o�^����Ă��邪�A���̎�ނ��Ⴄ</li>
-      <li>ssh_known_hosts �ɐڑ����̃z�X�g�̌����o�^����Ă���A���̎�ނ����������A����̌��ł͂Ȃ�</li>
-      <li>ssh_known_hosts �ɐڑ����̃z�X�g�̌����o�^����Ă���A���̎�ނ������ŁA����̌��ł��� (�x���͕\������Ȃ�)</li>
+      <li>ssh_known_hosts に接続中のホストの鍵が一つも登録されていない</li>
+      <li>ssh_known_hosts に接続中のホストの鍵が登録されているが、鍵の種類が違う</li>
+      <li>ssh_known_hosts に接続中のホストの鍵が登録されており、鍵の種類が同じだが、同一の鍵ではない</li>
+      <li>ssh_known_hosts に接続中のホストの鍵が登録されており、鍵の種類が同じで、同一の鍵である (警告は表示されない)</li>
     </ul>
 
-    <p>�x�����\�����ꂽ�ꍇ�ɂ́A�Ӑ}���Ȃ��T�[�o�ɐڑ����Ă��邩���ԎҍU���ɑ����Ă���\��������܂��B<br />
-       �������A�n�߂ăT�[�o�ɐڑ�����Ƃ���A�T�[�o�̍ăC���X�g�[���Ȃǂɂ�� SSH �T�[�o�̃z�X�g�����ύX���ꂽ�ꍇ�ɂ����̌x�����\������܂��B�u�x���_�C�A���O�ɕ\������Ă���A�ڑ����� SSH �T�[�o�̃z�X�g���̎w��v�Ɓu�ڑ����悤�Ƃ��Ă��� SSH �T�[�o�̃z�X�g���̐��m�Ȏw��v���r���Ă��������B</p>
+    <p>警告が表示された場合には、意図しないサーバに接続しているか中間者攻撃に遭っている可能性があります。<br />
+       しかし、始めてサーバに接続するときや、サーバの再インストールなどにより SSH サーバのホスト鍵が変更された場合にもこの警告が表示されます。「警告ダイアログに表示されている、接続中の SSH サーバのホスト鍵の指紋」と「接続しようとしている SSH サーバのホスト鍵の正確な指紋」を比較してください。</p>
 
-    <p>OpenSSH �̏ꍇ�A�T�[�o�Ǘ��҂͈ȉ��̂悤�ȃR�}���h�ŃT�[�o�̃z�X�g���̎w����擾�ł��܂��B</p>
+    <p>OpenSSH の場合、サーバ管理者は以下のようなコマンドでサーバのホスト鍵の指紋を取得できます。</p>
 
     <pre>ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub</pre>
 
     <h3 id="VerifyHostKeyDNS">SSHFP RR</h3>
 
-    <p>SSH �ڑ����ɁARFC 4255 �ɋK�肳��Ă��� SSHFP RR (Secure SHell FingerPrint Resource Record) �ɂ�錟�؂��\�ł����A���݂�Tera Term�ł� DNSSEC ���؂��ł��Ȃ��̂ŎQ�l���x�̈ʒu�Â��ƂȂ�܂��B</p>
+    <p>SSH 接続時に、RFC 4255 に規定されている SSHFP RR (Secure SHell FingerPrint Resource Record) による検証が可能ですが、現在のTera Termでは DNSSEC 検証ができないので参考程度の位置づけとなります。</p>
 
-    <p>�h���C���̏��L�҂ł���� DNS �� SSHFP ���R�[�h�� SSH �T�[�o�z�X�g���̎w���o�^���邱�Ƃ��\�ł��B�N���C�A���g(Tera Term)�� SSHFP ���R�[�h���擾���A�ڑ����̃T�[�o�z�X�g���Ɣ�r���邱�ƂŌ��؂��\�ł��B<br />
-       ���̋@�\�� Windows ���]���o�̐����ɂ�� Windows 2000 �ȍ~�ł̂ݗL���ł��B</p>
+    <p>ドメインの所有者であれば DNS の SSHFP レコードに SSH サーバホスト鍵の指紋を登録することが可能です。クライアント(Tera Term)は SSHFP レコードを取得し、接続中のサーバホスト鍵と比較することで検証が可能です。<br />
+       この機能は Windows リゾルバの制限により Windows 2000 以降でのみ有効です。</p>
 
-    <p>SSHFP �Ɋւ��ċK�肵�Ă��� RFC 4255 �ɂ́uDNSSEC �F�؂���Ă��Ȃ� SSHFP RR ��M�����Ă͂Ȃ�Ȃ��v�Ƃ���܂��B<br />
-       Tera Term �����p���Ă��� Windows ���]���o�� DNSSEC �̏��������؂��ł��Ȃ����߁A��� DNSSEC ���؂Ɏ��s���܂��B</p>
+    <p>SSHFP に関して規定している RFC 4255 には「DNSSEC 認証されていない SSHFP RR を信頼してはならない」とあります。<br />
+       Tera Term が利用している Windows リゾルバは DNSSEC の署名が検証ができないため、常に DNSSEC 検証に失敗します。</p>
 
-    <h2 id="generate">�L�[�̐���</h2>
+    <h2 id="generate">キーの生成</h2>
 
     <p>
-      �����ŁA���J���F�؂ɗp������J���E�閧���y�A�̐������@��������܂��B���t�@�C���𐶐�����ɂ� [Setup] ���j���[����uSSH KeyGenerator...�v��I�����܂��B
+      ここで、公開鍵認証に用いる公開鍵・秘密鍵ペアの生成方法を説明します。鍵ファイルを生成するには [Setup] メニューから「SSH KeyGenerator...」を選択します。
     </p>
-    <div class="img"><img src="../image/SelectKeyGenerator.png" alt="�L�[������I��"></div>
+    <div class="img"><img src="../image/SelectKeyGenerator.png" alt="キー生成を選択"></div>
     <p>
-      �I������ƁA���̐����_�C�A���O������܂��B<br>
+      選択すると、鍵の生成ダイアログが現れます。<br>
     </p>
-    <div class="img"><img src="../image/KeyGenerator.png" alt="�L�[�����_�C�A���O"></div>
+    <div class="img"><img src="../image/KeyGenerator.png" alt="キー生成ダイアログ"></div>
     <p>
-      �uKey type�v�ŃL�[�̎�ނ�I�ׂ܂����ASSH1 �v���g�R���Ŏg�p����ꍇ�ɂ́uRSA1�v���ASSH2 �v���g�R���Ŏg�p����ꍇ�ɂ́uRSA�v�uDSA�v�uECDSA�v�uED25519�v��I�����܂��B�I����A�uGenerate�v�{�^���������ƃp�X�t���[�Y�̓��͂𑣂���܂��̂ŁA�L�[�̃p�X�t���[�Y�i�p�X���[�h�̂悤�Ȃ��́B�������󔒂��܂�ł��������A��ʂɃp�X���[�h�������������w��\�j����͂��܂��B���͂�����́A�uSave public key�v�{�^���A�uSave private key�v�{�^���������ăL�[��ۑ����܂��B�t�@�C�����͕K�v���Ȃ���΃f�t�H���g�̂܂܂ō\���܂���B�ۑ����I�������uCancel�v�ŏI�����܂��B
-    </p>
-
-    <p>
-      ���̃L�[�E�t�@�C���̎g�p���@�ł����A�f�t�H���g�ŕۑ������ꍇ�A�g���q���upub�v�ƂȂ��Ă���t�@�C���i�u���J���v�j�̓��e���A�T�[�o�̎w��̏ꏊ�ɕۊǂ��܂��B�i��ʓI�ɂ� (home dir)/.ssh/authorized_keys �ɓ��e��ǉ����܂��B�j�܂��A�g���q���t���Ă��Ȃ��t�@�C���́u�閧���v�ƂȂ�A���O�C�����Ɏw�肷�鎖�ƂȂ�܂��B
+      「Key type」でキーの種類を選べますが、SSH1 プロトコルで使用する場合には「RSA1」を、SSH2 プロトコルで使用する場合には「RSA」「DSA」「ECDSA」「ED25519」を選択します。選択後、「Generate」ボタンを押すとパスフレーズの入力を促されますので、キーのパスフレーズ（パスワードのようなもの。ただし空白を含んでもいいし、一般にパスワードよりも長い物が指定可能）を入力します。入力した後は、「Save public key」ボタン、「Save private key」ボタンを押してキーを保存します。ファイル名は必要がなければデフォルトのままで構いません。保存が終わったら「Cancel」で終了します。
     </p>
 
     <p>
-      <em>����</em>�F�閧���iprivate key�j�͑�O�҂ɐ�΂ɒm���Ă͂����Ȃ����߁A�Ǘ������d�ɍs���悤�ɂ��Ă��������B�܂��A����ăT�[�o�֓]�����Ă��܂�Ȃ��悤�ɂ��Ă��������B<br>
+      このキー・ファイルの使用方法ですが、デフォルトで保存した場合、拡張子が「pub」となっているファイル（「公開鍵」）の内容を、サーバの指定の場所に保管します。（一般的には (home dir)/.ssh/authorized_keys に内容を追加します。）また、拡張子が付いていないファイルは「秘密鍵」となり、ログイン時に指定する事となります。
+    </p>
+
+    <p>
+      <em>注意</em>：秘密鍵（private key）は第三者に絶対に知られてはいけないため、管理を厳重に行うようにしてください。また、誤ってサーバへ転送してしまわないようにしてください。<br>
     </p>
 
   </body>

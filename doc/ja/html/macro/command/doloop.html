@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>do, loop</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,7 +14,7 @@
 <h1>do, loop</h1>
 
 <p>
-�J��Ԃ��B<em>(�o�[�W����4.56�ȍ~)</em>
+繰り返す。<em>(バージョン4.56以降)</em>
 </p>
 
 <pre class="macro-syntax">
@@ -27,18 +27,18 @@ do [ { while | until } &lt;expression&gt; (option)]
 loop [ { while | until } &lt;expression&gt; (option)]
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-'do' �� 'loop' �̊Ԃ̃R�}���h���A�������ɏ]���ČJ��Ԃ��B<br>
-�������́Awhile �̏ꍇ��&lt;expression&gt; ��0�ȊO�ł������Auntil �̏ꍇ��&lt;expression&gt;��0�ł������J��Ԃ��B<br>
-'do' �ɏ��������w�肵���ꍇ�́A�����ɂ���Ă͈�x�����[�v�����s����Ȃ��ꍇ������B'loop' �ɏ��������w�肵���ꍇ�́A�Œ�1�x�̓��[�v�����s�����B�ǂ���ɂ��������w�肵�Ȃ������ꍇ�́A�������[�v�ƂȂ�B
+'do' と 'loop' の間のコマンドを、条件式に従って繰り返す。<br>
+条件式は、while の場合は&lt;expression&gt; が0以外である限り、until の場合は&lt;expression&gt;が0である限り繰り返す。<br>
+'do' に条件式を指定した場合は、条件によっては一度もループが実行されない場合がある。'loop' に条件式を指定した場合は、最低1度はループが実行される。どちらにも条件を指定しなかった場合は、無限ループとなる。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
-; 10��J��Ԃ��B
+; 10回繰り返す。
 i = 10
 do while i &gt; 0
     i = i - 1
@@ -46,7 +46,7 @@ loop
 </pre>
 
 <pre class="macro-example">
-; �N���b�v�{�[�h�̓��e�𑗐M����B
+; クリップボードの内容を送信する。
 offset = 0
 do
     clipb2var buff offset
@@ -55,9 +55,9 @@ do
 loop while result = 2
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
-  <li><a href="../syntax/expressions.html">���Ɖ��Z�q</a></li>
+  <li><a href="../syntax/expressions.html">式と演算子</a></li>
   <li><a href="fornext.html">for, next</a></li>
   <li><a href="until.html">until, enduntil</a></li>
   <li><a href="while.html">while, endwhile</a></li>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>unlink</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,41 +14,41 @@
 <h1>unlink</h1>
 
 <p>
-���݂� Tera Term �E�B���h�E�� MACRO �̊Ԃ̃����N��f�B
+現在の Tera Term ウィンドウと MACRO の間のリンクを断つ。
 </p>
 
 <pre class="macro-syntax">
 unlink
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-���̃R�}���h�ȍ~�AMACRO �͔񃊃��N��ԂɂȂ�A���� Tera Term �E�B���h�E�𐧌�ł��Ȃ��Ȃ�B<br>
-�񃊃��N��Ԃł́Aconnect �R�}���h�ɂ���ĐV���� Tera Term �E�B���h�E���J���AMACRO ������Ƀ����N�����邱�Ƃ��ł���B
+このコマンド以降、MACRO は非リンク状態になり、その Tera Term ウィンドウを制御できなくなる。<br>
+非リンク状態では、connect コマンドによって新しい Tera Term ウィンドウを開き、MACRO をそれにリンクさせることができる。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
-; Tera Term �E�B���h�E���J���A����Ƀ����N����
+; Tera Term ウィンドウを開き、それにリンクする
 connect 'host'
 
-; �����N��f��
+; リンクを断つ
 unlink
 
-; �ʂ� Tera Term �E�B���h�E���J���A����Ƀ����N����
+; 別の Tera Term ウィンドウを開き、それにリンクする
 connect 'host2'
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="closett.html">closett</a></li>
   <li><a href="connect.html">connect</a></li>
   <li><a href="cygconnect.html">cygconnect</a></li>
   <li><a href="disconnect.html">disconnect</a></li>
   <li><a href="testlink.html">testlink</a></li>
-  <li><a href="../appendixes/disconnecttiming.html">�ؒf�シ���ɐڑ�����ꍇ�̒��ӓ_</a></li>
+  <li><a href="../appendixes/disconnecttiming.html">切断後すぐに接続する場合の注意点</a></li>
 </ul>
 
 </body>

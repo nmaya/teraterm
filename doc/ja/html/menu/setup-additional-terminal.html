@@ -2,53 +2,53 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>Additional settings / "Terminal" �^�u ([Setup] ���j���[)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Additional settings / "Terminal" タブ ([Setup] メニュー)</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1><a href="setup-additional.html">Additional settings</a> / "Terminal" �^�u ([Setup] ���j���[)</h1>
+    <h1><a href="setup-additional.html">Additional settings</a> / "Terminal" タブ ([Setup] メニュー)</h1>
 
     <dl>
       <dt id="TerminalSize">Terminal size</dt>
       <dd>
-	�^�[�~�i���T�C�Y(�[����ʂ̘_���T�C�Y)�B
-	�� X �c �̕������Ŏw�肵�܂��B
-	�E�B���h�E�T�C�Y(���ۂ̉�ʂ̑傫��)�ƕK�����������ł͂���܂���B
+	ターミナルサイズ(端末画面の論理サイズ)。
+	横 X 縦 の文字数で指定します。
+	ウィンドウサイズ(実際の画面の大きさ)と必ずしも同じではありません。
       </dd>
 
       <dt id="TermIsWin">Term size = win size</dt>
       <dd>
-	���̃I�v�V������I�������ꍇ�A�^�[�~�i���T�C�Y�ƃE�B���h�E�T�C�Y����ɓ��������܂��B
+	このオプションを選択した場合、ターミナルサイズとウィンドウサイズを常に等しくします。
       </dd>
 
       <dt id="AutoWinResize">Auto window resize</dt>
       <dd>
-	���̃I�v�V������I�������ꍇ�A�^�[�~�i���T�C�Y���ύX���ꂽ�Ƃ��ɁA
-	�E�B���h�E�T�C�Y�������傫���Ɏ����I�ɕύX����܂��B
+	このオプションを選択した場合、ターミナルサイズが変更されたときに、
+	ウィンドウサイズも同じ大きさに自動的に変更されます。
       </dd>
 
       <dt id="CRReceive">New-line (Receive)</dt>
       <dd>
         <dl>
           <dt>CR</dt>
-          <dd>�����ϊ����܂���B</dd>
+          <dd>何も変換しません。</dd>
 
           <dt>CR+LF</dt>
-          <dd>��M���ꂽ ���s���� CR ($0D) �� CR+LF ($0D $0A)�ɕϊ����܂��B<br>
-              ��) "CR LF" ����M���ꂽ�ꍇ�A"CR LF LF" �ɕϊ�����܂��B</dd>
+          <dd>受信された 改行文字 CR ($0D) を CR+LF ($0D $0A)に変換します。<br>
+              例) "CR LF" が受信された場合、"CR LF LF" に変換されます。</dd>
 
           <dt>LF</dt>
-          <dd>��M���ꂽ ���s���� LF ($0A) �� CR+LF ($0D $0A)�ɕϊ����܂��B<br>
-              ��) "CR LF" ����M���ꂽ�ꍇ�A"CR CR LF" �ɕϊ�����܂��B</dd>
+          <dd>受信された 改行文字 LF ($0A) を CR+LF ($0D $0A)に変換します。<br>
+              例) "CR LF" が受信された場合、"CR CR LF" に変換されます。</dd>
 
           <dt>AUTO</dt>
-          <dd>��M���ꂽ ���s���� CR ($0D), ���s���� LF ($0A) �� CR+LF ($0D $0A)�ɕϊ����܂��B<br>
-              ��) "CR LF" ����M���ꂽ�ꍇ�A�ϊ����܂���B<br>
-                  "CR" ����M���ꂽ�ꍇ�A"CR LF" �ɕϊ�����܂��B<br>
-                  "LF" ����M���ꂽ�ꍇ�A"CR LF" �ɕϊ�����܂��B</dd>
+          <dd>受信された 改行文字 CR ($0D), 改行文字 LF ($0A) を CR+LF ($0D $0A)に変換します。<br>
+              例) "CR LF" が受信された場合、変換しません。<br>
+                  "CR" が受信された場合、"CR LF" に変換されます。<br>
+                  "LF" が受信された場合、"CR LF" に変換されます。</dd>
         </dl>
       </dd>
 
@@ -56,39 +56,39 @@
       <dd>
         <dl>
           <dt>CR</dt>
-          <dd>�����ϊ����܂���B</dd>
+          <dd>何も変換しません。</dd>
 
           <dt>CR+LF</dt>
-          <dd>���M���ɉ��s���� CR ($0D) �� CR+LF ($0D $0A) �ɕϊ����܂��B</dd>
+          <dd>送信時に改行文字 CR ($0D) を CR+LF ($0D $0A) に変換します。</dd>
 
           <dt>LF</dt>
-          <dd>���M���ɉ��s���� CR ($0D) �� LF ($0A) �ɕϊ����܂��B</dd>
+          <dd>送信時に改行文字 CR ($0D) を LF ($0A) に変換します。</dd>
         </dl>
       </dd>
 
       <dt id="TerminalID">Terminal ID:</dt>
       <dd>
-	�z�X�g�ɕ񍐂��� <a href="../about/ctrlseq.html#TerminalID">Terminal ID</a> ��ݒ肵�܂��B
+	ホストに報告する <a href="../about/ctrlseq.html#TerminalID">Terminal ID</a> を設定します。
 
 	<p>
-	Terminal ID �� telnet �� terminal type �Ƃ͈Ⴂ�܂��B<br>
-	Telnet �� terminal type ��ύX����ɂ�
-	<a href="setup-additional-tcpip.html#TermType">[Setup] Addtional Setting �� TCP/IP �^�u�� Terminal type</a>
-	��ύX���Ă��������B
+	Terminal ID は telnet の terminal type とは違います。<br>
+	Telnet の terminal type を変更するには
+	<a href="setup-additional-tcpip.html#TermType">[Setup] Addtional Setting の TCP/IP タブの Terminal type</a>
+	を変更してください。
       </dd>
 
       <dt id="LocalEcho">Local echo</dt>
       <dd>
-	�L�[���͓��ɂ�著�o���镶�������̂܂܉�ʂɕ\�����܂��B
+	キー入力等により送出する文字をそのまま画面に表示します。
       </dd>
 
       <dt id="Answerback">Answerback:</dt>
       <dd>
-	�z�X�g���� ENQ ($05) �����������Ă������ɁA����Ԃ�������B
-	�����񒆂Ɋ܂܂��\���s�\�ȕ���(���䕶��)�́A"$" �� ����ɂÂ�
-	ASCII �R�[�h(2����16�i��) �ŕ\�����Ă��������B
-	�Ⴆ�΁A������ "ABC &lt;CR&gt; &lt;LF&gt;"
-	���A���T�[�o�b�N����ꍇ�A���̂悤�ɓ��͂��Ă��������B
+	ホストから ENQ ($05) 文字が送られてきた時に、送り返す文字列。
+	文字列中に含まれる表示不可能な文字(制御文字)は、"$" と それにつづく
+	ASCII コード(2桁の16進数) で表現してください。
+	例えば、文字列 "ABC &lt;CR&gt; &lt;LF&gt;"
+	をアンサーバックする場合、次のように入力してください。
 	<p class="indent1">
 	  ABC$0D$0A
 	</p>
@@ -96,8 +96,8 @@
 
       <dt id="AutoWinSwitch">Auto switch (VT&lt;-&gt;TEK)</dt>
       <dd>
-	�G�X�P�[�v�V�[�P���X�𔻕ʂ��āA�����I�� VT window ����
-	TEK window �֐�����ڂ��܂�(�t�����l)�B
+	エスケープシーケンスを判別して、自動的に VT window から
+	TEK window へ制御を移します(逆も同様)。
       </dd>
 
     </dl>

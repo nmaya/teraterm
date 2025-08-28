@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>logrotate</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,7 +14,7 @@
 <h1>logrotate</h1>
 
 <p>
-���O�����[�e�[�g����B<em>(�o�[�W���� 4.78�ȍ~)</em>
+ログをローテートする。<em>(バージョン 4.78以降)</em>
 </p>
 
 <pre class="macro-syntax">
@@ -24,32 +24,32 @@ logrotate 'halt'
 </pre>
 
 
-<h2>�p�����[�^</h2>
+<h2>パラメータ</h2>
 
 <dl>
 	<dt class="macro">'size' '&lt;size&gt;'</dt>
-	<dd>���O�̃T�C�Y��&lt;size&gt;�o�C�g�𒴂��Ă���΁A���[�e�[�V�������s���B<br>
-	    &lt;size&gt;��128�ȏ�ł��邱�ƁB<br>
-	    ������"K"������ƃL���o�C�g�P�ʁA"M"������ƃ��K�o�C�g�P�ʂɂȂ�B</dd>
+	<dd>ログのサイズが&lt;size&gt;バイトを超えていれば、ローテーションを行う。<br>
+	    &lt;size&gt;は128以上であること。<br>
+	    末尾に"K"があるとキロバイト単位、"M"があるとメガバイト単位になる。</dd>
 
 	<dt class="macro">'rotate' &lt;count&gt;</dt>
-	<dd>���O�t�@�C���̐����&lt;count&gt;�ɂ���B<br>
-	    &lt;count&gt;��1�ȏ�ł��邱�ƁB</dd>
+	<dd>ログファイルの世代を&lt;count&gt;にする。<br>
+	    &lt;count&gt;は1以上であること。</dd>
 
 	<dt class="macro">'halt'</dt>
-	<dd>���[�e�[�V�������~����B</dd>
+	<dd>ローテーションを停止する。</dd>
 </dl>
 
 
-<h2>����</h2>
+<h2>注意</h2>
 
 <ol>
- <li>���O�Ƀ��O�t�@�C�����I�[�v������Ă���K�v������܂��B</li>
- <li>�{�R�}���h�́A���O�̃��[�e�[�g�̐ݒ���s���݂̂ŁA���[�e�[�g�������������s�����킯�ł͂���܂���B</li>
+ <li>事前にログファイルがオープンされている必要があります。</li>
+ <li>本コマンドは、ログのローテートの設定を行うのみで、ローテート処理が即時実行されるわけではありません。</li>
 </ol>
 
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 ; Open log
@@ -71,7 +71,7 @@ pause 600
 logclose
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="logopen.html">logopen</a></li>
 </ul>

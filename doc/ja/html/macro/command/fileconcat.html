@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>fileconcat</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,22 +14,22 @@
 <h1>fileconcat</h1>
 
 <p>
-�t�@�C���̓��e��ʂ̃t�@�C���ɒǉ�����B
+ファイルの内容を別のファイルに追加する。
 </p>
 
 <pre class="macro-syntax">
 fileconcat &lt;file1&gt; &lt;file2&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-�t�@�C�� &lt;file2&gt; �̓��e���t�@�C�� &lt;file1&gt; �̍Ō�ɒǉ�����B<br>
-&lt;file1&gt; �� &lt;file2&gt; �͈Ⴄ�t�@�C���łȂ���΂Ȃ�Ȃ��B<br>
-&lt;file2&gt; �̒ǉ������������ꍇ�A�V�X�e���ϐ� result �� 0 ���i�[�����B����ȊO�̏ꍇ, result �� 0 �ȊO���i�[�����B
+ファイル &lt;file2&gt; の内容をファイル &lt;file1&gt; の最後に追加する。<br>
+&lt;file1&gt; と &lt;file2&gt; は違うファイルでなければならない。<br>
+&lt;file2&gt; の追加が成功した場合、システム変数 result に 0 が格納される。それ以外の場合, result に 0 以外が格納される。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 fileconcat 'test.dat' test2.dat'

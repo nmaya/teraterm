@@ -2,22 +2,22 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>�������Ȃ� "Kanji-out" ���g�p�\�ɂ���</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>正しくない "Kanji-out" を使用可能にする</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>�������Ȃ� "Kanji-out" ���g�p�\�ɂ���</h1>
+<h1>正しくない "Kanji-out" を使用可能にする</h1>
 
 <p>
-�ꕔ�̃V�X�e���ŗp�����Ă��� "kanji-out" �V�[�P���X ^[(H �́AJIS/ISO �̋K�i�ɏ]���Ă��܂���B�{���ɕK�v�̂���ꍇ�ȊO�͎g�p���Ȃ��ł��������B<br>
-�����ݒ�ł͊ԈႢ��h������ [Setup] terminal �_�C�A���O�{�b�N�X�� ^[(H ���I���ł��Ȃ��悤�ɂȂ��Ă��܂��B
+一部のシステムで用いられている "kanji-out" シーケンス ^[(H は、JIS/ISO の規格に従っていません。本当に必要のある場合以外は使用しないでください。<br>
+初期設定では間違いを防ぐため [Setup] terminal ダイアログボックスで ^[(H が選択できないようになっています。
 </p>
 
 <p>
-^[(H ��I���ł���悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ AllowWrongSequence �s���A
+^[(H を選択できるようにするには、設定ファイルの [Tera Term] セクションの AllowWrongSequence 行を、
 </p>
 
 <pre>
@@ -25,11 +25,11 @@ AllowWrongSequence=on
 </pre>
 
 <p>
-�̂悤�ɕύX���Ă��������B�_�C�A���O�{�b�N�X�őI���ł���悤�ɂȂ�܂��B
+のように変更してください。ダイアログボックスで選択できるようになります。
 </p>
 
 <pre>
-�ȗ���:
+省略時:
 AllowWrongSequence=off
 </pre>
 

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>filecreate</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,26 +14,26 @@
 <h1>filecreate</h1>
 
 <p>
-�t�@�C�����쐬����B
+ファイルを作成する。
 </p>
 
 <pre class="macro-syntax">
 filecreate &lt;file handle&gt; &lt;filename&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-�t�@�C�� &lt;filename&gt; ��V�����쐬���I�[�v������B<br>
-�t�@�C���|�C���^�̓t�@�C���̐擪�ɃZ�b�g�����B���łɓ������O�̃t�@�C�������݂���ꍇ�A�t�@�C���T�C�Y��0�ɂ����B<br>
-�����t�@�C�����������쐬����A�I�[�v�����ꂽ�ꍇ�A�t�@�C���n���h���������ϐ� &lt;file handle&gt; �Ɋi�[�����B����ȊO�̏ꍇ�A&lt;file handle&gt; ��-1���i�[�����B<br>
-�t�@�C���̍쐬�����������ꍇ�A�V�X�e���ϐ� result �� 0 ���i�[�����B����ȊO�̏ꍇ, result �� 0 �ȊO���i�[�����B<br>
+ファイル &lt;filename&gt; を新しく作成しオープンする。<br>
+ファイルポインタはファイルの先頭にセットされる。すでに同じ名前のファイルが存在する場合、ファイルサイズは0にされる。<br>
+もしファイルが正しく作成され、オープンされた場合、ファイルハンドルが整数変数 &lt;file handle&gt; に格納される。それ以外の場合、&lt;file handle&gt; に-1が格納される。<br>
+ファイルの作成が成功した場合、システム変数 result に 0 が格納される。それ以外の場合, result に 0 以外が格納される。<br>
 <br>
 
-�Ȃ��A�t�@�C���쐬��A�t�@�C���n���h���̓I�[�v�����ꂽ�܂܂ƂȂ�B
+なお、ファイル作成後、ファイルハンドルはオープンされたままとなる。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 filecreate fhandle 'data.dat'

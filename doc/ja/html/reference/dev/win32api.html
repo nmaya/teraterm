@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <TITLE>Win32API</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -11,14 +11,14 @@
 
 <h1>Win32 API</h1>
 
-Win32 API �Ɋւ��郁��
+Win32 API に関するメモ
 
-<h2 id="ini_file">ini �t�@�C��</h2>
+<h2 id="ini_file">ini ファイル</h2>
 
 <p>
-ini �t�@�C���ɂ́A�����R�[�h�� ACP (���{����ł� Shift_JIS) �̂��̂ƁAUnicode (UTF-16 with LE BOM) �̂��̂�����܂��B<br>
-�܂��Aini �t�@�C���𑀍삷�� Win32 API �ɂ́Achar * �������Ƃ��� ANSI�� (GetPrivateProfileStringA, WritePrivateProfileStringA �Ȃ�) �ƁAwchar_t * �������Ƃ��� Wide������ (GetPrivateProfileStringW, WritePrivateProfileStringW �Ȃ�) ������܂��B<br>
-ini �t�@�C�� (ACP, Unicode) �� API (ANSI��, Wide������) �� 4 �p�^�[���̑g�ݍ��킹���������܂��B
+ini ファイルには、文字コードが ACP (日本語環境では Shift_JIS) のものと、Unicode (UTF-16 with LE BOM) のものがあります。<br>
+また、ini ファイルを操作する Win32 API には、char * を引数とする ANSI版 (GetPrivateProfileStringA, WritePrivateProfileStringA など) と、wchar_t * を引数とする Wide文字版 (GetPrivateProfileStringW, WritePrivateProfileStringW など) があります。<br>
+ini ファイル (ACP, Unicode) と API (ANSI版, Wide文字版) で 4 パターンの組み合わせが発生します。
 </p>
 
 <ul>
@@ -29,30 +29,30 @@ ini �t�@�C�� (ACP, Unicode) �� API (ANSI��, Wide������) �� 4 �p�^�[���̑g�ݍ���
 </ul>
 
 <p>
-Windows 2000 �ȍ~�� API �́A�ǂݏ������ɓ����� ini �t�@�C���̕����R�[�h�ɂ��킹�Ď����I�ɕϊ����s����悤�ɂȂ��Ă��܂��B
+Windows 2000 以降の API は、読み書き時に内部で ini ファイルの文字コードにあわせて自動的に変換が行われるようになっています。
 </p>
 
 <ul>
-  <li>ANSI�ł� API �� Unicode ini �t�@�C���������Ƃ��ɂ͎����I�ɕϊ�����܂��B</li>
-  <li>Wide�����ł� API �� ACP ini �t�@�C���������Ƃ��ɂ͎����I�ɕϊ�����܂��B</li>
-  <li>���̂��� ini �t�@�C���̕����R�[�h�ɂ�炸���ߓI�� API �𗘗p�ł��܂��B</li>
-  <li>Unicode �ł͂Ȃ� ini �t�@�C���� ACP �ŕ\���ł��Ȃ� Unicode �������������ނ� "?" �ɒu������ď������܂�܂��B</li>
-  <li>�t�@�C���̐擪�� UTF-16LE BOM (0xff 0xfe) ���t���Ă���Ƃ��Aini �t�@�C���� Unicode �Ɣ��肳��܂��B
+  <li>ANSI版の API で Unicode ini ファイルを扱うときには自動的に変換されます。</li>
+  <li>Wide文字版の API で ACP ini ファイルを扱うときには自動的に変換されます。</li>
+  <li>このため ini ファイルの文字コードによらず透過的に API を利用できます。</li>
+  <li>Unicode ではない ini ファイルに ACP で表現できない Unicode 文字を書き込むと "?" に置換されて書き込まれます。</li>
+  <li>ファイルの先頭に UTF-16LE BOM (0xff 0xfe) が付いているとき、ini ファイルは Unicode と判定されます。
     <ul>
-      <li>���݂��Ȃ��t�@�C���� WritePrivateProfileStringA/W �ŏ�������� ini �t�@�C�����V�K�쐬���ꂽ�Ƃ��́AACP �ŏ������܂�܂��B</li>
-      <li>BOM (0xff 0xfe) �����̋�t�@�C��������Ă����āA���̃t�@�C���� WritePrivateProfileStringA/W �ŏ������񂾂Ƃ��́AUnicode �ŏ������܂�܂��B</li>
+      <li>存在しないファイルに WritePrivateProfileStringA/W で書き込んで ini ファイルが新規作成されたときは、ACP で書き込まれます。</li>
+      <li>BOM (0xff 0xfe) だけの空ファイルを作っておいて、そのファイルに WritePrivateProfileStringA/W で書き込んだときは、Unicode で書き込まれます。</li>
     </ul>
   </li>
 </ul>
 
 <p>
-Windows NT 4 �ł́A"ANSI�� API �� ACP ini �t�@�C���̑g�ݍ��킹", "Wide������ API �� ACP ini �t�@�C���̑g�ݍ��킹" �����������삷��悤�ł��B<br>
-Wide������ API �� ACP ini �t�@�C���������ꍇ�̂ݎ����I�ɕϊ������悤�ł��B
+Windows NT 4 では、"ANSI版 API と ACP ini ファイルの組み合わせ", "Wide文字版 API と ACP ini ファイルの組み合わせ" が正しく動作するようです。<br>
+Wide文字版 API で ACP ini ファイルを扱う場合のみ自動的に変換されるようです。
 </p>
 
 <p>
-Windows 95, 98, Me �ł́AANSI�� API �� ACP ini �t�@�C���̑g�ݍ��킹�݂̂����������삷��悤�ł��B<br>
-�����I�ȕϊ��͍s���Ȃ��悤�ł��B
+Windows 95, 98, Me では、ANSI版 API と ACP ini ファイルの組み合わせのみが正しく動作するようです。<br>
+自動的な変換は行われないようです。
 </p>
 
 <table border="1">

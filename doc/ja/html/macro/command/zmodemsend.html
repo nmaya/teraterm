@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>zmodemsend</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,36 +14,36 @@
 <h1>zmodemsend</h1>
 
 <p>
-ZMODEM �v���g�R���Ńt�@�C���𑗐M����B
+ZMODEM プロトコルでファイルを送信する。
 </p>
 
 <pre class="macro-syntax">
 zmodemsend &lt;filename&gt; &lt;binary flag&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-�t�@�C�� &lt;filename&gt; �� ZMODEM �v���g�R���ő��M����B���M���I���܂Ŏ��̃R�}���h�͎��s����Ȃ��B<br>
-�t�@�C�����������]�����ꂽ�ꍇ�A�V�X�e���ϐ� result ��1���i�[�����B����ȊO�̏ꍇ�A result ��0���i�[�����B
+ファイル &lt;filename&gt; を ZMODEM プロトコルで送信する。送信が終わるまで次のコマンドは実行されない。<br>
+ファイルが正しく転送された場合、システム変数 result に1が格納される。それ以外の場合、 result に0が格納される。
 </p>
 
 <p>
-&lt;filename&gt; �����΃p�X�̎��A<a href="../../setup/folder.html#FileDir">�t�@�C���]���p�f�B���N�g��</a>���΂Ƃ��Ĉ����B
+&lt;filename&gt; が相対パスの時、<a href="../../setup/folder.html#FileDir">ファイル転送用ディレクトリ</a>相対として扱う。
 </p>
 
 <p>
-�t�@�C�����o�C�i���t�@�C���̏ꍇ�́A&lt;binary flag&gt; �� 0 �ȊO�łȂ���΂Ȃ�Ȃ��B<br>
-�e�L�X�g�t�@�C���̏ꍇ�́A&lt;binary flag&gt; ��0�łȂ���΂Ȃ�Ȃ��B
+ファイルがバイナリファイルの場合は、&lt;binary flag&gt; は 0 以外でなければならない。<br>
+テキストファイルの場合は、&lt;binary flag&gt; は0でなければならない。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 zmodemsend 'readme.txt' 0
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="changedir.html">changedir</a></li>
   <li><a href="zmodemrecv.html">zmodemrecv</a></li>

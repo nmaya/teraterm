@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>getttpos</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,69 +14,69 @@
 <h1>getttpos</h1>
 
 <p>
-Tera Term ‚Ì VT window ‚Ì•\Ž¦ó‘ÔAˆÊ’uAƒTƒCƒY‚ðŽæ“¾‚·‚éB<em>(ƒo[ƒWƒ‡ƒ“5.3ˆÈ~)</em>
+Tera Term ã® VT window ã®è¡¨ç¤ºçŠ¶æ…‹ã€ä½ç½®ã€ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³5.3ä»¥é™)</em>
 </p>
 
-<h2>Œ`Ž®</h2>
+<h2>å½¢å¼</h2>
 
 <pre class="macro-syntax">
 getttpos &lt;showflag&gt; &lt;window x&gt; &lt;window y&gt; &lt;window width&gt; &lt;window height&gt; &lt;client x&gt; &lt;client y&gt; &lt;client width&gt; &lt;client height&gt;
 </pre>
 
-<h2>ƒpƒ‰ƒ[ƒ^</h2>
+<h2>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿</h2>
 
 <dl>
-	<dt class="macro">®”Œ^•Ï” &lt;showflag&gt;</dt>
-	<dd>VT window‚Ì•\Ž¦ó‘Ô‚ªŠi”[‚³‚ê‚éB<br>
-	    0 : ’Êíó‘Ô<br>
-	    1 : Å¬‰»ó‘Ô<br>
-	    2 : Å‘å‰»ó‘Ô<br>
-	    3 : ”ñ•\Ž¦ó‘Ô</dd>
+	<dt class="macro">æ•´æ•°åž‹å¤‰æ•° &lt;showflag&gt;</dt>
+	<dd>VT windowã®è¡¨ç¤ºçŠ¶æ…‹ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+	    0 : é€šå¸¸çŠ¶æ…‹<br>
+	    1 : æœ€å°åŒ–çŠ¶æ…‹<br>
+	    2 : æœ€å¤§åŒ–çŠ¶æ…‹<br>
+	    3 : éžè¡¨ç¤ºçŠ¶æ…‹</dd>
 
-	<dt class="macro">®”Œ^•Ï” &lt;window x&gt;</dt>
-	<dd>ƒEƒBƒ“ƒhƒE—Ìˆæ¶ã‹÷‚Ì X À•W‚ªŠi”[‚³‚ê‚éB</dd>
+	<dt class="macro">æ•´æ•°åž‹å¤‰æ•° &lt;window x&gt;</dt>
+	<dd>ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é ˜åŸŸå·¦ä¸Šéš…ã® X åº§æ¨™ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚</dd>
 
-	<dt class="macro">®”Œ^•Ï” &lt;window y&gt;</dt>
-	<dd>ƒEƒBƒ“ƒhƒE—Ìˆæ¶ã‹÷‚Ì Y À•W‚ªŠi”[‚³‚ê‚éB</dd>
+	<dt class="macro">æ•´æ•°åž‹å¤‰æ•° &lt;window y&gt;</dt>
+	<dd>ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é ˜åŸŸå·¦ä¸Šéš…ã® Y åº§æ¨™ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚</dd>
 
-	<dt class="macro">®”Œ^•Ï” &lt;window width&gt;</dt>
-	<dd>ƒEƒBƒ“ƒhƒE—Ìˆæ‚Ì•‚ªŠi”[‚³‚ê‚éB</dd>
+	<dt class="macro">æ•´æ•°åž‹å¤‰æ•° &lt;window width&gt;</dt>
+	<dd>ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é ˜åŸŸã®å¹…ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚</dd>
 
-	<dt class="macro">®”Œ^•Ï” &lt;window height&gt;</dt>
-	<dd>ƒEƒBƒ“ƒhƒE—Ìˆæ‚Ì‚‚³‚ªŠi”[‚³‚ê‚éB</dd>
+	<dt class="macro">æ•´æ•°åž‹å¤‰æ•° &lt;window height&gt;</dt>
+	<dd>ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é ˜åŸŸã®é«˜ã•ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚</dd>
 
-	<dt class="macro">®”Œ^•Ï” &lt;client x&gt;</dt>
-	<dd>ƒNƒ‰ƒCƒAƒ“ƒg—Ìˆæ¶ã‹÷‚Ì X À•W‚ªŠi”[‚³‚ê‚éB</dd>
+	<dt class="macro">æ•´æ•°åž‹å¤‰æ•° &lt;client x&gt;</dt>
+	<dd>ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆé ˜åŸŸå·¦ä¸Šéš…ã® X åº§æ¨™ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚</dd>
 
-	<dt class="macro">®”Œ^•Ï” &lt;client y&gt;</dt>
-	<dd>ƒNƒ‰ƒCƒAƒ“ƒg—Ìˆæ¶ã‹÷‚Ì Y À•W‚ªŠi”[‚³‚ê‚éB</dd>
+	<dt class="macro">æ•´æ•°åž‹å¤‰æ•° &lt;client y&gt;</dt>
+	<dd>ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆé ˜åŸŸå·¦ä¸Šéš…ã® Y åº§æ¨™ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚</dd>
 
-	<dt class="macro">®”Œ^•Ï” &lt;client width&gt;</dt>
-	<dd>ƒNƒ‰ƒCƒAƒ“ƒg—Ìˆæ‚Ì•‚ªŠi”[‚³‚ê‚éB</dd>
+	<dt class="macro">æ•´æ•°åž‹å¤‰æ•° &lt;client width&gt;</dt>
+	<dd>ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆé ˜åŸŸã®å¹…ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚</dd>
 
-	<dt class="macro">®”Œ^•Ï” &lt;client height&gt;</dt>
-	<dd>ƒNƒ‰ƒCƒAƒ“ƒg—Ìˆæ‚Ì‚‚³‚ªŠi”[‚³‚ê‚éB</dd>
+	<dt class="macro">æ•´æ•°åž‹å¤‰æ•° &lt;client height&gt;</dt>
+	<dd>ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆé ˜åŸŸã®é«˜ã•ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚</dd>
 	</dd>
 </dl>
 
-<h2>•Ô‚è’l</h2>
+<h2>è¿”ã‚Šå€¤</h2>
 
 <dl>
-	<dt class="macro">ƒVƒXƒeƒ€•Ï” &lt;result&gt;</dt>
-	<dd>î•ñŽæ“¾‚É¬Œ÷‚µ‚½ê‡‚Í 0 ‚ªAŽ¸”s‚µ‚½ê‡‚Í -1 ‚ªŠi”[‚³‚ê‚éB</dd>
+	<dt class="macro">ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° &lt;result&gt;</dt>
+	<dd>æƒ…å ±å–å¾—ã«æˆåŠŸã—ãŸå ´åˆã¯ 0 ãŒã€å¤±æ•—ã—ãŸå ´åˆã¯ -1 ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚</dd>
 </dl>
 
-<h2>‰ðà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-À•WA•A‚‚³‚Ì’PˆÊ‚ÍƒsƒNƒZƒ‹B<br>
-À•W‚ÌŒ´“_ (0,0) ‚ÍƒƒCƒ“ƒfƒBƒXƒvƒŒƒC(ƒvƒ‰ƒCƒ}ƒŠƒfƒBƒXƒvƒŒƒC)‚Ì¶ã‹÷‚ÌˆÊ’uB<br>
-ƒEƒBƒ“ƒhƒE—Ìˆæ‚ÍƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒEƒBƒ“ƒhƒE‘S‘Ì‚ðAƒNƒ‰ƒCƒAƒ“ƒg—Ìˆæ‚ÍƒEƒBƒ“ƒhƒE—Ìˆæ‚©‚çƒ^ƒCƒgƒ‹ƒo[/ƒƒjƒ…[ƒo[/ƒtƒŒ[ƒ€“™‚ðœ‚¢‚½ƒeƒLƒXƒg•\Ž¦—Ìˆæ‚ðŽw‚·B<br>
-VT window‚ªÅ¬‰»ó‘Ô‚Ü‚½‚Í”ñ•\Ž¦ó‘Ô‚Ìê‡‚ÍAÀ•WA•A‚‚³‚ÍŒë‚Á‚½’l‚ªŠi”[‚³‚ê‚éB<br>
-MACRO ‚ª Tera Term ‚ÆƒŠƒ“ƒN‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒ}ƒNƒƒGƒ‰[‚Æ‚È‚èƒ}ƒNƒ‚ÌŽÀs‚ªˆêŽž’âŽ~‚·‚éB
+åº§æ¨™ã€å¹…ã€é«˜ã•ã®å˜ä½ã¯ãƒ”ã‚¯ã‚»ãƒ«ã€‚<br>
+åº§æ¨™ã®åŽŸç‚¹ (0,0) ã¯ãƒ¡ã‚¤ãƒ³ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤(ãƒ—ãƒ©ã‚¤ãƒžãƒªãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤)ã®å·¦ä¸Šéš…ã®ä½ç½®ã€‚<br>
+ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é ˜åŸŸã¯ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å…¨ä½“ã‚’ã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆé ˜åŸŸã¯ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é ˜åŸŸã‹ã‚‰ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼/ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼/ãƒ•ãƒ¬ãƒ¼ãƒ ç­‰ã‚’é™¤ã„ãŸãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤ºé ˜åŸŸã‚’æŒ‡ã™ã€‚<br>
+VT windowãŒæœ€å°åŒ–çŠ¶æ…‹ã¾ãŸã¯éžè¡¨ç¤ºçŠ¶æ…‹ã®å ´åˆã¯ã€åº§æ¨™ã€å¹…ã€é«˜ã•ã¯èª¤ã£ãŸå€¤ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+MACRO ãŒ Tera Term ã¨ãƒªãƒ³ã‚¯ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ãƒžã‚¯ãƒ­ã‚¨ãƒ©ãƒ¼ã¨ãªã‚Šãƒžã‚¯ãƒ­ã®å®Ÿè¡ŒãŒä¸€æ™‚åœæ­¢ã™ã‚‹ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 testlink
@@ -95,7 +95,7 @@ if result > 0 then
 endif
 </pre>
 
-<h2>ŽQÆ</h2>
+<h2>å‚ç…§</h2>
 <ul>
   <li><a href="testlink.html">testlink</a></li>
   <li><a href="showtt.html">showtt</a></li>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>beep</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,52 +14,52 @@
 <h1>beep</h1>
 
 <p>
-�r�[�v����炷�B
+ビープ音を鳴らす。
 </p>
 
 <pre class="macro-syntax">
 beep [&lt;sound type&gt;]
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-WAVE �`���̃T�E���h���Đ�����B<br>
-�����̈Ӗ��͈ȉ��̂Ƃ���B�ȗ����́uSystemDefault�G��ʂ̌x�����v�ƂȂ�B
+WAVE 形式のサウンドを再生する。<br>
+引数の意味は以下のとおり。省略時は「SystemDefault；一般の警告音」となる。
 </p>
 
 <table>
  <tr>
-  <th>�l</th>
-  <th>�T�E���h</th>
+  <th>値</th>
+  <th>サウンド</th>
  </tr>
  <tr>
   <td>0</td>
-  <td>�R���s���[�^�̃X�s�[�J���甭������W���I�ȃr�[�v��</td>
+  <td>コンピュータのスピーカから発生する標準的なビープ音</td>
  </tr>
  <tr>
   <td>1</td>
-  <td>SystemAsterisk�G���b�Z�[�W�i���j</td>
+  <td>SystemAsterisk；メッセージ（情報）</td>
  </tr>
  <tr>
   <td>2</td>
-  <td>SystemExclamation�G���b�Z�[�W�i�x���j</td>
+  <td>SystemExclamation；メッセージ（警告）</td>
  </tr>
  <tr>
   <td>3</td>
-  <td>SystemHand�G�V�X�e���G���[</td>
+  <td>SystemHand；システムエラー</td>
  </tr>
  <tr>
   <td>4</td>
-  <td>SystemQuestion�G���b�Z�[�W�i�₢���킹�j</td>
+  <td>SystemQuestion；メッセージ（問い合わせ）</td>
  </tr>
  <tr>
   <td>5</td>
-  <td>SystemDefault�G��ʂ̌x����</td>
+  <td>SystemDefault；一般の警告音</td>
  </tr>
 </table>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 for i 1 10

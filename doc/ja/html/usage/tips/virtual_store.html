@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Virtual Store</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -11,18 +11,18 @@
 
 <h1>Virtual Store</h1>
 
-<h2 id="virtual_store">Vista�ȍ~�̃t�@�C�����z��</h2>
+<h2 id="virtual_store">Vista以降のファイル仮想化</h2>
 <p>
-Windows Vista�ȍ~�ł́A����̃t�@�C���⃌�W�X�g���Ƀf�[�^��ǂݏ�������ƁA<br>
-�����I�ɕʂ̏ꏊ�ɓǂݏ�������Ƃ��������݂�������Ă���A"Virtual Store"�ƌĂ΂�܂��B<br>
-OS�̃��[�U�A�J�E���g����(UAC)���L���ł���ATera Term���Ǘ��҂Ƃ��Ď��s���Ă��Ȃ��ꍇ�ɁA<br>
-���Y�@�\���L���ƂȂ�܂��B
+Windows Vista以降では、特定のファイルやレジストリにデータを読み書きすると、<br>
+自動的に別の場所に読み書きするというしくみが備わっており、"Virtual Store"と呼ばれます。<br>
+OSのユーザアカウント制御(UAC)が有効であり、Tera Termを管理者として実行していない場合に、<br>
+当該機能が有効となります。
 </p>
 
 <p>
-"Virtual Store"�@�\���L���̏ꍇ�ATera Term���u%ProgramFiles(x86)%\teraterm�v�ɓǂݏ��������t�@�C���́A<br>
-�u%LOCALAPPDATA%\VirtualStore\Program Files (x86)\teraterm�v�Ƀ��_�C���N�g����܂��B<br>
-�ΏۂƂȂ�t�@�C���́Ateraterm.ini�⃍�O�t�@�C���Assh_known_hosts �Ȃǂł��B
+"Virtual Store"機能が有効の場合、Tera Termが「%ProgramFiles(x86)%\teraterm」に読み書きしたファイルは、<br>
+「%LOCALAPPDATA%\VirtualStore\Program Files (x86)\teraterm」にリダイレクトされます。<br>
+対象となるファイルは、teraterm.iniやログファイル、ssh_known_hosts などです。
 </p>
 
 </body>

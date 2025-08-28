@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>crc32, crc32file</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,7 +14,7 @@
 <h1>crc32, crc32file</h1>
 
 <p>
-CRC-32‚ğŒvZ‚·‚éB<em>(ƒo[ƒWƒ‡ƒ“4.60ˆÈ~)</em>
+CRC-32ã‚’è¨ˆç®—ã™ã‚‹ã€‚<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³4.60ä»¥é™)</em>
 </p>
 
 <pre class="macro-syntax">
@@ -22,26 +22,26 @@ crc32 &lt;intvar&gt; &lt;string&gt;
 crc32file &lt;intvar&gt; &lt;filename&gt;
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-ˆø”‚Ì•¶š—ñ‚¨‚æ‚Ñƒtƒ@ƒCƒ‹‚©‚çCRC(Cyclic Redundancy Checking)‚ğŒvZ‚·‚éB‘½€®i‰E‰ñ‚èj‚ÍˆÈ‰º‚Ì‚Æ‚¨‚èB
+å¼•æ•°ã®æ–‡å­—åˆ—ãŠã‚ˆã³ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰CRC(Cyclic Redundancy Checking)ã‚’è¨ˆç®—ã™ã‚‹ã€‚å¤šé …å¼ï¼ˆå³å›ã‚Šï¼‰ã¯ä»¥ä¸‹ã®ã¨ãŠã‚Šã€‚
 <br><br>
 
 100000100110000010001110110110111 (x<sup>32</sup>+x<sup>26</sup>+x<sup>23</sup>+x<sup>22</sup>+x<sup>16</sup>+x<sup>12</sup>+x<sup>11</sup>+x<sup>10</sup>+x<sup>8</sup>+x<sup>7</sup>+x<sup>5</sup>+x<sup>4</sup>+x<sup>2</sup>+x<sup>1</sup>+x<sup>0</sup>)
 <br><br>
 
-ŒvZŒ‹‰Ê‚Í intvar •Ï”‚É”’l‚Æ‚µ‚ÄŠi”[‚³‚ê‚éB<br>
-crc32file ‚Åƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚È‚©‚Á‚½ê‡‚ÍAƒVƒXƒeƒ€•Ï” result ‚É -1 ‚ªŠi”[‚³‚ê‚éB
+è¨ˆç®—çµæœã¯ intvar å¤‰æ•°ã«æ•°å€¤ã¨ã—ã¦æ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+crc32file ã§ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ãªã‹ã£ãŸå ´åˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° result ã« -1 ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚
 </p>
 
-CRCƒAƒ‹ƒSƒŠƒYƒ€‚ÌÀ‘•iCŒ¾Œêj‚ğˆÈ‰º‚É¦‚·B‚±‚ÌƒAƒ‹ƒSƒŠƒYƒ€‚ÍAEthernet‚ÌFCS(Frame Check Sequence)‚É“K—p‚³‚ê‚Ä‚¢‚éB
+CRCã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã®å®Ÿè£…ï¼ˆCè¨€èªï¼‰ã‚’ä»¥ä¸‹ã«ç¤ºã™ã€‚ã“ã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã¯ã€Ethernetã®FCS(Frame Check Sequence)ã«é©ç”¨ã•ã‚Œã¦ã„ã‚‹ã€‚
 <pre>
 <code>
 static unsigned long crc32(int n, unsigned char c[])
 {
 #define CRC32POLY1 0x04C11DB7UL
-#define CRC32POLY2 0xEDB88320UL  /* ¶‰E‹t“] */
+#define CRC32POLY2 0xEDB88320UL  /* å·¦å³é€†è»¢ */
 	int i, j;
 	unsigned long r;
 
@@ -57,7 +57,7 @@ static unsigned long crc32(int n, unsigned char c[])
 </code></pre>
 
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 str = 'this is a test string to be CRC32ed'

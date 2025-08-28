@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>connect</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,71 +14,71 @@
 <h1>connect</h1>
 
 <p>
-�ڑ�����B
+接続する。
 </p>
 
 <pre class=".code">
 connect &lt;command line parameters&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-MACRO �� Tera Term �ƃ����N����Ă��Ȃ��ꍇ�ATera Term ���N������MACRO �ƃ����N����B&lt;command line parameters&gt;  �́ATera Term ���N�����鎞�̃R�}���h���C���p�����[�^�B
+MACRO が Tera Term とリンクされていない場合、Tera Term を起動してMACRO とリンクする。&lt;command line parameters&gt;  は、Tera Term を起動する時のコマンドラインパラメータ。
 </p>
 
 <p>
-MACRO �� Tera Term �Ƃ��łɃ����N����Ă��āATera Term ���z�X�g�ɐڑ�����Ă��Ȃ��ꍇ�ATera Term ���R�}���h���C�� &lt;command line parameters&gt; �Ŏw�肳���z�X�g�ɐڑ�������BTera Term �̃R�}���h���C���p�����[�^�ɂ��ẮA"<a href="../../commandline/teraterm.html">Tera Term Pro �R�}���h���C��</a>"�A"<a href="../../commandline/ttssh.html">TTSSH �R�}���h���C��</a>"���Q�ƁB
+MACRO が Tera Term とすでにリンクされていて、Tera Term がホストに接続されていない場合、Tera Term をコマンドライン &lt;command line parameters&gt; で指定されるホストに接続させる。Tera Term のコマンドラインパラメータについては、"<a href="../../commandline/teraterm.html">Tera Term Pro コマンドライン</a>"、"<a href="../../commandline/ttssh.html">TTSSH コマンドライン</a>"を参照。
 </p>
 
 <p>
-MACRO �� Tera Term �Ƃ��łɃ����N����Ă��āATera Term ���z�X�g�ɂ��łɐڑ�����Ă���ꍇ�A���̃R�}���h�͖��������B
+MACRO が Tera Term とすでにリンクされていて、Tera Term がホストにすでに接続されている場合、このコマンドは無視される。
 </p>
 
 <p>
-���̃R�}���h�̌��ʁA�����N�Ɛڑ��̏�Ԃɉ����Ĉȉ��̂����̈�̒l���V�X�e���ϐ� result �Ɋi�[�����B
+このコマンドの結果、リンクと接続の状態に応じて以下のうちの一つの値がシステム変数 result に格納される。
 </p>
 
 <table>
  <tr>
-  <th>�l</th>
-  <th>���</th>
+  <th>値</th>
+  <th>状態</th>
  </tr>
  <tr>
   <td>0</td>
-  <td>Tera Term �ƃ����N����Ă��Ȃ��B</td>
+  <td>Tera Term とリンクされていない。</td>
  </tr>
  <tr>
   <td>1</td>
-  <td>�z�X�g�ւ̐ڑ��͂���Ă��Ȃ����ATera Term �ւ̃����N�͂���Ă���B</td>
+  <td>ホストへの接続はされていないが、Tera Term へのリンクはされている。</td>
  </tr>
  <tr>
   <td>2</td>
-  <td>�����N����ѐڑ������Ƃ�����Ă���B</td>
+  <td>リンクおよび接続両方ともされている。</td>
  </tr>
 </table>
 
 <p>
-"connect" �R�}���h�����s����O�Ƀ����N�Ɛڑ��̏�Ԃ𒲂ׂ�ɂ́A"<a href="testlink.html">testlink</a>" �R�}���h���g�����Ƃ��ł���B
+"connect" コマンドを実行する前にリンクと接続の状態を調べるには、"<a href="testlink.html">testlink</a>" コマンドを使うことができる。
 </p>
 
 <p>
-Tera Term �� MACRO �̃����N���Ă��Ȃ���Ԃł́A"connect" �� "<a href="cygconnect.html">cygconnect</a>", "<a href="testlink.html">testlink</a>" �ȊO�̒ʐM�R�}���h�͎��s�ł��Ȃ��B
+Tera Term と MACRO のリンクしていない状態では、"connect" と "<a href="cygconnect.html">cygconnect</a>", "<a href="testlink.html">testlink</a>" 以外の通信コマンドは実行できない。
 </p>
 
-<h2>�ڑ����@</h2>
+<h2>接続方法</h2>
 
 <p>
-Tera Term�}�N������ڑ�������@�ɂ́A3 �̎�ނ�����܂��B
+Tera Termマクロから接続する方法には、3 つの種類があります。
 </p>
 
 <ul>
- <li>telnet�ڑ� (port 23)</li>
- <li>SSH1 ����� SSH2 �ڑ� (port 22)</li>
- <li>COM port �ڑ�</li>
+ <li>telnet接続 (port 23)</li>
+ <li>SSH1 および SSH2 接続 (port 22)</li>
+ <li>COM port 接続</li>
 </ul>
 
-<h3>telnet�ڑ�</h3>
+<h3>telnet接続</h3>
 
 <pre class=".code">
 <code>connect '<em>myserver</em>:23 /nossh /T=1'
@@ -86,20 +86,20 @@ connect '<em>myserver</em>:23'
 </code></pre>
 
 <p>
-/nossh ���w�肷�邱�Ƃ������������܂��B���̃I�v�V�������Ȃ��ꍇ�ATera Term�� teraterm.ini ���Ō�ɕۑ����ꂽ�Ƃ��Ɠ������\�b�h�itelnet �������� SSH�j���g���āA�ڑ����悤�Ƃ��܂��B�����ASSH���g���Đڑ����悤�Ƃ���Ȃ�΁Aconnect�}�N���͎��s����ł��傤�B
+/nossh を指定することを強く推奨します。このオプションがない場合、Tera Termは teraterm.ini が最後に保存されたときと同じメソッド（telnet もしくは SSH）を使って、接続しようとします。もし、SSHを使って接続しようとするならば、connectマクロは失敗するでしょう。
 </p>
 <p>
-/T=1 ���g�����Ƃ𐄏����܂��B���̃I�v�V�������Ȃ��ꍇ�ATera Term �� teraterm.ini �� Telnet �̒l�ɂ��������Đڑ����悤�Ƃ��܂��B�����ATelnet �̒l�� off �̏ꍇ�ATera Term �� telnet �l�S�V�G�[�V���������Ȃ��̂ŁA�Ӑ}�����Ƃ���̒ʐM���ł��Ȃ��ł��傤�B
+/T=1 を使うことを推奨します。このオプションがない場合、Tera Term は teraterm.ini の Telnet の値にしたがって接続しようとします。もし、Telnet の値も off の場合、Tera Term は telnet ネゴシエーションをしないので、意図したとおりの通信ができないでしょう。
 </p>
 
-<h3>SSH�ڑ�</h3>
+<h3>SSH接続</h3>
 
 <pre class=".code">
 <code>connect '<em>myserver</em> /ssh'
 </code></pre>
 
 <p>
-���̕��@�́ASSH�o�[�W�������w�肹����SSH�ڑ������܂��B
+この方法は、SSHバージョンを指定せずにSSH接続をします。
 </p>
 
 <pre class=".code">
@@ -108,7 +108,7 @@ connect '<em>myserver</em> /ssh /2'
 </code></pre>
 
 <p>
-/1 �� /2 �̃I�v�V�����́ASSH1�����SSH2�ł��邱�Ƃ��w�肵�܂��B
+/1 と /2 のオプションは、SSH1およびSSH2であることを指定します。
 </p>
 
 <pre class=".code">
@@ -124,7 +124,7 @@ connect '<em>myserver</em> /ssh /2 /auth=challenge /user=<em>username</em> /pass
 </code></pre>
 
 <p>
-����9�̕��@�́A�}�N�����烆�[�U���ƃp�X���[�h��n�����Ƃɂ��ASSH�F�؃_�C�A���O���X�L�b�v�����邱�Ƃ��ł��܂��B/auth=password�̓p�X���[�h�F�؁A/auth=publickey�͌��J���F�؁A/auth=challenge�̓`�������W���X�|���X�F�؂ł��邱�Ƃ�\���܂��B
+この9つの方法は、マクロからユーザ名とパスワードを渡すことにより、SSH認証ダイアログをスキップさせることができます。/auth=passwordはパスワード認証、/auth=publickeyは公開鍵認証、/auth=challengeはチャレンジレスポンス認証であることを表します。
 </p>
 
 <pre class=".code">
@@ -134,7 +134,7 @@ connect '<em>myserver</em> /ssh /2 /auth=pageant /user=<em>username</em>'
 </code></pre>
 
 <p>
-����3�̕��@�́A�}�N�����烆�[�U����n�����Ƃɂ��ASSH�F�؃_�C�A���O���X�L�b�v�����邱�Ƃ��ł��܂��B/auth=pageant��Pageant���g�p�����F�؂ł��邱�Ƃ�\���܂��B
+この3つの方法は、マクロからユーザ名を渡すことにより、SSH認証ダイアログをスキップさせることができます。/auth=pageantはPageantを使用した認証であることを表します。
 </p>
 
 <pre class=".code">
@@ -150,68 +150,68 @@ connect '<em>myserver</em> /ssh /2 /auth=challenge /user=<em>username</em> /ask4
 </code></pre>
 
 <p>
-����9�̕��@�́A�}�N�����烆�[�U���ƔF�ؕ��@��n���āA�|�b�v�A�b�v�Ńp�X���[�h�̓��͂𑣂��܂��B
+この9つの方法は、マクロからユーザ名と認証方法を渡して、ポップアップでパスワードの入力を促します。
 </p>
 
-<h3>COM�|�[�g�ڑ�</h3>
+<h3>COMポート接続</h3>
 
 <pre class=".code">
 <code>connect '/C=x'
 </code></pre>
 
 <p>
-x��COM�|�[�g�ԍ���\���܂��B���Ƃ��΁ACOM1�ɐڑ��������̂Ȃ�A connect '/C=1' �Ƃ��܂��B
+xはCOMポート番号を表します。たとえば、COM1に接続したいのなら、 connect '/C=1' とします。
 </p>
 
 <p>
-�o�T: <a href="http://logmett.com/forum/viewtopic.php?t=28">http://logmett.com/forum/viewtopic.php?t=28</a>
+出典: <a href="http://logmett.com/forum/viewtopic.php?t=28">http://logmett.com/forum/viewtopic.php?t=28</a>
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
-; �p�����[�^�Ȃ��� Tera Term ���N��
+; パラメータなしで Tera Term を起動
 connect ''
 
-; �ڑ����������Ȃ������ꍇ�A5�b�Ń^�C���A�E�g������
+; 接続が成功しなかった場合、5秒でタイムアウトが発生
 connect '<em>myserver</em> /timeout=5'
 
-; Tera Term ���N�����Atelnet �Z�b�V�������J��
+; Tera Term を起動し、telnet セッションを開く
 connect '<em>myserver</em>:23 /nossh'
 
-; Tera Term ���N�����ASSH �Z�b�V�������J��
+; Tera Term を起動し、SSH セッションを開く
 connect '<em>myserver</em> /ssh'
 
-; Tera Term ���N�����ASSH1 �Z�b�V�������J��
+; Tera Term を起動し、SSH1 セッションを開く
 connect '<em>myserver</em> /ssh /1'
 
-; Tera Term ���N�����ASSH2 �Z�b�V�������J��
+; Tera Term を起動し、SSH2 セッションを開く
 connect '<em>myserver</em> /ssh /2'
 
-; Tera Term ���N������BSSH �Z�b�V�������J���A���[�U���ƃp�X���[�h�̃v�����v�g�͕\������Ȃ��B
+; Tera Term を起動する。SSH セッションを開き、ユーザ名とパスワードのプロンプトは表示されない。
 connect '<em>myserver</em> /ssh /auth=password /user=<em>username</em> /passwd=<em>password</em>'
 
-; Tera Term ���N������BSSH1 �Z�b�V�������J���A���[�U���ƃp�X���[�h�̃v�����v�g�͕\������Ȃ��B
+; Tera Term を起動する。SSH1 セッションを開き、ユーザ名とパスワードのプロンプトは表示されない。
 connect '<em>myserver</em> /ssh /1 /auth=password /user=<em>username</em> /passwd=<em>password</em>'
 
-; Tera Term ���N������BSSH2 �Z�b�V�������J���A���[�U���ƃp�X���[�h�̃v�����v�g�͕\������Ȃ��B
+; Tera Term を起動する。SSH2 セッションを開き、ユーザ名とパスワードのプロンプトは表示されない。
 connect '<em>myserver</em> /ssh /2 /auth=password /user=<em>username</em> /passwd=<em>password</em>'
 
-; Tera Term ���N������BSSH �Z�b�V�������J���A���[�U���ƃp�X���[�h�Ɣ閧���t�@�C���̃v�����v�g�͕\������Ȃ��B
+; Tera Term を起動する。SSH セッションを開き、ユーザ名とパスワードと秘密鍵ファイルのプロンプトは表示されない。
 connect '<em>myserver</em> /ssh /auth=publickey/user=<em>username</em> /passwd=<em>password</em> /keyfile=<em>private-key-file</em>'
 
-; Tera Term ���N������BSSH1 �Z�b�V�������J���A���[�U���ƃp�X���[�h�Ɣ閧���t�@�C���̃v�����v�g�͕\������Ȃ��B
+; Tera Term を起動する。SSH1 セッションを開き、ユーザ名とパスワードと秘密鍵ファイルのプロンプトは表示されない。
 connect '<em>myserver</em> /ssh /1 /auth=publickey/user=<em>username</em> /passwd=<em>password</em> /keyfile=<em>private-key-file</em>'
 
-; Tera Term ���N������BSSH2 �Z�b�V�������J���A���[�U���ƃp�X���[�h�Ɣ閧���t�@�C���̃v�����v�g�͕\������Ȃ��B
+; Tera Term を起動する。SSH2 セッションを開き、ユーザ名とパスワードと秘密鍵ファイルのプロンプトは表示されない。
 connect '<em>myserver</em> /ssh /2 /auth=publickey /user=<em>username</em> /passwd=<em>password</em> /keyfile=<em>private-key-file</em>'
 
 
-; Pageant�𗘗p���āA���J���F�؂Őڑ�����B���[�U���ƃp�X���[�h�Ɣ閧���t�@�C���̃v�����v�g�͕\������Ȃ��B
+; Pageantを利用して、公開鍵認証で接続する。ユーザ名とパスワードと秘密鍵ファイルのプロンプトは表示されない。
 connect '<em>myserver</em> /ssh /auth=pageant /user=<em>username</em>'
 
 
-; Tera Term ���N�����A�V���A���|�[�g�ڑ����J���B�|�[�g�ԍ��� 1 ���� �ő�l(MaxComPort) �͈͓̔��B
+; Tera Term を起動し、シリアルポート接続を開く。ポート番号は 1 から 最大値(MaxComPort) の範囲内。
 connect '/C=x'
 
 CommandLine = '111.111.11.11'
@@ -303,27 +303,27 @@ pause 3
 </pre>
 
 
-<h2>����</h2>
+<h2>注意</h2>
 
 <ol>
- <li>���̃y�[�W�̗�ɂ����ĎΑ̂ŕ\������Ă���l���A���ۂ̒l�ɒu��������K�v������܂��B</li>
- <li>�p�X���[�h�ɂ̓X�y�[�X���܂ނ��Ƃ��\�ł��B�p�X���[�h�̒��ŃX�y�[�X��\���ɂ́A�p�X���[�h�S�̂� `"' �ň͂�ł��������B�p�X���[�h�� " ���܂߂邽�߂ɂ́A�A������ `"`("") ���g�p���Ă��������B<br>
-���p�X���[�h�ɃX�y�[�X���܂ނ��߂� "@" ���g�p����d�l�́A4.63 ����p�~����܂����B</li>
- <li>Tera Term�}�N���Ƀ��[�U���ƃp�X���[�h���w�肵���ꍇ�A���̃}�N���t�@�C�����v���[���e�L�X�g�Ƃ��ĕۑ������̂Ȃ�A�Z�L�����e�B�I�Ɉ��S�ȏꏊ�ɒu���K�v�����邱�Ƃ��̂ɖ����Ă����Ă��������B</li>
- <li>�z�X�g�Ƃ̐ڑ����I�����Ă�����connect�R�}���h�ŐV�����ڑ����J�n���悤�Ƃ����ꍇ�A�^�C�~���O�ɂ���Ă͐ڑ��ł��Ȃ��ꍇ������܂��B�ڂ�����"<a href="../appendixes/disconnecttiming.html">�ؒf�シ���ɐڑ�����ꍇ�̒��ӓ_</a>"���Q�Ƃ��Ă��������B</li>
- <li>TTSSH�R�}���h���C����<a href="../../commandline/ttssh.html#passwd_specify">�p�X���[�h���w�肷��Ƃ��̒���</a>���Q�Ƃ��Ă��������B</li>
+ <li>このページの例において斜体で表示されている値を、実際の値に置き換える必要があります。</li>
+ <li>パスワードにはスペースを含むことが可能です。パスワードの中でスペースを表すには、パスワード全体を `"' で囲んでください。パスワードに " を含めるためには、連続した `"`("") を使用してください。<br>
+※パスワードにスペースを含むために "@" を使用する仕様は、4.63 から廃止されました。</li>
+ <li>Tera Termマクロにユーザ名とパスワードを指定した場合、そのマクロファイルをプレーンテキストとして保存したのなら、セキュリティ的に安全な場所に置く必要があることを肝に銘じておいてください。</li>
+ <li>ホストとの接続を終了してすぐにconnectコマンドで新しい接続を開始しようとした場合、タイミングによっては接続できない場合があります。詳しくは"<a href="../appendixes/disconnecttiming.html">切断後すぐに接続する場合の注意点</a>"を参照してください。</li>
+ <li>TTSSHコマンドラインの<a href="../../commandline/ttssh.html#passwd_specify">パスワードを指定するときの注意</a>を参照してください。</li>
 </ol>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="closett.html">closett</a></li>
   <li><a href="cygconnect.html">cygconnect</a></li>
   <li><a href="disconnect.html">disconnect</a></li>
   <li><a href="testlink.html">testlink</a></li>
   <li><a href="unlink.html">unlink</a></li>
-  <li><a href="../appendixes/disconnecttiming.html">�ؒf�シ���ɐڑ�����ꍇ�̒��ӓ_</a></li>
-  <li><a href="../../commandline/ttssh.html#passwd_specify">�p�X���[�h���w�肷��Ƃ��̒���</a></li>
-  <li><a href="../syntax/variables.html">�ϐ�</a></li>
+  <li><a href="../appendixes/disconnecttiming.html">切断後すぐに接続する場合の注意点</a></li>
+  <li><a href="../../commandline/ttssh.html#passwd_specify">パスワードを指定するときの注意</a></li>
+  <li><a href="../syntax/variables.html">変数</a></li>
 </ul>
 
 </body>

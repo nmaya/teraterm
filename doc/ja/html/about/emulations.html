@@ -2,146 +2,146 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>�G�~�����[�V����</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>エミュレーション</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>�G�~�����[�V����</h1>
+<h1>エミュレーション</h1>
 
 <ul>
- <li>DEC VT100 �� VT200/300/400/500 �̈ꕔ
+ <li>DEC VT100 と VT200/300/400/500 の一部
    <ul>
-     <li><a href="emulations_dec_special.html">DEC Special Graphics(DEC����O���t�B�b�N)</a></li>
+     <li><a href="emulations_dec_special.html">DEC Special Graphics(DEC特殊グラフィック)</a></li>
    </ul>
  </li>
- <li>VT100 �ł͑Ή����Ă��Ȃ� ANSI ����V�[�P���X(�J���[�w�蓙)�ɂ��Ή����Ă��܂��B</li>
- <li>xterm�g���̐���V�[�P���X(�}�E�X�Ή���256�F�\����)�ɂ��Ή����Ă��܂��B</li>
- <li>Bold(����)�����̕����ɑ΂��āA�����t�H���g�̎g�p/�s�g�p���I���ł��A�܂��F��t���ĕ\�����邱�Ƃ��ł��܂��B</li>
- <li>Blink(�_��)�����̕����͎��ۂɂ͓_�ł����A�F�t�������ŕ\������܂��B</li>
- <li>�{�p�����AVT52 ���[�h�ɂ͑Ή����Ă��܂���B</li>
- <li>Tektronix TEK4010 �Ə�ʋ@��̈ꕔ</li>
+ <li>VT100 では対応していない ANSI 制御シーケンス(カラー指定等)にも対応しています。</li>
+ <li>xterm拡張の制御シーケンス(マウス対応や256色表示等)にも対応しています。</li>
+ <li>Bold(太字)属性の文字に対して、太字フォントの使用/不使用が選択でき、また色を付けて表示することができます。</li>
+ <li>Blink(点滅)属性の文字は実際には点滅せず、色付き文字で表示されます。</li>
+ <li>倍角文字、VT52 モードには対応していません。</li>
+ <li>Tektronix TEK4010 と上位機種の一部</li>
 </ul>
 
-<h1>�F</h1>
+<h1>色</h1>
 
-�����Ɣw�i�̐F�ɂ��āB
+文字と背景の色について。
 
-<h2>�g�p�ł���F���[�h</h2>
+<h2>使用できる色モード</h2>
 
-�ݒ�-�E�B���h�E�̐ݒ�̎��̃`�F�b�N�{�b�N�X�Őݒ�ł��܂��B
+設定-ウィンドウの設定の次のチェックボックスで設定できます。
 
-�e���[�h�͓����Ɏg�p���邱�Ƃ��ł��܂��B
+各モードは同時に使用することができます。
 
 <ul>
-  <li>16 color mode (PC style) / 16�F���[�h(PC�`��)
-  <li>16 color mode (aixterm style) / 16�F���[�h(aixterm�`��)
-  <li>256 color mode (xterm style) / 256�F���[�h(xterm�`��)
+  <li>16 color mode (PC style) / 16色モード(PC形式)
+  <li>16 color mode (aixterm style) / 16色モード(aixterm形式)
+  <li>256 color mode (xterm style) / 256色モード(xterm形式)
 </ul>
 
-���ׂĂ�disable�ɂ����8�F���[�h�ƂȂ�܂��B
+すべてをdisableにすると8色モードとなります。
 
-<h2>�F�̐ݒ��Ԃɂ���Ďg�p�s���ω�����V�[�P���X</h2>
+<h2>色の設定状態によって使用可不可が変化するシーケンス</h2>
 
-<h3>8�F���[�h</h3>
+<h3>8色モード</h3>
 <p>
-16�F�܂���256�F���[�h�̂����ꂩ��enable�̎��́A1-7�̐F�͏����Â��F�ƂȂ��Ă��܂��B
+16色または256色モードのいずれかがenableの時は、1-7の色は少し暗い色となっています。
 
 <p>
-16�F��256�F���[�h�̂��ׂĂ�disable�̎���8�F���[�h�ƂȂ�A
-1-7�̐F�͖��邢�F(���F)�ƂȂ�܂��B
+16色と256色モードのすべてがdisableの時に8色モードとなり、
+1-7の色は明るい色(原色)となります。
 
 <ul>
-  <li>�����F0-7 = SGR 30-37
-  <li>�w�i�F0-7 = SGR 40-47
+  <li>文字色0-7 = SGR 30-37
+  <li>背景色0-7 = SGR 40-47
 </ul>
 
-<h3>16�F���[�h(PC�`��)</h3>
+<h3>16色モード(PC形式)</h3>
 
 <p>
-Blink������Tera Term�g���ł��B
+Blink属性はTera Term拡張です。
 
 <ul>
-  <li>�����F0-7 = SGR 30-37
-  <li>�����F8-15 = Bold���� + SGR 30-37
-  <li>�w�i�F0-7 = SGR 40-47
-  <li>�w�i�F8-15 = Blink���� + SGR 40-47
+  <li>文字色0-7 = SGR 30-37
+  <li>文字色8-15 = Bold属性 + SGR 30-37
+  <li>背景色0-7 = SGR 40-47
+  <li>背景色8-15 = Blink属性 + SGR 40-47
 </ul>
 
-<h3>16�F���[�h(aixterm�`��)</h3>
+<h3>16色モード(aixterm形式)</h3>
 
 <p>
-16�F���[�h(aixterm�`��) �� disable �� SGR100 �� �u�����F�Ɣw�i�F��
-�f�t�H���g�ɖ߂�v�ƂȂ�܂��B
+16色モード(aixterm形式) が disable 時 SGR100 は 「文字色と背景色が
+デフォルトに戻る」となります。
 
 <ul>
-  <li>�����F0-7,8-15 = SGR 30-37,90-97
-  <li>�w�i�F0-7,8-15 = SGR 40-47,100-107
+  <li>文字色0-7,8-15 = SGR 30-37,90-97
+  <li>背景色0-7,8-15 = SGR 40-47,100-107
 </ul>
 
-<h3>256�F���[�h(xterm�`��)</h3>
+<h3>256色モード(xterm形式)</h3>
 <ul>
-  <li>�����F0-255 = SGR 38�ŐF�ԍ����w��
-  <li>�w�i�F0-255 = SGR 48�ŐF�ԍ����w��
+  <li>文字色0-255 = SGR 38で色番号を指定
+  <li>背景色0-255 = SGR 48で色番号を指定
 </ul>
 
-<h2>16�F���[�h(PC�`��)�ڍ�</h2>
+<h2>16色モード(PC形式)詳細</h2>
 
 <p>
-Tera Term�ł�
-�����F�Ɣw�i�F�𓯎���16�F�g�����邽�߁A
-�����F�̊g����Bold�����A�w�i�F�̊g����Blink�������g�p���܂��B
+Tera Termでは
+文字色と背景色を同時に16色拡張するため、
+文字色の拡張にBold属性、背景色の拡張にBlink属性を使用します。
 
 <p>
-�w�i�F�̊g���ɂ�Bold�������g���Ă��܂��ƁA
-�����F15+�w�i�F1�̂悤�Ȏw�肪�s�\�ɂȂ�܂��B
+背景色の拡張にもBold属性を使ってしまうと、
+文字色15+背景色1のような指定が不可能になります。
 
 <p>
-TERMINFO�ɏ]���ďo�͂���A�v��(ncurses���p�A�v����)�Ȃ�A
-TERMINFO�̒[���G���g����setab�����̂悤�ɂ���Ɨ��p�\�ƂȂ�܂��B
+TERMINFOに従って出力するアプリ(ncurses利用アプリ等)なら、
+TERMINFOの端末エントリのsetabを次のようにすると利用可能となります。
 <pre>
   setab=\E[&#37;?&#37;p1&#37;{8}&#37;&lt;&#37;t4&#37;p1&#37;d&#37;e&#37;p1&#37;{16}&#37;&lt;&#37;t5;4&#37;p1&#37;{8}&#37;-&#37;d&#37;e48;5;&#37;p1&#37;d&#37;;m,
 </pre>
 
-<h2>�F�̕ύX�ɂ���</h2>
+<h2>色の変更について</h2>
 
 <p>
-16�F�̃f�t�H���g�l��TERATERM.INI�ŕύX���邱�Ƃ��ł��܂��B
+16色のデフォルト値はTERATERM.INIで変更することができます。
 
 <p>
-<a href="../menu/setup-additional-visual-theme.html#color">�J���[�e�[�}</a>���g���ĕύX���邱�Ƃ��ł��܂��B
+<a href="../menu/setup-additional-visual-theme.html#color">カラーテーマ</a>を使って変更することもできます。
 
-<h3>�f�t�H���g�F�̕ύX</h3>
+<h3>デフォルト色の変更</h3>
 
 <ul>
-  <li>TERATERM.INI �� [Tera Term] section
+  <li>TERATERM.INI の [Tera Term] section
   <li><a href="../setup/teraterm-ini.html#ANSIColor">ANSIColor</a> key
-  <li>�ŏ�����8�F�������邢�F(���F,bright version)
-  <li>����8�F�����ŏ���8�F�������Â������F(���͓���ւ��Ȃ�)
+  <li>最初から8色分が明るい色(原色,bright version)
+  <li>次の8色分が最初の8色を少し暗くした色(黒は入れ替えない)
 
 </ul>
 
-<h3>16/256�F���[�h��</h3>
+<h3>16/256色モード時</h3>
 
-�F�ԍ�0����15�́ATERATERM.INI��ANSIColor�Őݒ肵���F�̕��тƈقȂ��Ă��܂��B
-�O��7�F�ƌ㔼7�F������ւ���Ă��܂�(����gray�͓���ւ��܂���)�B
+色番号0から15は、TERATERM.INIのANSIColorで設定した色の並びと異なっています。
+前半7色と後半7色が入れ替わっています(黒とgrayは入れ替わりません)。
 <ul>
-  <li>0�͍�
-  <li>1-7�͏����Â��F
-  <li>8��gray
-  <li>9-15��Bright(���邢)�F�A���F
+  <li>0は黒
+  <li>1-7は少し暗い色
+  <li>8はgray
+  <li>9-15はBright(明るい)色、原色
 </ul>
 
-<h3>8�F���[�h��</h3>
+<h3>8色モード時</h3>
 
-�F�ԍ�0����8�́ATERATERM.INI��ANSIColor�Őݒ肵���ŏ���8�F�ƂȂ�܂��B
+色番号0から8は、TERATERM.INIのANSIColorで設定した最初の8色となります。
 <ul>
-  <li>0-7�͌��F
+  <li>0-7は原色
 </ul>
 
-<h3>�F�Ή��\</h3>
+<h3>色対応表</h3>
 
 <pre>
       TERATERM.INI            16/256 color              8 color
@@ -163,42 +163,42 @@ TERMINFO�̒[���G���g����setab�����̂悤�ɂ���Ɨ��p�\�ƂȂ�܂��B
 15    "White"                 "Bright White"
 </pre>
 
-<h2 id="reverse">���]�\��</h2>
+<h2 id="reverse">反転表示</h2>
 
 <p>
-���̂Ƃ��A���]�\���ƂȂ�܂��B
+次のとき、反転表示となります。
 <ul>
   <li>SGR 7
-  <li>DECSCNM set��
-  <li>�}�E�X�I����
+  <li>DECSCNM set時
+  <li>マウス選択時
 </ul>
 
 <p>
-���]�������L���ȏꍇ�́A���]�����̑O�i�F�Ɣw�i�F�ŕ�����`�悵�܂��B
+反転属性が有効な場合は、反転属性の前景色と背景色で文字を描画します。
 
 <p>
-���]�����������ȏꍇ�́A�O�i�F�Ɣw�i�F�����ւ��ĕ�����`�悵�܂��B
-((R,G,B)�F�̔��]�Ƃ���(255-R,255-G,255-B)���g�p���Ă���[���G�~�����[�^������܂�)
+反転属性が無効な場合は、前景色と背景色を入れ替えて文字を描画します。
+((R,G,B)色の反転として(255-R,255-G,255-B)を使用している端末エミュレータもあります)
 
 <p>
-����͎��̂悤�ȗ��R����ł�
+これは次のような理由からです
 <ul>
-  <li>Tera Term�̎�ȃG�~�����[�V�����Ώۂ�DEC VT�V���[�Y
-  <li>VT�V���[�Y�ŃJ���[��������VT525�̓���Ɠ���
+  <li>Tera Termの主なエミュレーション対象はDEC VTシリーズ
+  <li>VTシリーズでカラーが扱えるVT525の動作と同じ
 </ul>
 
-<h3 id="fg_bg_color">�����̑O�i�Ɣw�i�̐F</h3>
+<h3 id="fg_bg_color">文字の前景と背景の色</h3>
 
 <ul>
-  <li>�����ɂ͑��������Ă���</li>
+  <li>文字には属性がついている</li>
   <ul>
-    <li>���ʂȑ������Ȃ��̂�Normal����</li>
+    <li>特別な属性がないのがNormal属性</li>
   </ul>
-  <li>�����̑����������Ƃ�����(Reverse+Bold�Ȃ�)</li>
-  <li>�F�Ɋ֘A���鑮���́AReverse,Blink,Bold,Underline,URL������A
-    �e�X�̑����̐F��enable�̎��A�����Ǝ��̐F���g�p�����</li>
-  <li>�����̑O�i�Ɣw�i�̐F�́A�\�̏�̑�������D�悳��Č��肷��</li>
-  <li>UseNormalBGColor���"o"�����Ă��鑮���́A�u��ɕW���̔w�i�F���g���v�Ƀ`�F�b�N�������Ă���Ɣw�i�F��Normal back���g�p�����</li>
+  <li>複数の属性を持つことがある(Reverse+Boldなど)</li>
+  <li>色に関連する属性は、Reverse,Blink,Bold,Underline,URLがあり、
+    各々の属性の色がenableの時、属性独自の色が使用される</li>
+  <li>文字の前景と背景の色は、表の上の属性から優先されて決定する</li>
+  <li>UseNormalBGColor列に"o"がついている属性は、「常に標準の背景色を使う」にチェックが入っていると背景色はNormal backが使用される</li>
 </ul>
 
 <pre>
@@ -215,20 +215,20 @@ TERMINFO�̒[���G���g����setab�����̂悤�ɂ���Ɨ��p�\�ƂȂ�܂��B
 </pre>
 
 <ul>
-  <li>Reverse������enable���A���]�\�������</li>
+  <li>Reverse属性がenable時、反転表示すると</li>
   <ul>
-    <li>Reverse���������̕����́AReverse�����̐F���ݒ肳���</li>
-    <li>���̑��̑����̕����́AFore��Back������ւ��</li>
+    <li>Reverse属性だけの文字は、Reverse属性の色が設定される</li>
+    <li>その他の属性の文字は、ForeとBackが入れ替わる</li>
   </ul>
-  <li>Reverse������disable�̂Ƃ��A���]�\�������</li>
+  <li>Reverse属性がdisableのとき、反転表示すると</li>
   <ul>
-    <li>Fore��Back������ւ��</li>
+    <li>ForeとBackが入れ替わる</li>
   </ul>
-  <li><a href="../setup/teraterm-win.html#color">UseTextColor=on�̂Ƃ�</a>���A<br>
-    �O�i�F��ANSI0(��)����ANSI7(��)����ANSI15(GRAY)�ŁA�w�i�F�Ɠ����Ƃ�
+  <li><a href="../setup/teraterm-win.html#color">UseTextColor=onのとき</a>かつ、<br>
+    前景色がANSI0(黒)又はANSI7(白)又はANSI15(GRAY)で、背景色と同じとき
     <ul>
-      <li>Reverse�������Ȃ��ꍇ�́ANormal�����̑O�i�F�Ɣw�i�F���g�p�����</li>
-      <li>Reverse�����̏ꍇ�́AReverse�����̑O�i�F�Ɣw�i�F���g�p�����</li>
+      <li>Reverse属性がない場合は、Normal属性の前景色と背景色が使用される</li>
+      <li>Reverse属性の場合は、Reverse属性の前景色と背景色が使用される</li>
     </ul>
   </li>
 </ul>

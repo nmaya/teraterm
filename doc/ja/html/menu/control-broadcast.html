@@ -2,70 +2,70 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>Broadcast command ([Control] ���j���[)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Broadcast command ([Control] メニュー)</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1>Broadcast command ([Control] ���j���[)</h1>
+    <h1>Broadcast command ([Control] メニュー)</h1>
 
-    <h2>"Realtime mode" �� off �̏ꍇ</h2>
+    <h2>"Realtime mode" が off の場合</h2>
 
     <dl>
-      <dt>�R�}���h���̓R���g���[��</dt>
+      <dt>コマンド入力コントロール</dt>
       <dd>
-        �e�E�B���h�E�ɑ��M����R�}���h����͂��܂��B
+        各ウィンドウに送信するコマンドを入力します。
       </dd>
 
       <dt>Enter key</dt>
       <dd>
-        �R�}���h���̓R���g���[���œ��͂����R�}���h�𑗐M����Ƃ��A���s��t�����邩�I�����܂��B���s�Ƃ��đ��M������s�R�[�h�� "CRLF", "CR", "LF" ����I�����܂��B
+        コマンド入力コントロールで入力したコマンドを送信するとき、改行を付加するか選択します。改行として送信する改行コードを "CRLF", "CR", "LF" から選択します。
       </dd>
 
       <dt>Submit</dt>
       <dd>
-        �R�}���h�𑗐M���܂��B"<a href="./setup-additional.html">AcceptBroadcast</a>" ���L���ȃE�B���h�E�̓R�}���h����M���܂��B
+        コマンドを送信します。"<a href="./setup-additional.html">AcceptBroadcast</a>" が有効なウィンドウはコマンドを受信します。
       </dd>
 
       <dt>History</dt>
       <dd>
-        ���M�����R�}���h�̗�����ۑ����邩�ǂ����I�����܂��B�ۑ����錏���� "<a href="../setup/teraterm-misc.html#broadcast">MaxBroadcatHistory</a>" �Őݒ�ł��܂��B
+        送信したコマンドの履歴を保存するかどうか選択します。保存する件数は "<a href="../setup/teraterm-misc.html#broadcast">MaxBroadcatHistory</a>" で設定できます。
       </dd>
 
       <dt>Send to this process only</dt>
       <dd>
-        ���̐ݒ��L���ɂ���ƁA�E�B���h�E���X�g�ł̑I���Ɋւ�炸�A���� "Broadcast command" �_�C�A���O���o�������� Tera Term �E�B���h�E�ɂ̂݃R�}���h�𑗐M���܂��B
+        この設定を有効にすると、ウィンドウリストでの選択に関わらず、この "Broadcast command" ダイアログを出現させた Tera Term ウィンドウにのみコマンドを送信します。
       </dd>
 
-      <dt>�E�B���h�E���X�g</dt>
+      <dt>ウィンドウリスト</dt>
       <dd>
-        Tera Term �̃E�B���h�E�ꗗ�ł��B
-        �R�}���h�𑗐M����E�B���h�E�����N���b�N�őI�����܂��B
-        �E�N���b�N�̃R���e�L�X�g���j���[����A�I�������E�B���h�E�ɑ΂��鑀���ꗗ�̍X�V���ł��܂��B
+        Tera Term のウィンドウ一覧です。
+        コマンドを送信するウィンドウを左クリックで選択します。
+        右クリックのコンテキストメニューから、選択したウィンドウに対する操作や一覧の更新ができます。
       </dd>
 
     </dl>
 
 
-    <h2>"Realtime mode" �� on �̏ꍇ</h2>
+    <h2>"Realtime mode" が on の場合</h2>
 
     <dl>
-      <dt>�R�}���h���̓R���g���[��</dt>
+      <dt>コマンド入力コントロール</dt>
       <dd>
-        ���̃R���g���[���Ƀt�H�[�J�X������Ԃŉ������L�[�́A���L�E�B���h�E���X�g�őI�������E�B���h�E�ɑ��M����܂��B"<a href="./setup-additional.html">AcceptBroadcast</a>" �������ȃE�B���h�E���R�}���h����M���܂��B
-        �������AAlt-V �� Alt-R �́A���� "Broadcast command" �_�C�A���O���o���������E�B���h�E�Ńy�[�X�g�Ƃ��ē��삵�܂��B
-        �E�B���h�E���X�g�őI�������E�B���h�E�ɃN���b�v�{�[�h�̓��e�𑗐M����ɂ́AShift-INS ���g�p���Ă��������B
-        ���̃R���g���[����Ń}�E�X�E�N���b�N�E���N���b�N���邱�Ƃł��A�N���b�v�{�[�h�̓��e��I�������E�B���h�E�ɑ��M�ł��܂��B
-        �N���b�v�{�[�h�̓��e�𑗐M���鎞�ɂ́A"<a href="../menu/setup-additional-copy-and-paste.html#DisablePasteMouseRButton">DisablePasteMouseRButton</a>" �� "<a href="../setup/teraterm-misc.html#DisablePasteMouseMButton">DisablePasteMouseMButton</a>"�A"<a href="../menu/setup-additional-copy-and-paste.html#ConfirmChangePaste">ConfirmChangePaste</a>" �Ȃǂ̐ݒ�ɏ]���܂��B
+        このコントロールにフォーカスした状態で押したキーは、下記ウィンドウリストで選択したウィンドウに送信されます。"<a href="./setup-additional.html">AcceptBroadcast</a>" が無効なウィンドウもコマンドを受信します。
+        ただし、Alt-V と Alt-R は、この "Broadcast command" ダイアログを出現させたウィンドウでペーストとして動作します。
+        ウィンドウリストで選択したウィンドウにクリップボードの内容を送信するには、Shift-INS を使用してください。
+        このコントロール上でマウス右クリック・中クリックすることでも、クリップボードの内容を選択したウィンドウに送信できます。
+        クリップボードの内容を送信する時には、"<a href="../menu/setup-additional-copy-and-paste.html#DisablePasteMouseRButton">DisablePasteMouseRButton</a>" や "<a href="../setup/teraterm-misc.html#DisablePasteMouseMButton">DisablePasteMouseMButton</a>"、"<a href="../menu/setup-additional-copy-and-paste.html#ConfirmChangePaste">ConfirmChangePaste</a>" などの設定に従います。
       </dd>
 
-      <dt>�E�B���h�E���X�g</dt>
+      <dt>ウィンドウリスト</dt>
       <dd>
-        Tera Term �̃E�B���h�E�ꗗ�ł��B
-        �R�}���h�𑗐M����E�B���h�E�����N���b�N�őI�����܂��B
-        �E�N���b�N�̃R���e�L�X�g���j���[����A�I�������E�B���h�E�ɑ΂��鑀���ꗗ�̍X�V���ł��܂��B
+        Tera Term のウィンドウ一覧です。
+        コマンドを送信するウィンドウを左クリックで選択します。
+        右クリックのコンテキストメニューから、選択したウィンドウに対する操作や一覧の更新ができます。
       </dd>
 
     </dl>

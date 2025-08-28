@@ -2,65 +2,65 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>�ؒf�シ���ɐڑ�����ꍇ�̒��ӓ_</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>切断後すぐに接続する場合の注意点</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </head>
 <body>
 
-<h1>�ؒf�シ���ɐڑ�����ꍇ�̒��ӓ_</h1>
+<h1>切断後すぐに接続する場合の注意点</h1>
 <p>
-�z�X�g�Ƃ̐ڑ����I����A������connect�R�}���h�ŐV�����ڑ����J�n����ꍇ�A�ȉ��̂悤�Ȗ�肪��������ꍇ������B�Ⴆ�΁A
+ホストとの接続を終了後、すぐにconnectコマンドで新しい接続を開始する場合、以下のような問題が発生する場合がある。例えば、
 </p>
 
 <pre class="macro-example">
-; exit�R�}���h�𑗂��āA�z�X�g�Ƃ̐ڑ����I������B
+; exitコマンドを送って、ホストとの接続を終了する。
 sendln "exit"
 
-; �V�����ڑ����J�n����B
+; 新しい接続を開始する。
 connect "server"
 </pre>
 
 <p>
-���̃}�N���͑��̏ꍇ�͂��܂������Ȃ��B<br>
-sendln "exit"��exit�R�}���h�𑗂��Ă���z�X�g���ڑ���ؒf���Ă���̂ɏ����^�C�����O����������B<br>
-�}�N���͂��̃^�C�����O�̊ԂɎ���connect�R�}���h�����s����B<br>
-�������z�X�g�Ƃ̐ڑ����܂��I�����Ă��Ȃ����߁Aconnect�R�}���h�͊��ɐڑ����Ă���Ƃ݂Ȃ��ĉ����s��Ȃ��B
+このマクロは大抵の場合はうまく動かない。<br>
+sendln "exit"でexitコマンドを送ってからホストが接続を切断してくるのに少しタイムラグが発生する。<br>
+マクロはこのタイムラグの間に次のconnectコマンドを実行する。<br>
+しかしホストとの接続がまだ終了していないため、connectコマンドは既に接続しているとみなして何も行わない。
 </p>
 
 <p>
-���̖����������ɂ́A�ȉ��̂悤�Ƀz�X�g�Ƃ̐ڑ����I�������̂��m�F���Ă���connect�R�}���h�����s����悤�ɂ���B
+この問題を回避するには、以下のようにホストとの接続が終了したのを確認してからconnectコマンドを実行するようにする。
 </p>
 
 <pre class="macro-example">
-; exit�R�}���h�𑗂��āA�z�X�g�Ƃ̐ڑ����I������B
+; exitコマンドを送って、ホストとの接続を終了する。
 sendln "exit"
 
 do
-	; 10�~���b�҂�
+	; 10ミリ秒待つ
 	mpause 10
-	; �ڑ���Ԃ��m�F����
+	; 接続状態を確認する
 	testlink
-; �܂��z�X�g�Ɛڑ�����Ă���(<a href="../command/testlink.html">result��2</a>)�Ȃ�΃��[�v���J��Ԃ�
+; まだホストと接続されている(<a href="../command/testlink.html">resultが2</a>)ならばループを繰り返す
 loop while result = 2
 
-; �V�����ڑ����J�n����B
+; 新しい接続を開始する。
 connect "server"
 </pre>
 
 <p>
-�܂��A<a href="../../menu/setup-additional-tcpip.html#AutoWinClose">�ؒf�㎩���I�ɃE�B���h�E�����ݒ�</a>�̏ꍇ�A�ȉ��̂悤��unlink�R�}���h��Tera Term��؂藣���Ă��悢�B
+また、<a href="../../menu/setup-additional-tcpip.html#AutoWinClose">切断後自動的にウィンドウを閉じる設定</a>の場合、以下のようにunlinkコマンドでTera Termを切り離してもよい。
 </p>
 
 <pre class="macro-example">
-; exit�R�}���h�𑗂��āA�z�X�g�Ƃ̐ڑ����I������B
+; exitコマンドを送って、ホストとの接続を終了する。
 sendln "exit"
 
-; Tera Term��؂藣��
+; Tera Termを切り離す
 unlink
 
-; �V�����ڑ����J�n����B
+; 新しい接続を開始する。
 connect "server"
 </pre>
 

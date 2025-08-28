@@ -2,24 +2,24 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>TTL�t�@�C��</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>TTLファイル</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>�G���R�[�f�B���O</h1>
+<h1>エンコーディング</h1>
 
 <p>
-Tera Term 4.102���AUnicode (UTF-8, UTF-16BE, UTF-16LE) �ɑΉ����܂����B
+Tera Term 4.102より、Unicode (UTF-8, UTF-16BE, UTF-16LE) に対応しました。
 </p>
 
 <p>
-�]����ANSI CodePage�Ƃ��ď������Ă��܂����B
+従来はANSI CodePageとして処理していました。
 </p>
 
-<h2>1) �T�|�[�g����G���R�[�f�B���O</h2>
+<h2>1) サポートするエンコーディング</h2>
 
 <table>
   <tr>
@@ -27,7 +27,7 @@ Tera Term 4.102���AUnicode (UTF-8, UTF-16BE, UTF-16LE) �ɑΉ����܂����B
     <th>support</th>
   </tr>
   <tr>
-    <td>�]���ǂ��� (ANSI CodePage)</td>
+    <td>従来どおり (ANSI CodePage)</td>
     <td>Support</td>
   </tr>
   <tr>
@@ -60,21 +60,21 @@ Tera Term 4.102���AUnicode (UTF-8, UTF-16BE, UTF-16LE) �ɑΉ����܂����B
   </tr>
 </table>
 
-<h2>2) �G���R�[�f�B���O�̔���</h2>
+<h2>2) エンコーディングの判定</h2>
 
 <p>
-Tera Term�͎��̂悤�ɔ��肵�܂��B
+Tera Termは次のように判定します。
 </p>
 
 <dl>
-  <dt>BOM������ꍇ</dt>
-  <dd>BOM�̎�ʂ���UTF-8, UTF-16BE, UTF-16LE�𔻒肵�ēǂݍ���</dd>
+  <dt>BOMがある場合</dt>
+  <dd>BOMの種別からUTF-8, UTF-16BE, UTF-16LEを判定して読み込む</dd>
 
-  <dt>BOM���Ȃ��ꍇ</dt>
+  <dt>BOMがない場合</dt>
   <dd>
     <ul>
-      <li>UTF-8�Ƃ��ēǂݍ���</li>
-      <li>UTF-8�Ƃ��ăf�R�[�h�ł��Ȃ������ꍇ��CP_ACP(4.102�ȑO�Ɠ���)�Ƃ��ēǂݍ���</li>
+      <li>UTF-8として読み込む</li>
+      <li>UTF-8としてデコードできなかった場合はCP_ACP(4.102以前と同じ)として読み込む</li>
     </ul>
   </dd>
 </dl>

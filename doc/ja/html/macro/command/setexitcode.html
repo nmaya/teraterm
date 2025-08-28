@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>setexitcode</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,48 +14,48 @@
 <h1>setexitcode</h1>
 
 <p>
-MACRO ‚ÌI—¹ƒR[ƒh‚ğİ’è‚·‚éB
+MACRO ã®çµ‚äº†ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚
 </p>
 
 <pre class="macro-syntax">
 setexitcode &lt;exit code&gt;
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
-<h3>Windows 98/Me ‚Ìê‡</h3>
-
-<p>
-MACRO ‚ªƒoƒbƒ`ƒtƒ@ƒCƒ‹‚©‚çƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ "start /w ttpmacro &lt;ttl filename&gt;" (ƒIƒvƒVƒ‡ƒ“ /w ‚ª•K—v)‚É‚æ‚Á‚ÄÀs‚³‚ê‚½ê‡AI—¹ƒR[ƒh‚ğ DOS ƒRƒ}ƒ“ƒh "if errorlevel n" ‚Å’²‚×‚é‚±‚Æ‚ª‚Å‚«‚éB
-</p>
-
-<h3>Windows NT/2000/XP ‚Ìê‡</h3>
+<h3>Windows 98/Me ã®å ´åˆ</h3>
 
 <p>
-MACRO ‚ªƒoƒbƒ`ƒtƒ@ƒCƒ‹‚©‚çƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ "ttpmacro &lt;ttl filename&gt;" ‚É‚æ‚Á‚ÄÀs‚³‚ê‚½ê‡AI—¹ƒR[ƒh‚ğ DOS ƒRƒ}ƒ“ƒh"if errorlevel n" ‚Å’²‚×‚é‚±‚Æ‚ª‚Å‚«‚éB
+MACRO ãŒãƒãƒƒãƒãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ "start /w ttpmacro &lt;ttl filename&gt;" (ã‚ªãƒ—ã‚·ãƒ§ãƒ³ /w ãŒå¿…è¦)ã«ã‚ˆã£ã¦å®Ÿè¡Œã•ã‚ŒãŸå ´åˆã€çµ‚äº†ã‚³ãƒ¼ãƒ‰ã‚’ DOS ã‚³ãƒãƒ³ãƒ‰ "if errorlevel n" ã§èª¿ã¹ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚
 </p>
 
-<h2>—á</h2>
+<h3>Windows NT/2000/XP ã®å ´åˆ</h3>
+
+<p>
+MACRO ãŒãƒãƒƒãƒãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ "ttpmacro &lt;ttl filename&gt;" ã«ã‚ˆã£ã¦å®Ÿè¡Œã•ã‚ŒãŸå ´åˆã€çµ‚äº†ã‚³ãƒ¼ãƒ‰ã‚’ DOS ã‚³ãƒãƒ³ãƒ‰"if errorlevel n" ã§èª¿ã¹ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚
+</p>
+
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
------ ƒoƒbƒ`ƒtƒ@ƒCƒ‹ "test.bat" (Win 98/Me ‚Ìê‡) ------
-rem "start /w" ƒRƒ}ƒ“ƒh‚Å MACRO ‚ğÀs
+----- ãƒãƒƒãƒãƒ•ã‚¡ã‚¤ãƒ« "test.bat" (Win 98/Me ã®å ´åˆ) ------
+rem "start /w" ã‚³ãƒãƒ³ãƒ‰ã§ MACRO ã‚’å®Ÿè¡Œ
 start /w ttpmacro test.ttl
-rem ‚à‚µI—¹ƒR[ƒh‚ª1ˆÈã‚È‚çƒƒbƒZ[ƒW‚ğ•\¦
+rem ã‚‚ã—çµ‚äº†ã‚³ãƒ¼ãƒ‰ãŒ1ä»¥ä¸Šãªã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤º
 if errorlevel 1 echo Error!
------ "test.bat" ‚ÌI‚í‚è ---------
+----- "test.bat" ã®çµ‚ã‚ã‚Š ---------
 
------ ƒoƒbƒ`ƒtƒ@ƒCƒ‹ "test.bat" (Win NT/2000/XP ‚Ìê‡) ------
-rem MACRO ‚ğÀsA"start" ƒRƒ}ƒ“ƒh‚Í•s•K—v
+----- ãƒãƒƒãƒãƒ•ã‚¡ã‚¤ãƒ« "test.bat" (Win NT/2000/XP ã®å ´åˆ) ------
+rem MACRO ã‚’å®Ÿè¡Œã€"start" ã‚³ãƒãƒ³ãƒ‰ã¯ä¸å¿…è¦
 ttpmacro test.ttl
-rem ‚à‚µI—¹ƒR[ƒh‚ª1ˆÈã‚È‚çƒƒbƒZ[ƒW‚ğ•\¦
+rem ã‚‚ã—çµ‚äº†ã‚³ãƒ¼ãƒ‰ãŒ1ä»¥ä¸Šãªã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤º
 if errorlevel 1 echo Error!
------ "test.bat" ‚ÌI‚í‚è ---------
+----- "test.bat" ã®çµ‚ã‚ã‚Š ---------
 
------ ƒ}ƒNƒƒtƒ@ƒCƒ‹ "test.ttl" ----
-; I—¹ƒR[ƒh‚ğ 1 ‚É‚·‚éB
+----- ãƒã‚¯ãƒ­ãƒ•ã‚¡ã‚¤ãƒ« "test.ttl" ----
+; çµ‚äº†ã‚³ãƒ¼ãƒ‰ã‚’ 1 ã«ã™ã‚‹ã€‚
 setexitcode 1
------ "test.ttl" ‚ÌI‚í‚è ----------
+----- "test.ttl" ã®çµ‚ã‚ã‚Š ----------
 </pre>
 
 </body>

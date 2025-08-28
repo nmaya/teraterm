@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>dispstr</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,37 +14,37 @@
 <h1>dispstr</h1>
 
 <p>
-������[����ʂɏo�͂���B<em>(�o�[�W���� 4.67�ȍ~)</em>
+文字を端末画面に出力する。<em>(バージョン 4.67以降)</em>
 </p>
 
 <pre class="macro-syntax">
 dispstr &lt;data1&gt; [&lt;data2&gt;....]
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-&lt;data&gt; ��������^�̏ꍇ�A����������̂܂ܒ[����ʂɕ\������B<br>
-&lt;data&gt; �������^�̏ꍇ�́A���̒l�̉��ʃo�C�g(0-255)�� ASCII �R�[�h�Ƃ��Ĉ����A�Ή����镶����[����ʂɕ\������B
+&lt;data&gt; が文字列型の場合、文字列をそのまま端末画面に表示する。<br>
+&lt;data&gt; が整数型の場合は、その値の下位バイト(0-255)を ASCII コードとして扱い、対応する文字を端末画面に表示する。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 dispstr 'ABC'
 
-; "ABC" ��\������B("A" �� ASCII �R�[�h��65)
+; "ABC" を表示する。("A" の ASCII コードは65)
 dispstr  65 66 67
 myname='Tera Term'
 dispstr 'My name is ' myname '.'
 
-; �[����ʂ̕\�����e���N���A����
+; 端末画面の表示内容をクリアする
 dispstr #$1B"[2J"
 
-; �[����ʂ�10�s20���ڂ� Message �ƕ\������
+; 端末画面の10行20桁目に Message と表示する
 dispstr #$1B"[10;20HMessage"
 
-; �[����ʂ� 100,200 �Ɉړ�����
+; 端末画面を 100,200 に移動する
 dispstr #$1B"[3;100;200t"
 </pre>
 
@@ -67,21 +67,21 @@ next
 <pre class="macro-example">
 connect '/C=1'
 if result == 1 then
-  dispstr 'Error opening COM1'   ; �ڑ���ԂłȂ����߁A���̃R�}���h�͎��s����B
+  dispstr 'Error opening COM1'   ; 接続状態でないため、このコマンドは失敗する。
 elseif result == 2 then
   dispstr 'Successfully opened COM1'
 endif
 end
 </pre>
 
-<h2>����</h2>
+<h2>注意</h2>
 
 <p>
-���Y�R�}���h�̏o�͓��e�̓z�X�g������͔F���ł��Ȃ��B���̂��߁A���Y�R�}���h���g�p����ƁA�[����ʂ̕\����Ԃ��z�X�g���Ƃ���Ă��܂��A�[����ʂ̕\���������\��������B
+当該コマンドの出力内容はホスト側からは認識できない。そのため、当該コマンドを使用すると、端末画面の表示状態がホスト側とずれてしまい、端末画面の表示が崩れる可能性がある。
 </p>
 
 <p>
-Tera Term�͐ڑ���ԂłȂ��ƁA�}�N���R�}���h�͎��s����Ȃ��B
+Tera Termは接続状態でないと、マクロコマンドは実行されない。
 </p>
 
 </body>

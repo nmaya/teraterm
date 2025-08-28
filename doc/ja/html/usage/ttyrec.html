@@ -2,63 +2,63 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>�[����ʃ��R�[�_�[/�v���C���[</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>端末画面レコーダー/プレイヤー</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>�[����ʃ��R�[�_�[/�v���C���[</h1>
+<h1>端末画面レコーダー/プレイヤー</h1>
 
-<p>�[����ʂ̕\����^��/�Đ�����</p>
+<p>端末画面の表示を録画/再生する</p>
 
-<h2>�@�\</h2>
+<h2>機能</h2>
 
 <p>
-TTXttyrec �́A�[���̉�ʕ\����^�悵�t�@�C���ɕۑ����܂��B
-�t�@�C�����j���[�� TTY Record ��I������ƕۑ��_�C�A���O���o��̂ŁA�t�@�C�����w�肷��Ƙ^�悪�n�܂�܂��B
-�ēx TTY Record ��I������Ƙ^����I�����܂��B
+TTXttyrec は、端末の画面表示を録画しファイルに保存します。
+ファイルメニューの TTY Record を選択すると保存ダイアログが出るので、ファイルを指定すると録画が始まります。
+再度 TTY Record を選択すると録画を終了します。
 </p>
 
 <p>
-���̃o�[�W�����ł́ATCP �ڑ��ȊO�ɃV���A���ڑ��̘^��ɂ��Ή����Ă��܂��B
-�������A�V���A���ڑ���^�悷�邽�߂ɂ� Tera Term 4.60 �ȍ~���K�v�ł��B
-4.60 �ȑO�ł����̃v���O�C���͎g���܂����ATCP �ڑ��̂ݑΉ��ƂȂ�܂��B
-���̏ꍇ�A�V���A���ڑ����ɘ^����s���Ă��Ȃɂ��L�^����܂���B
+このバージョンでは、TCP 接続以外にシリアル接続の録画にも対応しています。
+ただし、シリアル接続を録画するためには Tera Term 4.60 以降が必要です。
+4.60 以前でもこのプラグインは使えますが、TCP 接続のみ対応となります。
+その場合、シリアル接続時に録画を行ってもなにも記録されません。
 </p>
 
 <p>
-TTXttyplay �́ATTXttyrec �ŕۑ����ꂽ�f�[�^���Đ����܂��B
-�t�@�C�����j���[�� TTY Replay ��I������ƃt�@�C���I���_�C�A���O���o��̂ŁA�^�悵���f�[�^��I������ƍĐ����n�܂�܂��B
-TTXttyplay ���g�p����ɂ́ATera Term 4.60 �ȍ~���K�v�ł��B
+TTXttyplay は、TTXttyrec で保存されたデータを再生します。
+ファイルメニューの TTY Replay を選択するとファイル選択ダイアログが出るので、録画したデータを選択すると再生が始まります。
+TTXttyplay を使用するには、Tera Term 4.60 以降が必要です。
 </p>
 
 <p>
-�f�[�^�`���� <a href="http://0xcc.net/ttyrec/" target="_blank">ttyrec</a> �Ɠ����ł��̂ŁATTXttyrec �Ř^�悵���f�[�^�� ttyplay �ōĐ�������Attyrec �Ř^�悵���f�[�^�� TTXttyplay �ōĐ����鎖���\�ł��B
+データ形式は <a href="http://0xcc.net/ttyrec/" target="_blank">ttyrec</a> と同じですので、TTXttyrec で録画したデータを ttyplay で再生したり、ttyrec で録画したデータを TTXttyplay で再生する事も可能です。
 </p>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-TCP �ڑ��̒ʐM���e���t�b�N����T���v���v���O�C���ł��B
-Precv�� �t�b�N���āA���݂̎������Ǝ�M�f�[�^�� ttyrec �̌`���Ńt�@�C���ɏ�������ł��邾���ł��B
-�V���A���ڑ��̘^��́ATera Term 4.60 �Œǉ����ꂽ�V���A���ڑ��̃t�b�N�𗘗p���Ă��܂��B
-</p>
-
-<p>
-TTXttyplay �́ATera Term 4.60 �Œǉ����ꂽ���O�Đ��̃t�b�N�𗘗p���Ă��܂��B
-���O�Đ����ɂ͒ʏ�͏����f�[�^��ǂݍ��ޏ����AERROR_IO_PENDING ��Ԃ����ɂ���ăE�F�C�g�����Ă��܂��B
+TCP 接続の通信内容をフックするサンプルプラグインです。
+Precvを フックして、現在の時刻情報と受信データを ttyrec の形式でファイルに書き込んでいるだけです。
+シリアル接続の録画は、Tera Term 4.60 で追加されたシリアル接続のフックを利用しています。
 </p>
 
 <p>
-Windows�ɂ� gettimeofday() ���Ȃ��̂ŁA�֐��������N�����Ă��܂��B
+TTXttyplay は、Tera Term 4.60 で追加されたログ再生のフックを利用しています。
+ログ再生時には通常は順次データを読み込む所を、ERROR_IO_PENDING を返す事によってウェイトを入れています。
 </p>
 
-<h2>�o�O</h2>
+<p>
+Windowsには gettimeofday() がないので、関数を書き起こしています。
+</p>
+
+<h2>バグ</h2>
 
 <ul>
-  <li>���Ԑ��x�͂��܂�悭����܂���B</li>
+  <li>時間精度はあまりよくありません。</li>
 </ul>
 
 </body>

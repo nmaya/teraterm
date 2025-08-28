@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Theme Editor</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
@@ -11,87 +11,87 @@
   <body>
     <h1>Theme Editor</h1>
 
-    �e�[�}��Tera Term�̔w�i�A�����̐F�A�܂��́A�������ꊇ���Ĉ����g�g�݂ł��B<br>
-    Theme Editor�̓e�[�}�̕ҏW���s�����Ƃ��ł��܂��B<br>
-    �����̃^�u�Őݒ���s���܂��B<br>
-    [OK] �œ��쒆��Tera Term�ɔ��f����A[Cancel] �Ŕ��f���ꂸ�ɔj������܂��B
+    テーマはTera Termの背景、文字の色、または、両方を一括して扱う枠組みです。<br>
+    Theme Editorはテーマの編集を行うことができます。<br>
+    複数のタブで設定を行います。<br>
+    [OK] で動作中のTera Termに反映され、[Cancel] で反映されずに破棄されます。
 
     <dl>
-      <dt><a href="#preview">Preview/File �^�u</a></dt>
-      <dd>�e�[�}�̈ꎞ�I�Ȑݒ�(preview),�e�[�}�t�@�C���̓ǂݍ��݂Ə����o�����s���܂��B</dd>
-      <dt><a href="#bg">Background �^�u</a></dt>
-      <dd>BG(�w�i�摜)�Ɋւ���ݒ���s���܂��B</dd>
-      <dt><a href="#bg_alpha">Background image alpha �^�u</a></dt>
-      <dd>BG(�w�i�摜)�ƕ����w�i�F�̓��ߐݒ���s���܂��B</dd>
-      <dt><a href="#color">Text color �^�u</a></dt>
-      <dd>�����̐F�Ɋւ���ݒ���s���܂��B</dd>
+      <dt><a href="#preview">Preview/File タブ</a></dt>
+      <dd>テーマの一時的な設定(preview),テーマファイルの読み込みと書き出しを行います。</dd>
+      <dt><a href="#bg">Background タブ</a></dt>
+      <dd>BG(背景画像)に関する設定を行います。</dd>
+      <dt><a href="#bg_alpha">Background image alpha タブ</a></dt>
+      <dd>BG(背景画像)と文字背景色の透過設定を行います。</dd>
+      <dt><a href="#color">Text color タブ</a></dt>
+      <dd>文字の色に関する設定を行います。</dd>
     </dl>
 
-    <a href="../setup/theme.html">�e�[�}�t�@�C���ɂ���</a>
+    <a href="../setup/theme.html">テーマファイルについて</a>
 
     <hr>
 
     <h2 id="preview">Preview/File</h2>
 
     Preview<br>
-    �e�[�}�̈ꎞ�I�Ȑݒ�(Preview)�A��蒼��(Undo)���s���܂��B
+    テーマの一時的な設定(Preview)、やり直し(Undo)を行います。
     <dl>
       <dt>[Preview]</dt>
-      <dd>�ݒ肵���e�[�}���ꎞ�I�ɐݒ�(Preview)���܂��B</dd>
+      <dd>設定したテーマを一時的に設定(Preview)します。</dd>
       <dt>[Undo]</dt>
-      <dd>�ύX�����e�[�}���_�C�A���O���J���O�̏�Ԃɖ߂��܂��B</dd>
+      <dd>変更したテーマをダイアログを開く前の状態に戻します。</dd>
     </dl>
 
     Theme File<br>
-    �e�[�}�t�@�C������e�[�}��ǂݍ��݁A�e�[�}�̕ۑ��������Ȃ��܂��B
+    テーマファイルからテーマを読み込み、テーマの保存をおこないます。
     <dl>
       <dt>[Load]</dt>
-      <dd>�e�[�}�t�@�C����ǂݍ��݂܂��B</dd>
+      <dd>テーマファイルを読み込みます。</dd>
       <dt>[Save]</dt>
       <dd>
-        �ݒ蒆�̃e�[�}���t�@�C���ɏ����o���܂��B<br>
-        BG�e�[�}�AColor�e�[�}�A�܂��͗����������o�����I���ł��܂��B
+        設定中のテーマをファイルに書き出します。<br>
+        BGテーマ、Colorテーマ、または両方を書き出すか選択できます。
       </dd>
     </dl>
 
     <hr>
 
-    <h2 id="bg">Background (�w�i�e�[�})</h2>
+    <h2 id="bg">Background (背景テーマ)</h2>
 
-    <h3>�w�i</h3>
+    <h3>背景</h3>
 
-    �����珇�ɔw�i�摜����������܂��B<br>
-    <a href="#bg_overview">�w�i�e�[�}��Overview</a>���Q�Ƃ��������B
+    下から順に背景画像が合成されます。<br>
+    <a href="#bg_overview">背景テーマのOverview</a>を参照ください。
 
     <dl>
       <dt>Simple color plane</dt>
       <dd>
-        �P�F���A���t�@�u�����h���܂��B<br>
-        ��:�w�i�摜,�ǎ����u�����h������Ԃŏ����Â�����ꍇ�́A����alpha�����̊����ŃA���t�@�u�����h���܂��B
+        単色をアルファブレンドします。<br>
+        例:背景画像,壁紙をブレンドした状態で少し暗くする場合は、黒をalpha半分の割合でアルファブレンドします。
         <dl>
           <dt>Color</dt>
-          <dd>��������v���[���̐F</dd>
+          <dd>合成するプレーンの色</dd>
 
           <dt>Alpha (Opaque right):</dt>
-          <dd>��������A���t�@�u�����h�l</dd>
+          <dd>合成するアルファブレンド値</dd>
         </dl>
       </dd>
 
       <dt>Background Image</dt>
       <dd>
-        �w�i�摜���w�肵�܂��B<br>
-        �摜�t�@�C���ɂ���Ă͉�f���Ƃ̓����x�����l�����܂��B
+        背景画像を指定します。<br>
+        画像ファイルによっては画素ごとの透明度情報も考慮します。
         <dl>
-          <dt>�摜�t�@�C����</dt>
+          <dt>画像ファイル名</dt>
           <dd>
-            bmp, png, gif, jpg��<br>
-            32bit bmp, ����png�̏ꍇ��8bit�̃A���t�@�`�����l�����t������܂�<br>
-            ����gif�̏ꍇ��1�F�𓧖��Ƃ��Ă������܂��B
+            bmp, png, gif, jpg等<br>
+            32bit bmp, 透過pngの場合は8bitのアルファチャンネルが付加されます<br>
+            透過gifの場合は1色を透明としてあつかいます。
           </dd>
 
-          <dt>�p�^�[��</dt>
+          <dt>パターン</dt>
           <dd>
-            �w�i�摜�̕`����@���w�肵�܂��B
+            背景画像の描画方法を指定します。
             <ul>
               <li>stretch</li>
               <li>tile</li>
@@ -101,84 +101,84 @@
               <li>autofit</li>
               <li>autofill</li>
             </ul>
-            (TODO �ڍׂ𒲂ׂď���)
+            (TODO 詳細を調べて書く)
           </dd>
 
           <dt>Color</dt>
           <dd>
-            �w�i�摜���`�悳��Ȃ�����������ꍇ���̐F�Ŗ��߂��܂��B<br>
-            �摜�ɓ������������݂��Ă���Windows�̕ǎ��摜���������Ȃ��ꍇ�����̐F�Ŗ��߂��܂��B
+            背景画像が描画されない部分がある場合この色で埋められます。<br>
+            画像に透明部分が存在していてWindowsの壁紙画像を合成しない場合もこの色で埋められます。
           </dd>
 
           <dt>Alpha (Opaque right):</dt>
           <dd>
-            Desktop wallpaper image�ƍ�������A���t�@�u�����h�l<br>
-            ��������s�����܂őI���ł��܂�<br>
+            Desktop wallpaper imageと合成するアルファブレンド値<br>
+            透明から不透明まで選択できます<br>
           </dd>
         </dl>
       </dd>
 
       <dt>Desktop wallpaper image</dt>
       <dd>
-        Windows�̕ǎ��摜
+        Windowsの壁紙画像
       </dd>
 
     </dl>
 
     <hr>
 
-    <h2 id="bg_alpha">�w�i�摜����</h2>
+    <h2 id="bg_alpha">背景画像透過</h2>
 
-    �w�i�摜�ƕ����w�i�F�̓��ߐݒ�
+    背景画像と文字背景色の透過設定
     <dl>
-      <dt>�ʏ핶���w�i�F�̓���(�E���s����):</dt>
+      <dt>通常文字背景色の透過(右が不透明):</dt>
       <dd>
-        �w�i�摜�ƒʏ핶���w�i�F�̓���<br>
-        ��������s�����܂őI���ł��܂��B<br>
-        �摜��1�̉ӏ�
+        背景画像と通常文字背景色の透過<br>
+        透明から不透明まで選択できます。<br>
+        画像の1の箇所
       </dd>
-      <dt>���]�����w�i�F�̓���:</dt>
+      <dt>反転文字背景色の透過:</dt>
       <dd>
-        �w�i�摜�Ɣ��]�����w�i�F�̓���<br>
-        ��������s�����܂őI���ł��܂��B<br>
-        �摜��2�̉ӏ�
+        背景画像と反転文字背景色の透過<br>
+        透明から不透明まで選択できます。<br>
+        画像の2の箇所
       </dd>
-      <dt>���̑��̕����w�i�F�̓���:</dt>
+      <dt>その他の文字背景色の透過:</dt>
       <dd>
-        �w�i�摜�Ƃ��̑��̕����w�i�F�Ɠ���<br>
-        ��������s�����܂őI���ł��܂��B<br>
-        �摜��3�̉ӏ�
+        背景画像とその他の文字背景色と透過<br>
+        透明から不透明まで選択できます。<br>
+        画像の3の箇所
       </dd>
       <dt>
     </dl>
     <img src="setup-additional-visual-theme-alpha.png"><br>
-    1,3�̕����������̂Ƃ��ATera Term 4 �̓��߂Ɠ��l�ƂȂ�܂��B
+    1,3の部分が透明のとき、Tera Term 4 の透過と同様となります。
 
     <hr>
 
-    <h2 id="color">Text Color (�J���[�e�[�})</h2>
+    <h2 id="color">Text Color (カラーテーマ)</h2>
 
     <p>
-      �J���[�e�[�}�̓f�t�H���g�F�ɏ㏑�����ĐF���ݒ肳��܂��B<br>
-      <a href="#default_color">�f�t�H���g�F</a>��TERATERM.INI �Őݒ肳��܂��B<br>
-      �J���[�e�[�}��ini�t�@�C�����Őݒ肵�Ȃ��F�̓f�t�H���g�F�ƂȂ�܂��B
+      カラーテーマはデフォルト色に上書きして色が設定されます。<br>
+      <a href="#default_color">デフォルト色</a>はTERATERM.INI で設定されます。<br>
+      カラーテーマのiniファイル内で設定しない色はデフォルト色となります。
 
     <p>
-      ���̃^�u�ł͎��̂��Ƃ��ł��܂��B<br>
+      このタブでは次のことができます。<br>
       <ul>
-        <li>�F�̐ݒ�
-        <li>�f�t�H���g�̐F�ɖ߂�
+        <li>色の設定
+        <li>デフォルトの色に戻す
       </ul>
 
     <p>
-      �F�̐ݒ�̓��X�g�ŐF��I��ŉE�N���b�N(or�_�u���N���b�N)�ōs���܂��B
+      色の設定はリストで色を選んで右クリック(orダブルクリック)で行えます。
 
     <p>
-      ���̂Ƃ��� commctrl�̃J���[�s�b�J�[���g�p���Ă��܂��B<br>
-      (TODO Tera Term���̃J���[�s�b�J�[�ɐ؂�ւ���?)
+      今のところ commctrlのカラーピッカーを使用しています。<br>
+      (TODO Tera Term内のカラーピッカーに切り替える?)
 
     <p>
-      �ݒ肵���F��\�������
+      設定した色を表示する例
       <pre>
 wget https://raw.githubusercontent.com/TeraTermProject/teraterm/main/tests/256colors2.pl -O - | perl
 wget https://raw.githubusercontent.com/TeraTermProject/teraterm/main/tests/colortable16.sh -O - | sh
@@ -186,20 +186,20 @@ wget https://raw.githubusercontent.com/TeraTermProject/teraterm/main/tests/color
 
     <dl>
       <dt>[Default]</dt>
-      <dd>�f�t�H���g�F��ݒ�</dd>
+      <dd>デフォルト色を設定</dd>
     </dl>
 
     <hr>
-    <h2 id="bg_overview">�w�i�e�[�}��Overview</h2>
+    <h2 id="bg_overview">背景テーマのOverview</h2>
 
-    Tera Term �̔w�i�摜�͎��̂悤�ɍ�������܂��B<br>
+    Tera Term の背景画像は次のように合成されます。<br>
     <img src="setup-additional-visual-theme.png"><br>
 
     <hr>
 
-<h2>�F�ݒ��Overview</h2>
+<h2>色設定のOverview</h2>
 
-Tera Term 5 alpha ���_�̎d�l
+Tera Term 5 alpha 時点の仕様
 
 <pre>
 +------------+          +-----------------------------------+         +---------+        +----------+
@@ -214,17 +214,17 @@ Tera Term 5 alpha ���_�̎d�l
 </pre>
 
 <ul>
-  <li>Tera Term�̃f�t�H���g�F��TERATERM.INI����ǂݍ���<br>
-    �`��F�̓f�t�H���g�F�ƂȂ�<br>
-    �N�����ɓǂݍ���themefile���w�肵�Ă��āA�J���[�e�[�}���܂܂�Ă���ƁA�e�[�}�̐F�ƂȂ�
-  <li>Theme Editor�ŐF�����[�h,�ҏW����ok��������Tera Term�̕`��p�̐F�ƂȂ�
-  <li>TERATERM.INI�ɕۑ�����ƃf�t�H���g�F���ۑ������
-  <li>�`��F���f�t�H���g�F�Ɏ����Ă������Ƃ͂ł��Ȃ�
+  <li>Tera Termのデフォルト色はTERATERM.INIから読み込む<br>
+    描画色はデフォルト色となる<br>
+    起動時に読み込むthemefileを指定していて、カラーテーマが含まれていると、テーマの色となる
+  <li>Theme Editorで色をロード,編集してokを押すとTera Termの描画用の色となる
+  <li>TERATERM.INIに保存するとデフォルト色が保存される
+  <li>描画色をデフォルト色に持っていくことはできない
 </ul>
 
-    <h2 id="default_color">�f�t�H���g�F�ɂ���</h2>
+    <h2 id="default_color">デフォルト色について</h2>
 
-    �f�t�H���g�F�ƃt�H���g�� TERATERM.INI �̎��̃L�[���[�h�Őݒ�ł��܂��B
+    デフォルト色とフォントは TERATERM.INI の次のキーワードで設定できます。
 <pre>
 | Attr \ ini    | font on/off       | color on/off           | color(R,G,B,R,G,B) |
 |---------------|-------------------|------------------------|--------------------|

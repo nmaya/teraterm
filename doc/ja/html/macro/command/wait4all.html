@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>wait4all</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,57 +14,57 @@
 <h1>wait4all</h1>
 
 <p>
-�}�N���ɐڑ�����Ă���S�[���̕������҂B<em>(�o�[�W���� 4.63�ȍ~)</em>
+マクロに接続されている全端末の文字列を待つ。<em>(バージョン 4.63以降)</em>
 </p>
 
 <pre class="macro-syntax">
 wait4all &lt;string1&gt; [&lt;string2&gt; ...]
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-���Y�R�}���h�����s�������_�ɂ�����A�}�N���ɐڑ�����Ă���S�[���ɂ����āA
-������ &lt;string1&gt; [&lt;string2&gt; ...]  �̂�������z�X�g���瑗���Ă��邩�A�^�C���A�E�g����������܂� MACRO ���~������B������͍ő� 10 �܂Ŏw��ł���B<br>
-���Y�R�}���h�����s������ɋN�����ꂽ�[���A�}�N���ڑ�����Ă��Ȃ��[���Ɋւ��ẮA�Ď��ΏۊO�ƂȂ�B
+当該コマンドを実行した時点における、マクロに接続されている全端末において、
+文字列 &lt;string1&gt; [&lt;string2&gt; ...]  のうち一つがホストから送られてくるか、タイムアウトが発生するまで MACRO を停止させる。文字列は最大 10 個まで指定できる。<br>
+当該コマンドを実行した後に起動された端末、マクロ接続されていない端末に関しては、監視対象外となる。
 </p>
 
 <p>
-�V�X�e���ϐ� timeout �� mtimeout �� 0 ���傫���ꍇ�A&lt;timeout&gt;.&lt;mtimeout&gt; �b�̎��Ԃ�������ƃ^�C���A�E�g����������B�^�C���A�E�g�̒l�� 0 �ȉ��̏ꍇ�́A�^�C���A�E�g�͔������Ȃ��B
+システム変数 timeout か mtimeout が 0 より大きい場合、&lt;timeout&gt;.&lt;mtimeout&gt; 秒の時間がすぎるとタイムアウトが発生する。タイムアウトの値が 0 以下の場合は、タイムアウトは発生しない。
 </p>
 
 <p>
-�����̃R�}���h�̎��s���ʂ̓V�X�e���ϐ� result �Ɋi�[�����B�ϐ� result �̒l�̈Ӗ��͈ȉ��̂Ƃ���B
+これらのコマンドの実行結果はシステム変数 result に格納される。変数 result の値の意味は以下のとおり。
 </p>
 
 <table>
  <tr>
-  <th>�l</th>
-  <th>�Ӗ�</th>
+  <th>値</th>
+  <th>意味</th>
  </tr>
  <tr>
   <td>0</td>
-  <td>�^�C���A�E�g�B�ǂ̕���������Ȃ������B</td>
+  <td>タイムアウト。どの文字列も来なかった。</td>
  </tr>
  <tr>
   <td>1</td>
-  <td>&lt;string1&gt; ����M�����B</td>
+  <td>&lt;string1&gt; を受信した。</td>
  </tr>
  <tr>
   <td>2</td>
-  <td>&lt;string2&gt; ����M�����B</td>
+  <td>&lt;string2&gt; を受信した。</td>
  </tr>
  <tr>
   <td>n</td>
-  <td>&lt;stringn&gt; ����M�����Bn=1..10</td>
+  <td>&lt;stringn&gt; を受信した。n=1..10</td>
  </tr>
 </table>
 
 <p>
-�Ȃ��A���Y�R�}���h�𗘗p���邽�߂ɂ́Ateraterm.ini �� <a href="../../setup/teraterm-ini.html#Wait4allMacroCommand">Wait4allMacroCommand</a> �G���g����"on"�ɂ���K�v������B�܂��A�܂�ɃR�}���h�����Ғʂ�ɓ����Ȃ����Ƃ�����B
+なお、当該コマンドを利用するためには、teraterm.ini の <a href="../../setup/teraterm-ini.html#Wait4allMacroCommand">Wait4allMacroCommand</a> エントリを"on"にする必要がある。また、まれにコマンドが期待通りに動かないことがある。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 ; Terminal1

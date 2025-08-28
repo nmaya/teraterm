@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>strsplit</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,42 +14,42 @@
 <h1>strsplit</h1>
 
 <p>
-������𕪊�����B<em>(�o�[�W����4.67�ȍ~)</em>
+文字列を分割する。<em>(バージョン4.67以降)</em>
 </p>
 
-<h2>�`��</h2>
+<h2>形式</h2>
 
 <pre class="macro-syntax">
 strsplit &lt;strval&gt; &lt;separator&gt; [&lt;count&gt;]
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-������ &lt;strval&gt; ����A��؂�L�� &lt;separator&gt; �ŋ�؂�ꂽ��������������o���āA�V�X�e���ϐ� groupmatchstr1 �` groupmatchstr9 �ɕԂ��B
+文字列 &lt;strval&gt; から、区切り記号 &lt;separator&gt; で区切られた部分文字列を取り出して、システム変数 groupmatchstr1 〜 groupmatchstr9 に返す。
 </p>
 
 <p>
-&lt;separator&gt; �ɂ͋�؂�L���Ƃ��Ĉ���������1���������w�肷��B
+&lt;separator&gt; には区切り記号として扱う文字を1文字だけ指定する。
 </p>
 
 <p>
-&lt;count&gt; �ɂ́A�擾���镔��������̍ő吔�i9�ȉ��j���w�肷��B <br>
-�����񒆂̕���������̐��� &lt;count&gt; �����ł���Ƃ��A���������񂪑������Ȃ����� groupmatchstr �ɂ́A""(�󕶎���) ����������B<br>
-�����񒆂̕���������̐��� &lt;count&gt; �𒴂���Ƃ��A�Ō�� groupmatchstr �ɂ͎c��̕����񂪂��ׂđ�������B
+&lt;count&gt; には、取得する部分文字列の最大数（9以下）を指定する。 <br>
+文字列中の部分文字列の数が &lt;count&gt; 未満であるとき、部分文字列が代入されなかった groupmatchstr には、""(空文字列) が代入される。<br>
+文字列中の部分文字列の数が &lt;count&gt; を超えるとき、最後の groupmatchstr には残りの文字列がすべて代入される。
 </p>
 
 <p>
-&lt;count&gt; ���ȗ����ꂽ�ꍇ�ɂ́A����������̍ő吔�� 9 �Ƃ݂Ȃ����B<br>
-�����񒆂̕���������̐��� 9 �𒴂���Ƃ��A&lt;count&gt; ���w�肵���ꍇ�Ƃ͈Ⴂ 9 �Ԗڂ̕���������݂̂���������B
+&lt;count&gt; が省略された場合には、部分文字列の最大数は 9 とみなされる。<br>
+文字列中の部分文字列の数が 9 を超えるとき、&lt;count&gt; を指定した場合とは違い 9 番目の部分文字列のみが代入される。
 </p>
 
 <p>
-���ۂɕ������ꂽ�����V�X�e���ϐ� result �Ɋi�[����B<br>
-&lt;count&gt; ���ȗ�����A�����񒆂̕���������̐��� 9 �𒴂���Ƃ��́A�V�X�e���ϐ� result �� 10 ���i�[����B
+実際に分割された個数をシステム変数 result に格納する。<br>
+&lt;count&gt; が省略され、文字列中の部分文字列の数が 9 を超えるときは、システム変数 result に 10 を格納する。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 src=',,Sun,Mon,Tue,,Thu,Fri,Sat'
@@ -109,7 +109,7 @@ messagebox groupmatchstr9 "groupmatchstr9" ; '9'
 messagebox result         "result"         ; 10
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="strjoin.html">strjoin</a></li>
 </ul>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>filereadln</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,64 +14,64 @@
 <h1>filereadln</h1>
 
 <p>
-ƒtƒ@ƒCƒ‹‚©‚çˆês“Ç‚ŞB
+ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ä¸€è¡Œèª­ã‚€ã€‚
 </p>
 
 <pre class="macro-syntax">
 filereadln &lt;file handle&gt; &lt;strvar&gt;
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-ƒtƒ@ƒCƒ‹ƒnƒ“ƒhƒ‹ &lt;file handle&gt; ‚Åw’è‚³‚ê‚éƒtƒ@ƒCƒ‹‚©‚çˆês“Ç‚ŞB<br>
-“Ç‚İ‚Ü‚ê‚½s‚ÍA•¶š—ñ•Ï” &lt;strvar&gt; ‚ÉŠi”[‚³‚ê‚éB<br>
-ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^‚ÍŸ‚Ìs‚Ìn‚ß‚ÖˆÚ“®‚·‚éB‚à‚µAs‚ğ“Ç‚ñ‚Å‚¢‚éŠÔ‚Éƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^‚ªƒtƒ@ƒCƒ‹‚Ì<br>
-ÅŒã‚É’B‚µ‚½ê‡AƒVƒXƒeƒ€•Ï” result ‚É 1 ‚ªŠi”[‚³‚ê‚éB‚»‚êˆÈŠO‚Ìê‡Aresult ‚É 0 ‚ªŠi”[‚³‚ê‚éB<br>
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ« &lt;file handle&gt; ã§æŒ‡å®šã•ã‚Œã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ä¸€è¡Œèª­ã‚€ã€‚<br>
+èª­ã¿è¾¼ã¾ã‚ŒãŸè¡Œã¯ã€æ–‡å­—åˆ—å¤‰æ•° &lt;strvar&gt; ã«æ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿ã¯æ¬¡ã®è¡Œã®å§‹ã‚ã¸ç§»å‹•ã™ã‚‹ã€‚ã‚‚ã—ã€è¡Œã‚’èª­ã‚“ã§ã„ã‚‹é–“ã«ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿ãŒãƒ•ã‚¡ã‚¤ãƒ«ã®<br>
+æœ€å¾Œã«é”ã—ãŸå ´åˆã€ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° result ã« 1 ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚ãã‚Œä»¥å¤–ã®å ´åˆã€result ã« 0 ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
 
-‰üs‚Ì‚İ‚Ìê‡‚ÍA•¶š—ñ•Ï”‚Í‹ó‚Æ‚È‚èAresult ‚É‚Í 0 ‚ªŠi”[‚³‚ê‚éB
+æ”¹è¡Œã®ã¿ã®å ´åˆã¯ã€æ–‡å­—åˆ—å¤‰æ•°ã¯ç©ºã¨ãªã‚Šã€result ã«ã¯ 0 ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚
 
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
-; ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“
+; ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³
 fileopen fhandle 'test.txt' 0
 
 :loop
-; ˆês“Ç‚İ‚İ
+; ä¸€è¡Œèª­ã¿è¾¼ã¿
 <strong>filereadln</strong> fhandle line
 if result goto fclose
-; “Ç‚İ‚ñ‚¾s‚ğ•\¦
+; èª­ã¿è¾¼ã‚“ã è¡Œã‚’è¡¨ç¤º
 messagebox line 'test.txt'
-; ƒtƒ@ƒCƒ‹ÅŒã‚Ü‚ÅŒJ‚è•Ô‚·
+; ãƒ•ã‚¡ã‚¤ãƒ«æœ€å¾Œã¾ã§ç¹°ã‚Šè¿”ã™
 goto loop
 
 :fclose
-; ƒtƒ@ƒCƒ‹ƒNƒ[ƒY
+; ãƒ•ã‚¡ã‚¤ãƒ«ã‚¯ãƒ­ãƒ¼ã‚º
 fileclose fhandle
 </pre>
 
 <pre class="macro-example">
-; ƒtƒ@ƒCƒ‹ƒI[ƒvƒ“
+; ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³
 fileopen fhandle 'test.txt' 0
 while 1
-    ; ˆês“Ç‚İ‚İ
+    ; ä¸€è¡Œèª­ã¿è¾¼ã¿
     filereadln fhandle line
     if result=1 then 
           break
     endif
-    ; “Ç‚İ‚ñ‚¾s‚ğ•\¦
+    ; èª­ã¿è¾¼ã‚“ã è¡Œã‚’è¡¨ç¤º
     messagebox line 'test.txt'
-    ; ƒtƒ@ƒCƒ‹ÅŒã‚Ü‚ÅŒJ‚è•Ô‚·
+    ; ãƒ•ã‚¡ã‚¤ãƒ«æœ€å¾Œã¾ã§ç¹°ã‚Šè¿”ã™
 endwhile
-; ƒtƒ@ƒCƒ‹ƒNƒ[ƒY
+; ãƒ•ã‚¡ã‚¤ãƒ«ã‚¯ãƒ­ãƒ¼ã‚º
 fileclose fhandle
 </pre>
 
 <pre class="macro-example">
-; ƒtƒ@ƒCƒ‹‚ÉŠÜ‚Ü‚ê‚éƒL[ƒ[ƒh‚ğ’uŠ·‚·‚é
+; ãƒ•ã‚¡ã‚¤ãƒ«ã«å«ã¾ã‚Œã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ç½®æ›ã™ã‚‹
 infile = 'testdata.txt'
 outfile = 'testdata_output.txt'
 
@@ -107,7 +107,7 @@ AAzzzCCCCDDDDD
 </pre>
 
 
-<h2>QÆ</h2>
+<h2>å‚ç…§</h2>
 <ul>
   <li><a href="strreplace.html">strreplace</a></li>
   <li><a href="fileopen.html">fileopen</a></li>

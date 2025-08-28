@@ -2,57 +2,57 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-    <title>Additional settings / "TCP/IP" �^�u ([Setup] ���j���[)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Additional settings / "TCP/IP" タブ ([Setup] メニュー)</title>
     <META http-equiv="Content-Style-Type" content="text/css">
     <link rel="stylesheet" href="../style.css" type="text/css">
   </head>
 
   <body>
-    <h1><a href="setup-additional.html">Additional settings</a> / "TCP/IP" �^�u ([Setup] ���j���[)</h1>
+    <h1><a href="setup-additional.html">Additional settings</a> / "TCP/IP" タブ ([Setup] メニュー)</h1>
 
     <dl>
 
       <dt id="HistoryList">Add host list when new connection</dt>
       <dd>
-        ���̃I�v�V������I������ƁA<a href="file-new.html">[File] New connection</a>
-        �_�C�A���O�{�b�N�X�œ��͂��ꂽ�z�X�g�����z�X�g���X�g�̐擪�ɒǉ�����܂��B
+        このオプションを選択すると、<a href="file-new.html">[File] New connection</a>
+        ダイアログボックスで入力されたホスト名がホストリストの先頭に追加されます。
       </dd>
 
       <dt id="EditHistory">Edit host list</dt>
       <dd>
-        �z�X�g���X�g��<a href="setup-additional-tcpip_edithistory.html">�ҏW</a>���܂��B
+        ホストリストを<a href="setup-additional-tcpip_edithistory.html">編集</a>します。
       </dd>
 
       <dt id="Telnet">Telnet</dt>
       <dd>
-        Telnet �v���g�R�� ���g�p���鎞�I�����܂��B<br>
-        SSH�v���O�C�����g�p���Ă���Ƃ��͎g�p����܂���B
+        Telnet プロトコル を使用する時選択します。<br>
+        SSHプラグインを使用しているときは使用されません。
       </dd>
 
       <dt id="TCPPort">Port#:</dt>
       <dd>
-        TCP/IP �|�[�g�ԍ��B<br>
+        TCP/IP ポート番号。<br>
         22: SSH<br>
         23: Telnet
       </dd>
 
       <dt id="TelKeepAliveInterval">Keep alive on Telnet</dt>
       <dd>
-  ���Ԋu�� Telnet �T�[�o�ɑ΂��āANOP(IAC NOP: 255 241)�𑗐M���܂��B�L�[�v�A���C�u(�n�[�g�r�[�g)�@�\�Ƃ��Ă΂�܂��B0�œ��Y�@�\�͖����ƂȂ�܂��B�f�t�H���g��300�b(5��)�ł��B
+  一定間隔で Telnet サーバに対して、NOP(IAC NOP: 255 241)を送信します。キープアライブ(ハートビート)機能とも呼ばれます。0で当該機能は無効となります。デフォルトは300秒(5分)です。
       </dd>
 
       <dt id="AutoWinClose">Auto window close</dt>
       <dd>
-  ���̃I�v�V������I������ƁA�z�X�g�Ƃ̐ڑ����؂ꂽ�Ƃ������I��
-  Tera Term ���I�����܂��B
+  このオプションを選択すると、ホストとの接続が切れたとき自動的に
+  Tera Term を終了します。
       </dd>
 
       <dt id="TermType">Term type:</dt>
       <dd>
-  Telnet �v���g�R���Őڑ������Ƃ��z�X�g�ɕ񍐂��� terminal type�B<br>
-  TermType��"xterm"�ɐݒ肷�邱�Ƃɂ��AANSI�J���[�ɑΉ����Ă���vim6�ȂǂŃJ���[�\���������邱�Ƃ��ł��܂��B����̓I���W�i�����炠��@�\�ł��B<br>
-    Windows �� Telnet �T�[�o�� "xterm" �𐳂����󂯕t���Ȃ��̂ŁA"vt100" �� "ANSI" ���w�肵�Ă��������B
+  Telnet プロトコルで接続したときホストに報告する terminal type。<br>
+  TermTypeを"xterm"に設定することにより、ANSIカラーに対応しているvim6などでカラー表示をさせることができます。これはオリジナルからある機能です。<br>
+    Windows の Telnet サーバは "xterm" を正しく受け付けないので、"vt100" か "ANSI" を指定してください。
       </dd>
     </dl>
   </body>

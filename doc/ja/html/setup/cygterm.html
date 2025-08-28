@@ -2,22 +2,22 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>CygTerm+ �ݒ�t�@�C��</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CygTerm+ 設定ファイル</TITLE>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>CygTerm+ �ݒ�t�@�C��</h1>
+<h1>CygTerm+ 設定ファイル</h1>
 
 <p>
-cygterm.cfg �͐ݒ�t�@�C���ł��B �g�p����[���G�~�����[�^�̃R�}���h���C����N������V�F���̃R�}���h���C������ݒ肵�܂��B<br>
-cygterm.cfg �� cygterm.exe �Ɠ����f�B���N�g���ɂȂ��Ƃ����܂���B
+cygterm.cfg は設定ファイルです。 使用する端末エミュレータのコマンドラインや起動するシェルのコマンドライン等を設定します。<br>
+cygterm.cfg は cygterm.exe と同じディレクトリにないといけません。
 </p>
 
 <p>
-cygterm.cfg �̗�
+cygterm.cfg の例
 </p>
 <pre>
 TERM = C:\program files\ttermpro\ttermpro.exe %s %d /KR=UTF8 /KT=UTF8
@@ -32,74 +32,74 @@ ENV_1 = HOME=/home
 <dl>
   <dt>TERM</dt>
   <dd>
-    �^�[�~�i���E�G�~�����[�^�̋N���R�}���h���C���ł��B
-    �R�}���h���� Windows���Ńp�X���ʂ��ĂȂ���΃t���p�X�ŏ����܂��B
-    �z�X�g�w��̂Ƃ���� %s �Ƃ��A�|�[�g�w��̂Ƃ���� %d �Ƃ��܂��B
+    ターミナル・エミュレータの起動コマンドラインです。
+    コマンド名は Windows環境でパスが通ってなければフルパスで書きます。
+    ホスト指定のところは %s とし、ポート指定のところは %d とします。
   </dd>
 
   <dt>TERM_TYPE</dt>
   <dd>
-    �^�[�~�i���E�G�~�����[�^���^�[�~�i���^�C�v��^���Ă���Ȃ�����
-    �ꍇ�ɍ̗p����^�[�~�i���^�C�v�ł��B (�f�t�H���g: vt100)<br>
-    �V�F����A���ϐ� TERM �ɃZ�b�g����܂��B
+    ターミナル・エミュレータがターミナルタイプを与えてくれなかった
+    場合に採用するターミナルタイプです。 (デフォルト: vt100)<br>
+    シェル上、環境変数 TERM にセットされます。
   </dd>
 
   <dt>PORT_START</dt>
   <dd>
-    �g���n�߂� (�g���Ă悢�ŏ���) �|�[�g�ԍ��ł��B (�f�t�H���g: 20000)
+    使い始める (使ってよい最小の) ポート番号です。 (デフォルト: 20000)
   </dd>
 
   <dt>PORT_RANGE</dt>
   <dd>
-    �g���Ă悢�|�[�g�ԍ��̌��ł��B (�f�t�H���g: 40)<br>
+    使ってよいポート番号の個数です。 (デフォルト: 40)<br>
 
-    PORT_START �` PORT_START+PORT_RANGE �͈̔͂ŋ󂫃|�[�g��T���܂��B
-    ���̐������������s�ł��邱�ƂɂȂ�܂��B
+    PORT_START 〜 PORT_START+PORT_RANGE の範囲で空きポートを探します。
+    この数だけ同時実行できることになります。
   </dd>
 
   <dt>SHELL</dt>
   <dd>
-    Cygwin���V�F�� (�ʏ� /bin/bash) �̋N���R�}���h���C���ł��B
-    (�f�t�H���g: /etc/passwd�̏����g�p)
-    �R�}���h���̃t���p�X���A"AUTO"���w�肵�܂��B
+    Cygwin側シェル (通常 /bin/bash) の起動コマンドラインです。
+    (デフォルト: /etc/passwdの情報を使用)
+    コマンド名のフルパスか、"AUTO"を指定します。
   </dd>
 
   <dt>ENV_X</dt>
   <dd>
-    �V�F���N�����ɐݒ肵�Ă����������ϐ��ł��B�u�ϐ���=�l�v�̌`��
-    (putenv�`��) �ŋL�q���܂��B ENV_ �Ŏn�߂�΂����ł��L�q�ł��܂��B
+    シェル起動時に設定しておきたい環境変数です。「変数名=値」の形式
+    (putenv形式) で記述します。 ENV_ で始めればいくつでも記述できます。
   </dd>
 
   <dt>LOGIN_SHELL</dt>
   <dd>
-    �V�F�������O�C���V�F���Ƃ��ċN�����邩�ǂ������w�肵�܂��B
-    �f�t�H���g�͖����ł��B<br>
+    シェルをログインシェルとして起動するかどうかを指定します。
+    デフォルトは無効です。<br>
 
-    ��ʓI�ȃV�F���ł̓��O�C���V�F���Ƃ��ċN�������ƁA.profile��
-    .login�Ȃǂ̃��O�C�����̂ݓǂݍ��ރX�^�[�g�A�b�v�t�@�C�������s
-    ���܂��B
-    �����̃t�@�C���ł́A�ʏ�A�ȉ��̂悤�Ȏ����s���܂��B
+    一般的なシェルではログインシェルとして起動されると、.profileや
+    .loginなどのログイン時のみ読み込むスタートアップファイルを実行
+    します。
+    これらのファイルでは、通常、以下のような事が行われます。
     <ul>
-      <li>PATH��USER���̊e����ϐ��̐ݒ���s��</li>
-      <li>�[���̐ݒ��K�؂ɍs��</li>
-      <li>�J�����g�f�B���N�g�������[�U�̃z�[���f�B���N�g���ɕύX����B</li>
+      <li>PATHやUSER等の各種環境変数の設定を行う</li>
+      <li>端末の設定を適切に行う</li>
+      <li>カレントディレクトリをユーザのホームディレクトリに変更する。</li>
     </ul>
 
-    �ꕔ�̃V�F��(tclsh�Ȃ�)��V�F���ȊO�̃v���O�������N������ꍇ��
-    ���ʂ�����܂���B
+    一部のシェル(tclshなど)やシェル以外のプログラムを起動する場合は
+    効果がありません。
   </dd>
 
   <dt>HOME_CHDIR</dt>
   <dd>
-    patch level 01 �Ɋ܂܂��"�z�[���f�B���N�g���ւ̈ړ�"���@�\�����邩
-    �ǂ������w�肵�܂��B�f�t�H���g�͖����ł��B
+    patch level 01 に含まれる"ホームディレクトリへの移動"を機能させるか
+    どうかを指定します。デフォルトは無効です。
   </dd>
 
   <dt>SSH_AGENT_PROXY</dt>
   <dd>
-    ssh�F�؃G�[�W�F���g�]���@�\��L���ɂ��܂��B
-    OpenSSH��ssh�F�؃G�[�W�F���g�ɑΉ������v���O�������A CygTerm+��ʂ���Pageant�ɃA�N�Z�X�o����悤�ɂȂ�܂��B
-    �f�t�H���g�͖����ł��B
+    ssh認証エージェント転送機能を有効にします。
+    OpenSSHのssh認証エージェントに対応したプログラムが、 CygTerm+を通してPageantにアクセス出来るようになります。
+    デフォルトは無効です。
   </dd>
 </dl>
 

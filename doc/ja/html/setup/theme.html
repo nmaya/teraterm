@@ -2,80 +2,80 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>Theme �ݒ�t�@�C��</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Theme 設定ファイル</TITLE>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-  <h1>Theme�t�@�C��</h1>
+  <h1>Themeファイル</h1>
 
   <ul>
-    <li><a href="#themefile">Theme�t�@�C���ɂ���</a></li>
-    <li><a href="#BGTheme">BG(�w�i) Theme</a></li>
+    <li><a href="#themefile">Themeファイルについて</a></li>
+    <li><a href="#BGTheme">BG(背景) Theme</a></li>
     <li><a href="#ColorTheme">Color Theme</a></li>
   </ul>
 
   <h2>TODO</h2>
   <ul>
-    <li>�d�l�������ƌ��߂�
-    <li>�d�l�ɍ��킹��<a href="https://teratermproject.github.io/tmp/color/" target="_blank">color picker(��)</a>���C��
+    <li>仕様をちゃんと決める
+    <li>仕様に合わせて<a href="https://teratermproject.github.io/tmp/color/" target="_blank">color picker(仮)</a>を修正
   </ul>
 
-  <h2 id="themefile">theme�t�@�C���ɂ���</h2>
+  <h2 id="themefile">themeファイルについて</h2>
 
-  �e�[�}�t�@�C���ɂ͂������̎�ނ�����B
+  テーマファイルにはいくつかの種類がある。
 
   <dl>
-    <dt>BG(�w�i)�e�[�}</dt>
+    <dt>BG(背景)テーマ</dt>
     <dd>
-      [BG Theme]�Z�N�V�������������t�@�C��<br>
-      ���̃Z�N�V�����ɂ͔w�i�摜�̐ݒ肪����
+      [BG Theme]セクションが入ったファイル<br>
+      このセクションには背景画像の設定が入る
     </dd>
-    <dt>�J���[�e�[�}</dt>
+    <dt>カラーテーマ</dt>
     <dd>
-      [Color Theme]�Z�N�V�������������t�@�C��<br>
-      ���̃Z�N�V�����ɂ͕����̐F�̐ݒ肪����
-    <dt>���J���[�e�[�} (�p�~�\��)</dt>
+      [Color Theme]セクションが入ったファイル<br>
+      このセクションには文字の色の設定が入る
+    <dt>旧カラーテーマ (廃止予定)</dt>
     <dd>
-      [BG]�Z�N�V�����ɕ����̐F�̐ݒ肪�����Ă���<br>
-      Tera Term 4 �ŃT�|�[�g���Ă����J���[�e�[�}<br>
-      �ǂݍ��݂͂ł��邪�p�~�\��
+      [BG]セクションに文字の色の設定が入っている<br>
+      Tera Term 4 でサポートしていたカラーテーマ<br>
+      読み込みはできるが廃止予定
     </dd>
   </dl>
 
-  BG(�w�i)�e�[�}�ƃJ���[�e�[�}��ʂ̃t�@�C���ɕۑ����Ă������Ƃ��A
-  1�̃t�@�C���ɗ�����ۑ����邱�Ƃ��ł���B
+  BG(背景)テーマとカラーテーマを別のファイルに保存しておくことも、
+  1つのファイルに両方を保存することもできる。
 
-  �t�H�[�}�b�g��Windows��ini�t�@�C���B
+  フォーマットはWindowsのiniファイル。
 
-  <h2 id="BGTheme">BG(�w�i)�e�[�}</h2>
+  <h2 id="BGTheme">BG(背景)テーマ</h2>
 
   <h3>section</h3>
 
   "BG theme"<br>
 
-  "BG"�Z�N�V�������ǂݍ��݉\(�p�~�\��)�B��������ꍇ��"BG theme"���D��B
+  "BG"セクションも読み込み可能(廃止予定)。両方ある場合は"BG theme"が優先。
 
   <dl>
     <dt>BGDestColor</dt>
     <dd>
-      �w�i�摜���g�p���Ȃ��ꍇ�͂��̐F�œh��Ԃ����B<br>
-      �w�i�摜���`�悳��Ȃ�����������ꍇ�����̐F�œh��Ԃ����B
+      背景画像を使用しない場合はこの色で塗りつぶされる。<br>
+      背景画像が描画されない部分がある場合もこの色で塗りつぶされる。
     </dd>
 
     <dt>BGDestFile</dt>
     <dd>
-      �w�i�摜<br>
-      �t�@�C�����Ƀ��C���h�J�[�h���w�肳�ꂽ�ꍇ�A��v����t�@�C�����烉���_���Ɉ�I�т܂��B<br>
-      ���΃p�X�𗘗p����ꍇ�́A�e�[�}�t�@�C������̑��΃p�X���w�肵�Ă��������B<br>
-      �ǂݍ��߂�t�@�C���̎�ނ́ABGSPIPath �Ɋi�[���ꂽ�v���O�C���ɂ��܂��B<br>
-      �r�b�g�}�b�v�̓v���O�C���������Ă��ǂݍ��߂܂��B
+      背景画像<br>
+      ファイル名にワイルドカードが指定された場合、一致するファイルからランダムに一つ選びます。<br>
+      相対パスを利用する場合は、テーマファイルからの相対パスを指定してください。<br>
+      読み込めるファイルの種類は、BGSPIPath に格納されたプラグインによります。<br>
+      ビットマップはプラグインが無くても読み込めます。
     </dd>
 
     <dt>BGDestPattern</dt>
-    <dd>�w�i�摜�`����@
+    <dd>背景画像描画方法
       <dl>
           <dt>stretch</dt>
           <dt>tile</dt>
@@ -85,47 +85,47 @@
           <dt>autofit</dt>
           <dt>autofill</dt>
           <dd>
-            FitWidth�AFitHeight �͉摜�̃A�X�y�N�g����ێ������܂܁A�摜���g��k�����܂��B<br>
-            AutoFit �́A�E�B���h�E�Ɖ摜�̊ԂɌ��Ԃ��ł��Ȃ��悤�ɁAFitWidth �� FitHeight ��؂�ւ��܂��B
+            FitWidth、FitHeight は画像のアスペクト比を維持したまま、画像を拡大縮小します。<br>
+            AutoFit は、ウィンドウと画像の間に隙間ができないように、FitWidth と FitHeight を切り替えます。
           </dd>
       </dl>
     </dd>
 
     <dt>BGSrc1Alpha</dt>
     <dd>
-      Windows�̕ǎ��摜���A���t�@�u�����h����B<br>
-      �w�i�摜(Dest)�ɑ΂��āA�f�X�N�g�b�v�摜(Src1)���ǂꂮ�炢�u�����h������w�肷��B<br>
-      0�̂Ƃ��ǎ��̓u�����h����Ȃ��B
+      Windowsの壁紙画像をアルファブレンドする。<br>
+      背景画像(Dest)に対して、デスクトップ画像(Src1)をどれぐらいブレンドするを指定する。<br>
+      0のとき壁紙はブレンドされない。
     </dd>
 
 
     <dt>BGSrc2Color</dt>
     <dd>
-      �w�i�摜�S�̂��A���t�@�u�����h����F
+      背景画像全体をアルファブレンドする色
     </dd>
 
     <dt>BGSrc2Alpha</dt>
     <dd>
-      �A���t�@�u�����h�l<br>
-      Dest��Src1�̍����摜�ɒP�F(Src2)���ǂꂮ�炢�u�����h���邩
+      アルファブレンド値<br>
+      DestとSrc1の合成画像に単色(Src2)をどれぐらいブレンドするか
     </dd>
 
     <dt>BGTextBackAlpha</dt>
     <dd>
       0 - 255<br>
-      �ʏ핶���w�i�F��AlphaBlend�l,255�ŕs����
+      通常文字背景色のAlphaBlend値,255で不透明
     </dd>
 
     <dt>BGReverseTextAlpha</dt>
     <dd>
       0 - 255<br>
-      ���]�����w�i�F��AlphaBlend�l,255�ŕs����
+      反転文字背景色のAlphaBlend値,255で不透明
     </dd>
 
     <dt>BGTextAlpha</dt>
     <dd>
       0 - 255<br>
-      ���̑��̕����w�i�F��AlphaBlend�l,255�ŕs����
+      その他の文字背景色のAlphaBlend値,255で不透明
     </dd>
   </dl>
 
@@ -139,14 +139,14 @@
 
   <dl>
     <dt>Theme</dt>
-    <dd>�e�[�}���A�l�͕�����</dd>
+    <dd>テーマ名、値は文字列</dd>
   </dl>
 
   <h3>attribute color</h3>
 
   <dl>
     <dt>VTColor</dt>
-    <dd>�ʏ핶���F, SGR 0</dd>
+    <dd>通常文字色, SGR 0</dd>
 
     <dt>BoldColor</dt>
     <dd>SGR 1</dd>
@@ -162,36 +162,36 @@
 
     <dt>URLColor</dt>
     <dd>
-      URL������<br>
-      Tera Term��URL����������o�����Ƃ��ɕt������镶���A�g���r���[�g
+      URL文字列<br>
+      Tera TermがURL文字列を検出したときに付加される文字アトリビュート
     </dd>
 
-    <dt>�l (0 or 1), (0 or 1), (fore red), (fore green), (fore blue), (back red), (back green), (back blue)</dt>
-    <dt>�l (0 or 1), (0 or 1), (fore), (back)</dt>
+    <dt>値 (0 or 1), (0 or 1), (fore red), (fore green), (fore blue), (back red), (back green), (back blue)</dt>
+    <dt>値 (0 or 1), (0 or 1), (fore), (back)</dt>
     <dd>
       <dl>
         <dt>(0 or 1)</dt>
         <dd>
-          1=default�F����ύX����<br>
-          0=�ύX���Ȃ�<br>
-          (VTColor�ł͎Q�Ƃ���Ȃ�)
+          1=default色から変更する<br>
+          0=変更しない<br>
+          (VTColorでは参照されない)
         </dd>
         <dt>(0 or 1)</dt>
         <dd>
-          1=��������(Bold attribute��)�̓Ǝ��F��L��<br>
-          0=�����ɂ���<br>
-          (VTColor�ł͎Q�Ƃ���Ȃ�)
+          1=文字属性(Bold attribute等)の独自色を有効<br>
+          0=無効にする<br>
+          (VTColorでは参照されない)
         </dd>
 
         <dt>(fore red), (fore green), (fore blue)</dt>
-        <dd>�����̐F�A�e�l��0����255</dd>
+        <dd>文字の色、各値は0から255</dd>
 
         <dt>(back red), (back green), (back blue)</dt>
-        <dd>�w�i�̐F�A�e�l��0����255</dd>
+        <dd>背景の色、各値は0から255</dd>
 
         <dt>(fore), (back)</dt>
         <dd>
-          #RRBBGG �̌`���ŁA�e�X00 ���� FF �܂�
+          #RRBBGG の形式で、各々00 から FF まで
         </dd>
       </dl>
     </dd>
@@ -199,26 +199,26 @@
 
   <h3>ANSI color</h3>
 
-  256�F/16�F ANSI color�̍ŏ���16�F�B<br>
-  8�F���́ADark color���g�p���Ȃ�
+  256色/16色 ANSI colorの最初の16色。<br>
+  8色時は、Dark colorを使用しない
 
   <dl>
     <dt>ANSIColor=(0 or 1)</dt>
     <dd>
-      1=default�F����ύX����<br>
-      0=�ύX���Ȃ�
+      1=default色から変更する<br>
+      0=変更しない
     </dd>
   </dl>
 
   <dl>
     <dt>Fore</dt>
-    <dd>256 ANSI color 15��<br>
-      �ʏ핶���F(Tera Term�ł�VTColor���g�p�����)
+    <dd>256 ANSI color 15番<br>
+      通常文字色(Tera TermではVTColorが使用される)
     </dd>
 
     <dt>Back</dt>
-    <dd>256 ANSI color 0��<br>
-      �ʏ�w�i�F(Tera Term�ł�VTColor���g�p�����)
+    <dd>256 ANSI color 0番<br>
+      通常背景色(Tera TermではVTColorが使用される)
     </dd>
 
     <dt>Red</dt>
@@ -235,14 +235,14 @@
     <dt>DarkBlue</dt>
     <dt>DarkMagenta</dt>
     <dt>DarkCyan</dt>
-    <dd>�e�����F</dd>
+    <dd>各文字色</dd>
 
-    <dt>�l (red), (green), (blue)</dt>
-    <dd>�e�l��0����255</dd>
+    <dt>値 (red), (green), (blue)</dt>
+    <dd>各値は0から255</dd>
 
-    <dt>�l (color)</dt>
+    <dt>値 (color)</dt>
     <dd>
-      #RRBBGG �̌`���ŁA�e�X00 ���� FF �܂�
+      #RRBBGG の形式で、各々00 から FF まで
     </dd>
 
   </dl>

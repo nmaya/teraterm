@@ -2,34 +2,34 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>�����R�[�h�̎�������</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>漢字コードの自動制御</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>�����R�[�h�̎�������</h1>
+<h1>漢字コードの自動制御</h1>
 
-<p>����V�[�P���X�ő���M�����R�[�h��ύX�o����悤�ɂ���</p>
+<p>制御シーケンスで送受信漢字コードを変更出来るようにする</p>
 
-<h2>�@�\</h2>
+<h2>機能</h2>
 
 <p>
-TTXKcodeChange �v���O�C��������ƁA�����[�g�����琧��V�[�P���X���g�p���đ���M�����R�[�h�̐ݒ肪�ύX�o����悤�ɂȂ�܂��B<br>
-�ȉ��̐���V�[�P���X���T�|�[�g���Ă��܂��B
+TTXKcodeChange プラグインを入れると、リモート側から制御シーケンスを使用して送受信漢字コードの設定が変更出来るようになります。<br>
+以下の制御シーケンスをサポートしています。
 </p>
 
 <dl>
   <dt>&lt;OSC&gt;5963;Pt&lt;ST&gt;</dt>
   <dt>&lt;OSC&gt;5963;Pt&lt;BEL&gt;</dt>
-  <dd>�ݒ�p�V�[�P���X</dd>
-  <dd>Pt�� Key=Value �̌`���Ŏw�肵�A;�ŋ�؂鎖�ŕ����w�肷�鎖���ł��܂��B���݂̂Ƃ���A�ȉ���Key���g���܂��B
+  <dd>設定用シーケンス</dd>
+  <dd>Ptは Key=Value の形式で指定し、;で区切る事で複数指定する事もできます。現在のところ、以下のKeyが使えます。
   <pre>
-KT  -- ���M�����R�[�h
-       Value�Ƃ��� SJIS, EUC, JIS, UTF8 ���󂯕t���܂��B
-KR  -- ��M�����R�[�h
-       Value�Ƃ��� SJIS, EUC, JIS, UTF8 ���󂯕t���܂��B
+KT  -- 送信漢字コード
+       Valueとして SJIS, EUC, JIS, UTF8 を受け付けます。
+KR  -- 受信漢字コード
+       Valueとして SJIS, EUC, JIS, UTF8 を受け付けます。
 </pre>
   </dd>
 </dl>
@@ -37,51 +37,51 @@ KR  -- ��M�����R�[�h
 <dl>
   <dt>&lt;OSC&gt;5964;Pt&lt;ST&gt;</dt>
   <dt>&lt;OSC&gt;5964;Pt&lt;BEL&gt;</dt>
-  <dd>�₢���킹�p�V�[�P���X</dd>
-  <dd>Pt�ɂ͖₢���킹��ݒ���w�肵�܂��B;�ŋ�؂鎖�ŕ����w�肷�鎖���ł��܂��B�₢���킹�ɑ΂��āA�ȉ��̌`���̉�����Ԃ��܂��B
+  <dd>問い合わせ用シーケンス</dd>
+  <dd>Ptには問い合わせる設定を指定します。;で区切る事で複数指定する事もできます。問い合わせに対して、以下の形式の応答を返します。
   <pre>
 Key=Value;[Key=Value;...]&lt;CR&gt;
 </pre>
   </dd>
 </dl>
 
-<h2>�g�p��</h2>
+<h2>使用例</h2>
 
-<p>���O�C���V�F����zsh�̎��̐ݒ��ł��B</p>
+<p>ログインシェルがzshの時の設定例です。</p>
 
 <pre>
-[.zlogin�̋L�q]
-echo -n "\e]5964;kt;kr\a"              # KT/KR�̐ݒ��₢���킹��
-read -t 1 TT_ORG_KCODE                 # ������҂�(�^�C���A�E�g:1�b)
+[.zloginの記述]
+echo -n "\e]5964;kt;kr\a"              # KT/KRの設定を問い合わせる
+read -t 1 TT_ORG_KCODE                 # 応答を待つ(タイムアウト:1秒)
 if [ $? -eq 0 ]; then
-  echo -n "\e]5963;kr=euc;kt=euc\a"    # �������������Ȃ�ݒ��ύX����
+  echo -n "\e]5963;kr=euc;kt=euc\a"    # 応答があったなら設定を変更する
 fi
 
-[.zlogout�̋L�q]
-# .zlogin�Ŋ����R�[�h�̐ݒ肪�ۑ�����Ă�����A���̐ݒ�ɖ߂��B
+[.zlogoutの記述]
+# .zloginで漢字コードの設定が保存されていたら、その設定に戻す。
 if [ " ${TT_ORG_KCODE}" != " " ]; then
   echo -n "\e]5963;${TT_ORG_KCODE}\a"
 fi
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-��M�f�[�^�̃t�b�N�̃T���v���ł��B<br>
-��M�f�[�^���Ď����A�Ή����Ă��鐧��V�[�P���X�������ꍇ�͐ݒ�̕ύX���s���܂��B<br>
-�₢���킹�ɑ΂��鉞���́A���M�o�b�t�@�𒼐ڏ���������Ƃ������X�����ȕ��@������Ă��܂��B<br><br>
+受信データのフックのサンプルです。<br>
+受信データを監視し、対応している制御シーケンスだった場合は設定の変更を行います。<br>
+問い合わせに対する応答は、送信バッファを直接書き換えるという少々強引な方法を取っています。<br><br>
 
-���̃v���O�C������������΁A���̐ݒ������V�[�P���X�ŕύX�o����悤�ɂȂ邩������܂���B
+このプラグインを改造すれば、他の設定も制御シーケンスで変更出来るようになるかもしれません。
 </p>
 
-<h2>�o�O</h2>
+<h2>バグ</h2>
 
 <ul>
-  <li>����V�[�P���X�̃p�[�X�����͏��X���������ł��B</li>
-  <li>�g�p���Ă��鐧��V�[�P���X�̃p�����[�^�ԍ��̑I�ѕ������Ղł��B</li>
-  <li>�����I�ɂ��̋@�\��Tera Term�{�̂ɑg�ݍ��܂�邩������܂���B</li>
-  <li>�V���A���ڑ��Ŏg�p����ɂ́ATera Term 4.60�ȍ~���K�v�ł��B</li>
-  <li>���M�o�b�t�@�̋󂫂����Ȃ��ꍇ�A�₢���킹�ɑ΂��鉞�����r���Ő؂��ꍇ������܂��B</li>
+  <li>制御シーケンスのパース部分は少々いい加減です。</li>
+  <li>使用している制御シーケンスのパラメータ番号の選び方が安易です。</li>
+  <li>将来的にこの機能はTera Term本体に組み込まれるかもしれません。</li>
+  <li>シリアル接続で使用するには、Tera Term 4.60以降が必要です。</li>
+  <li>送信バッファの空きが少ない場合、問い合わせに対する応答が途中で切れる場合があります。</li>
 </ul>
 
 </body>

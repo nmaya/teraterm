@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>listbox</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,113 +14,113 @@
 <h1>listbox</h1>
 
 <p>
-���X�g�{�b�N�X�����_�C�A���O�{�b�N�X���J���A���[�U�[�ɍ��ڂ�I��������B<em>(�o�[�W����4.78�ȍ~)</em>
+リストボックスを持つダイアログボックスを開き、ユーザーに項目を選択させる。<em>(バージョン4.78以降)</em>
 </p>
 
 <pre class="macro-syntax">
 listbox &lt;message&gt; &lt;title&gt; &lt;string array&gt; [&lt;selected&gt;] [&lt;keyword parameter&gt;...]
 </pre>
 
-<h2>�p�����[�^</h2>
+<h2>パラメータ</h2>
 
 <dl>
-	<dt class="macro">������ &lt;message&gt;</dt>
-	<dd>�_�C�A���O�{�b�N�X�ɕ\������郁�b�Z�[�W�B</dd>
+	<dt class="macro">文字列 &lt;message&gt;</dt>
+	<dd>ダイアログボックスに表示されるメッセージ。</dd>
 
-	<dt class="macro">������ &lt;title&gt;</dt>
-	<dd>�_�C�A���O�{�b�N�X�̃^�C�g���B</dd>
+	<dt class="macro">文字列 &lt;title&gt;</dt>
+	<dd>ダイアログボックスのタイトル。</dd>
 
-	<dt class="macro">������^�z�� &lt;string array&gt;</dt>
-	<dd>���X�g�{�b�N�X�̑I�����ځB</dd>
+	<dt class="macro">文字列型配列 &lt;string array&gt;</dt>
+	<dd>リストボックスの選択項目。</dd>
 
-	<dt class="macro">�����l &lt;selected&gt; (�o�[�W���� 4.89 �ȍ~)</dt>
-	<dd>�����I������(0�I���W���C���f�b�N�X)�B�ȗ��\�B�ȗ����ꂽ�Ƃ��́A�ǂ̍��ڂ��I������Ȃ��B</dd>
+	<dt class="macro">整数値 &lt;selected&gt; (バージョン 4.89 以降)</dt>
+	<dd>初期選択項目(0オリジンインデックス)。省略可能。省略されたときは、どの項目も選択されない。</dd>
 
-	<dt><br>�L�[���[�h���� : �ȗ��\�A�����w��A���s��</dt>
+	<dt><br>キーワード引数 : 省略可能、複数指定可、順不同</dt>
 	<dd><dl>
-		<dt class="macro">������ 'dblclick=on' (�f�t�H���g=off) (�o�[�W���� 5.3 �ȍ~)</dt>
-		<dd>�_�u���N���b�N�ɂ�郊�X�g�{�b�N�X�̍��ڑI��L�����B</dd>
+		<dt class="macro">文字列 'dblclick=on' (デフォルト=off) (バージョン 5.3 以降)</dt>
+		<dd>ダブルクリックによるリストボックスの項目選択有効化。</dd>
 
-		<dt class="macro">������ 'minmaxbutton=on' (�f�t�H���g=off) (�o�[�W���� 5.3 �ȍ~)</dt>
-		<dd>�ŏ���/�ő剻�{�^���L�����B</dd>
+		<dt class="macro">文字列 'minmaxbutton=on' (デフォルト=off) (バージョン 5.3 以降)</dt>
+		<dd>最小化/最大化ボタン有効化。</dd>
 
-		<dt class="macro">������ 'minimize=on' (�f�t�H���g=off) (�o�[�W���� 5.3 �ȍ~)</dt>
-		<dd>�ŏ�����Ԃŕ\���B</dd>
+		<dt class="macro">文字列 'minimize=on' (デフォルト=off) (バージョン 5.3 以降)</dt>
+		<dd>最小化状態で表示。</dd>
 
-		<dt class="macro">������ 'maximize=on' (�f�t�H���g=off) (�o�[�W���� 5.3 �ȍ~)</dt>
-		<dd>�ő剻��Ԃŕ\���B</dd>
+		<dt class="macro">文字列 'maximize=on' (デフォルト=off) (バージョン 5.3 以降)</dt>
+		<dd>最大化状態で表示。</dd>
 
-		<dt class="macro">������ 'listboxsize=WxH'  (�f�t�H���g=26x6) (�o�[�W���� 5.3 �ȍ~)</dt>
-		<dd>���X�g�{�b�N�X�̃T�C�Y�w��BW�ŉ��̒������AH�ŏc�̒����𕶎����Ŏw�肷��B<br>
-		    �� 'listboxsize=60x20' (��60�����A�c20�����̏ꍇ)</dd>
+		<dt class="macro">文字列 'listboxsize=WxH'  (デフォルト=26x6) (バージョン 5.3 以降)</dt>
+		<dd>リストボックスのサイズ指定。Wで横の長さを、Hで縦の長さを文字数で指定する。<br>
+		    例 'listboxsize=60x20' (横60文字、縦20文字の場合)</dd>
 	</dl></dd>
 </dl>
 
-<h2>�Ԃ�l</h2>
+<h2>返り値</h2>
 
 <dl>
-	<dt class="macro">�V�X�e���ϐ� &lt;result&gt;</dt>
-	<dd>���ڂ��I�����ꂽ�ꍇ�A0 - (N-1)�̂����ꂩ�̒l���i�[�����B<br>
-	    �L�����Z�����ꂽ�ꍇ�A-1���i�[�����B</dd>
+	<dt class="macro">システム変数 &lt;result&gt;</dt>
+	<dd>項目が選択された場合、0 - (N-1)のいずれかの値が格納される。<br>
+	    キャンセルされた場合、-1が格納される。</dd>
 
 </dl>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-listbox �}�N���R�}���h�� &lt;string array&gt; �̔z��v�f�����ׂđI�����ڂƂ��ĕ\������B<br>
-�ȉ��̂悤�ɁA�\�����悤�Ƃ���I�����ڐ����傫���v�f���� &lt;string array&gt; ���`����ƁA�Ō�ɋ󕶎��񂪕\�������B
+listbox マクロコマンドは &lt;string array&gt; の配列要素をすべて選択項目として表示する。<br>
+以下のように、表示しようとする選択項目数より大きい要素数で &lt;string array&gt; を定義すると、最後に空文字列が表示される。
 </p>
 
 <pre>
 strdim msg 4
-msg[0] = '�o�i�i'
-msg[1] = '���'
-msg[2] = '�݂���'
-listbox '�D���ȐH�ו���I��ł�������' '���Ȃ��ւ̖₢' msg
+msg[0] = 'バナナ'
+msg[1] = 'りんご'
+msg[2] = 'みかん'
+listbox '好きな食べ物を選んでください' 'あなたへの問い' msg
 
-; �I������4�\�������
-�o�i�i
-���
-�݂���
-[�󕶎���]
+; 選択肢が4つ表示される
+バナナ
+りんご
+みかん
+[空文字列]
 </pre>
 
 <p>
-<em>(�o�[�W���� 4.89 �ȍ~)</em><br>
-&lt;selected&gt; ���w�肷�鎖�ŁA������ԂőI������Ă��鍀�ڂ��w�肷�鎖���ł���B<br>
-�ȗ������ꍇ�� 0 (�擪)���w�肳�ꂽ���̂Ƃ��Ĉ�����B
+<em>(バージョン 4.89 以降)</em><br>
+&lt;selected&gt; を指定する事で、初期状態で選択されている項目を指定する事ができる。<br>
+省略した場合は 0 (先頭)が指定されたものとして扱われる。
 </p>
 
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 strdim msg 3
-msg[0] = '�o�i�i'
-msg[1] = '���'
-msg[2] = '�݂���'
-listbox '�D���ȐH�ו���I��ł�������' '���Ȃ��ւ̖₢' msg
+msg[0] = 'バナナ'
+msg[1] = 'りんご'
+msg[2] = 'みかん'
+listbox '好きな食べ物を選んでください' 'あなたへの問い' msg
 sprintf2 var "%d" result
 messagebox var "result"
 ; result
 ;   -1: Cancel
-;    0: �o�i�i
-;    1: ���
-;    2: �݂���
+;    0: バナナ
+;    1: りんご
+;    2: みかん
 </pre>
 
 <pre class="macro-example">
 strdim msg 7
-msg[0] = '����'
-msg[1] = '�܂�'
-msg[2] = '�J'
-msg[3] = '��'
-msg[4] = '��'
-msg[5] = '��'
-msg[6] = '������܂���'
-; �f�t�H���g��7�Ԗڂ̍��ڂ��I�������
-listbox '�����̓V�C�͂ǂ��ł���?' '���Ȃ��ւ̖₢' msg 6
+msg[0] = '晴れ'
+msg[1] = '曇り'
+msg[2] = '雨'
+msg[3] = '風'
+msg[4] = '雪'
+msg[5] = '霧'
+msg[6] = '分かりません'
+; デフォルトで7番目の項目が選択される
+listbox '今日の天気はどうですか?' 'あなたへの問い' msg 6
 sprintf2 var "%d" result
 messagebox var "result"
 </pre>
@@ -147,7 +147,7 @@ endif
 goto select
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="inputbox.html">inputbox</a></li>
   <li><a href="passwordbox.html">passwordbox</a></li>

@@ -2,30 +2,30 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>TELNET �v���g�R���Ɋ֘A�t����</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>TELNET プロトコルに関連付ける</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </head>
 <body>
 
-<h1>TELNET �v���g�R���Ɋ֘A�t����</h1>
+<h1>TELNET プロトコルに関連付ける</h1>
 
-<p class="notice">Tera Term 4.59���C���X�g�[���Ŋ֘A�t���o����悤�ɂȂ�܂����B</p>
+<p class="notice">Tera Term 4.59よりインストーラで関連付け出来るようになりました。</p>
 
-<p>���s����A�v���P�[�V�������A���L�̂悤�Ɏw�肵�܂��B</p>
+<p>実行するアプリケーションを、下記のように指定します。</p>
 
 <pre class="syntax">
 "C:\Program Files\teraterm\ttermpro.exe" /nossh /T=1 %1
 </pre>
 
 <p>
-TTSSH ���C���X�g�[������Ă��� TERATERM.INI �� SSH ���L�����ƁATera Term �� SSH �ڑ����J�n���Ă��܂��܂��B<br>
-�R�}���h���C���I�v�V������ "/nossh" ���w�肷�邱�ƂŁATTSSH �� "SSH�𖳌��ɂ���" ���Ƃ�ʒm���܂��B
+TTSSH がインストールされていて TERATERM.INI で SSH が有効だと、Tera Term は SSH 接続を開始してしまいます。<br>
+コマンドラインオプションに "/nossh" を指定することで、TTSSH に "SSHを無効にする" ことを通知します。
 </p>
 
 <p>
-�R�}���h���C���I�v�V������ "/T=1" ���w�肷�邱�ƂŁA�ڑ��� TELNET �ł��邱�Ƃ𖾎��I�� ttermpro.exe �ɒʒm���܂��B
+コマンドラインオプションに "/T=1" を指定することで、接続が TELNET であることを明示的に ttermpro.exe に通知します。
 </p>
 
 </body>

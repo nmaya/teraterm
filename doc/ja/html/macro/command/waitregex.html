@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>waitregex</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,62 +14,62 @@
 <h1>waitregex</h1>
 
 <p>
-³‹K•\Œ»•¶š—ñ‚ğŠÜ‚Şs‚ğ‘Ò‚ÂB<em>(ƒo[ƒWƒ‡ƒ“ 4.21ˆÈ~)</em>
+æ­£è¦è¡¨ç¾æ–‡å­—åˆ—ã‚’å«ã‚€è¡Œã‚’å¾…ã¤ã€‚<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 4.21ä»¥é™)</em>
 </p>
 
 <pre class="macro-syntax">
 waitregex &lt;string1 with regular expression&gt; [&lt;string2 with regular expression&gt; ...]
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-<a href="../../reference/RE.txt">Oniguruma ‚Ì³‹K•\Œ»</a> ‚ªg—p‚Å‚«‚Ü‚·B<br>
-³‹K•\Œ»•¶š—ñ‚Ì‚¤‚¿ 1 ‚ÂˆÈã‚ğŠÜ‚ŞsiÅ‘å 511 •¶šj‚ğƒzƒXƒg‚©‚çóM‚·‚é‚©Aƒ^ƒCƒ€ƒAƒEƒg‚ª”­¶‚·‚é‚Ü‚Å MACRO ‚ğ’â~‚³‚¹‚éB³‹K•\Œ»•¶š—ñ‚ÍÅ‘å 10 ŒÂ‚Ü‚Åw’è‚Å‚«‚éB
+<a href="../../reference/RE.txt">Oniguruma ã®æ­£è¦è¡¨ç¾</a> ãŒä½¿ç”¨ã§ãã¾ã™ã€‚<br>
+æ­£è¦è¡¨ç¾æ–‡å­—åˆ—ã®ã†ã¡ 1 ã¤ä»¥ä¸Šã‚’å«ã‚€è¡Œï¼ˆæœ€å¤§ 511 æ–‡å­—ï¼‰ã‚’ãƒ›ã‚¹ãƒˆã‹ã‚‰å—ä¿¡ã™ã‚‹ã‹ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãŒç™ºç”Ÿã™ã‚‹ã¾ã§ MACRO ã‚’åœæ­¢ã•ã›ã‚‹ã€‚æ­£è¦è¡¨ç¾æ–‡å­—åˆ—ã¯æœ€å¤§ 10 å€‹ã¾ã§æŒ‡å®šã§ãã‚‹ã€‚
 </p>
 
 <p>
-ƒVƒXƒeƒ€•Ï” timeout ‚© mtimeout ‚ª 0 ‚æ‚è‘å‚«‚¢ê‡A&lt;timeout&gt;.&lt;mtimeout&gt; •b‚ÌŠÔ‚ª‚·‚¬‚é‚Æƒ^ƒCƒ€ƒAƒEƒg‚ª”­¶‚·‚éBƒ^ƒCƒ€ƒAƒEƒg‚Ì’l‚ª 0 ˆÈ‰º‚Ìê‡‚ÍAƒ^ƒCƒ€ƒAƒEƒg‚Í”­¶‚µ‚È‚¢B
+ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° timeout ã‹ mtimeout ãŒ 0 ã‚ˆã‚Šå¤§ãã„å ´åˆã€&lt;timeout&gt;.&lt;mtimeout&gt; ç§’ã®æ™‚é–“ãŒã™ãã‚‹ã¨ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãŒç™ºç”Ÿã™ã‚‹ã€‚ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®å€¤ãŒ 0 ä»¥ä¸‹ã®å ´åˆã¯ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã¯ç™ºç”Ÿã—ãªã„ã€‚
 </p>
 
 <p>
-‚±‚ê‚ç‚ÌƒRƒ}ƒ“ƒh‚ÌÀsŒ‹‰Ê‚ÍƒVƒXƒeƒ€•Ï” result , inputstr, matchstr ‚ÉŠi”[‚³‚ê‚éB•Ï” result ‚Ì’l‚ÌˆÓ–¡‚ÍˆÈ‰º‚Ì‚Æ‚¨‚èB
+ã“ã‚Œã‚‰ã®ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè¡Œçµæœã¯ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° result , inputstr, matchstr ã«æ ¼ç´ã•ã‚Œã‚‹ã€‚å¤‰æ•° result ã®å€¤ã®æ„å‘³ã¯ä»¥ä¸‹ã®ã¨ãŠã‚Šã€‚
 </p>
 
 <table>
  <tr>
-  <th>’l</th>
-  <th>ˆÓ–¡</th>
+  <th>å€¤</th>
+  <th>æ„å‘³</th>
  </tr>
  <tr>
   <td>0</td>
-  <td>ƒ^ƒCƒ€ƒAƒEƒgB‚Ç‚Ì•¶š—ñ‚à—ˆ‚È‚©‚Á‚½B</td>
+  <td>ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã€‚ã©ã®æ–‡å­—åˆ—ã‚‚æ¥ãªã‹ã£ãŸã€‚</td>
  </tr>
  <tr>
   <td>1</td>
-  <td>&lt;string1 with regular expression&gt; ‚ğóM‚µ‚½B</td>
+  <td>&lt;string1 with regular expression&gt; ã‚’å—ä¿¡ã—ãŸã€‚</td>
  </tr>
  <tr>
   <td>2</td>
-  <td>&lt;string2 with regular expression&gt; ‚ğóM‚µ‚½B</td>
+  <td>&lt;string2 with regular expression&gt; ã‚’å—ä¿¡ã—ãŸã€‚</td>
  </tr>
  <tr>
   <td>n</td>
-  <td>&lt;stringn with regular expression&gt; ‚ğóM‚µ‚½Bn=1..10</td>
+  <td>&lt;stringn with regular expression&gt; ã‚’å—ä¿¡ã—ãŸã€‚n=1..10</td>
  </tr>
 </table>
 
 <p>
-•Ï” inputstr ‚É‚ÍóM‚µ‚½s‚ªŠi”[‚³‚ê‚éB<br>
-•Ï” matchstr ‚É‚ÍÅ‰‚Éƒ}ƒbƒ`‚µ‚½ƒpƒ^[ƒ“‚ªŠi”[‚³‚ê‚éB<br>
-•Ï” groupmatchstr1`groupmatchstr9 ‚É‚ÍƒOƒ‹[ƒvƒ}ƒbƒ`‚µ‚½ƒpƒ^[ƒ“‚ªŠi”[‚³‚ê‚éB
+å¤‰æ•° inputstr ã«ã¯å—ä¿¡ã—ãŸè¡ŒãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+å¤‰æ•° matchstr ã«ã¯æœ€åˆã«ãƒãƒƒãƒã—ãŸãƒ‘ã‚¿ãƒ¼ãƒ³ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+å¤‰æ•° groupmatchstr1ã€œgroupmatchstr9 ã«ã¯ã‚°ãƒ«ãƒ¼ãƒ—ãƒãƒƒãƒã—ãŸãƒ‘ã‚¿ãƒ¼ãƒ³ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚
 </p>
 
 <p>
-“ú–{Œê“™‚Ìƒ}ƒ‹ƒ`ƒoƒCƒg•¶š—ñ‚ğ‘Ò‚Âê‡A–‘O‚É<a href="regexoption.html">regexoption</a>‚Å“KØ‚ÈƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB
+æ—¥æœ¬èªç­‰ã®ãƒãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—åˆ—ã‚’å¾…ã¤å ´åˆã€äº‹å‰ã«<a href="regexoption.html">regexoption</a>ã§é©åˆ‡ãªã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 timeout = 30
@@ -80,7 +80,7 @@ messagebox inputstr 'inputstr'
 messagebox matchstr 'matchstr'
 </pre>
 
-<h2>QÆ</h2>
+<h2>å‚ç…§</h2>
 <ul>
   <li><a href="regexoption.html">regexoption</a></li>
   <li><a href="wait.html">wait</a></li>

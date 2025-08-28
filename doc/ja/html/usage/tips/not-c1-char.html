@@ -2,45 +2,45 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>C1 ���䕶�� ($80-$9F) ���g�p���Ȃ�</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>C1 制御文字 ($80-$9F) を使用しない</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>C1 ���䕶�� ($80-$9F) ���g�p���Ȃ�</h1>
+<h1>C1 制御文字 ($80-$9F) を使用しない</h1>
 
 <p>
-Tera Term �̊������[�h(��M)�� EUC �� JIS �ɂ��āA Teraminal ID �� VT2XX �܂��́A VT3XX �ɂ��Ă���ꍇ�AShift-JIS �̊�������M����ƁA�n���O�A�b�v���邱�Ƃ�����܂��B
+Tera Term の漢字モード(受信)を EUC か JIS にして、 Teraminal ID を VT2XX または、 VT3XX にしている場合、Shift-JIS の漢字を受信すると、ハングアップすることがあります。
 </p>
 
 <p>
-����́AShift-JIS �R�[�h�̒��� C1 ���䕶�� ($80-9F) ���܂܂�Ă��邽�߂ɁA�����𐧌䕶���Ƃ��ĉ��߂��Ă��܂��A�[���̏�Ԃ����������Ȃ邩��ł��B
+これは、Shift-JIS コードの中に C1 制御文字 ($80-9F) が含まれているために、それらを制御文字として解釈してしまい、端末の状態がおかしくなるからです。
 </p>
 
 <p>
-�Ⴆ�΁A�z�X�g�ɂ���Ă̓��O�C�����Ȃǂ� SJIS(Shift-JIS), EUC, JIS �Ȃǂ̐���ނ̊����R�[�h��[���ɑ���A�ǂ̃R�[�h���������\������Ă邩
-���[�U�[�ɓ��͂�����A�Ƃ������Ƃ�����A���̂悤�ȏꍇ�ɖ�肪�������܂��B
+例えば、ホストによってはログイン時などに SJIS(Shift-JIS), EUC, JIS などの数種類の漢字コードを端末に送り、どのコードが正しく表示されてるか
+ユーザーに入力させる、ということがあり、このような場合に問題が発生します。
 </p>
 
 <p>
-�����A���̂悤�ȏ�ԂɂȂ����ꍇ�A[Control] Reset terminal �Œ[���̏�Ԃ����Z�b�g���Ă��������B
+もし、このような状態になった場合、[Control] Reset terminal で端末の状態をリセットしてください。
 </p>
 
 <p>
-���̂悤�Ȗ���������ɂ́A3�̕��@������܂��B
+このような問題をさけるには、3つの方法があります。
 
 <ol>
-  <li>�������[�h(��M)�� SJIS �ɐݒ肷��B</li>
-  <li>[Setup] Terminal �� Terminal ID �� VT1XX (�Ⴆ�� VT100) �ɂ���B</li>
-  <li>�ݒ�t�@�C���� [Tera Term] �Z�N�V������ Accept8BitCtrl �s��
+  <li>漢字モード(受信)を SJIS に設定する。</li>
+  <li>[Setup] Terminal で Terminal ID を VT1XX (例えば VT100) にする。</li>
+  <li>設定ファイルの [Tera Term] セクションの Accept8BitCtrl 行を
 <pre>
 Accept8BitCtrl=off
 </pre>
-�̂悤�ɕҏW���A C1 ���䕶���Ƃ��đ����Ă��������𖳎�����悤�ɐݒ肷��B
+のように編集し、 C1 制御文字として送られてきた文字を無視するように設定する。
 <pre>
-�ȗ���:
+省略時:
 Accept8bitCtrl=on
 </pre></li>
 

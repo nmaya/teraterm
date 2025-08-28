@@ -2,105 +2,105 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>�L�[�{�[�h</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>キーボード</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>�L�[�{�[�h</h1>
+<h1>キーボード</h1>
 
 <p>
-�L�[�{�[�h�Ɋւ��邢�����̐ݒ�� <A HREF="../menu/setup-keyboard.html">[Setup] Keyboard</A> �łł��܂��B
+キーボードに関するいくつかの設定は <A HREF="../menu/setup-keyboard.html">[Setup] Keyboard</A> でできます。
 </p>
 
 <p>
-�L�[�{�[�h�ݒ�t�@�C�������������邱�ƂŎ��R�ɃL�[�ݒ��ύX���邱�Ƃ��ł��܂��B�ڂ����́A<A HREF="../setup/keyboard.html">�ݒ�t�@�C��/�L�[�{�[�h�ݒ� �T�v</A> ��ǂ�ł��������B
+キーボード設定ファイルを書きかえることで自由にキー設定を変更することができます。詳しくは、<A HREF="../setup/keyboard.html">設定ファイル/キーボード設定 概要</A> を読んでください。
 </p>
 
-<h2>�V���[�g�J�b�g�E�L�[</h2>
+<h2>ショートカット・キー</h2>
 
 <h3>VT window</h3>
 
 <p>
-�q���g: <A HREF="tips/user-shortcutkey.html">�u���[�U�[�E�V���[�g�J�b�g�E�L�[�v</A>
+ヒント: <A HREF="tips/user-shortcutkey.html">「ユーザー・ショートカット・キー」</A>
 </p>
 
 <dl>
 
 <dt>Alt+B</dt>
-<dd>�u���[�N�M���𑗏o���܂��B</dd>
+<dd>ブレーク信号を送出します。</dd>
 
 <dt>Alt+C, Ctrl+Insert</dt>
-<dd>�}�E�X�őI��������������N���b�v�{�[�h�փR�s�[���܂��B
-<a href="../menu/setup-additional-copy-and-paste.html#AutoTextCopy">AutoTextCopy</a> ���L���ȏꍇ�́A�}�E�X�őI���������_�ŃR�s�[����Ă��܂��B</dd>
+<dd>マウスで選択した文字列をクリップボードへコピーします。
+<a href="../menu/setup-additional-copy-and-paste.html#AutoTextCopy">AutoTextCopy</a> が有効な場合は、マウスで選択した時点でコピーされています。</dd>
 
 <dt>Alt+D</dt>
-<dd>�Z�b�V�����𕡐����܂��B�iSSH, telnet�̂݁j</dd>
+<dd>セッションを複製します。（SSH, telnetのみ）</dd>
 
 <dt>Alt+G</dt>
-<dd>Cygwin�ڑ����Ăяo���܂��B</dd>
+<dd>Cygwin接続を呼び出します。</dd>
 
 <dt>Alt+I</dt>
-<dd>�ؒf���j���[���Ăяo���܂��B</dd>
+<dd>切断メニューを呼び出します。</dd>
 
 <dt>Alt+N</dt>
-<dd>�V�����z�X�g�܂��̓V���A���|�[�g�ɐڑ����܂��B</dd>
+<dd>新しいホストまたはシリアルポートに接続します。</dd>
 
 <dt>Alt+P</dt>
-<dd>���݂̉�ʂ܂��́A�}�E�X�őI�����ꂽ������������܂��B</dd>
+<dd>現在の画面または、マウスで選択された文字を印刷します。</dd>
 
-<dt>Alt+Q �܂��� Alt+F4</dt>
-<dd>Tera Term ���I�����܂��B</dd>
+<dt>Alt+Q または Alt+F4</dt>
+<dd>Tera Term を終了します。</dd>
 
 <dt>Alt+R</dt>
-<dd>�N���b�v�{�[�h�̒��̕�������z�X�g�֑��o���A�����ĉ��s�R�[�h�����o���܂��B</dd>
+<dd>クリップボードの中の文字列をホストへ送出し、続いて改行コードも送出します。</dd>
 
 <dt>Alt+T</dt>
-<dd>Telnet �� AYT (Are You There) �R�}���h�𑗏o���܂��B�ʏ�z�X�g�͂���Ɍĉ����ĉ������̃��b�Z�[�W�𑗂�Ԃ��Ă��܂��BTelnet �ڑ��̂Ƃ������g�p�ł��܂��B</dd>
+<dd>Telnet の AYT (Are You There) コマンドを送出します。通常ホストはこれに呼応して何等かのメッセージを送り返してきます。Telnet 接続のときだけ使用できます。</dd>
 
 <dt>Alt+V, Shift+Insert</dt>
-<dd>�N���b�v�{�[�h�̒��̕�������z�X�g�֑��o���܂��B
-�}�E�X�E�N���b�N�ł������ł��B
-<a href="../setup/teraterm-misc.html#DisablePasteMouseMButton">DisablePasteMouseMButton</a> �� off �ɂ��Ă���ꍇ�́A�}�E�X���{�^���N���b�N�ł������ł��B
+<dd>クリップボードの中の文字列をホストへ送出します。
+マウス右クリックでも同じです。
+<a href="../setup/teraterm-misc.html#DisablePasteMouseMButton">DisablePasteMouseMButton</a> を off にしている場合は、マウス中ボタンクリックでも同じです。
 </dd>
 
 <dt>Ctrl+Tab, Ctrl+Shift+Tab</dt>
-<dd>Tera Term�E�B���h�E��؂�ւ��܂��B</dd>
+<dd>Tera Termウィンドウを切り替えます。</dd>
 
 <dt>Ctrl+Up/Down cursor</dt>
-<dd>�㉺�����ֈ�s�X�N���[�����܂��B</dd>
+<dd>上下方向へ一行スクロールします。</dd>
 
 <dt>Ctrl+PageUp/PageDown</dt>
-<dd>�㉺�����փy�[�W�P�ʃX�N���[�����܂��B</dd>
+<dd>上下方向へページ単位スクロールします。</dd>
 
 <dt>Ctrl+Home</dt>
-<dd>�o�b�t�@�̐擪�ֈړ����܂��B</dd>
+<dd>バッファの先頭へ移動します。</dd>
 
 <dt>Ctrl+End</dt>
-<dd>�o�b�t�@�̖����ֈړ����܂��B</dd>
+<dd>バッファの末尾へ移動します。</dd>
 
 <dt>ScrollLock</dt>
-<dd>Tera Term�E�B���h�E�̃X�N���[�����b�N/���b�N�����i�g�O���j</dd>
+<dd>Tera Termウィンドウのスクロールロック/ロック解除（トグル）</dd>
 
 <dt>Alt+Enter</dt>
-<dd>�E�B���h�E�̍ő剻�i�g�O���j
-�^�C�g���o�[�� <a href="../menu/setup-additional-window.html#HideTitle">HideTitle</a> �Ŕ�\���ɂȂ��Ă��Ȃ���΁A
-Alt+Space �ŃA�N�e�B�u�E�B���h�E�̃R���e�L�X�g���j���[���� Alt+X �ł��ő剻�ł��܂��B
+<dd>ウィンドウの最大化（トグル）
+タイトルバーが <a href="../menu/setup-additional-window.html#HideTitle">HideTitle</a> で非表示になっていなければ、
+Alt+Space でアクティブウィンドウのコンテキストメニューから Alt+X でも最大化できます。
 </dd>
 
 <dt>F1 key</dt>
-<dd>Num pad NumLock�L�[�����B</dd>
+<dd>Num pad NumLockキー押下。</dd>
 
 <dt>F2 key</dt>
-<dd>Num pad '/' �L�[�����B</dd>
+<dd>Num pad '/' キー押下。</dd>
 
 <dt>F3 key</dt>
-<dd>Num pad '*' �L�[�����B</dd>
+<dd>Num pad '*' キー押下。</dd>
 
 <dt>F4 key</dt>
-<dd>Num pad '-' �L�[�����B</dd>
+<dd>Num pad '-' キー押下。</dd>
 
 </dl>
 
@@ -108,32 +108,32 @@ Alt+Space �ŃA�N�e�B�u�E�B���h�E�̃R���e�L�X�g���j���[���� Alt+X �ł��ő剻�ł��
 
 <dl>
 <dt>Alt+C</dt>
-<dd>�}�E�X�őI�����ꂽ�̈�̉摜���N���b�v�{�[�h�փR�s�[���܂��B</dd>
+<dd>マウスで選択された領域の画像をクリップボードへコピーします。</dd>
 
 <dt>Alt+O</dt>
-<dd>VT window �Ɉړ����܂��B</dd>
+<dd>VT window に移動します。</dd>
 
 <dt>Alt+P</dt>
-<dd>��ʑS�̂܂��́A�}�E�X�őI�����ꂽ�̈�̉摜��������܂��B</dd>
+<dd>画面全体または、マウスで選択された領域の画像を印刷します。</dd>
 
-<dt>Alt+Q �܂��� Alt+F4</dt>
-<dd>TEK window ����܂��B</dd>
+<dt>Alt+Q または Alt+F4</dt>
+<dd>TEK window を閉じます。</dd>
 
 <dt>Alt+R</dt>
-<dd>VT window �Ɠ����B</dd>
+<dd>VT window と同じ。</dd>
 
 <dt>Alt+V</dt>
-<dd>VT window �Ɠ����B</dd>
+<dd>VT window と同じ。</dd>
 
 <dt>Ctrl+Tab</dt>
-<dd>VT window �Ɠ����B</dd>
+<dd>VT window と同じ。</dd>
 
 </dl>
 
-<h2>���^�E�L�[ (Meta key)</h2>
+<h2>メタ・キー (Meta key)</h2>
 
 <p>
-<A HREF="../menu/setup-keyboard.html">[Setup] Keyboard</A> �� <b>Meta key</b> ��I������ƁAVTWindow �� Alt �L�[�����^�E�L�[�Ƃ��Ďg�����Ƃ��ł��܂��B�Ⴆ�� Alt+A �������ƁAESC A �𑗏o���܂��B���^�E�L�[���[�h�ł́AAlt �L�[���g���V���[�g�J�b�g�E�L�[(Alt+C ��)�͎g�p�ł��Ȃ��Ȃ�܂��B
+<A HREF="../menu/setup-keyboard.html">[Setup] Keyboard</A> で <b>Meta key</b> を選択すると、VTWindow で Alt キーをメタ・キーとして使うことができます。例えば Alt+A を押すと、ESC A を送出します。メタ・キーモードでは、Alt キーを使うショートカット・キー(Alt+C 等)は使用できなくなります。
 </p>
 
 

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>scpsend</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,22 +14,22 @@
 <h1>scpsend</h1>
 
 <p>
-SCPƒvƒƒgƒRƒ‹‚Åƒtƒ@ƒCƒ‹‚ð‘—M‚·‚éB<em>(ƒo[ƒWƒ‡ƒ“ 4.57ˆÈ~)</em>
+SCPãƒ—ãƒ­ãƒˆã‚³ãƒ«ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é€ä¿¡ã™ã‚‹ã€‚<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 4.57ä»¥é™)</em>
 </p>
 
 <pre class="macro-syntax">
 scpsend &lt;filename&gt; [&lt;destination filename&gt;]
 </pre>
 
-<h2>‰ðà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-ƒtƒ@ƒCƒ‹ &lt;filename&gt; ‚ð SCP(Secure Copy Protocol) ƒvƒƒgƒRƒ‹‚Å‘—M‚·‚éB
-“]‘—æ‚ðÈ—ª‚µ‚½ê‡‚ÍAƒtƒ@ƒCƒ‹‚ÍƒŠƒ‚[ƒgƒzƒXƒg‚Ìƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ÖƒRƒs[‚³‚ê‚éB
-‘—M‚ªI‚í‚é‚Ì‚ð‘Ò‚½‚¸‚ÉAŽŸ‚ÌƒRƒ}ƒ“ƒh‚ðŽÀs‚·‚é‚±‚Æ‚ª‚Å‚«‚éB<br>
+ãƒ•ã‚¡ã‚¤ãƒ« &lt;filename&gt; ã‚’ SCP(Secure Copy Protocol) ãƒ—ãƒ­ãƒˆã‚³ãƒ«ã§é€ä¿¡ã™ã‚‹ã€‚
+è»¢é€å…ˆã‚’çœç•¥ã—ãŸå ´åˆã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«ã¯ãƒªãƒ¢ãƒ¼ãƒˆãƒ›ã‚¹ãƒˆã®ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¸ã‚³ãƒ”ãƒ¼ã•ã‚Œã‚‹ã€‚
+é€ä¿¡ãŒçµ‚ã‚ã‚‹ã®ã‚’å¾…ãŸãšã«ã€æ¬¡ã®ã‚³ãƒžãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚<br>
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 connect '192.168.3.2:22 /ssh /2 /auth=password /user=hoge /passwd=fuga'
@@ -39,22 +39,22 @@ scpsend 'C:\usr\cvs\doc\en\teraterm.chm' 'tmp/foo.chm'
 </pre>
 
 <pre class="macro-example">
-; ƒtƒ@ƒCƒ‹‘—MŠ®—¹‚ðŠm”F‚·‚é
+; ãƒ•ã‚¡ã‚¤ãƒ«é€ä¿¡å®Œäº†ã‚’ç¢ºèªã™ã‚‹
 SOURFILE = 'C:\usr\ttssh2\doc\en\teraterm.chm'
 DESTFILE = '~'
 
-;; ƒtƒ@ƒCƒ‹‘—M
+;; ãƒ•ã‚¡ã‚¤ãƒ«é€ä¿¡
 scpsend SOURFILE DESTFILE
-;; ƒtƒ@ƒCƒ‹‘—MƒvƒƒZƒXŠm”F
+;; ãƒ•ã‚¡ã‚¤ãƒ«é€ä¿¡ãƒ—ãƒ­ã‚»ã‚¹ç¢ºèª
 do
   mpause 5000
   sprintf2 str 'ps -ef |grep -v grep |grep -c scp'
   sendln str
   waitln '0' '1'
 loop while result != 1
-;; ƒtƒ@ƒCƒ‹‘—M‚ªŠ®—¹‚·‚é‚ÆŽŸ‚Ìƒ}ƒNƒ‚ðŽÀs
+;; ãƒ•ã‚¡ã‚¤ãƒ«é€ä¿¡ãŒå®Œäº†ã™ã‚‹ã¨æ¬¡ã®ãƒžã‚¯ãƒ­ã‚’å®Ÿè¡Œ
 sendln 'echo SCP finish'
-;; ƒ}ƒNƒI—¹
+;; ãƒžã‚¯ãƒ­çµ‚äº†
 end
 </pre>
 

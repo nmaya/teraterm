@@ -2,68 +2,68 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>���O�̎����A���O�̍Đ��@�\</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>ログの取り方、ログの再生機能</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>���O�̎����A���O�̍Đ��@�\</h1>
+<h1>ログの取り方、ログの再生機能</h1>
 
 <p>
-���O (log) �@�\�������ƁA�z�X�g���瑗���Ă����������t�@�C���ɕۑ����邱�Ƃ��ł��܂��B
+ログ (log) 機能をつかうと、ホストから送られてきた文字をファイルに保存することができます。
 </p>
 
-<h2>���O�̎�肩��</h2>
+<h2>ログの取りかた</h2>
 
 <p>
-�ȉ��̎菇�ɂ��������Ă��������B
+以下の手順にしたがってください。
 </p>
 
 <ol>
-  <li><A HREF="../../menu/file.html">[File] Log</A>�R�}���h�����s����B</li>
-  <li>"Tera Term: Log" �_�C�A���O�{�b�N�X�������B
+  <li><A HREF="../../menu/file.html">[File] Log</A>コマンドを実行する。</li>
+  <li>"Tera Term: Log" ダイアログボックスが現れる。
 <p>
-�ۑ�����t�@�C���̃t�@�C������ File Name: �ɓ��͂���B<br>
-Binary ��I������ƁA�z�X�g���瑗��ꂽ�����͂��ׂăt�@�C���ɏ������܂��B<br>
-Binary ��I�����Ȃ��ƁA�����A���s�R�[�h�͕ϊ�����ď������܂��B�G�X�P�[�v�V�[�P���X�͏������܂�Ȃ��B<br>
-Append ��I������ƁA�t�@�C�������łɑ��݂���ꍇ�A�ǉ����ď������܂��B<br>
-Append ��I�����Ȃ��ƁA�t�@�C�������łɑ��݂���ꍇ�A�㏑�������B
+保存するファイルのファイル名を File Name: に入力する。<br>
+Binary を選択すると、ホストから送られた文字はすべてファイルに書き込まれる。<br>
+Binary を選択しないと、漢字、改行コードは変換されて書き込まれる。エスケープシーケンスは書き込まれない。<br>
+Append を選択すると、ファイルがすでに存在する場合、追加して書き込まれる。<br>
+Append を選択しないと、ファイルがすでに存在する場合、上書きされる。
 </p></li>
-  <li>OK�{�^���������ƁA"Tera Term: Log" �Ƃ����A�C�R��������A���O���J�n�����B���O������Ă���Ԃ��A�ꕔ�̋@�\�������ĕ��ʂ� Tera Term ���g�p���邱�Ƃ��ł���B</li>
-  <li>���O���I��������A���f�������ꍇ�́A�A�C�R����(�_�u��)�N���b�N���ă_�C�A���O�{�b�N�X��\�������AClose �܂��� Pause �{�^���������BPause �{�^���������� Start �{�^���ɕς��̂ŁA����������ƃ��O���ĊJ�����B</li>
+  <li>OKボタンを押すと、"Tera Term: Log" というアイコンが現れ、ログが開始される。ログを取っている間も、一部の機能を除いて普通に Tera Term を使用することができる。</li>
+  <li>ログを終了したり、中断したい場合は、アイコンを(ダブル)クリックしてダイアログボックスを表示させ、Close または Pause ボタンを押す。Pause ボタンを押すと Start ボタンに変わるので、それを押すとログが再開される。</li>
 </ol>
 
 <p>
-�ۑ������t�@�C���́A�u�������v���̃G�f�B�^�Ō��邱�Ƃ��ł��܂����A�G�X�P�[�v�V�[�P���X�����܂񂾃t�@�C���́A
-���O�̍Đ��@�\���g���Č���ƕ֗��ł��B
+保存したファイルは、「メモ帳」等のエディタで見ることができますが、エスケープシーケンス等を含んだファイルは、
+ログの再生機能を使って見ると便利です。
 </p>
 
-<h2>���O�̍Đ��̂�����</h2>
+<h2>ログの再生のしかた</h2>
 
 <p>
-�R�}���h���C�����A
-</p>
-
-<pre>
-TTERMPRO /R=&lt;���O�t�@�C����&gt;
-</pre>
-
-<p>
-�̂悤�Ɏw�肵�� Tera Term �����s���܂��B����ƁA���������z�X�g���當���������Ă������̂悤�ɁA���O�t�@�C�����Đ����邱�Ƃ��ł��܂��B
-</p>
-
-<p>
-�܂��́A<A HREF="../../menu/file.html">[File] New connection</A>�� Host: �̏���
+コマンドラインを、
 </p>
 
 <pre>
-/R=&lt;���O�t�@�C����&gt;
+TTERMPRO /R=&lt;ログファイル名&gt;
 </pre>
 
 <p>
-�Ɠ��͂��Ă��A���O�t�@�C�����Đ��ł��܂��B
+のように指定して Tera Term を実行します。すると、あたかもホストから文字が送られてきたかのように、ログファイルを再生することができます。
+</p>
+
+<p>
+または、<A HREF="../../menu/file.html">[File] New connection</A>で Host: の所に
+</p>
+
+<pre>
+/R=&lt;ログファイル名&gt;
+</pre>
+
+<p>
+と入力しても、ログファイルが再生できます。
 </p>
 
 </BODY>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>fileread</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,23 +14,23 @@
 <h1>fileread</h1>
 
 <p>
-�t�@�C����ǂށB<em>(�o�[�W����4.48�ȍ~)</em>
+ファイルを読む。<em>(バージョン4.48以降)</em>
 </p>
 
 <pre class="macro-syntax">
 fileread &lt;file handle&gt; &lt;read byte&gt; &lt;strvar&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-&lt;file handle&gt; �ɂ��w�肳�ꂽ�t�@�C������w�肵���o�C�g���̃f�[�^��ǂݏo���B<br>
-�f�[�^�͕�����ϐ� &lt;strvar&gt; �֋L������A�t�@�C���|�C���^�͓ǂݍ��񂾃o�C�g�����i�߂���B<br>
-�f�[�^��ǂݍ��ݏI���O�Ƀt�@�C���|�C���^���t�@�C���̏I���܂ōs�����ꍇ�́A�V�X�e���ϐ� "result" �� 1 ���i�[�����B ����ȊO�́A"result" �� 0 ���i�[�����B<br>
-�ϐ� &lt;read byte&gt; �̂Ƃ�l�͈̔͂� 1 ���� 511 �łȂ���΂Ȃ�Ȃ��B<br>
+&lt;file handle&gt; により指定されたファイルから指定したバイト数のデータを読み出す。<br>
+データは文字列変数 &lt;strvar&gt; へ記憶され、ファイルポインタは読み込んだバイト数分進められる。<br>
+データを読み込み終わる前にファイルポインタがファイルの終わりまで行った場合は、システム変数 "result" に 1 が格納される。 それ以外は、"result" に 0 が格納される。<br>
+変数 &lt;read byte&gt; のとる値の範囲は 1 から 511 でなければならない。<br>
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 filename = 'foo.txt'
@@ -48,7 +48,7 @@ fileclose fp
 </pre>
 
 <pre class="macro-example">
-; �o�C�i���t�@�C���̐擪����32�o�C�g��ǂݍ��݁A�z�X�g�֑��M����B
+; バイナリファイルの先頭から32バイトを読み込み、ホストへ送信する。
 filename = 'sample.bin'
 
 fileopen fhandle filename 0
@@ -76,7 +76,7 @@ return
 </pre>
 
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="fileopen.html">fileopen</a></li>
   <li><a href="fileclose.html">fileclose</a></li>

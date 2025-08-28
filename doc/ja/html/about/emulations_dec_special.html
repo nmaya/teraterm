@@ -2,91 +2,91 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>DEC Special Graphics(DEC����O���t�B�b�N)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>DEC Special Graphics(DEC特殊グラフィック)</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>DEC Special Graphics(DEC����O���t�B�b�N)</h1>
+<h1>DEC Special Graphics(DEC特殊グラフィック)</h1>
 
 <p>
-Linux�Ȃǂ�TUI(Text User Interface)�ł́A�r���Ȃǂ̕�����DEC Special Graphics(DEC����O���t�B�b�N)�Ƃ��đ��o���邱�Ƃ�����܂��B
+LinuxなどのTUI(Text User Interface)では、罫線などの文字をDEC Special Graphics(DEC特殊グラフィック)として送出することがあります。
 </p>
 
 <p>
-DEC Special Graphics�́A&lt;ESC&gt;(0 �Ƃ�������ȃG�X�P�[�v�V�[�P���X�Œ�`����Ă���A
-0137(0x5f,'_') �` 0176(0x7e) �ɃA�T�C������Ă��܂��B<br>
-��M�R�[�h��ISO8859-1�ȂǓ��{��ȊO�̎��AG1��DEC Special Graphics���w������Ă���̂ŁASO(0x0e)��DEC Special Graphics��\�����邱�Ƃ��ł��܂��B
+DEC Special Graphicsは、&lt;ESC&gt;(0 という特殊なエスケープシーケンスで定義されており、
+0137(0x5f,'_') 〜 0176(0x7e) にアサインされています。<br>
+受信コードがISO8859-1など日本語以外の時、G1にDEC Special Graphicsが指示されているので、SO(0x0e)でDEC Special Graphicsを表示することができます。
 </p>
 
 <p>
-Tera Term�͓Ǝ��̃t�H���g(�t�@�C���� "TSPECIAL1.TTF", �t�H���g�� "Tera Special")���g�p����DEC Special Graphics��\�����邱�Ƃ��ł��܂��B<br>
-Tera Special�̕������͂��ׂ�1cell�ł��B
+Tera Termは独自のフォント(ファイル名 "TSPECIAL1.TTF", フォント名 "Tera Special")を使用してDEC Special Graphicsを表示することができます。<br>
+Tera Specialの文字幅はすべて1cellです。
 </p>
 
 <p>
-  DEC Special Graphics�̕\����:<br>
+  DEC Special Graphicsの表示例:<br>
   <pre>
 echo -e "_abcdefghijklmnopqrstuvwxyz\x7b\x7c\x7e\r\n\x1b(0_abcdefghijklmnopqrstuvwxyz\x7b\x7c\x7e\x0f\x1b(B"
 echo -e "_abcdefghijklmnopqrstuvwxyz\x7b\x7c\x7e\r\n\x0e_abcdefghijklmnopqrstuvwxyz\x7b\x7c\x7e\x0f\x1b(B"</pre>
 
   <blockquote>
     <img src="emulations_dec_special.png"><br>
-    �g�p�t�H���g: Tera Special, <a href="https://myrica.estable.jp/" target="_blank">Myrica</a>
+    使用フォント: Tera Special, <a href="https://myrica.estable.jp/" target="_blank">Myrica</a>
   </blockquote>
 
   <dl>
     <dt>SO(LS1(Locking Shift 1)) (0x0e)</dt>
-    <dd>GL �� G1 ���Ăяo��</dd>
+    <dd>GL に G1 を呼び出し</dd>
     <dt>SI(LS0(Locking Shift 0)) (0x0f)</dt>
-    <dd>GL �� G0 ���Ăяo��</dd>
+    <dd>GL に G0 を呼び出し</dd>
     <dt>ESC ( 0 (0x1B 0x28 0x30)</dt>
-    <dd>G0 �� DEC Special Graphics ���w��, GL �� G0 ���Ăяo��</dd>
+    <dd>G0 に DEC Special Graphics を指示, GL に G0 を呼び出し</dd>
     <dt>ESC ( B (0x1B 0x28 0x42)</dt>
-    <dd>G0 �� ASCII ���w��, GL �� G0 ���ɌĂяo��</dd>
+    <dd>G0 に ASCII を指示, GL に G0 をに呼び出し</dd>
   </dl>
 </p>
 
 <p>
-  SO(0x0e,LS1(Locking Shift 1))�ŁADEC Special Graphics��\�����Ȃ��ꍇ�́A
-  <a href="../setup/teraterm-term.html#ISO2022ShiftFunction">ISO2022ShiftFunction</a>�̐ݒ��
-  �ύX���Ă��������B
+  SO(0x0e,LS1(Locking Shift 1))で、DEC Special Graphicsを表示しない場合は、
+  <a href="../setup/teraterm-term.html#ISO2022ShiftFunction">ISO2022ShiftFunction</a>の設定を
+  変更してください。
 </p>
 
 <p>
-  ����web�̏����Q�Ƃ��������B
+  次のwebの情報も参照ください。
   <ul>
     <li>Digital Equipment Corporation. <a href="https://vt100.net/docs/vt100-ug/chapter3.html#T3-9" target="_blank">Table 3-9 Special Graphics Characters</a>. VT100 User Guide.</li>
     <li>Digital Equipment Corporation. <a href="https://vt100.net/docs/vt220-rm/table2-4.html" target="_blank">Table 2-4 DEC Special Graphics Character Set</a>. VT220 Programmer Reference.</li>
     <li>
       <a href="https://learn.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences#designate-character-set" target="_blank">Designate Character Set, Console Virtual Terminal Sequences</a>. microsoft.com(en-us).<br>
-      <a href="https://learn.microsoft.com/ja-jp/windows/console/console-virtual-terminal-sequences#designate-character-set" target="_blank">�����Z�b�g�̎w��, �R���\�[���̉��z�^�[�~�i�� �V�[�P���X</a>. microsoft.com(ja-jp).
+      <a href="https://learn.microsoft.com/ja-jp/windows/console/console-virtual-terminal-sequences#designate-character-set" target="_blank">文字セットの指定, コンソールの仮想ターミナル シーケンス</a>. microsoft.com(ja-jp).
     </li>
     <li><a href="https://en.wikipedia.org/wiki/DEC_Special_Graphics" target="_blank">DEC Special Graphics</a>. Wikipedia(en).</li>
-    <li><a href="https://en.wikipedia.org/wiki/Box-drawing_character" target="_blank">Box-drawing character</a>. Wikipedia(en). / <a href="https://ja.wikipedia.org/wiki/%E7%BD%AB%E7%B7%9A%E7%B4%A0%E7%89%87">�r���f��</a>. Wikipedia(ja).</li>
+    <li><a href="https://en.wikipedia.org/wiki/Box-drawing_character" target="_blank">Box-drawing character</a>. Wikipedia(en). / <a href="https://ja.wikipedia.org/wiki/%E7%BD%AB%E7%B7%9A%E7%B4%A0%E7%89%87">罫線素片</a>. Wikipedia(ja).</li>
     <li><a href="https://en.wikipedia.org/wiki/ISO/IEC_2022" target="_blank">ISO/IEC 2022</a>. Wikipedia(en). / <a href="https://ja.wikipedia.org/wiki/ISO/IEC_2022" target="_blank">ISO/IEC 2022</a>. Wikipedia(ja).</li>
   </ul>
 </p>
 
 <p>
-  CJK(���{��)���ł�Tera Term�͌r����ꕔ�̋L����2�J�������ŕ\�����܂��B
-  (�����̕��͐ݒ�ŕύX�ł��܂��B<a href="../menu/setup-additional-coding.html#AmbiguousCharactersWidth">Additional settings / "Encoding" �^�u, Ambiguous Characters width</a>���Q�Ƃ��������B)
+  CJK(日本語)環境ではTera Termは罫線や一部の記号を2カラム幅で表示します。
+  (文字の幅は設定で変更できます。<a href="../menu/setup-additional-coding.html#AmbiguousCharactersWidth">Additional settings / "Encoding" タブ, Ambiguous Characters width</a>を参照ください。)
 </p>
 
 <p>
-  �������A�z�X�g���̃A�v���P�[�V�����ɂ���Ă�UTF-8�G���R�[�f�B���O���ɂ͂����̕�����1�J�������ŕ\�������Ɗ��҂����o�͂��s����������A���̌��ʉ�ʏo�͂������ꍇ������܂��B<br>
-�܂��p����ł͌r����+-|���g���ĕ\��������A�Ή����Ă��Ȃ�������??�ƕ\�������肵�܂��B<br>
-Tera Term�ł́A�����̕�����DEC Special Graphics�ɋ߂��������镨�́A������g���ĕ\������悤�ɂ��鎖���ł��A����ɂ���ĕ\���̕�����y�����鎖���ł��܂��B
-<a href="../menu/setup-additional-coding.html#DecSpecial">Additional settings / "Encoding" �^�u, DEC Special Graphics</a>�Őݒ�ł��܂��B<br>
-�������A�}�E�X�őI���������ɃN���b�v�{�[�h�ɃR�s�[����镶�����{���Ƃ͕ʂ̕����ɂȂ��Ă��܂��Ƃ�������p������܂��B
+  しかし、ホスト側のアプリケーションによってはUTF-8エンコーディング時にはこれらの文字が1カラム幅で表示されると期待した出力を行う物があり、その結果画面出力が崩れる場合があります。<br>
+また英語環境では罫線を+-|を使って表示したり、対応していない文字を??と表示したりします。<br>
+Tera Termでは、これらの文字でDEC Special Graphicsに近い物がある物は、それを使って表示するようにする事ができ、それによって表示の崩れを軽減する事ができます。
+<a href="../menu/setup-additional-coding.html#DecSpecial">Additional settings / "Encoding" タブ, DEC Special Graphics</a>で設定できます。<br>
+ただし、マウスで選択した時にクリップボードにコピーされる文字が本来とは別の文字になってしまうという副作用があります。
 </p>
 
 <p>
-  DEC Special Graphics��Unicode�֒u�������AVT�E�B���h�E�̃t�H���g���g�p���ĕ\�����邱�Ƃ��ł��܂��B<br>
-  �t�H���g��I�����邱�ƂŁA���[�U�[�̍D�݂̃f�U�C���̕�����\�����邱�Ƃ��ł��܂��B<br>
-  �������A�t�H���g�ɃO���t�ɓ����Ă��Ȃ�(SCAN LINE(0x6f...0x73)�Ȃ�)�A�f�U�C�������������A������������Ȃ����Ƃ�����܂��B
+  DEC Special GraphicsをUnicodeへ置き換え、VTウィンドウのフォントを使用して表示することもできます。<br>
+  フォントを選択することで、ユーザーの好みのデザインの文字を表示することができます。<br>
+  しかし、フォントにグリフに入っていない(SCAN LINE(0x6f...0x73)など)、デザインがおかしい、文字幅が合わないことがあります。
   <pre>
 DEC Special Graphic - Unicode convert table
 
@@ -128,10 +128,10 @@ code Unicode
 </p>
 
 <p>
-  ���̃y�[�W���Q�Ƃ��������B
+  次のページも参照ください。
   <ul>
-    <li><a href="../about/qanda.html#dec_special_graphic">Q &amp; A�W</a></li>
-    <li><a href="../setup/teraterm-term.html#UnicodeDecSpMapping">Unicode����DEC Special Graphics�ւ̃}�b�s���O��ݒ肷��</a></li>
+    <li><a href="../about/qanda.html#dec_special_graphic">Q &amp; A集</a></li>
+    <li><a href="../setup/teraterm-term.html#UnicodeDecSpMapping">UnicodeからDEC Special Graphicsへのマッピングを設定する</a></li>
   </ul>
 </p>
 

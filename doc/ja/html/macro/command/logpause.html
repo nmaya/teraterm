@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>logpause</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,20 +14,20 @@
 <h1>logpause</h1>
 
 <p>
-Tera Term ‚ÌƒƒO‚ğˆê’†’f‚·‚éB
+Tera Term ã®ãƒ­ã‚°ã‚’ä¸€æ™‚ä¸­æ–­ã™ã‚‹ã€‚
 </p>
 
 <pre class="macro-syntax">
 logpause
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-’†’f‚µ‚Ä‚¢‚éŠÔ‚ÉóM‚³‚ê‚½•¶š‚ÍƒƒOƒtƒ@ƒCƒ‹‚É‘‚«‚Ü‚ê‚È‚¢B
+ä¸­æ–­ã—ã¦ã„ã‚‹é–“ã«å—ä¿¡ã•ã‚ŒãŸæ–‡å­—ã¯ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãè¾¼ã¾ã‚Œãªã„ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 prompt = '$'
@@ -35,12 +35,12 @@ prompt = '$'
 cygconnect
 wait prompt
 
-; ƒ†[ƒU–¼‚ğæ“¾
+; ãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—
 getenv 'USERNAME' username
-; “ú‚ğæ“¾
+; æ—¥æ™‚ã‚’å–å¾—
 gettime timestr "%Y%m%d-%H%M%S"
 
-; ƒƒOƒtƒ@ƒCƒ‹–¼‚É“ú‚Æƒ†[ƒU–¼‚ğ“ü‚ê‚éB
+; ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«åã«æ—¥æ™‚ã¨ãƒ¦ãƒ¼ã‚¶åã‚’å…¥ã‚Œã‚‹ã€‚
 sprintf2 filename 'd:\console_%s_%s.log' username timestr
 ;messagebox filename 'filename'
 
@@ -48,12 +48,12 @@ logopen filename 0 0
 logwrite 'Log start'#13#10
 sendln 'cal'
 wait prompt
-; ƒƒO’â~
+; ãƒ­ã‚°åœæ­¢
 logpause
-; ˆÈ‰º‚ÌƒRƒ}ƒ“ƒh‚ÍƒƒOÌæ‚³‚ê‚È‚¢
+; ä»¥ä¸‹ã®ã‚³ãƒãƒ³ãƒ‰ã¯ãƒ­ã‚°æ¡å–ã•ã‚Œãªã„
 sendln 'date'
 wait prompt
-; ƒƒOÄŠJ
+; ãƒ­ã‚°å†é–‹
 logstart
 sendln 'uptime'
 wait prompt

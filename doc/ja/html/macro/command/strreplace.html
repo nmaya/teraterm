@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>strreplace</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,37 +14,37 @@
 <h1>strreplace</h1>
 
 <p>
-•¶š—ñ‚ğ’uŠ·‚·‚éB<em>(ƒo[ƒWƒ‡ƒ“4.67ˆÈ~)</em>
+æ–‡å­—åˆ—ã‚’ç½®æ›ã™ã‚‹ã€‚<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³4.67ä»¥é™)</em>
 </p>
 
-<h2>Œ`®</h2>
+<h2>å½¢å¼</h2>
 
 <pre class="macro-syntax">
 strreplace &lt;strvar&gt; &lt;index&gt; &lt;regex&gt; &lt;newstr&gt;
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-•¶š—ñ•Ï” &lt;strvar&gt; ‚Ì &lt;index&gt; ˆÊ’ui1ƒIƒŠƒWƒ“j‚©‚çA³‹K•\Œ» &lt;regex&gt; ‚ğŒŸõ‚µA•¶š—ñ &lt;newstr&gt; ‚É’u‚«Š·‚¦‚éB<br>
-&lt;newstr&gt; ‚ª ""(‹ó•¶š—ñ) ‚Ìê‡A&lt;strvar&gt; ’†‚Ì &lt;regex&gt; ‚Ííœ‚³‚ê‚éB
+æ–‡å­—åˆ—å¤‰æ•° &lt;strvar&gt; ã® &lt;index&gt; ä½ç½®ï¼ˆ1ã‚ªãƒªã‚¸ãƒ³ï¼‰ã‹ã‚‰ã€æ­£è¦è¡¨ç¾ &lt;regex&gt; ã‚’æ¤œç´¢ã—ã€æ–‡å­—åˆ— &lt;newstr&gt; ã«ç½®ãæ›ãˆã‚‹ã€‚<br>
+&lt;newstr&gt; ãŒ ""(ç©ºæ–‡å­—åˆ—) ã®å ´åˆã€&lt;strvar&gt; ä¸­ã® &lt;regex&gt; ã¯å‰Šé™¤ã•ã‚Œã‚‹ã€‚
 </p>
 
 <p>
-’uŠ·‚ª¬Œ÷‚·‚é‚ÆAƒVƒXƒeƒ€•Ï” result ‚É "1" ‚ªŠi”[‚³‚êA³‹K•\Œ» &lt;regex&gt; ‚Åƒ}ƒbƒ`‚µ‚½•¶š—ñ‚ÍƒVƒXƒeƒ€•Ï” matchstr ‚ÉŠi”[‚³‚ê‚éB<br>
-&lt;regex&gt; ‚ª &lt;strvar&gt; ‚Ì“à—e‚Éƒ}ƒbƒ`‚¹‚¸’uŠ·‚ªs‚í‚ê‚È‚©‚Á‚½ê‡‚ÍAresult ‚É "0" ‚ªŠi”[‚³‚ê‚éB<br>
-&lt;regex&gt; ‚Ì‘®‚ª³‚µ‚­‚È‚¢“™‚ÅƒGƒ‰[‚Æ‚È‚Á‚½ê‡‚ÍAresult ‚É "-1" ‚ªŠi”[‚³‚ê‚éB
+ç½®æ›ãŒæˆåŠŸã™ã‚‹ã¨ã€ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° result ã« "1" ãŒæ ¼ç´ã•ã‚Œã€æ­£è¦è¡¨ç¾ &lt;regex&gt; ã§ãƒãƒƒãƒã—ãŸæ–‡å­—åˆ—ã¯ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° matchstr ã«æ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+&lt;regex&gt; ãŒ &lt;strvar&gt; ã®å†…å®¹ã«ãƒãƒƒãƒã›ãšç½®æ›ãŒè¡Œã‚ã‚Œãªã‹ã£ãŸå ´åˆã¯ã€result ã« "0" ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚<br>
+&lt;regex&gt; ã®æ›¸å¼ãŒæ­£ã—ããªã„ç­‰ã§ã‚¨ãƒ©ãƒ¼ã¨ãªã£ãŸå ´åˆã¯ã€result ã« "-1" ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚
 </p>
 
 <p>
-“ú–{Œê“™‚Ìƒ}ƒ‹ƒ`ƒoƒCƒg•¶š—ñ‚ğŒŸõ‚·‚éê‡A–‘O‚É<a href="regexoption.html">regexoption</a>‚Å“KØ‚ÈƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB
+æ—¥æœ¬èªç­‰ã®ãƒãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—åˆ—ã‚’æ¤œç´¢ã™ã‚‹å ´åˆã€äº‹å‰ã«<a href="regexoption.html">regexoption</a>ã§é©åˆ‡ãªã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚
 </p>
 
 <p>
-‚±‚Ìƒ}ƒNƒƒRƒ}ƒ“ƒh‚ğÀs‚·‚é‚Æ ƒVƒXƒeƒ€•Ï” groupmatchstr1 ` groupmatchstr9 ‚Ì“à—e‚ªƒNƒŠƒA‚³‚ê‚éB
+ã“ã®ãƒã‚¯ãƒ­ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã¨ ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° groupmatchstr1 ã€œ groupmatchstr9 ã®å†…å®¹ãŒã‚¯ãƒªã‚¢ã•ã‚Œã‚‹ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 src='linux.txt'
@@ -73,9 +73,9 @@ if result=1 then
 endif
 </pre>
 
-<h2>QÆ</h2>
+<h2>å‚ç…§</h2>
 <ul>
-  <li><a href="../../reference/RE.txt">Oniguruma ‚Ì³‹K•\Œ»</a></li>
+  <li><a href="../../reference/RE.txt">Oniguruma ã®æ­£è¦è¡¨ç¾</a></li>
   <li><a href="regexoption.html">regexoption</a></li>
   <li><a href="strmatch.html">strmatch</a></li>
   <li><a href="strinsert.html">strinsert</a></li>

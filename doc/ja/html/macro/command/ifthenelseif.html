@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>if, then, elseif, else, endif</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,63 +14,63 @@
 <h1>if, then, elseif, else, endif</h1>
 
 <p>
-ğŒ•ªŠò
+æ¡ä»¶åˆ†å²
 </p>
 
-<h2>1) ‘®1</h2>
+<h2>1) æ›¸å¼1</h2>
 
 <pre class="macro-syntax">
 if &lt;expression&gt; &lt;statement&gt;
 </pre>
 
-<h3>‰ğà</h3>
+<h3>è§£èª¬</h3>
 
 <p>
-‚à‚µ  &lt;expression&gt; ‚ª^(0ˆÈŠO)‚È‚ç‚ÎAƒRƒ}ƒ“ƒh &lt;statement&gt; ‚ğÀs‚·‚éB
+ã‚‚ã—  &lt;expression&gt; ãŒçœŸ(0ä»¥å¤–)ãªã‚‰ã°ã€ã‚³ãƒãƒ³ãƒ‰ &lt;statement&gt; ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
 </p>
 
-<h3>—á</h3>
+<h3>ä¾‹</h3>
 
 <pre class="macro-example">
-; ‚à‚µ A&gt;1 ‚È‚ç‚ÎA':label' ‚Ö”ò‚ÔB
+; ã‚‚ã— A&gt;1 ãªã‚‰ã°ã€':label' ã¸é£›ã¶ã€‚
 if A&gt;1 goto label
 
-; ‚à‚µ result&lt;&gt;0 ‚È‚ç‚ÎAA ‚É0‚ğ‘ã“üB
+; ã‚‚ã— result&lt;&gt;0 ãªã‚‰ã°ã€A ã«0ã‚’ä»£å…¥ã€‚
 if result A=0
 </pre>
 
 
-<h2>2) ‘®2</h2>
+<h2>2) æ›¸å¼2</h2>
 
 <pre class="macro-syntax">
 if &lt;expression 1&gt; then
   ...
-  (&lt;expression 1&gt; ‚ª^(0ˆÈŠO)‚Ìê‡‚ÉÀs‚³‚ê‚éƒRƒ}ƒ“ƒh)
+  (&lt;expression 1&gt; ãŒçœŸ(0ä»¥å¤–)ã®å ´åˆã«å®Ÿè¡Œã•ã‚Œã‚‹ã‚³ãƒãƒ³ãƒ‰)
   ...
 [elseif &lt;expression 2&gt; then]
   ...
-  (&lt;expression 1&gt; ‚ª‹U(0)‚ÅA&lt;expression 2&gt;‚ª^‚Ìê‡‚ÉÀs‚³‚ê‚éƒRƒ}ƒ“ƒh)
+  (&lt;expression 1&gt; ãŒå½(0)ã§ã€&lt;expression 2&gt;ãŒçœŸã®å ´åˆã«å®Ÿè¡Œã•ã‚Œã‚‹ã‚³ãƒãƒ³ãƒ‰)
   ...
 [elseif &lt;expression N&gt; then]
   ...
-  (&lt;expression 1&gt;, &lt;expression 2&gt;,.., &lt;expression N-1&gt; ‚ª‚·‚×‚Ä‹U‚ÅA&lt;expression N&gt; ‚ª^‚Ìê‡‚ÉÀs‚³‚ê‚éƒRƒ}ƒ“ƒh)
+  (&lt;expression 1&gt;, &lt;expression 2&gt;,.., &lt;expression N-1&gt; ãŒã™ã¹ã¦å½ã§ã€&lt;expression N&gt; ãŒçœŸã®å ´åˆã«å®Ÿè¡Œã•ã‚Œã‚‹ã‚³ãƒãƒ³ãƒ‰)
   ...
 [else]
   ...
-  (ã‚ÌğŒ‚·‚×‚Ä‚ª‹U‚Ìê‡‚ÉÀs‚³‚ê‚éƒRƒ}ƒ“ƒh)
+  (ä¸Šã®æ¡ä»¶ã™ã¹ã¦ãŒå½ã®å ´åˆã«å®Ÿè¡Œã•ã‚Œã‚‹ã‚³ãƒãƒ³ãƒ‰)
   ...
 endif
 </pre>
 
-<h3>‰ğà</h3>
+<h3>è§£èª¬</h3>
 
 <p>
-'then' ‚Í 'if' ‚Æ 'elseif' s‚ÌÅŒã‚É‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-'elseif' ‚Æ 'else' ‚Í‚È‚­‚Ä‚à‚æ‚¢B<br>
-'endif' ‚Í•K—vB
+'then' ã¯ 'if' ã¨ 'elseif' è¡Œã®æœ€å¾Œã«ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+'elseif' ã¨ 'else' ã¯ãªãã¦ã‚‚ã‚ˆã„ã€‚<br>
+'endif' ã¯å¿…è¦ã€‚
 </p>
 
-<h3>—á</h3>
+<h3>ä¾‹</h3>
 
 <pre class="macro-example">
 if a=1 then
@@ -98,10 +98,10 @@ endif
 
 
 
-<h3>*) ’ˆÓ–€</h3>
+<h3>*) æ³¨æ„äº‹é …</h3>
 
-<em>(ƒo[ƒWƒ‡ƒ“ 4.90 ˆÈ~)</em><br>
-‘®2(if - endif)‚É‚¨‚¢‚ÄAthen‚Ì‹Lq‚È‚µ‚Í•¶–@ƒGƒ‰[‚Æ‚È‚éB
+<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 4.90 ä»¥é™)</em><br>
+æ›¸å¼2(if - endif)ã«ãŠã„ã¦ã€thenã®è¨˜è¿°ãªã—ã¯æ–‡æ³•ã‚¨ãƒ©ãƒ¼ã¨ãªã‚‹ã€‚
 
 <pre class="macro-example">
 code = 100
@@ -117,9 +117,9 @@ end
 </pre>
 
 
-<h2>QÆ</h2>
+<h2>å‚ç…§</h2>
 <ul>
-  <li><a href="../syntax/expressions.html">®‚Æ‰‰Zq</a></li>
+  <li><a href="../syntax/expressions.html">å¼ã¨æ¼”ç®—å­</a></li>
 </ul>
 
 </body>

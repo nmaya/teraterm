@@ -2,70 +2,70 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>TTXRecurringCommand (�J��Ԃ��R�}���h)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>TTXRecurringCommand (繰り返しコマンド)</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
 <body>
 
-<h1>TTXRecurringCommand (�J��Ԃ��R�}���h)</h1>
+<h1>TTXRecurringCommand (繰り返しコマンド)</h1>
 
-<p>����I�ɃR�}���h�𑗐M����B</p>
+<p>定期的にコマンドを送信する。</p>
 
-<h2>�@�\</h2>
+<h2>機能</h2>
 
 <p>
-TTXRecurringCommand �́A����I�ɃR�}���h�𑗐M����ׂ̃v���O�C���ł��B<br />
-Tera Term �ւ̃L�[���͂��������A��莞�Ԗ��Ɏw�肵��������𑗐M���܂��B
+TTXRecurringCommand は、定期的にコマンドを送信する為のプラグインです。<br />
+Tera Term へのキー入力が無い時、一定時間毎に指定した文字列を送信します。
 </p>
 
-<h2>���j���[����</h2>
+<h2>メニュー項目</h2>
 
 <p>
-TTXRecurringCommand �v���O�C��������ƁATera Term �Ɉȉ��̃��j���[���ڂ��ǉ�����܂��B
+TTXRecurringCommand プラグインを入れると、Tera Term に以下のメニュー項目が追加されます。
 </p>
 
 <dl>
-    <dt>�ݒ� (Setup) - �J��Ԃ��R�}���h (Recurring command)</dt>
-    <dd><a href="#setupdialog">�ݒ�_�C�A���O</a>���J���܂��B</dd>
+    <dt>設定 (Setup) - 繰り返しコマンド (Recurring command)</dt>
+    <dd><a href="#setupdialog">設定ダイアログ</a>を開きます。</dd>
 
-    <dt>�R���g���[�� (Control) - �J��Ԃ��R�}���h (Recurring command)</dt>
-    <dd>�v���O�C���̗L��/������؂�ւ��܂��B</dd>
+    <dt>コントロール (Control) - 繰り返しコマンド (Recurring command)</dt>
+    <dd>プラグインの有効/無効を切り替えます。</dd>
 </dl>
 
-<h2 id="setupdialog">�ݒ�_�C�A���O</h2>
+<h2 id="setupdialog">設定ダイアログ</h2>
 
 <dl>
-    <dt>�L�� (Enable)</dt>
-    <dd>�v���O�C���̗L��/������؂�ւ��܂��B</dd>
+    <dt>有効 (Enable)</dt>
+    <dd>プラグインの有効/無効を切り替えます。</dd>
 
-    <dt>�Ԋu(�b) (Interval(sec))</dt>
-    <dd>�R�}���h�𑗐M����Ԋu���w�肵�܂��B�����Ŏw�肵���b���̊� Tera Term �ւ̓��͂������ꍇ�ɃR�}���h�𑗐M���܂��B</dd>
+    <dt>間隔(秒) (Interval(sec))</dt>
+    <dd>コマンドを送信する間隔を指定します。ここで指定した秒数の間 Tera Term への入力が無い場合にコマンドを送信します。</dd>
 
-    <dt>�R�}���h (Command)</dt>
+    <dt>コマンド (Command)</dt>
     <dd>
-	���M����R�}���h(������)���w�肵�܂��B�R�}���h�Ɉȉ��̕����񂪊܂܂�Ă���ꍇ�A�Ή����镶���ɒu���������܂�
+	送信するコマンド(文字列)を指定します。コマンドに以下の文字列が含まれている場合、対応する文字に置き換えられます
 	<table border="1">
 	    <tbody>
-		<tr><th>�V�[�P���X</th>	<th> ���M���� </th></tr>
+		<tr><th>シーケンス</th>	<th> 送信文字 </th></tr>
 		<tr><td> \\ </td>	<td> \ </td></tr>
-		<tr><td> \n </td>	<td> ���s (LF) </td></tr>
-		<tr><td> \t </td>	<td> �����^�u (HT) </td></tr>
-		<tr><td> \a </td>	<td> �x�� (BEL) </td></tr>
-		<tr><td> \b </td>	<td> �o�b�N�X�y�[�X (BS) </td></tr>
-		<tr><td> \f </td>	<td> ���� (FF) </td></tr>
-		<tr><td> \r </td>	<td> ���A (CR) </td></tr>
-		<tr><td> \v </td>	<td> �����^�u (VT) </td></tr>
-		<tr><td> \e </td>	<td> �G�X�P�[�v (ESC) </td></tr>
-		<tr><td> \NNN </td>	<td>8�i�� NNN ���\������</td></tr>
-		<tr><td> \xHH </td>	<td>16�i�� HH ���\������</td></tr>
+		<tr><td> \n </td>	<td> 改行 (LF) </td></tr>
+		<tr><td> \t </td>	<td> 水平タブ (HT) </td></tr>
+		<tr><td> \a </td>	<td> ベル (BEL) </td></tr>
+		<tr><td> \b </td>	<td> バックスペース (BS) </td></tr>
+		<tr><td> \f </td>	<td> 改頁 (FF) </td></tr>
+		<tr><td> \r </td>	<td> 復帰 (CR) </td></tr>
+		<tr><td> \v </td>	<td> 垂直タブ (VT) </td></tr>
+		<tr><td> \e </td>	<td> エスケープ (ESC) </td></tr>
+		<tr><td> \NNN </td>	<td>8進数 NNN が表す文字</td></tr>
+		<tr><td> \xHH </td>	<td>16進数 HH が表す文字</td></tr>
 	    </tbody>
 	</table>
     </dd>
 
-    <dt>���s��ǉ� (Add new line)</dt>
-    <dd>on �ɂ���Ƒ��M����R�}���h�̖����ɉ��s��ǉ����܂��B</dd>
+    <dt>改行を追加 (Add new line)</dt>
+    <dd>on にすると送信するコマンドの末尾に改行を追加します。</dd>
 </dl>
 
 </body>

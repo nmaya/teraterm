@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>filetruncate</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,29 +14,29 @@
 <h1>filetruncate</h1>
 
 <p>
-ƒtƒ@ƒCƒ‹‚ÌƒTƒCƒY‚ð•ÏX‚·‚éB<em>(ƒo[ƒWƒ‡ƒ“4.67ˆÈ~)</em>
+ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚µã‚¤ã‚ºã‚’å¤‰æ›´ã™ã‚‹ã€‚<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³4.67ä»¥é™)</em>
 </p>
 
 <pre class="macro-syntax">
 filetruncate &lt;filename&gt; &lt;size&gt;
 </pre>
 
-<h2>‰ðà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-ƒtƒ@ƒCƒ‹ &lt;filename&gt; ‚ðƒTƒCƒY &lt;size&gt; ƒoƒCƒg‚Ì‘å‚«‚³‚É•ÏX‚·‚éB<br>
-Žw’è‚µ‚½ƒTƒCƒY‚ªAŠù‘¶‚Ì‘å‚«‚³‚ð’´‚¦‚½ê‡Aƒkƒ‹•¶Žš('\0')‚ª’Ç‰Á‚³‚ê‚éB
+ãƒ•ã‚¡ã‚¤ãƒ« &lt;filename&gt; ã‚’ã‚µã‚¤ã‚º &lt;size&gt; ãƒã‚¤ãƒˆã®å¤§ãã•ã«å¤‰æ›´ã™ã‚‹ã€‚<br>
+æŒ‡å®šã—ãŸã‚µã‚¤ã‚ºãŒã€æ—¢å­˜ã®å¤§ãã•ã‚’è¶…ãˆãŸå ´åˆã€ãƒŒãƒ«æ–‡å­—('\0')ãŒè¿½åŠ ã•ã‚Œã‚‹ã€‚
 </p>
 
 <p>
-ƒTƒCƒY•ÏX‚É¬Œ÷‚µ‚½ê‡‚ÍAƒVƒXƒeƒ€•Ï” result ‚É 0 ‚ªŠi”[‚³‚ê‚éB
-Ž¸”s‚µ‚½ê‡‚Í -1 ‚ªŠi”[‚³‚ê‚éB
+ã‚µã‚¤ã‚ºå¤‰æ›´ã«æˆåŠŸã—ãŸå ´åˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° result ã« 0 ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚
+å¤±æ•—ã—ãŸå ´åˆã¯ -1 ãŒæ ¼ç´ã•ã‚Œã‚‹ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
-; ƒtƒ@ƒCƒ‹‚ð32ƒoƒCƒg‚ÉØ‚è‹l‚ß‚é
+; ãƒ•ã‚¡ã‚¤ãƒ«ã‚’32ãƒã‚¤ãƒˆã«åˆ‡ã‚Šè©°ã‚ã‚‹
 filetruncate 'test.exe' 32
 if result = -1 then
 	messagebox 'file truncate error' 'filetruncate'
@@ -46,17 +46,17 @@ endif
 </pre>
 
 <pre class="macro-example">
-; 8MB‚Ì‹óƒtƒ@ƒCƒ‹‚ðì‚é
+; 8MBã®ç©ºãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œã‚‹
 size = 8*1024*1024
 filetruncate 'bigfile.bin' size
 </pre>
 
 <pre class="macro-example">
-; ƒ}ƒNƒ‚ª‚ ‚éêŠ‚ÉƒƒOƒtƒ@ƒCƒ‹‚ðì‚é
+; ãƒžã‚¯ãƒ­ãŒã‚ã‚‹å ´æ‰€ã«ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œã‚‹
 getdir dir
 sprintf2 filename '%s\test.log' dir
 logopen filename 0 0
-; ƒtƒ@ƒCƒ‹‚ÌãŒÀƒTƒCƒY
+; ãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸Šé™ã‚µã‚¤ã‚º
 maxsize = 512
 counter = 0
 

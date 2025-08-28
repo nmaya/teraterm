@@ -2,8 +2,8 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<title>TTSSH �R�}���h���C��</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>TTSSH コマンドライン</title>
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </head>
@@ -13,184 +13,184 @@
 <h1>TTSSH command line</h1>
 
 <p>
-TTSSH�ł͈ȉ��̃R�}���h���C���I�v�V�������g�p�ł��܂��B
+TTSSHでは以下のコマンドラインオプションが使用できます。
 </p>
 
 
-<h2>�I�v�V����</h2>
+<h2>オプション</h2>
 
 <dl>
   <dt id="hostname">&lt;username&gt;@&lt;host&gt;[:&lt;#TCP port&gt;]</dt>
-  <dd>�z�X�g���w��ł�Tera Term�{�̂��Ή����Ă���`���̑��ɁAttssh�g���Ƃ��ă��[�U���t�����g���܂��B</dd>
+  <dd>ホスト名指定ではTera Term本体が対応している形式の他に、ttssh拡張としてユーザ名付きも使えます。</dd>
 
   <dt id="host-url">&lt;scheme&gt;://[&lt;username&gt;[:&lt;password&gt;]@]&lt;host&gt;[:&lt;TCP port&gt;][/]</dt>
-  <dd>URL�`�����g������܂��B<br>
-      &lt;scheme&gt;�ɂ́Assh, ssh1, ssh2, slogin, slogin1, slogin2���g���܂��B<br>
-      �|�[�g�ԍ����w�肳��Ȃ������ꍇ��22���g���܂��B(�ݒ�t�@�C����TCPPort�̒l�͖�������܂�)</dd>
+  <dd>URL形式も拡張されます。<br>
+      &lt;scheme&gt;には、ssh, ssh1, ssh2, slogin, slogin1, slogin2が使えます。<br>
+      ポート番号が指定されなかった場合は22が使われます。(設定ファイルのTCPPortの値は無視されます)</dd>
 
   <dt id="f">/f=&lt;file&gt;</dt>
   <dd>
-    teraterm.ini�t�@�C��(file)��ǂݍ���<br>
-    �t�@�C��������΃p�X�łȂ��Ƃ��́A<a href="../setup/folder.html">�ݒ�t�@�C���t�H���_</a>����̑��΃p�X�ƌ��Ȃ���܂��B
+    teraterm.iniファイル(file)を読み込む<br>
+    ファイル名が絶対パスでないときは、<a href="../setup/folder.html">設定ファイルフォルダ</a>からの相対パスと見なされます。
   </dd>
 
   <dt id="ssh-f">/ssh-f=&lt;file&gt;</dt>
   <dd>
-    teraterm.ini�t�@�C��(file)��ǂݍ���<br>
-    �t�@�C��������΃p�X�łȂ��Ƃ��́A<a href="../setup/folder.html">�ݒ�t�@�C���t�H���_</a>����̑��΃p�X�ƌ��Ȃ���܂��B
+    teraterm.iniファイル(file)を読み込む<br>
+    ファイル名が絶対パスでないときは、<a href="../setup/folder.html">設定ファイルフォルダ</a>からの相対パスと見なされます。
   </dd>
 
   <dt id="ssh-consume">/ssh-consume=&lt;file&gt;</dt>
   <dd>
-    teraterm.ini�t�@�C��(file)�̓ǂݍ��݌�A���Y�t�@�C�����폜����B<br>
-    �t�@�C��������΃p�X�łȂ��Ƃ��́A<a href="../setup/folder.html">�ݒ�t�@�C���t�H���_</a>����̑��΃p�X�ƌ��Ȃ���܂��B
+    teraterm.iniファイル(file)の読み込み後、当該ファイルを削除する。<br>
+    ファイル名が絶対パスでないときは、<a href="../setup/folder.html">設定ファイルフォルダ</a>からの相対パスと見なされます。
   </dd>
 
   <dt id="t">/t=&lt;value&gt;</dt>
   <dd><ul>
-        <li><span class="syntax">value=2</span> SSH ��L���ɂ���</li>
-        <li><span class="syntax">value=2�ȊO</span> SSH �𖳌��ɂ���</li>
+        <li><span class="syntax">value=2</span> SSH を有効にする</li>
+        <li><span class="syntax">value=2以外</span> SSH を無効にする</li>
       </ul></dd>
 
   <dt id="nossh">/nossh</dt>
-  <dd>SSH �ڑ��𖳌��ɂ���</dd>
+  <dd>SSH 接続を無効にする</dd>
 
   <dt id="telnet">/telnet</dt>
-  <dd>SSH �ڑ��𖳌��ɂ���<br>
-      ����ɁATelnet �v���g�R�����g�p����B<a href="./teraterm.html#t">Tera Term �� /T=1</a> �Ɠ����B</dd>
+  <dd>SSH 接続を無効にする<br>
+      さらに、Telnet プロトコルを使用する。<a href="./teraterm.html#t">Tera Term の /T=1</a> と同じ。</dd>
 
   <dt id="1">/1</dt>
-  <dd>SSH1 �Őڑ�����</dd>
+  <dd>SSH1 で接続する</dd>
 
   <dt id="ssh1">/ssh1</dt>
-  <dd>SSH1 �Őڑ�����</dd>
+  <dd>SSH1 で接続する</dd>
 
   <dt id="2">/2</dt>
-  <dd>SSH2 �Őڑ�����</dd>
+  <dd>SSH2 で接続する</dd>
 
   <dt id="ssh2">/ssh2</dt>
-  <dd>SSH2 �Őڑ�����</dd>
+  <dd>SSH2 で接続する</dd>
 
   <dt id="ssh-autologin">/ssh-autologin</dt>
-  <dd>��̃p�X���[�h�ł̎������O�C�������݂�</dd>
+  <dd>空のパスワードでの自動ログインを試みる</dd>
 
   <dt id="ssh-autologon">/ssh-autologon</dt>
-  <dd>��̃p�X���[�h�ł̎������O�C�������݂�</dd>
+  <dd>空のパスワードでの自動ログインを試みる</dd>
 
   <dt id="auth">/auth=&lt;mode&gt;</dt>
-  <dd>&lt;mode&gt; �Ŏw�肳�ꂽ�F�ؕ����Ŏ������O�C�������݂�
+  <dd>&lt;mode&gt; で指定された認証方式で自動ログインを試みる
       <ul>
-        <li><span class="syntax">password</span> �p�X���[�h�F��</li>
-        <li><span class="syntax">publickey</span> ���J���F��</li>
-        <li><span class="syntax">challenge</span> SSH1:�`�������W���X�|���X(TIS)�F�� / SSH2:�L�[�{�[�h�C���^���N�e�B�u�F��</li>
-        <li><span class="syntax">keyboard-interactive</span> challenge �Ɠ���</li>
-        <li><span class="syntax">pageant</span> Pageant ��p�������J���F��</li>
+        <li><span class="syntax">password</span> パスワード認証</li>
+        <li><span class="syntax">publickey</span> 公開鍵認証</li>
+        <li><span class="syntax">challenge</span> SSH1:チャレンジレスポンス(TIS)認証 / SSH2:キーボードインタラクティブ認証</li>
+        <li><span class="syntax">keyboard-interactive</span> challenge と同じ</li>
+        <li><span class="syntax">pageant</span> Pageant を用いた公開鍵認証</li>
       </ul></dd>
 
   <dt id="user">/user=&lt;username&gt;</dt>
-  <dd>���[�U�����w�肷��</dd>
+  <dd>ユーザ名を指定する</dd>
 
   <dt id="passwd">/passwd=&lt;password&gt;</dt>
   <dd>
-    �p�X���[�h���w�肷��<br>
-    <a href="#passwd_specify">�p�X���[�h���w�肷��Ƃ��̒���</a>���Q�Ƃ̂���
+    パスワードを指定する<br>
+    <a href="#passwd_specify">パスワードを指定するときの注意</a>を参照のこと
   </dd>
 
   <dt id="keyfile">/keyfile=&lt;file&gt;</dt>
   <dd>
-    �閧�����w�肷��<br>
-    �t�@�C��������΃p�X�łȂ��Ƃ��́A<a href="../setup/folder.html">�ݒ�t�@�C���t�H���_</a>����̑��΃p�X�ƌ��Ȃ���܂��B
+    秘密鍵を指定する<br>
+    ファイル名が絶対パスでないときは、<a href="../setup/folder.html">設定ファイルフォルダ</a>からの相対パスと見なされます。
   </dd>
 
   <dt id="ask4passwd">/ask4passwd</dt>
   <dd>
-    �������O�C���������A�p�X���[�h�𕷂�<br>
-    /auth=&lt;mode&gt; �́A�F�ؕ����݂̂��Ӗ�����悤�ɂȂ�
+    自動ログインをせず、パスワードを聞く<br>
+    /auth=&lt;mode&gt; は、認証方式のみを意味するようになる
   </dd>
 
   <dt id="ssh-l">/ssh-L[&lt;listen_addr&gt;:]&lt;port1&gt;:&lt;host&gt;:&lt;port2&gt;[,[&lt;listen_addr&gt;:]&lt;port1&gt;:&lt;host&gt;:&lt;port2&gt;[,...]]</dt>
-  <dd>���[�J���̃��b�X���A�h���X(&lt;listen_addr&gt;)�|�[�g(&lt;port1&gt;)���烊���[�g���z�X�g(&lt;host&gt;)�̃|�[�g(&lt;port2&gt;)�փ|�[�g�t�H���[�f�B���O����<br>
-      &lt;listen_addr&gt;���ȗ�����ƁAlocalhost�Ń��b�X������</dd>
+  <dd>ローカルのリッスンアドレス(&lt;listen_addr&gt;)ポート(&lt;port1&gt;)からリモート側ホスト(&lt;host&gt;)のポート(&lt;port2&gt;)へポートフォワーディングする<br>
+      &lt;listen_addr&gt;を省略すると、localhostでリッスンする</dd>
 
   <dt id="ssh-r">/ssh-R[&lt;listen_addr&gt;:]&lt;port1&gt;:&lt;host&gt;:&lt;port2&gt;[,[&lt;listen_addr&gt;:]&lt;port1&gt;:&lt;host&gt;:&lt;port2&gt;[,...]]</dt>
-  <dd>�����[�g�̃��b�X���A�h���X(&lt;listen_addr&gt;)�|�[�g(&lt;port1&gt;)���烍�[�J�����z�X�g(&lt;host&gt;)�̃|�[�g(&lt;port2&gt;)�փ|�[�g�t�H���[�f�B���O����<br>
-      &lt;listen_addr&gt;���ȗ�����ƁAlocalhost�Ń��b�X������<br>
-      SSH1�v���g�R���ł�&lt;listen_addr&gt;�͗��p����Ȃ�</dd>
+  <dd>リモートのリッスンアドレス(&lt;listen_addr&gt;)ポート(&lt;port1&gt;)からローカル側ホスト(&lt;host&gt;)のポート(&lt;port2&gt;)へポートフォワーディングする<br>
+      &lt;listen_addr&gt;を省略すると、localhostでリッスンする<br>
+      SSH1プロトコルでは&lt;listen_addr&gt;は利用されない</dd>
 
   <dt id="ssh-d">/ssh-D[&lt;listen_addr&gt;:]&lt;port&gt;[,[&lt;listen_addr&gt;:]&lt;port&gt;[,...]]</dt>
-  <dd>���[�J���̃��b�X���A�h���X(&lt;listen_addr&gt;)�|�[�g(&lt;port&gt;)�ւ̐ڑ����_�C�i�~�b�N�]������<br>
-      SOCKS Proxy �Ƃ��ē��삷��<br>
-      &lt;listen_addr&gt;���ȗ�����ƁAlocalhost�Ń��b�X������</dd>
+  <dd>ローカルのリッスンアドレス(&lt;listen_addr&gt;)ポート(&lt;port&gt;)への接続をダイナミック転送する<br>
+      SOCKS Proxy として動作する<br>
+      &lt;listen_addr&gt;を省略すると、localhostでリッスンする</dd>
 
   <dt id="ssh-x">/ssh-X[[&lt;hostname&gt;]:&lt;displaynumber&gt;[.&lt;screennumber&gt;]]</dt>
-  <dd>X11�]����L���ɂ���<br>
-    �]����f�B�X�v���C���w�肵���ꍇ�́A���̓]�����X11�ڑ���]������B<br>
-    �]����f�B�X�v���C���w�肵�Ȃ������ꍇ�́A�ȉ��̗D�揇�ʂœ]���悪���肳���B
+  <dd>X11転送を有効にする<br>
+    転送先ディスプレイを指定した場合は、その転送先へX11接続を転送する。<br>
+    転送先ディスプレイを指定しなかった場合は、以下の優先順位で転送先が決定される。
     <ol>
-      <li>�ݒ�t�@�C���� [TTSSH] �Z�N�V������ X11Display �ݒ�</li>
-      <li>���ϐ� DISPLAY �̒l</li>
+      <li>設定ファイルの [TTSSH] セクションの X11Display 設定</li>
+      <li>環境変数 DISPLAY の値</li>
       <li>localhost:0.0</li>
     </ol>
   </dd>
 
   <dt id="ssh-agent">/ssh-A</dt>
-  <dd>�G�[�W�F���g�]����L���ɂ���</dd>
+  <dd>エージェント転送を有効にする</dd>
 
   <dt id="ssh-noagent">/ssh-a</dt>
-  <dd>�G�[�W�F���g�]���𖳌��ɂ���</dd>
+  <dd>エージェント転送を無効にする</dd>
 
   <dt id="auth">/ssh-agentconfirm=&lt;on/off&gt;</dt>
   <dd>
       <ul>
-        <li><span class="syntax">on</span> �G�[�W�F���g�]���v�����󂯓���邩�m�F����</li>
-        <li><span class="syntax">off</span> �G�[�W�F���g�]���v�����󂯓���邩�m�F���Ȃ�</li>
+        <li><span class="syntax">on</span> エージェント転送要求を受け入れるか確認する</li>
+        <li><span class="syntax">off</span> エージェント転送要求を受け入れるか確認しない</li>
       </ul></dd>
 
   <dt id="ssh-v">/ssh-v</dt>
-  <dd>���O���x���� VERBOSE ���[�h�ɂ���</dd>
+  <dd>ログレベルを VERBOSE モードにする</dd>
 
   <dt id="ssh-C">/ssh-C</dt>
-  <dd>���k��L���ɂ���(���k���x����6)</dd>
+  <dd>圧縮を有効にする(圧縮レベルは6)</dd>
 
   <dt id="ssh-C=">/ssh-C=&lt;level&gt;</dt>
-  <dd>���k���x��(0-9)���w�肵�Ĉ��k��L���ɂ���</dd>
+  <dd>圧縮レベル(0-9)を指定して圧縮を有効にする</dd>
 
   <dt id="ssh-c">/ssh-c</dt>
-  <dd>���k�𖳌��ɂ���</dd>
+  <dd>圧縮を無効にする</dd>
 
   <dt id="ssh-icon">/ssh-icon=&lt;icon name&gt;</dt>
-  <dd>SSH�ڑ����̃A�C�R�����w�肷��<br>
-      icon name�ɂ́A�ݒ�t�@�C����<a href="../setup/teraterm-win.html#WindowIcon">SSHIcon�ݒ�</a>�Ɠ������̂��g�p�ł��܂��B
+  <dd>SSH接続時のアイコンを指定する<br>
+      icon nameには、設定ファイルの<a href="../setup/teraterm-win.html#WindowIcon">SSHIcon設定</a>と同じものが使用できます。
   </dd>
 
   <dt id="ssh-subsystem">/ssh-subsystem=&lt;subsystem&gt;</dt>
-  <dd>�V�F���ł͂Ȃ�&lt;subsystem&gt;�Ŏw�肵���T�u�V�X�e�����N������B</dd>
+  <dd>シェルではなく&lt;subsystem&gt;で指定したサブシステムを起動する。</dd>
 
   <dt id="ssh-N">/ssh-N</dt>
-  <dd>�ڑ����ɃV�F���Z�b�V�������J�n���Ȃ��B</dd>
+  <dd>接続時にシェルセッションを開始しない。</dd>
 
   <dt id="nosecuritywarning">/nosecuritywarning</dt>
-  <dd>SSH�Z�L�����e�B�x��(known_hosts)�𖳎�����B�����A<strong>�g�p�֎~</strong>�B<br>
+  <dd>SSHセキュリティ警告(known_hosts)を無視する。原則、<strong>使用禁止</strong>。<br>
   
-    <u>���{�I�v�V�����́A�H��Ȃǂ̕������ŁA�@��̎����������������邽�߂ɗp�ӂ���܂����B<br>
-       �ʐM�ɃZ�L�����e�B���X�N������ꍇ�́A��΂ɓ��Y�I�v�V�������g�p���Ȃ��ł��������B<br>
-       ������ɂ����Ă����ȐӔC�ł��肢���܂��B<br>
+    <u>※本オプションは、工場などの閉じた環境で、機器の自動試験を実現するために用意されました。<br>
+       通信にセキュリティリスクがある場合は、絶対に当該オプションを使用しないでください。<br>
+       いずれにおいても自己責任でお願いします。<br>
     </u>
   </dd>
 
 </dl>
 
 <p>
-�p�����[�^�̒l�ɃX�y�[�X��Z�~�R�������܂߂邽�߂ɂ́A�l�S�̂� `"' �ň͂�ł��������B(�o�[�W���� 4.63(TTSSH 2.51)�ȍ~)<br />
-�l�� `"' ���܂߂邽�߂ɂ́A�A������ `"'("") ���w�肵�Ă��������B(�o�[�W���� 4.63(TTSSH 2.51)�ȍ~)
+パラメータの値にスペースやセミコロンを含めるためには、値全体を `"' で囲んでください。(バージョン 4.63(TTSSH 2.51)以降)<br />
+値に `"' を含めるためには、連続した `"'("") を指定してください。(バージョン 4.63(TTSSH 2.51)以降)
 </p>
 <p>
-<strong>�ȑO�̎d�l</strong><br />
-�p�����[�^�̒l�ɃX�y�[�X���܂߂邽�߂ɂ́A`@' ���w�肵�Ă��������B'@' ���܂߂邽�߂ɂ� '@@' ���w�肵�Ă��������B(�o�[�W���� 4.10-4.62(TTSSH 1.08-2.50))
+<strong>以前の仕様</strong><br />
+パラメータの値にスペースを含めるためには、`@' を指定してください。'@' を含めるためには '@@' を指定してください。(バージョン 4.10-4.62(TTSSH 1.08-2.50))
 </p>
 
 
-<h2 id="example1">��</h2>
+<h2 id="example1">例</h2>
 
 <pre>
 ttermpro.exe server1:22 /ssh /ssh-L30025:smtpsrv1:25 /ssh-L30110:pop3srv1:110
@@ -205,56 +205,56 @@ ttermpro.exe server7:22 /ssh /2 /auth=password /user=guest /passwd="foo""bar"
 </pre>
 
 
-<h2 id="passwd_specify">�p�X���[�h���w�肷��Ƃ��̒���</h2>
+<h2 id="passwd_specify">パスワードを指定するときの注意</h2>
 
 <p>
-ttermpro.exe �ɃR�}���h���C�������Ńp�X���[�h���w�肷��ƁA�N�����Ă���v���Z�X�̃R�}���h���C���������m�F���邱�Ƃɂ���āA�p�X���[�h�����邱�Ƃ��ł��܂��B<br>
-�R�}���h���C�������������錠�����Ȃ���Ό����܂��񂪁A���p�����\�����Ȃ��Ƃ͌����؂�܂���B<br>
-�ȉ��ɁA�p�X���[�h���w�肳���P�[�X�ƁA�����@�����邩�ǂ����������܂��B
+ttermpro.exe にコマンドライン引数でパスワードを指定すると、起動しているプロセスのコマンドライン引数を確認することによって、パスワードを見ることができます。<br>
+コマンドライン引数を見られる権限がなければ見られませんが、悪用される可能性がないとは言い切れません。<br>
+以下に、パスワードが指定されるケースと、回避方法があるかどうかを挙げます。
 </p>
 
 <dl>
-  <dt>�R�}���h���C���������w�肵�Ď��s����</dt>
+  <dt>コマンドライン引数を指定して実行する</dt>
   <dd>
-    ���̂悤�ɃR�}���h�v�����v�g����A���邢�́u�t�@�C�������w�肵�Ď��s�v����A���邢�̓V���[�g�J�b�g����N���i�ڑ��j����<br>
+    次のようにコマンドプロンプトから、あるいは「ファイル名を指定して実行」から、あるいはショートカットから起動（接続）する<br>
     <pre>ttermpro.exe server3:22 /ssh /2 /auth=password /user=guest /passwd=guest</pre>
-    ���̂悤�ɋN�������ꍇ�́A���̃v���Z�X�̃R�}���h���C�������͌����邱�ƂɂȂ�܂��B
+    このように起動した場合は、そのプロセスのコマンドライン引数は見えることになります。
   </dd>
   <dt>File &gt; Duplicate session</dt>
   <dd>
-    Tera Term �������ŃR�}���h���C�������𐶐����� ttermpro.exe ���N�����Ă��܂��B���̂��߁A���̃v���Z�X�̃R�}���h���C�������͌����邱�ƂɂȂ�܂��B
+    Tera Term が内部でコマンドライン引数を生成して ttermpro.exe を起動しています。そのため、そのプロセスのコマンドライン引数は見えることになります。
   </dd>
-  <dt>New Connection �_�C�A���O�� "Host" �Ɏw�肵�Đڑ�����</dt>
+  <dt>New Connection ダイアログの "Host" に指定して接続する</dt>
   <dd>
-    New Connection �_�C�A���O�� Host �ɂ́A�R�}���h���C���������w�肷�邱�Ƃ��ł��܂��B<br>
-    New Connection �_�C�A���O��\������ Tera Term �����ڑ��̂Ƃ��ɂ́A�V���� ttermpro.exe ���N�����Ȃ����ߖ�肠��܂���B<br>
-    Tera Term �����łɐڑ�����Ă���Ƃ��͐V���� ttermpro.exe �������t���ŋN�����邽�߁A���̃v���Z�X�̃R�}���h���C�������͌����邱�ƂɂȂ�܂��B<br>
-    �u�ڑ��ς݂� Tera Term ����V���Ȑڑ������Ȃ��v���Ƃŉ���ł��܂��B
+    New Connection ダイアログの Host には、コマンドライン引数を指定することができます。<br>
+    New Connection ダイアログを表示した Tera Term が未接続のときには、新しい ttermpro.exe を起動しないため問題ありません。<br>
+    Tera Term がすでに接続されているときは新たな ttermpro.exe を引数付きで起動するため、そのプロセスのコマンドライン引数は見えることになります。<br>
+    「接続済みの Tera Term から新たな接続をしない」ことで回避できます。
   </dd>
-  <dt>connect �}�N���R�}���h�̈����Ɏw�肷��</dt>
+  <dt>connect マクロコマンドの引数に指定する</dt>
   <dd>
-    connect �}�N���R�}���h�̈����́A�}�N������ ttermpro.exe ���N����������ł��B<br>
-    �}�N������ Tera Term �Ƀ����N���Ă��Ȃ���ԂŎ��̂悤�� connect �R�}���h�����s����ƁA�V���� ttermpro.exe �������t���ŋN�����邽�߁A���̃v���Z�X�̃R�}���h���C�������͌����邱�ƂɂȂ�܂��B<br>
+    connect マクロコマンドの引数は、マクロから ttermpro.exe を起動する引数です。<br>
+    マクロから Tera Term にリンクしていない状態で次のような connect コマンドを実行すると、新たな ttermpro.exe を引数付きで起動するため、そのプロセスのコマンドライン引数は見えることになります。<br>
     <pre>connect 'server3:22 /ssh /2 /auth=password /user=guest /passwd=guest'</pre>
-    ���̂悤�ɁA�܂� Tera Term �ƃ����N���Ă��炠�炽�߂Đڑ�����ƁA�����t���ŐV���� ttermpro.exe ���N�����܂���B
+    次のように、まず Tera Term とリンクしてからあらためて接続すると、引数付きで新たな ttermpro.exe が起動しません。
     <pre>
 ; '/DS' option suppresses "New Connection" dialog 
 connect '/DS'
 connect 'server3:22 /ssh /2 /auth=password /user=guest /passwd=guest'
     </pre>
   </dd>
-  <dt>TeraTerm Menu ����N������</dt>
+  <dt>TeraTerm Menu から起動する</dt>
   <dd>
-    TeraTerm Menu �͓��͂������e���R�}���h���C�������ɂ��ĐV���� ttermpro.exe ���N�����邽�߁A���̃v���Z�X�̃R�}���h���C�������͌����邱�ƂɂȂ�܂��B<br>
-    ��L�̂悤�ȃ}�N�����L�q���ASSH �ڑ��ݒ�̑���Ƀ}�N���t�@�C�����g���w������邱�Ƃŉ���ł��܂��B
+    TeraTerm Menu は入力した内容をコマンドライン引数にして新たな ttermpro.exe を起動するため、そのプロセスのコマンドライン引数は見えることになります。<br>
+    上記のようなマクロを記述し、SSH 接続設定の代わりにマクロファイルを使う指定をすることで回避できます。
   </dd>
 </dl>
 
 
-<h2 id="example2">��: Pageant�Ƃ̘A�g</h2>
+<h2 id="example2">例: Pageantとの連携</h2>
 
 <p>
-<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Pageant</a>���X�^�[�g�A�b�v�t�H���_�֐ݒu�����܂��B
+<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Pageant</a>をスタートアップフォルダへ設置させます。
 </p>
 
 <pre>
@@ -262,7 +262,7 @@ C:\usr\pageant.exe c:\usr\Identity.ppk
 </pre>
 
 <p>
-Tera Term����Pageant�𗘗p���āA���J���F�؂ɂ��ڑ�������ɂ͈ȉ��̂悤�ɂ��܂��B
+Tera TermからPageantを利用して、公開鍵認証による接続をするには以下のようにします。
 </p>
 
 <pre>

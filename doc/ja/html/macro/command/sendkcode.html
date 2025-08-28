@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>sendkcode</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,36 +14,36 @@
 <h1>sendkcode</h1>
 
 <p>
-�L�[�R�[�h�𑗐M����B
+キーコードを送信する。
 </p>
 
 <pre class="macro-syntax">
 sendkcode &lt;key code&gt; &lt;repeat count&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-����L�[�܂��̓L�[�̑g�ݍ��킹���������Ƃɑ΂��Ċ��蓖�Ă�ꂽ�@�\�� Tera Term �Ɏ��s������B<br>
-���̃L�[�܂��̓L�[�̑g�ݍ��킹�� KEYCODE.EXE �ɂ���Ē�`�����L�[�R�[�h &lt;key code&gt;�Ŏw�肳���B���̋@�\�� &lt;repeat count&gt; ��J��Ԃ��Ď��s�����B
+あるキーまたはキーの組み合わせを押すことに対して割り当てられた機能を Tera Term に実行させる。<br>
+そのキーまたはキーの組み合わせは KEYCODE.EXE によって定義されるキーコード &lt;key code&gt;で指定される。その機能は &lt;repeat count&gt; 回繰り返して実行される。
 </p>
 
 <p>
-�ʏ�A���̋@�\�Ƃ͕����܂��͕�������z�X�g�֑��o����Ƃ������ƁB���̋@�\�� Tera Term �̃L�[�{�[�h�ݒ�t�@�C���ɂ���Ē�`���邱�Ƃ��ł���B<br>
-<a href="../../setup/keyboard.html">�L�[�{�[�h�ݒ�t�@�C��</a> �Q�ƁB
+通常、その機能とは文字または文字列をホストへ送出するということ。その機能は Tera Term のキーボード設定ファイルによって定義することができる。<br>
+<a href="../../setup/keyboard.html">キーボード設定ファイル</a> 参照。
 </p>
 
 <p>
-sendkcode ��p���� <a href="../../setup/keyboard.html">�L�[�{�[�h�ݒ�t�@�C��</a>�� [User keys] �Z�N�V���� &lt;����t���O&gt; 2 �}�N���t�@�C���̎��s�͂ł��܂���B<br>
-sendkcode ��p���� <a href="../../setup/keyboard.html">�L�[�{�[�h�ݒ�t�@�C��</a>�� [User keys] �Z�N�V���� &lt;����t���O&gt; 3 Tera Term �̃��j���[�R�}���h�̎��s�͖��T�|�[�g�ł��B<br>
-Tera Term �̃��j���[�R�}���h�̎��s��<a href="callmenu.html">callmenu</a>�R�}���h���g�p���ĉ������B
+sendkcode を用いて <a href="../../setup/keyboard.html">キーボード設定ファイル</a>の [User keys] セクション &lt;制御フラグ&gt; 2 マクロファイルの実行はできません。<br>
+sendkcode を用いた <a href="../../setup/keyboard.html">キーボード設定ファイル</a>の [User keys] セクション &lt;制御フラグ&gt; 3 Tera Term のメニューコマンドの実行は未サポートです。<br>
+Tera Term のメニューコマンドの実行は<a href="callmenu.html">callmenu</a>コマンドを使用して下さい。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
-; Tera Term �Ɂ��L�[��3�񉟂��ꂽ�ꍇ�Ɠ��������������B
-; ���L�[�̃L�[�R�[�h�� IBM PC �L�[�{�[�h�̏ꍇ336�B
+; Tera Term に↓キーが3回押された場合と同じ動作をさせる。
+; ↓キーのキーコードは IBM PC キーボードの場合336。
 sendkcode 336 3
 </pre>
 

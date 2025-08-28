@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>filecopy</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,55 +14,55 @@
 <h1>filecopy</h1>
 
 <p>
-�t�@�C�����R�s�[����B
+ファイルをコピーする。
 </p>
 
 <pre class="macro-syntax">
 filecopy &lt;file1&gt; &lt;file2&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-�t�@�C�� &lt;file1&gt; ���R�s�[���A�t�@�C�� &lt;file2&gt; ���쐬����B<br>
-&lt;file2&gt; �����łɑ��݂���ꍇ�͏㏑�������B&lt;file1&gt; �� &lt;file2&gt; �͈Ⴄ���O�łȂ���΂Ȃ�Ȃ��B<br>
-�t�@�C���̃R�s�[�����������ꍇ�A�V�X�e���ϐ� result �� 0 ���i�[�����B����ȊO�̏ꍇ result �� 0 �ȊO���i�[�����B(�o�[�W���� 4.104 �ȍ~)
+ファイル &lt;file1&gt; をコピーし、ファイル &lt;file2&gt; を作成する。<br>
+&lt;file2&gt; がすでに存在する場合は上書きされる。&lt;file1&gt; と &lt;file2&gt; は違う名前でなければならない。<br>
+ファイルのコピーが成功した場合、システム変数 result に 0 が格納される。それ以外の場合 result に 0 以外が格納される。(バージョン 4.104 以降)
 </p>
 
-<h2>�V�X�e���ϐ� result �̒l</h2>
+<h2>システム変数 result の値</h2>
 
 <p>
-���̃R�}���h�̌��ʁA�R�s�[�̏�Ԃɉ����Ĉȉ��̂����̈�̒l���V�X�e���ϐ� result �Ɋi�[�����B
+このコマンドの結果、コピーの状態に応じて以下のうちの一つの値がシステム変数 result に格納される。
 </p>
 
 <table>
  <tr>
-  <th>�l</th>
-  <th>���</th>
+  <th>値</th>
+  <th>状態</th>
  </tr>
  <tr>
   <td>-4</td>
-  <td>�R�s�[�Ɏ��s�����B</td>
+  <td>コピーに失敗した。</td>
  </tr>
  <tr>
   <td>-3</td>
-  <td>�t�@�C�� &lt;file1&gt; �ƃt�@�C�� &lt;file2&gt; ���������O�ł���B</td>
+  <td>ファイル &lt;file1&gt; とファイル &lt;file2&gt; が同じ名前である。</td>
  </tr>
  <tr>
   <td>-2</td>
-  <td>�t�@�C�� &lt;file2&gt; �́A�t�@�C�����ɗ��p�ł��Ȃ��������܂�ł���B</td>
+  <td>ファイル &lt;file2&gt; は、ファイル名に利用できない文字を含んでいる。</td>
  </tr>
  <tr>
   <td>-1</td>
-  <td>�t�@�C�� &lt;file1&gt; �́A�t�@�C�����ɗ��p�ł��Ȃ��������܂�ł���B</td>
+  <td>ファイル &lt;file1&gt; は、ファイル名に利用できない文字を含んでいる。</td>
  </tr>
  <tr>
   <td>0</td>
-  <td>�R�s�[�ɐ��������B</td>
+  <td>コピーに成功した。</td>
  </tr>
 </table>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 filecopy 'test.dat' 'test2.dat'

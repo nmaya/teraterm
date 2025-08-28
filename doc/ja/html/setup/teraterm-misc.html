@@ -2,17 +2,17 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>���̑� (Tera Term �ݒ�t�@�C��)</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>その他 (Tera Term 設定ファイル)</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1 id="beep">�ڑ����̃r�[�v��</h1>
+<h1 id="beep">接続時のビープ音</h1>
 
 <p>
-TCP/IP �ڑ����m���������Ƃ��̐ڑ����؂ꂽ���Ƀr�[�v����炷�ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ BeepOnConnect �s���ȉ��̂悤�ɕύX���Ă��������B
+TCP/IP 接続が確立した時とその接続が切れた時にビープ音を鳴らすには、設定ファイルの [Tera Term] セクションの BeepOnConnect 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -20,27 +20,27 @@ BeepOnConnect=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 BeepOnConnect=off
 </pre>
 
 
-<h1 id="IME">IME (���o�C�g�������̓V�X�e��)�Ɋւ���ݒ�</h1>
+<h1 id="IME">IME (多バイト文字入力システム)に関する設定</h1>
 
 <p>
-IME �̃C�����C�����͂����Ȃ��悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ IMEInline �s���ȉ��̂悤�ɕύX���Ă��������B
+IME のインライン入力をしないようにするには、設定ファイルの [Tera Term] セクションの IMEInline 行を以下のように変更してください。
 </p>
 <pre>
 IMEInline=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 IMEInline=on
 </pre>
 
 <p>
-IME �Ɋւ��鉽�炩�̕s��̂��� Tera Term �� IME �𐧌䂵�Ȃ��悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ IME �s���ȉ��̂悤�ɕύX���Ă��������B
+IME に関する何らかの不具合のため Tera Term が IME を制御しないようにするには、設定ファイルの [Tera Term] セクションの IME 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -48,31 +48,31 @@ IME=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 IME=on
 </pre>
 
 
-<h1 id="macro">�N�����Ƀ}�N�������s</h1>
+<h1 id="macro">起動時にマクロを実行</h1>
 
 <p>
-Tera Term �N�����Ƀ}�N���������I�Ɏ��s���邱�Ƃ��ł��܂��B�}�N���t�@�C�����̓R�}���h���C���I�v�V���� "/M=&lt;�}�N���t�@�C����&gt;" ���g�����A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ StartupMacro �s���ȉ��̂悤�ɕύX���邱�Ƃɂ���Ďw��ł��܂��B
+Tera Term 起動時にマクロを自動的に実行することができます。マクロファイル名はコマンドラインオプション "/M=&lt;マクロファイル名&gt;" を使うか、設定ファイルの [Tera Term] セクションの StartupMacro 行を以下のように変更することによって指定できます。
 </p>
 
 <pre>
-StartupMacro=&lt;�}�N���t�@�C����&gt;
+StartupMacro=&lt;マクロファイル名&gt;
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 StartupMacro=
 </pre>
 
 
-<h1 id="UILang">���[�U�C���^�t�F�[�X�̌���t�@�C��</h1>
+<h1 id="UILang">ユーザインタフェースの言語ファイル</h1>
 
 <p>
-���[�U�C���^�t�F�[�X�̃��b�Z�[�W���܂܂ꂽ�t�@�C�����w�肷��ƁA�\������錾���؂芷���邱�Ƃ��ł��܂��B
+ユーザインタフェースのメッセージが含まれたファイルを指定すると、表示される言語を切り換えることができます。
 </p>
 
 <pre>
@@ -80,15 +80,15 @@ UILanguageFile=lang\Japanese.lng
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 UILanguageFile=
 </pre>
 
 
-<h1 id="broadcast">�u���[�h�L���X�g�R�}���h�̗����̕ۑ���</h1>
+<h1 id="broadcast">ブロードキャストコマンドの履歴の保存数</h1>
 
 <p>
-�u���[�h�L���X�g�R�}���h�̗����̕ۑ�����ݒ���������ꍇ�AMaxBroadcatHistory �G���g����ݒ肵�܂��B�ȉ��ɗ�������܂��B
+ブロードキャストコマンドの履歴の保存数を設定をしたい場合、MaxBroadcatHistory エントリを設定します。以下に例を示します。
 </p>
 
 <pre>
@@ -96,19 +96,19 @@ MaxBroadcatHistory=200
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 MaxBroadcatHistory=99
 </pre>
 
 
-<h1 id="mousewheel">�A�v���P�[�V�����J�[�\�����[�h���̃}�E�X�z�C�[���̓���</h1>
+<h1 id="mousewheel">アプリケーションカーソルモード時のマウスホイールの動作</h1>
 
 <p>
-�}�E�X�̃z�C�[������]���������͒ʏ�̓X�N���[���o�[���㉺���܂����A�A�v���P�[�V�����J�[�\�����[�h(vi��less�����N������ƒʏ�͂��̃��[�h�ɂȂ�܂�)���ɂ̓X�N���[���o�[�͓��������A�����ɏ�܂��͉��J�[�\���L�[�̃V�[�P���X�𑗐M���܂��B
+マウスのホイールを回転させた時は通常はスクロールバーが上下しますが、アプリケーションカーソルモード(viやless等を起動すると通常はこのモードになります)時にはスクロールバーは動かさず、かわりに上または下カーソルキーのシーケンスを送信します。
 </p>
 
 <p>
-���̋@�\�𖳌��ɂ��ăA�v���P�[�V�����J�[�\�����[�h�ł��}�E�X�z�C�[���̉�]�ŃX�N���[���o�[�𓮂��������ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ TranslateWheelToCursor �s���ȉ��̂悤�ɕύX���Ă��������B
+この機能を無効にしてアプリケーションカーソルモードでもマウスホイールの回転でスクロールバーを動かしたい場合は、設定ファイルの [Tera Term] セクションの TranslateWheelToCursor 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -116,7 +116,7 @@ TranslateWheelToCursor=off
 </pre>
 
 <p>
-�܂��A�R���g���[���L�[�������Ă���Ԃ݂̂��̋@�\�𖳌��ɂ������ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ DisableWheelToCursorByCtrl �s���ȉ��̂悤�ɕύX���Ă��������B
+また、コントロールキーを押している間のみこの機能を無効にしたい場合は、設定ファイルの [Tera Term] セクションの DisableWheelToCursorByCtrl 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -124,17 +124,17 @@ DisableWheelToCursorByCtrl=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 TranslateWheelToCursor=on
 DisableWheelToCursorByCtrl=on
 </pre>
 
 
-<h1 id="hostdlg">�N������ "New Connection" �_�C�A���O�̕\��</h1>
+<h1 id="hostdlg">起動時の "New Connection" ダイアログの表示</h1>
 
 <p>
-Tera Term �̓|�[�g�̎�ނ� TCP/IP �̏ꍇ�A�N������ "New Connection" �_�C�A���O��\�����܂��B(Serial�̏ꍇ�ɂ͕\�����܂���)<br>
-�����\���������Ȃ��ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ HostDialogOnStartup �s���ȉ��̂悤�ɕύX���Ă��������B
+Tera Term はポートの種類が TCP/IP の場合、起動時に "New Connection" ダイアログを表示します。(Serialの場合には表示しません)<br>
+これを表示したくない場合は、設定ファイルの [Tera Term] セクションの HostDialogOnStartup 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -142,15 +142,15 @@ HostDialogOnStartup=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 HostDialogOnStartup=on
 </pre>
 
 
-<h1 id="DisablePasteMouseMButton">�}�E�X�̒��{�^���ɂ��\��t����L���ɂ���</h1>
+<h1 id="DisablePasteMouseMButton">マウスの中ボタンによる貼り付けを有効にする</h1>
 
 <p>
-���{�^�����N���b�N�����Ƃ��ɓ\��t����L���ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ DisablePasteMouseMButton �s���ȉ��̂悤�ɕύX���Ă��������B
+中ボタンをクリックしたときに貼り付けを有効にするには、設定ファイルの [Tera Term] セクションの DisablePasteMouseMButton 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -158,15 +158,15 @@ DisablePasteMouseMButton=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 DisablePasteMouseMButton=on
 </pre>
 
 
-<h1 id="DisableMenuNewConnection">���j���[�� New connection �𖳌��ɂ���</h1>
+<h1 id="DisableMenuNewConnection">メニューの New connection を無効にする</h1>
 
 <p>
-���j���[�� "New connection" �𖳌��ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ DisableMenuNewConnection �s���ȉ��̂悤�ɕύX���Ă��������B
+メニューの "New connection" を無効にするには、設定ファイルの [Tera Term] セクションの DisableMenuNewConnection 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -174,15 +174,15 @@ DisableMenuNewConnection=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 DisableMenuNewConnection=off
 </pre>
 
 
-<h1 id="DisableMenuDuplicateSession">���j���[�� Duplicate session �𖳌��ɂ���</h1>
+<h1 id="DisableMenuDuplicateSession">メニューの Duplicate session を無効にする</h1>
 
 <p>
-���j���[�� "Duplicate session" �𖳌��ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ DisableMenuDuplicateSession �s���ȉ��̂悤�ɕύX���Ă��������B
+メニューの "Duplicate session" を無効にするには、設定ファイルの [Tera Term] セクションの DisableMenuDuplicateSession 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -190,15 +190,15 @@ DisableMenuDuplicateSession=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 DisableMenuDuplicateSession=off
 </pre>
 
 
-<h1 id="DisableMenuSendBreak">���j���[�� Send break �𖳌��ɂ���</h1>
+<h1 id="DisableMenuSendBreak">メニューの Send break を無効にする</h1>
 
 <p>
-���j���[�� "Send break" �𖳌��ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ DisableMenuSendBreak �s���ȉ��̂悤�ɕύX���Ă��������B
+メニューの "Send break" を無効にするには、設定ファイルの [Tera Term] セクションの DisableMenuSendBreak 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -206,15 +206,15 @@ DisableMenuSendBreak=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 DisableMenuSendBreak=off
 </pre>
 
 
-<h1 id="ClearScreenOnCloseConnection">�ؒf���ɉ�ʂ��N���A����</h1>
+<h1 id="ClearScreenOnCloseConnection">切断時に画面をクリアする</h1>
 
 <p>
-�ؒf���ɉ�ʂ��N���A����ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ ClearScreenOnCloseConnection �s���ȉ��̂悤�ɕύX���Ă��������B
+切断時に画面をクリアするには、設定ファイルの [Tera Term] セクションの ClearScreenOnCloseConnection 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -222,15 +222,15 @@ ClearScreenOnCloseConnection=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 ClearScreenOnCloseConnection=off
 </pre>
 
 
-<h1 id="AcceleratorNewConnection">New Connection �̃A�N�Z�����[�^�L�[�𖳌��ɂ���</h1>
+<h1 id="AcceleratorNewConnection">New Connection のアクセラレータキーを無効にする</h1>
 
 <p>
-New Connection �̃A�N�Z�����[�^�L�[�𖳌��ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ AcceleratorNewConnection �s���ȉ��̂悤�ɕύX���Ă��������B
+New Connection のアクセラレータキーを無効にするには、設定ファイルの [Tera Term] セクションの AcceleratorNewConnection 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -238,15 +238,15 @@ AcceleratorNewConnection=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 AcceleratorNewConnection=on
 </pre>
 
 
-<h1 id="DisableAcceleratorDuplicateSession">Duplicate session �̃A�N�Z�����[�^�L�[�𖳌��ɂ���</h1>
+<h1 id="DisableAcceleratorDuplicateSession">Duplicate session のアクセラレータキーを無効にする</h1>
 
 <p>
-Duplicate session �̃A�N�Z�����[�^�L�[�𖳌��ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ DisableAcceleratorDuplicateSession �s���ȉ��̂悤�ɕύX���Ă��������B
+Duplicate session のアクセラレータキーを無効にするには、設定ファイルの [Tera Term] セクションの DisableAcceleratorDuplicateSession 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -254,15 +254,15 @@ DisableAcceleratorDuplicateSession=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 DisableAcceleratorDuplicateSession=off
 </pre>
 
 
-<h1 id="AcceleratorCygwinConnection">Cygwin connection �̃A�N�Z�����[�^�L�[�𖳌��ɂ���</h1>
+<h1 id="AcceleratorCygwinConnection">Cygwin connection のアクセラレータキーを無効にする</h1>
 
 <p>
-Cygwin connection �̃A�N�Z�����[�^�L�[�𖳌��ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ AcceleratorCygwinConnection �s���ȉ��̂悤�ɕύX���Ă��������B
+Cygwin connection のアクセラレータキーを無効にするには、設定ファイルの [Tera Term] セクションの AcceleratorCygwinConnection 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -270,16 +270,16 @@ AcceleratorCygwinConnection=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 AcceleratorCygwinConnection=on
 </pre>
 
 
-<h1 id="ClickableUrlBrowser">�N���b�J�u�� URL �ŋN������u���E�U</h1>
+<h1 id="ClickableUrlBrowser">クリッカブル URL で起動するブラウザ</h1>
 
 <p>
-URL �N���b�N���L���ȏꍇ�A�ʏ�� URL �̃X�L�[���� OS �Ŋ֘A�t����ꂽ�v���O�������N�����܂��B<br>
-�N������u���E�U�ƈ������w�肷��ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ ClickableUrlBrowser �s�� ClickableUrlBrowserArg �s���ȉ��̂悤�ɕύX���Ă��������B
+URL クリックが有効な場合、通常は URL のスキームに OS で関連付けられたプログラムが起動します。<br>
+起動するブラウザと引数を指定するには、設定ファイルの [Tera Term] セクションの ClickableUrlBrowser 行と ClickableUrlBrowserArg 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -297,17 +297,17 @@ ClickableUrlBrowserArg=
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 ClickableUrlBrowser=
 ClickableUrlBrowserArg=
 </pre>
 
 
-<h1 id="JoinSplitURL">���s���Ă��� URL ���p���������̂Ƃ��Ĉ���</h1>
+<h1 id="JoinSplitURL">改行している URL を継続したものとして扱う</h1>
 
 <p>
-�[���̉E�[���玟�̍s�� URL �������Ă���ꍇ�A�ʏ�͌p������ URL �Ƃ��Ĉ�����B�������A����̊��ł͒[���̉E�[�ŉ��s�𑗐M����̂ŁAURL �����̍s�Ɍp���������̂Ƃ��Ĉ����Ȃ��B<br>
-���s�ŕ������ꂽ URL ���p���������̂Ƃ��Ĉ����ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ JoinSplitURL ���ȉ��̂悤�ɕύX���Ă��������B
+端末の右端から次の行に URL が続いている場合、通常は継続した URL として扱われる。しかし、特定の環境では端末の右端で改行を送信するので、URL が次の行に継続したものとして扱われない。<br>
+改行で分割された URL を継続したものとして扱うには、設定ファイルの [Tera Term] セクションの JoinSplitURL を以下のように変更してください。
 </p>
 
 <pre>
@@ -315,8 +315,8 @@ JoinSplitURL=on
 </pre>
 
 <p>
-emacs ���ł́A����s�����̍s�Ɍp�����ꂽ�ꍇ�ɍs���Ɍp����\���L����\������B���̋L���� URL �̈ꕔ�Ƃ݂Ȃ����ƕs�s���ȏꍇ������̂ŁATera Term �͍s���̋L���𖳎����邱�Ƃ��ł���B<br>
-�s���̋L���𖳎����Ȃ��悤�ɂ���ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ JoinSplitURLIgnoreEOLChar ���ȉ��̂悤�ɕύX���Ă��������B
+emacs 等では、ある行が次の行に継続された場合に行末に継続を表す記号を表示する。この記号が URL の一部とみなされると不都合な場合があるので、Tera Term は行末の記号を無視することができる。<br>
+行末の記号を無視しないようにするには、設定ファイルの [Tera Term] セクションの JoinSplitURLIgnoreEOLChar を以下のように変更してください。
 </p>
 
 <pre>
@@ -324,8 +324,8 @@ JoinSplitURLIgnoreEOLChar=
 </pre>
 
 <p>
-�܂��Aemacs �ł͌p�������s�̍s���ɕ\������L����ύX���邱�Ƃ��ł���B<br>
-��������s���̋L����ύX����ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ JoinSplitURLIgnoreEOLChar ���ȉ��̂悤�ɕύX���Ă��������B
+また、emacs では継続した行の行末に表示する記号を変更することができる。<br>
+無視する行末の記号を変更するには、設定ファイルの [Tera Term] セクションの JoinSplitURLIgnoreEOLChar を以下のように変更してください。
 </p>
 
 <pre>
@@ -333,17 +333,17 @@ JoinSplitURLIgnoreEOLChar=|
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 JoinSplitURL=off
 JoinSplitURLIgnoreEOLChar=\
 </pre>
 
 
-<h1 id="LogLockExclusive">���O�t�@�C����r�����b�N����</h1>
+<h1 id="LogLockExclusive">ログファイルを排他ロックする</h1>
 
 <p>
-Tera Term �̓��O�t�@�C�����������ނ��߂ɊJ���Ƃ��r�����b�N�������܂��B����͕����̃v���Z�X���瓯�����O�t�@�C���ɏ������݂����Ȃ����߂ŁA�����ɓ����t�@�C�����J�����Ƃ���Ǝ��s���܂��B<br>
-���炩�̗��R�œ������O�t�@�C���ɓ����ɏ������݂����ꍇ��A�������ݒ��̃��O�t�@�C����ʂ̃G�f�B�^�ŊJ���W���ɂȂ�ꍇ�̂��߂ɁA�r�����b�N�������Ƀ��O�t�@�C�����J�����Ƃ��ł��܂��B
+Tera Term はログファイルを書き込むために開くとき排他ロックをかけます。これは複数のプロセスから同じログファイルに書き込みをしないためで、同時に同じファイルを開こうとすると失敗します。<br>
+何らかの理由で同じログファイルに同時に書き込みたい場合や、書き込み中のログファイルを別のエディタで開く妨げになる場合のために、排他ロックをせずにログファイルを開くことができます。
 </p>
 
 <pre>
@@ -351,16 +351,16 @@ LogLockExclusive=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 LogLockExclusive=on
 </pre>
 
 
-<h1 id="DeferredLogWriteMode">���O�t�@�C����x���������݂���</h1>
+<h1 id="DeferredLogWriteMode">ログファイルを遅延書き込みする</h1>
 
 <p>
-���O�t�@�C���̏������݂�ʃX���b�h�ōs�����ƂŁA�l�b�g���[�N�h���C�u��Ƀ��O�t�@�C�����̎悵�Ă��A
-Tera Term�̓��삪�x���Ȃ�Ȃ��悤�ɂ��܂��B
+ログファイルの書き込みを別スレッドで行うことで、ネットワークドライブ上にログファイルを採取しても、
+Tera Termの動作が遅くならないようにします。
 </p>
 
 <pre>
@@ -368,53 +368,53 @@ DeferredLogWriteMode=off
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 DeferredLogWriteMode=on
 </pre>
 
 
-<h1 id="LogTimestampFormat">���O�̍s���ɒǉ�����^�C���X�^���v�̃t�H�[�}�b�g���w�肷��</h1>
+<h1 id="LogTimestampFormat">ログの行頭に追加するタイムスタンプのフォーマットを指定する</h1>
 
 <p>
-Tera Term �̓��O�t�@�C���̏������ݎ��ɍs���Ƀ^�C���X�^���v���������ނ��Ƃ��ł��܂����A�^�C���X�^���v�̃t�H�[�}�b�g���w�肷�邱�Ƃ��ł��܂��B
+Tera Term はログファイルの書き込み時に行頭にタイムスタンプを書き込むことができますが、タイムスタンプのフォーマットを指定することができます。
 </p>
 
 <pre>
-����
-%a      �j���̏ȗ��`�B
-%b      ���̏ȗ��`�B
-%d      10 �i���ŕ\�����̓��t (01 �` 31)�B
-%e      10 �i���ŕ\�����̓��t ( 1 �` 31)�B
-%H      24 ���ԕ\�L�̎��� (00 �` 23)�B
-%N      10 �i���ŕ\���~���b (000 �` 999)�B
-%m      10 �i���ŕ\���� (01 �` 12)�B
-%M      10 �i���ŕ\���� (00 �` 59)�B
-%S      10 �i���ŕ\���b (00 �` 59)�B
-%w      10 �i���ŕ\���j�� (0 �` 6�A���j���� 0)�B
-%Y      10 �i���ŕ\�� 4 ���̐���B
-%%      �p�[�Z���g�L���B
+書式
+%a      曜日の省略形。
+%b      月の省略形。
+%d      10 進数で表す月の日付 (01 〜 31)。
+%e      10 進数で表す月の日付 ( 1 〜 31)。
+%H      24 時間表記の時間 (00 〜 23)。
+%N      10 進数で表すミリ秒 (000 〜 999)。
+%m      10 進数で表す月 (01 〜 12)。
+%M      10 進数で表す分 (00 〜 59)。
+%S      10 進数で表す秒 (00 〜 59)。
+%w      10 進数で表す曜日 (0 〜 6、日曜日が 0)。
+%Y      10 進数で表す 4 桁の西暦。
+%%      パーセント記号。
 </pre>
 
 <pre>
-��:
+例:
 ; Sun Jun  4 21:12:40.123 2017
 LogTimestampFormat=%a %b %e %H:%M:%S.%N %Y
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 ; 2017-06-04 21:12:40.123
 LogTimestampFormat=%Y-%m-%d %H:%M:%S.%N
 </pre>
 
 
-<h1 id="LogTimestampUTC">���O�̍s���ɒǉ�����^�C���X�^���v�̎�����UTC���g�p����</h1>
+<h1 id="LogTimestampUTC">ログの行頭に追加するタイムスタンプの時刻にUTCを使用する</h1>
 
 <p>
-Tera Term �̓��O�t�@�C���̏������ݎ��ɍs���Ƀ^�C���X�^���v���������ނ��Ƃ��ł��܂����A�ʏ�̓��[�J���������g�p���܂��B<br>
-�Ď��ԂɑΉ��������[�J���������g�p���Ă���ƁA�Ď��Ԃ̐؂�ւ��^�C�~���O�Ɏ������i�ށi�܂��͖߂�j���߂ɈӐ}���Ȃ��������L�^����邱�Ƃ�����܂��B<br>
-UTC �̓����ɂ͉Ď��Ԃ��Ȃ����߁A���̖���������邱�Ƃ��ł��܂��B<br>
-���[�J�������̂����� UTC �̓������g�p����ꍇ�́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ LogTimestampUTC �s���ȉ��̂悤�ɕύX���Ă��������B
+Tera Term はログファイルの書き込み時に行頭にタイムスタンプを書き込むことができますが、通常はローカル日時を使用します。<br>
+夏時間に対応したローカル日時を使用していると、夏時間の切り替えタイミングに時刻が進む（または戻る）ために意図しない時刻が記録されることがあります。<br>
+UTC の日時には夏時間がないため、この問題を回避することができます。<br>
+ローカル日時のかわりに UTC の日時を使用する場合は、設定ファイルの [Tera Term] セクションの LogTimestampUTC 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -422,45 +422,45 @@ LogTimestampUTC=on
 </pre>
 
 <pre>
-�ȗ���:
+省略時:
 LogTimestampUTC=off
 </pre>
 
-<h1 id="HighDPI">��DPI�Ή�(High DPI Aware)</h1>
+<h1 id="HighDPI">高DPI対応(High DPI Aware)</h1>
 
 <p>
-��DPI�ɑΉ����Ă��܂��B
-Per monitor DPI Aware �A�v���P�[�V�����Ƃ��ē��삵�܂��B
+高DPIに対応しています。
+Per monitor DPI Aware アプリケーションとして動作します。
 </p>
 
 <p>
-�]���Ɠ��l DPI Unaware �A�v���P�[�V�����Ƃ��Ďg�p�������ꍇ��
-teraterm.ini��[Tera Term]�Z�N�V������DPIAware=off��ǉ����܂��B
+従来と同様 DPI Unaware アプリケーションとして使用したい場合は
+teraterm.iniの[Tera Term]セクションにDPIAware=offを追加します。
 </p>
 
 <p>
-��DPI��<a href="../menu/setup-font.html">�t�H���g</a>��True Type
-Font��I�����Ă����ƃX�P�[�����O���ʂ��X���[�Y�ɂȂ�܂��B
+高DPI時<a href="../menu/setup-font.html">フォント</a>はTrue Type
+Fontを選択しておくとスケーリング結果がスムーズになります。
 </p>
 
 <p>
-��DPI�Ή��ɂ͂������̎�ނ�����܂��B�ڂ�����<a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#dpi-awareness-mode" target="_blank">High DPI Desktop Application Development on Windows��DPI AwarenessMode</a>���Q�Ƃ��������B<br>
+高DPI対応にはいくつかの種類があります。詳しくは<a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#dpi-awareness-mode" target="_blank">High DPI Desktop Application Development on WindowsのDPI AwarenessMode</a>を参照ください。<br>
 </p>
 
 <p>
-Tera Term �� Windows 10 Version 1703����g�p�\�� Per-monitor DPI
-awareness V2 �̋@�\�𗘗p���܂��B<br>
-Per-monitor DPI awareness V2�ɂ��ďڂ����́A
+Tera Term は Windows 10 Version 1703から使用可能な Per-monitor DPI
+awareness V2 の機能を利用します。<br>
+Per-monitor DPI awareness V2について詳しくは、
 <a href="https://blogs.windows.com/buildingapps/2017/04/04/high-dpi-scaling-improvements-desktop-applications-windows-10-creators-update/" target="_blank">High-DPI
 Scaling Improvements for Desktop Applications in the Windows 10
-Creators Update (1703)</a>���Q�Ƃ��������B
+Creators Update (1703)</a>を参照ください。
 </p>
 
-<h1 id="IniAutoBackup">�ݒ�t�@�C���̎����o�b�N�A�b�v</h1>
+<h1 id="IniAutoBackup">設定ファイルの自動バックアップ</h1>
 
 <p>
-�����̐ݒ�t�@�C���ɏ㏑������ꍇ�A�o�b�N�A�b�v�t�@�C���������I�ɍ���܂��B
-�����o�b�N�A�b�v���s�v�ł���΁A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ IniAutoBackup �s���ȉ��̂悤�ɕύX���Ă��������B
+既存の設定ファイルに上書きする場合、バックアップファイルが自動的に作られます。
+自動バックアップが不要であれば、設定ファイルの [Tera Term] セクションの IniAutoBackup 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -473,10 +473,10 @@ IniAutoBackup=on
 </pre>
 
 
-<h1 id="BracketedSupport">�u���P�b�g�y�[�X�g�̃T�|�[�g</h1>
+<h1 id="BracketedSupport">ブラケットペーストのサポート</h1>
 
 <p>
-<a href="../about/glossary.html#Bracketed">�u���P�b�g�y�[�X�g</a>���s�v�ł���΁A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ BracketedSupport �s���ȉ��̂悤�ɕύX���Ă��������B
+<a href="../about/glossary.html#Bracketed">ブラケットペースト</a>が不要であれば、設定ファイルの [Tera Term] セクションの BracketedSupport 行を以下のように変更してください。
 </p>
 
 <pre>
@@ -488,11 +488,11 @@ Default:
 BracketedSupport=on
 </pre>
 
-<h1 id="BracketedControlOnly">�u���P�b�g�y�[�X�g�𐧌䕶�����܂ޏꍇ�Ɍ��肷��</h1>
+<h1 id="BracketedControlOnly">ブラケットペーストを制御文字を含む場合に限定する</h1>
 <p>
-<a href="../about/glossary.html#Bracketed">�u���P�b�g�y�[�X�g</a>�̓y�[�X�g�������e���m�肷��O�Ɋm�F�ł���̂ŕ֗��ł��B
-�������A���s�Ȃǂ̐��䕶�����܂܂�Ă��Ȃ��ꍇ�ɂ��\��t���Ɗm��̓�i�K�̑��삪�K�v�ɂȂ�܂��B
-���䕶�����܂܂�Ă���Ƃ������u���P�b�g�y�[�X�g��L���ɂ������ꍇ�ɂ́A�ݒ�t�@�C���� [Tera Term] �Z�N�V������ BracketedControlOnly �s���ȉ��̂悤�ɕύX���Ă��������B
+<a href="../about/glossary.html#Bracketed">ブラケットペースト</a>はペーストした内容を確定する前に確認できるので便利です。
+しかし、改行などの制御文字が含まれていない場合にも貼り付けと確定の二段階の操作が必要になります。
+制御文字が含まれているときだけブラケットペーストを有効にしたい場合には、設定ファイルの [Tera Term] セクションの BracketedControlOnly 行を以下のように変更してください。
 </p>
 
 <pre>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>sendlnmulticast</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,21 +14,21 @@
 <h1>sendlnmulticast</h1>
 
 <p>
-ƒf[ƒ^‚Æ‰üs‚ğƒ}ƒ‹ƒ`ƒLƒƒƒXƒg‘—M‚·‚éB<em>(ƒo[ƒWƒ‡ƒ“ 4.96ˆÈ~)</em>
+ãƒ‡ãƒ¼ã‚¿ã¨æ”¹è¡Œã‚’ãƒãƒ«ãƒã‚­ãƒ£ã‚¹ãƒˆé€ä¿¡ã™ã‚‹ã€‚<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 4.96ä»¥é™)</em>
 </p>
 
 <pre class="macro-syntax">
 sendlnmulticast &lt;multicastname&gt; &lt;data1&gt; &lt;data2&gt;....
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-•¶š—ñ‚Æ‚»‚ê‚É‘±‚­‰üs•¶š‚ğAw’è‚µ‚½’[––‚Éƒ}ƒ‹ƒ`ƒLƒƒƒXƒg‘—M‚·‚éB<br>
-&lt;data&gt; ‚ÌŒ`®‚ÍA<a href="sendmulticast.html">"sendmulticast"</a>ƒRƒ}ƒ“ƒh‚Æ“¯‚¶B
+æ–‡å­—åˆ—ã¨ãã‚Œã«ç¶šãæ”¹è¡Œæ–‡å­—ã‚’ã€æŒ‡å®šã—ãŸç«¯æœ«ã«ãƒãƒ«ãƒã‚­ãƒ£ã‚¹ãƒˆé€ä¿¡ã™ã‚‹ã€‚<br>
+&lt;data&gt; ã®å½¢å¼ã¯ã€<a href="sendmulticast.html">"sendmulticast"</a>ã‚³ãƒãƒ³ãƒ‰ã¨åŒã˜ã€‚
 </p>
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 mcastname = "multicast-test"
@@ -41,14 +41,14 @@ unlink
 connect "server-b"
 setmulticastname mcastname
 
-; "ABCdefGHI" ‚Æ‰üs•¶š‚ª‘—‚ç‚ê‚é
+; "ABCdefGHI" ã¨æ”¹è¡Œæ–‡å­—ãŒé€ã‚‰ã‚Œã‚‹
 sendlnmulticast mcastname "ABC" "def" "GHI"
 
-; ‰üs•¶š‚Ì‚İ‚ª‘—‚ç‚ê‚é
+; æ”¹è¡Œæ–‡å­—ã®ã¿ãŒé€ã‚‰ã‚Œã‚‹
 sendlnmulticast mcastname
 </pre>
 
-<h2>QÆ</h2>
+<h2>å‚ç…§</h2>
 <ul>
   <li><a href="sendmulticast.html">sendmulticast</a></li>
   <li><a href="setmulticastname.html">setmulticastname</a></li>

@@ -2,24 +2,24 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<TITLE>�萔�̌`��</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>定数の形式</TITLE>
 <META http-equiv="Content-Style-Type" content="text/css">
 <link rel="stylesheet" href="../../style.css" type="text/css">
 </HEAD>
 <BODY>
 
-<h1>�萔�̌`��</h1>
+<h1>定数の形式</h1>
 
-<h2>1) �����^�萔</h2>
+<h2>1) 整数型定数</h2>
 
 <p>
-10�i���܂��� "$" �Ŏn�܂�16�i���ŕ\������B
-���������_�͖��T�|�[�g�B
+10進数または "$" で始まる16進数で表現する。
+浮動小数点は未サポート。
 </p>
 
 <pre>
-��:
+例:
     123
     -11
     $3a
@@ -27,49 +27,49 @@
 </pre>
 
 <p>
-<A HREF="../appendixes/negative.html">���̐����萔�ɂ��Ă̒���</A>
+<A HREF="../appendixes/negative.html">負の整数定数についての注意</A>
 </p>
 
 
-<h2>2) ������^�萔</h2>
+<h2>2) 文字列型定数</h2>
 
 <p>
-������^�萔��\��������@��2�B
+文字列型定数を表現する方法は2つ。
 </p>
 
 <p>
-a) �l�ƂȂ镶����̗��[�� ' �� " �ň͂�(���[�Ƃ�����������)�B������l���\�����镶���͕\���\�ň͂ݕ����ƈقȂ镶���Ȃ�Ή��ł��悢�B
+a) 値となる文字列の両端を ' か " で囲む(両端とも同じ文字で)。文字列値を構成する文字は表示可能で囲み文字と異なる文字ならば何でもよい。
 </p>
 
 <pre>
-��:
+例:
     'Hello, world'
     "I can't do that"
-    "�������\"
+    "漢字も可能"
 </pre>
 
 <p>
-b) 1������ ASCII (�܂��� JIS ���[�}���AShift-JIS) �R�[�h(10�i���܂���$�Ŏn�܂�16�i��)�ŕ\�����A�擪�� "#" ������B
-ASCII �R�[�h 0 �̕��� (NUL) �͕�����萔�Ɋ܂߂邱�Ƃ��ł��Ȃ��B
+b) 1文字を ASCII (または JIS ローマ字、Shift-JIS) コード(10進数または$で始まる16進数)で表現し、先頭に "#" をつける。
+ASCII コード 0 の文字 (NUL) は文字列定数に含めることができない。
 </p>
 
 <pre>
-��:
-    #65     ���� "A"
-    #$41    ���� "A"
-    #13     CR ����
+例:
+    #65     文字 "A"
+    #$41    文字 "A"
+    #13     CR 文字
 </pre>
 
 <p>
-<A HREF="../appendixes/ascii.html">ASCII �R�[�h�\</A> 
+<A HREF="../appendixes/ascii.html">ASCII コード表</A> 
 </p>
 
 <p>
-a) �� b) �͑g�ݍ��킹�邱�Ƃ��\�B
+a) と b) は組み合わせることが可能。
 </p>
 
 <pre>
-��:
+例:
     'cat readme.txt'#13#10
     'abc'#$0d#$0a'def'#$0d#$0a'ghi'
 </pre>

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>getmodemstatus</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,33 +14,33 @@
 <h1>getmodemstatus</h1>
 
 <p>
-ƒ‚ƒfƒ€‚Ì§ŒäƒŒƒWƒXƒ^’l‚ğæ“¾‚·‚éB<em>(ƒo[ƒWƒ‡ƒ“ 4.86ˆÈ~)</em>
+ãƒ¢ãƒ‡ãƒ ã®åˆ¶å¾¡ãƒ¬ã‚¸ã‚¹ã‚¿å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<em>(ãƒãƒ¼ã‚¸ãƒ§ãƒ³ 4.86ä»¥é™)</em>
 </p>
 
 <pre class="macro-syntax">
 getmodemstatus &lt;intvar&gt;
 </pre>
 
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 
 <p>
-ƒVƒŠƒAƒ‹ƒ|[ƒg‚©‚çƒ‚ƒfƒ€§ŒäƒŒƒWƒXƒ^‚Ì’l‚ğ“Ç‚İo‚·B
+ã‚·ãƒªã‚¢ãƒ«ãƒãƒ¼ãƒˆã‹ã‚‰ãƒ¢ãƒ‡ãƒ åˆ¶å¾¡ãƒ¬ã‚¸ã‚¹ã‚¿ã®å€¤ã‚’èª­ã¿å‡ºã™ã€‚
 </p>
 
-&lt;intvar&gt; •Ï”‚ÍA‰º‹L‚Ì’è”‚Ì‘g‚İ‡‚í‚¹‚Æ‚È‚éB
+&lt;intvar&gt; å¤‰æ•°ã¯ã€ä¸‹è¨˜ã®å®šæ•°ã®çµ„ã¿åˆã‚ã›ã¨ãªã‚‹ã€‚
 <pre>
-1  CTSi ‘—M‰ÂjM†‚ªƒIƒ“‚Å‚·B
-2  DSRi ƒf[ƒ^ƒZƒbƒgƒŒƒfƒBjM†‚ªƒIƒ“‚Å‚·B
-4  ŒÄ‚Ño‚µM†‚ªƒIƒ“‚Å‚·B
-8  RLSDi óMüM†ŒŸojM†‚ªƒIƒ“‚Å‚·B
+1  CTSï¼ˆ é€ä¿¡å¯ï¼‰ä¿¡å·ãŒã‚ªãƒ³ã§ã™ã€‚
+2  DSRï¼ˆ ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ¬ãƒ‡ã‚£ï¼‰ä¿¡å·ãŒã‚ªãƒ³ã§ã™ã€‚
+4  å‘¼ã³å‡ºã—ä¿¡å·ãŒã‚ªãƒ³ã§ã™ã€‚
+8  RLSDï¼ˆ å—ä¿¡ç·šä¿¡å·æ¤œå‡ºï¼‰ä¿¡å·ãŒã‚ªãƒ³ã§ã™ã€‚
 </pre>
 
 <p>
-“Ç‚İo‚µ‚É¬Œ÷‚µ‚½ê‡‚ÍƒVƒXƒeƒ€•Ï” result ‚ª 0 ‚Æ‚È‚é‚ªA¸”s‚µ‚½ê‡‚Í 1 ‚Æ‚È‚éB
+èª­ã¿å‡ºã—ã«æˆåŠŸã—ãŸå ´åˆã¯ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•° result ãŒ 0 ã¨ãªã‚‹ãŒã€å¤±æ•—ã—ãŸå ´åˆã¯ 1 ã¨ãªã‚‹ã€‚
 </p>
 
 
-<h2>—á</h2>
+<h2>ä¾‹</h2>
 
 <pre class="macro-example">
 testlink
@@ -55,7 +55,7 @@ if result=0 then
   sprintf2 str "val = %d(%x)" val val
   messagebox str "Result value"
   if val &amp; 2 &gt; 0 then
-    ; DSRM†‚ªƒIƒ“‚Ìˆ—
+    ; DSRä¿¡å·ãŒã‚ªãƒ³æ™‚ã®å‡¦ç†
     messagebox "DSR on" "Message"
   endif
 else
@@ -64,7 +64,7 @@ endif
 </pre>
 
 
-<h2>QÆ</h2>
+<h2>å‚ç…§</h2>
 <ul>
   <li><a href="setdtr.html">setdtr</a></li>
   <li><a href="setrts.html">setrts</a></li>

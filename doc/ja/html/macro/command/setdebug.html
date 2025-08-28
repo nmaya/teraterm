@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>setdebug</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,27 +14,27 @@
 <h1>setdebug</h1>
 
 <p>
-�f�o�b�O���[�h��ݒ肷��B<em>(�o�[�W���� 4.64�ȍ~)</em>
+デバッグモードを設定する。<em>(バージョン 4.64以降)</em>
 </p>
 
 <pre class="macro-syntax">
 setdebug &lt;flag&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-�ȉ��̃t���O�ɂ��ATera Term�̃f�o�b�O���[�h��ݒ肷��B�f�o�b�O���[�h��L���ɂ��邱�ƂŁA"wait"�R�}���h�Łu����R�[�h�v��҂��Ƃ��ł���B
+以下のフラグにより、Tera Termのデバッグモードを設定する。デバッグモードを有効にすることで、"wait"コマンドで「制御コード」を待つことができる。
 <br>
 <br>
 
-0: �f�o�b�O���[�h�����B�ʏ�o�͂��s���B<br>
-1: �]���̃f�o�b�O���[�h�i�ڍׂ�<a href="../../setup/teraterm-term.html#displayall">������</a>�j<br>
-2: 16�i�o�̓��[�h�B��M�f�[�^��啶����16�i���ŁA�󔒂������ĕ\������B<br>
-3: �o�͂���؂��Ȃ��B<br>
+0: デバッグモード無効。通常出力を行う。<br>
+1: 従来のデバッグモード（詳細は<a href="../../setup/teraterm-term.html#displayall">こちら</a>）<br>
+2: 16進出力モード。受信データを大文字の16進数で、空白をあけて表示する。<br>
+3: 出力を一切しない。<br>
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 setdebug 2
@@ -48,7 +48,7 @@ wait '^I^M^J'
 setdebug 0
 </pre>
 
-<h2>�Q��</h2>
+<h2>参照</h2>
 <ul>
   <li><a href="wait.html">wait</a></li>
 </ul>

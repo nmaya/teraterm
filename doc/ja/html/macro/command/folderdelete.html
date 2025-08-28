@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>folderdelete</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <link rel="stylesheet" href="../../style.css" type="text/css">
@@ -14,22 +14,22 @@
 <h1>folderdelete</h1>
 
 <p>
-�t�H���_���폜����B<em>(�o�[�W����4.69�ȍ~)</em>
+フォルダを削除する。<em>(バージョン4.69以降)</em>
 </p>
 
 <pre class="macro-syntax">
 folderdelete &lt;foldername&gt;
 </pre>
 
-<h2>���</h2>
+<h2>解説</h2>
 
 <p>
-�t�H���_ &lt;foldername&gt; ���폜����B<br>
-�t�H���_�̍폜�����������ꍇ�A�V�X�e���ϐ� result �� 0 ���i�[�����B����ȊO�̏ꍇ�Aresult �� 0 �ȊO���i�[�����B<br>
-�������A�t�H���_����łȂ��ꍇ�ɂ͍폜�ł��Ȃ��B
+フォルダ &lt;foldername&gt; を削除する。<br>
+フォルダの削除が成功した場合、システム変数 result に 0 が格納される。それ以外の場合、result に 0 以外が格納される。<br>
+ただし、フォルダが空でない場合には削除できない。
 </p>
 
-<h2>��</h2>
+<h2>例</h2>
 
 <pre class="macro-example">
 folderdelete 'temp'
